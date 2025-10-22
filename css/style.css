@@ -1223,3 +1223,107 @@ body.dark-mode #app {
     max-width: 60px;
   }
 }
+
+/* ============================================== */
+/* COLE ESTE BLOCO NO FINAL DO SEU 'style.css'   */
+/* ============================================== */
+
+/* Remove a regra de 3 colunas para telas pequenas, 
+   para manter sempre 4 colunas. */
+@media (max-width: 400px) {
+  .blocks-grid {
+    gap: 8px; /* Diminui o espaço em telas muito pequenas */
+    padding: 10px;
+  }
+  .block-title {
+    font-size: 12px; /* Diminui a fonte em telas muito pequenas */
+  }
+}
+
+.blocks-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 COLUNAS, COMO PEDIDO */
+  gap: 12px; /* Espaço entre os blocos */
+  padding: 15px;
+  width: 100%;
+  max-width: 480px; 
+  margin: 0 auto;
+}
+
+.block-card {
+  /* Remove a largura máxima fixa que estava causando o problema */
+  /* max-width: 80px;  <-- REMOVIDO */
+  width: 100%; /* Ocupa 100% da célula da grade */
+
+  /* FORÇA O BLOCO A SER UM QUADRADO PERFEITO */
+  aspect-ratio: 1 / 1; 
+  
+  border-radius: 16px; 
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  /* Centraliza o ícone e o texto */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px; /* Pequeno preenchimento interno */
+}
+
+.block-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.block-icon {
+  /* O ícone (cadeado). Ajuste o 'font-size' se for ícone de fonte */
+  font-size: 28px; 
+  margin-bottom: 6px; 
+}
+
+/* Se o ícone for uma imagem (<img>) */
+.block-icon img {
+   width: 28px;
+   height: 28px;
+}
+
+.block-title {
+  font-size: 13px; 
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* --- ESTADOS (Melhorei o estilo 'current' para destacar) --- */
+
+.block-card.completed {
+  /* Lição completa (verde) */
+  background: rgba(76, 175, 80, 0.15);
+  border: 1px solid #4CAF50;
+}
+
+.block-card.current {
+  /* Lição atual (azul/roxo) - DESTAQUE FORTE */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: 1px solid #667eea;
+}
+
+.block-card.locked {
+  /* Lição bloqueada (cinza) */
+  background: rgba(158, 158, 158, 0.1);
+  border: 1px solid #444;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* O ícone dentro de um bloco bloqueado (cadeado) */
+.block-card.locked .block-icon {
+   color: #9E9E9E; /* Cor do cadeado cinza */
+}
+
+/* O ícone dentro de um bloco atual ou completo */
+.block-card.current .block-icon,
+.block-card.completed .block-icon {
+   color: #fff; /* Cor do ícone (se for de fonte) */
+}
