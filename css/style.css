@@ -1332,3 +1332,38 @@ body.dark-mode .profile-avatar {
 body.dark-mode .profile-avatar {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
+
+/* === ROLAGEM DA LISTA DE ESTUDOS (corresponde a #studies-container do main.js) === */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Torna o container rolável e evita que o menu/vazio "empurre" a página */
+#studies-container {
+  overflow-y: auto;                       /* ativa rolagem vertical quando necessário */
+  -webkit-overflow-scrolling: touch;      /* rolagem suave em iOS */
+  box-sizing: border-box;
+  padding: 1rem;                          /* ajuste se já tiver padding nos cards */
+  padding-bottom: 90px;                   /* garante espaço para o menu inferior */
+  max-height: calc(100vh - 140px);        /* ajuste 140px conforme altura total do header + menu */
+  gap: 1rem;                              /* espaçamento entre cards (se for flex/grid) */
+}
+
+/* Se #studies-container usar display:flex ou grid, garanta que empilhe verticalmente */
+#studies-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Smooth scroll global opcional */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Segurança: caso algum ancestor esteja limitando altura, permita que o container cresça */
+body > * {
+  box-sizing: border-box;
+}
