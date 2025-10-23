@@ -3,18 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Jornada Bíblica</title>
+      <title> Jornada Bíblica</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body class="dark-mode">
     <div id="app">
         <!-- Barra Superior -->
-        <header class="top-bar">
-       
-            
-        </header>
-
+        
         <!-- Conteúdo Principal -->
         <main id="content">
             <!-- Tela de Jornada -->
@@ -52,25 +48,25 @@
 
             <!-- Tela de Estudos -->
             <section id="screen-studies" class="screen">
-  <h1 class="screen-title">Estudos Bíblicos</h1>
+                <h1 class="screen-title">Estudos Bíblicos</h1>
 
-  <!-- Barra de busca -->
-  <div class="search-bar">
-    <input type="text" id="search-studies" placeholder="🔍 Buscar estudos..." />
-  </div>
+                <!-- Barra de busca -->
+                <div class="search-bar">
+                    <input type="text" id="search-studies" placeholder="🔍 Buscar estudos..." />
+                </div>
 
-  <!-- Container dos cards -->
-  <div id="studies-container" class="studies-container"></div>
+                <!-- Container dos cards -->
+                <div id="studies-container" class="studies-container"></div>
 
-  <!-- Modal para exibir o estudo completo -->
-  <div id="study-modal" class="modal hidden">
-    <div class="modal-content">
-      <span id="close-study" class="close-btn">&times;</span>
-      <h2 id="modal-title"></h2>
-      <div id="modal-content-text"></div>
-    </div>
-  </div>
-</section>
+                <!-- Modal para exibir o estudo completo -->
+                <div id="study-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <span id="close-study" class="close-btn">&times;</span>
+                        <h2 id="modal-title"></h2>
+                        <div id="modal-content-text"></div>
+                    </div>
+                </div>
+            </section>
 
             <!-- Tela de Perfil -->
             <section id="screen-profile" class="screen">
@@ -86,30 +82,52 @@
                     <!-- Quiz será renderizado aqui -->
                 </div>
             </section>
+
+            <!-- Tela de Telegram -->
+            <section id="screen-telegram" class="screen">
+                <h1 class="screen-title">Comunidade no Telegram</h1>
+
+                <div class="telegram-container">
+                    <p class="telegram-message">
+                        📖 Junte-se à nossa comunidade no Telegram!  
+                        Lá você receberá estudos bíblicos, desafios diários e poderá conversar com outros participantes da Jornada Bíblica.  
+                        É um espaço de comunhão, aprendizado e inspiração — totalmente gratuito!
+                    </p>
+
+                    <div class="telegram-card" onclick="window.open('https://t.me/jornadabiblicabr', '_blank')">
+                        <i class="fa-brands fa-telegram telegram-icon"></i>
+                        <div class="telegram-info">
+                            <h3 class="telegram-title">Entrar no Grupo</h3>
+                            <p class="telegram-subtitle">@jornadabiblicabr</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </main>
 
-<!-- Barra Inferior de Navegação -->
-<nav class="bottom-bar">
-  <div class="nav-item active" id="nav-journey">
-    <i class="fa-solid fa-route nav-icon"></i>
-    <span class="nav-label">Jornada</span>
-  </div>
-  <div class="nav-item" id="nav-studies">
-    <i class="fa-solid fa-book-open nav-icon"></i>
-    <span class="nav-label">Estudos</span>
-  </div>
-  <div class="nav-item" id="nav-telegram">
-    <i class="fa-brands fa-telegram nav-icon"></i>
-    <span class="nav-label">Telegram</span>
-  </div>
-  <div class="nav-item" id="nav-profile">
-    <i class="fa-solid fa-user nav-icon"></i>
-    <span class="nav-label">Perfil</span>
-  </div>
-</nav>
+        <!-- Barra Inferior de Navegação -->
+        <nav class="bottom-bar">
+            <div class="nav-item active" id="nav-journey">
+                <i class="fa-solid fa-route nav-icon"></i>
+                <span class="nav-label">Jornada</span>
+            </div>
+            <div class="nav-item" id="nav-studies">
+                <i class="fa-solid fa-book-open nav-icon"></i>
+                <span class="nav-label">Estudos</span>
+            </div>
+            <div class="nav-item" id="nav-telegram">
+                <i class="fa-brands fa-telegram nav-icon"></i>
+                <span class="nav-label">Telegram</span>
+            </div>
+            <div class="nav-item" id="nav-profile">
+                <i class="fa-solid fa-user nav-icon"></i>
+                <span class="nav-label">Perfil</span>
+            </div>
+        </nav>
+    </div>
 
     <script src="data/journey_data.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
-
