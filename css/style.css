@@ -1136,3 +1136,199 @@ body.dark-mode #app {
   background: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
 }
+/* ===== ÍCONES DAS CIDADES ===== */
+.phase-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Imagem dentro do ícone */
+.city-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
+/* Informações da fase (cidade) */
+.phase-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 0.8rem;
+}
+
+/* Nome da cidade */
+.phase-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+.city-icon-wrapper {
+    background-color: #f0f2f5;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #000000, #0e0d0d, #000000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(240, 235, 235, 0.3);
+  
+}
+/* Texto das cidades (no modal) */
+.city-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.8rem;
+  color: #ffffff; /* cor padrão branca para todo o conteúdo dentro do item */
+}
+
+/* Nome da cidade (mais destaque) */
+.city-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: inherit; /* usa a cor branca definida no .city-item */
+}
+
+/* Progresso (texto secundário) */
+.city-progress {
+  margin-left: auto;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.85); /* branco levemente suavizado */
+}
+
+/* Caso haja estilos conflitantes em outro lugar, use especificidade maior */
+.modal .city-list .city-item .city-name,
+.modal .city-list .city-item .city-progress {
+  color: #fff;
+}
+
+/* Se mesmo assim não aplicar (CSS externo com !important), force com !important:
+   usar apenas se realmente necessário */
+.city-name.force-white,
+.city-progress.force-white {
+  color: #fff !important;
+}
+/* ======== TELA TELEGRAM ======== */
+#screen-telegram {
+  text-align: center;
+  color: #fff;
+  padding: 2rem 1rem;
+}
+
+.telegram-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.telegram-message {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.8rem;
+  color: #e0e0e0;
+}
+
+.telegram-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, #0088cc, #2ca5e0);
+  color: #fff;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.telegram-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 136, 204, 0.5);
+}
+
+.telegram-icon {
+  font-size: 2rem;
+}
+
+.telegram-info {
+  text-align: left;
+}
+
+.telegram-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.telegram-subtitle {
+  font-size: 0.9rem;
+  color: #d8ecff;
+  margin: 0;
+}
+.profile-avatar {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+body.dark-mode .profile-avatar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.profile-avatar {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-icon svg {
+    opacity: 0.9;
+}
+
+body.dark-mode .profile-avatar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
