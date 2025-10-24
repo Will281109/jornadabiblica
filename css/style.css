@@ -664,7 +664,7 @@ body.dark-mode .btn-secondary {
 .bottom-bar {
     display: flex;
     justify-content: space-around;
-    padding: 10px 0;
+    padding: 30px 0;
     border-top: 2px solid #e0e0e0;
     background-color: #fff;
     box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
@@ -1396,14 +1396,6 @@ html, body, #app, .screen, .main-content, .content {
       /* ajuste para a altura real da sua barra inferior */
 }
 
- /* === AJUSTAR BARRA INFERIOR (MAIOR E EQUILIBRADA) === */
-.bottom-bar {
-  height: 65px; /* aumenta a altura da barra */
-  background: #1c1f2e;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  border-top: 2px solid rgba(255, 255, 255, 0.1);
-}
+
 
 
