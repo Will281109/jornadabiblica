@@ -1332,38 +1332,71 @@ body.dark-mode .profile-avatar {
 body.dark-mode .profile-avatar {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
-
-/* === ROLAGEM DA LISTA DE ESTUDOS (corresponde a #studies-container do main.js) === */
-
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-/* Torna o container rolável e evita que o menu/vazio "empurre" a página */
+/* === AJUSTE DE ÁREA VISÍVEL DOS ESTUDOS === */
 #studies-container {
-  overflow-y: auto;                       /* ativa rolagem vertical quando necessário */
-  -webkit-overflow-scrolling: touch;      /* rolagem suave em iOS */
+  overflow-y: auto;                 /* rolagem apenas dentro da lista */
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(100vh - 100px);  /* controla a altura visível da lista */
+  margin-top: 1rem;
+  padding-right: 0.5rem;            /* espaço pro scroll não colar na borda */
   box-sizing: border-box;
-  padding: 1rem;                          /* ajuste se já tiver padding nos cards */
-  padding-bottom: 90px;                   /* garante espaço para o menu inferior */
-  max-height: calc(100vh - 140px);        /* ajuste 140px conforme altura total do header + menu */
-  gap: 1rem;                              /* espaçamento entre cards (se for flex/grid) */
+   padding:1px 0.5rem; 
 }
 
-/* Se #studies-container usar display:flex ou grid, garanta que empilhe verticalmente */
-#studies-container {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Smooth scroll global opcional */
+/* garante que o scroll seja suave */
 html {
   scroll-behavior: smooth;
 }
+/* -------------------------
+   Forçar gap de ~10px entre último card e barra inferior
+   (coloque no final do style.css)
+   ------------------------- */
 
-/* Segurança: caso algum ancestor esteja limitando altura, permita que o container cresça */
-body > * {
+/* garantia de box-model consistente */
+html, body, #app, .screen, .main-content, .content {
   box-sizing: border-box;
 }
+
+/* remover padding/margin indesejada em elementos-pai comuns */
+.screen,
+#screen-estudos,
+.main-content,
+.content,
+.estudos-section {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* container correto (conforme main.js) */
+#studies-container {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.75rem 0.5rem 10px 0.5rem !important; /* <-- padding-bottom = 10px */
+  margin: 0 !important;
+  max-height: calc(100vh - var(--reserved-space, 120px)) !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  box-sizing: border-box;
+}
+
+/* garante que o último card tenha exatamente 10px abaixo dele */
+#studies-container .study-card:last-child {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* se houver um footer fixo com classe comum, garanta altura conhecida */
+footer, .bottom-bar, .app-bar, .fixed-footer {
+  /* ajuste aqui para a altura real do seu menu inferior, ex: 64px */
+  height: var(--bottom-bar-height, 64px) !important;
+}
+
+/* exemplo de cálculo automático:
+   se seu header + footer ocupam 120px, a variável --reserved-space = 120px.
+   Caso contrário, sobrescreva a variável no :root ou altere diretamente o calc() acima. */
+:root {
+  --reserved-space: 250px;       /* ajuste esse valor conforme seu header + footer */
+  --bottom-bar-height: 64px;     /* ajuste para a altura real da sua barra inferior */
+}
+
