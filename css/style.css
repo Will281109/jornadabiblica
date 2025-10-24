@@ -1386,11 +1386,7 @@ html, body, #app, .screen, .main-content, .content {
   padding-bottom: 0 !important;
 }
 
-/* se houver um footer fixo com classe comum, garanta altura conhecida */
-footer, .bottom-bar, .app-bar, .fixed-footer {
-  /* ajuste aqui para a altura real do seu menu inferior, ex: 64px */
-  height: var(--bottom-bar-height, 64px) !important;
-}
+
 
 /* exemplo de cálculo automático:
    se seu header + footer ocupam 120px, a variável --reserved-space = 120px.
@@ -1398,5 +1394,38 @@ footer, .bottom-bar, .app-bar, .fixed-footer {
 :root {
   --reserved-space: 250px;       /* ajuste esse valor conforme seu header + footer */
       /* ajuste para a altura real da sua barra inferior */
+}
+
+ /* === AJUSTAR BARRA INFERIOR (MAIOR E EQUILIBRADA) === */
+.bottom-bar {
+  height: 65px; /* aumenta a altura da barra */
+  background: #1c1f2e;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.bottom-bar .nav-item {
+  font-size: 0.85rem;
+}
+
+.bottom-bar .nav-item i {
+  font-size: 1.4rem;
+  margin-bottom: 3px;
+}
+
+/* === AJUSTAR LARGURA DOS ESTUDOS === */
+.studies-container {
+  width: 100%;
+  max-width: 600px;        /* define uma largura confortável */
+  margin: 0 auto;          /* centraliza na tela */
+  padding: 0 10px 10px;    /* menos espaço lateral */
+  overflow-y: auto;
+  max-height: calc(100vh - 100px); /* ajusta altura conforme a tela */
+}
+
+.study-card {
+  margin: 8px 0; /* espaçamento suave entre os cards */
 }
 
