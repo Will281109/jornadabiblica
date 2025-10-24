@@ -406,75 +406,49 @@ function renderMissions() {
     `).join("");
 }
 
-===== PERFIL =====
+   // ===== PERFIL =====
 function renderProfile() {
     const container = document.getElementById("profile-container");
-
-    const savedPhoto = localStorage.getItem("profilePhoto");
-
     container.innerHTML = `
         <div class="profile-content">
-            <div class="profile-avatar">
-                ${
-                    savedPhoto
-                        ? `<img id="profile-img" src="${savedPhoto}" alt="Foto de Perfil">`
-                        : `
-                        <div class="profile-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24" width="60" height="60">
-                                <path d="M12 2a5 5 0 015 5v1a5 5 0 11-10 0V7a5 5 0 015-5zm0 10c2.67 0 8 1.34 8 4v3H4v-3c0-2.66 5.33-4 8-4z"/>
-                            </svg>
-                        </div>`
-                }
-            </div>
-
+            <div class="profile-avatar">👤</div>
             <h2>Usuário</h2>
-
             <div class="profile-stats">
-                <div class="stat-item">
-                    <span class="stat-label">Nível</span>
-                    <span class="stat-value">${gameState.level}</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">XP Total</span>
-                    <span class="stat-value">${gameState.xp}</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Dias Seguidos</span>
-                    <span class="stat-value">${gameState.streak}</span>
-                </div>
+                <div class="stat-item"><span class="stat-label">Nível</span><span class="stat-value">${gameState.level}</span></div>
+                <div class="stat-item"><span class="stat-label">XP Total</span><span class="stat-value">${gameState.xp}</span></div>
+                <div class="stat-item"><span class="stat-label">Dias Seguidos</span><span class="stat-value">${gameState.streak}</span></div>
             </div>
-
             <div class="profile-actions">
-                <button class="btn-secondary" id="btn-upload-photo">Alterar Foto</button>
-                <input type="file" id="photo-input" accept="image/*" style="display:none;">
                 <button class="btn-secondary" id="btn-reset">Reiniciar Jornada</button>
                 <button class="btn-secondary" id="btn-logout">Sair</button>
             </div>
         </div>
     `;
-
-    // === Eventos ===
     document.getElementById("btn-reset").addEventListener("click", resetJourney);
     document.getElementById("btn-logout").addEventListener("click", logout);
-
-    // Upload da foto
-    const uploadBtn = document.getElementById("btn-upload-photo");
-    const photoInput = document.getElementById("photo-input");
-
-    uploadBtn.addEventListener("click", () => photoInput.click());
-    photoInput.addEventListener("change", function () {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const photoURL = e.target.result;
-                localStorage.setItem("profilePhoto", photoURL);
-                renderProfile(); // re-renderiza o perfil com a nova foto
-            };
-            reader.readAsDataURL(file);
-        }
-    });
 }
+
+// ===== SALVAR / CARREGAR =====
+function saveGameState() {
+    localStorage.setItem("biblicalJourneyGameState", JSON.stringify(gameState));
+}
+
+function loadGameState() {
+    const saved = localStorage.getItem("biblicalJourneyGameState");
+    if (saved) gameState = { ...gameState, ...JSON.parse(saved) };
+}
+
+function resetJourney() {
+    if (confirm("Tem certeza que deseja reiniciar sua jornada?")) {
+        localStorage.removeItem("biblicalJourneyGameState");
+        location.reload();
+    }
+}
+
+function logout() {
+    if (confirm("Deseja sair?")) alert("Logout realizado com sucesso!");
+}
+
 
 // ===== SALVAR / CARREGAR =====
 function saveGameState() {
