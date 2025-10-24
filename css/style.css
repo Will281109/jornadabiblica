@@ -1406,26 +1406,4 @@ html, body, #app, .screen, .main-content, .content {
   border-top: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.bottom-bar .nav-item {
-  font-size: 0.85rem;
-}
-
-.bottom-bar .nav-item i {
-  font-size: 1.4rem;
-  margin-bottom: 3px;
-}
-
-/* === AJUSTAR LARGURA DOS ESTUDOS === */
-.studies-container {
-  width: 100%;
-  max-width: 600px;        /* define uma largura confortável */
-  margin: 0 auto;          /* centraliza na tela */
-  padding: 0 10px 10px;    /* menos espaço lateral */
-  overflow-y: auto;
-  max-height: calc(100vh - 100px); /* ajusta altura conforme a tela */
-}
-
-.study-card {
-  margin: 8px 0; /* espaçamento suave entre os cards */
-}
 
