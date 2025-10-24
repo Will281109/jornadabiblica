@@ -1397,6 +1397,6 @@ footer, .bottom-bar, .app-bar, .fixed-footer {
    Caso contrário, sobrescreva a variável no :root ou altere diretamente o calc() acima. */
 :root {
   --reserved-space: 250px;       /* ajuste esse valor conforme seu header + footer */
-  --bottom-bar-height: 64px;     /* ajuste para a altura real da sua barra inferior */
+  --bottom-bar-height: 84px;     /* ajuste para a altura real da sua barra inferior */
 }
 
