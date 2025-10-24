@@ -406,7 +406,6 @@ function renderMissions() {
     `).join("");
 }
 
-// ===== PERFIL =====
 ===== PERFIL =====
 function renderProfile() {
     const container = document.getElementById("profile-container");
@@ -444,9 +443,39 @@ function renderProfile() {
                     <span class="stat-value">${gameState.streak}</span>
                 </div>
             </div>
+
+            <div class="profile-actions">
+                <button class="btn-secondary" id="btn-upload-photo">Alterar Foto</button>
+                <input type="file" id="photo-input" accept="image/*" style="display:none;">
+                <button class="btn-secondary" id="btn-reset">Reiniciar Jornada</button>
+                <button class="btn-secondary" id="btn-logout">Sair</button>
+            </div>
         </div>
     `;
+
+    // === Eventos ===
+    document.getElementById("btn-reset").addEventListener("click", resetJourney);
+    document.getElementById("btn-logout").addEventListener("click", logout);
+
+    // Upload da foto
+    const uploadBtn = document.getElementById("btn-upload-photo");
+    const photoInput = document.getElementById("photo-input");
+
+    uploadBtn.addEventListener("click", () => photoInput.click());
+    photoInput.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const photoURL = e.target.result;
+                localStorage.setItem("profilePhoto", photoURL);
+                renderProfile(); // re-renderiza o perfil com a nova foto
+            };
+            reader.readAsDataURL(file);
+        }
+    });
 }
+
 // ===== SALVAR / CARREGAR =====
 function saveGameState() {
     localStorage.setItem("biblicalJourneyGameState", JSON.stringify(gameState));
