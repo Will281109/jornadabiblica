@@ -21,12 +21,11 @@
 </div>
 
 <div class="trail-scroll-view" id="map-trail-view">
-    <div id="journey-container" class="game-trail">
-        </div>
+    <div id="journey-container" class="game-trail"></div>
 </div>
 
-<div id="active-quiz-overlay" style="display: none; position: absolute; inset: 0; background: var(--v2-bg-app); padding: 20px; z-index: 50; flex-direction: column;">
-    <div class="quiz-header-progress" style="margin-bottom: 20px;">
+<div id="active-quiz-overlay" style="display: none; position: fixed; inset: 0; background: var(--v2-bg-app); padding: 20px; padding-bottom: calc(20px + env(safe-area-inset-bottom)); z-index: 9999; display: flex; flex-direction: column; overflow-y: auto; -webkit-overflow-scrolling: touch; box-sizing: border-box;">
+    <div class="quiz-header-progress" style="margin-bottom: 20px; flex-shrink: 0;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
             <span id="quiz-title-indicator" style="font-weight: 800; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase;">Fase 1 - Pergunta 1/10</span>
             <button id="btn-quit-quiz" style="background: none; border: none; font-size: 1.2rem; color: var(--text-muted); cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
@@ -36,12 +35,11 @@
         </div>
     </div>
 
-    <div class="quiz-question-box" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px 0;">
-        <h2 id="quiz-question-text" style="font-size: 1.35rem; font-weight: 700; color: var(--text-main); line-height: 1.5;">Pergunta aqui?</h2>
+    <div class="quiz-question-box" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px 0; min-height: 100px; flex-shrink: 0;">
+        <h2 id="quiz-question-text" style="font-size: 1.35rem; font-weight: 700; color: var(--text-main); line-height: 1.5; margin: 0;">Pergunta aqui?</h2>
     </div>
 
-    <div id="quiz-options-container" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
-        </div>
+    <div id="quiz-options-container" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; flex-shrink: 0;"></div>
 </div>
 
 <div id="worlds-picker-overlay" style="display: none; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(4px); z-index: 100; align-items: flex-end;">
@@ -51,7 +49,6 @@
             <button id="btn-close-worlds" style="background: none; border: none; font-size: 1.4rem; color: #8A8378; cursor: pointer; padding: 4px;"><i class="fa-solid fa-xmark"></i></button>
         </div>
         
-        <div id="worlds-list-container" style="display: flex; flex-direction: column; gap: 12px; overflow-y: auto; padding-bottom: 16px;">
-            </div>
+        <div id="worlds-list-container" style="display: flex; flex-direction: column; gap: 12px; overflow-y: auto; padding-bottom: 16px;"></div>
     </div>
 </div>
