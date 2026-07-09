@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Intercessão | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">Vida Cristã</span>
+            <h1>A Intercessão</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 9 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>E eu dirigi o meu rosto ao Senhor Deus, para o buscar com oração, e rogos, e jejum, e pano de saco, e cinza.</blockquote>
+                <cite>Dn 9.3</cite>
+            </div>
+
+            <p>Em termos bíblicos, a intercessão envolve alguém que suplica, fielmente e persistentemente, por outra pessoa (ou grupo de pessoas) - particularmente a Deus -, orando intensamente para que o Senhor aja em sua situação. A oração de Daniel no capítulo 9 é uma oração de intercessão (isto é, pelas situações e necessidades de outras pessoas), em que ele se identifica com seus compatriotas judeus; ele confessa os pecados dos judeus e implora intensamente, intercedendo diante de Deus pela restauração de Jerusalém e de toda a nação. A Bíblia registra a intercessão de Cristo e do Espírito Santo, bem como a de muitos homens e mulheres devotos, tanto no Antigo Testamento como no Novo Testamento.</p>
+
+            <h2>A INTERCESSÃO DE CRISTE E DO ESPÍRITO SANTO</h2>
+            <p>(1) Durante o seu ministério terreno, Jesus orou por aqueles que estavam espiritualmente perdidos (isto é, que não tinham um relacionamento pessoal com Deus e não seguiam os seus propósitos), porque são esses os que Ele veio "buscar e salvar" (Lc 19.10). Ele estava com o coração partido e em lágrimas quando entrou na obstinada cidade de Jerusalém (Lc 19.41). Ele orou pelos seus discípulos, tanto individualmente (veja Lc 22.32) como também em grupo (Jo 17.6-26). Ele até mesmo orou por seus inimigos enquanto estava suspenso na cruz (Lc 23.34).</p>
+
+            <p>(2) Um aspecto atual do ministério de Cristo é interceder por nós junto ao seu Pai, isto é, Deus (Rm 8.34; Hb 7.25; 9.24; veja 7.25, nota). João se refere a Jesus dizendo "temos um Advogado para com o Pai" (veja 1Jo 2.1, nota). A intercessão de Cristo é essencial para a nossa salvação e o nosso relacionamento contínuo com Deus (cf. Is 53.12). Sem a graça de Deus (isto é, o seu favor e bondade imerecidos), a sua misericórdia e ajuda que vêm em nosso caminho, como resultado da intervenção de Cristo por nós, o nosso relacionamento com Deus fracassaria. Nós nos afastaríamos dele e, uma vez mais, nos tornaríamos escravos do pecado.</p>
+
+            <p>(3) O Espírito Santo também está envolvido na intercessão. Paulo declara: "porque não sabemos o que havemos de pedir como convém, mas o mesmo Espírito intercede por nós com gemidos inexprimíveis" (Rm 8.26, veja nota). O Espírito Santo - por intermédio do espírito humano daqueles que conhecem a Cristo - "segundo Deus intercede pelos santos" (Rm 8.27). Em outras palavras, o Espírito Santo se comunica com o Pai, em perfeita unidade com os propósitos de Deus. Neste sentido, Cristo intercede pelo crente no céu, e o Espírito intercede no interior do crente que está na terra (veja o quadro A OBRA DO ESPÍRITO SANTO, p. 2147).</p>
+
+            <h2>A INTERCESSÃO DO CRENTE</h2>
+            <p>A Bíblia se refere inúmeras vezes às orações de intercessão do povo de Deus e registra vários exemplos de orações notáveis e poderosas.</p>
+
+            <p>(1) No Antigo Testamento, os líderes do povo de Deus, como reis (1 Cr 21.17; 2Cr 6.14-42), profetas (1 Rs 18.41-45; Dn 9) e sacerdotes (Ez 9.5-15; Jl 1.13; 2.17-18), deviam ser líderes nas orações de intercessão pela nação. Entre os exemplos notáveis de intercessão do Antigo Testamento, se incluem as orações de Abraão por Ismael (Gn 17.18) e por Sodoma e Gomorra (Gn 18.23-32), as orações de Davi por um filho (2Sm 12.16; 1Cr 29.19) e as orações de Jó por seus filhos (Jó 1.5). Na vida de Moisés, vemos o exemplo supremo do Antigo Testamento do poder da oração de intercessão. Em várias ocasiões, ele orou intensamente para que Deus modificasse o seu curso de ação, mesmo depois que Deus já lhe havia contado as suas intenções. Por exemplo, depois que os israelitas se rebelaram contra o Senhor e se recusaram a entrar em Canaã, Deus disse a Moisés que os destruiria, e iniciaria uma nação maior, por meio dele, Moisés (Nm 14.1-12). Então Moisés levou a questão ao Senhor, em oração, e implorou pelo povo (Nm 14.13-19). Na conclusão da oração de Moisés, Deus disse: "Conforme a tua palavra, lhe perdoei" (Nm 14.20; veja também Êx 32.11-14; Nm 11.2; 12.13; 21.7; 27.5; veja o artigo A ORAÇÃO EFICAZ, p. 600). Entre outros poderosos intercessores do Antigo Testamento se incluem Elias (1 Rs 18.21-46; Tg 5.16-18), Daniel (Dn 9.2-23) e Neemias (Ne 1.3-11).</p>
+
+            <p>(2) O Novo Testamento fornece um número ainda maior de exemplos de orações de intercessão. Os Evangelhos (as quatro narrativas das Escrituras sobre a vida de Jesus: Mateus, Marcos, Lucas e João) registram como pais e outras pessoas intercederam na presença de Jesus pelos seus entes queridos. Pais imploraram que Jesus curasse seus filhos doentes (Mc 5.22-43; Jo 4.47-53); um grupo de mães implorou que Jesus abençoasse seus filhos (Mc 10.13); um homem implorou que seu servo fosse curado (Mt 8.6-13); e a mãe de Tiago e João intercedeu na presença de Jesus, a respeito de seus filhos (Mt 20.20-21).</p>
+
+            <p>(3) As igrejas do Novo Testamento frequentemente intercediam por vários indivíduos. Por exemplo, a igreja de Jerusalém se congregou para orar para que Pedro fosse solto da prisão (At 12.5,12). A igreja em Antioquia orou pelo sucesso do ministério de Barnabé e Paulo (At 13.3). Tiago instrui especificamente os líderes da igreja para que orem pelos enfermos (Tg 5.14), como também a todos os cristãos, para que orem "uns pelos outros" (Tg 5.16; cf. Hb 13.18-19). Paulo vai um passo além e pede que sejam feitas orações por todas as pessoas (1 Tm 2.1-3).</p>
+
+            <p>(4) Menção especial merece o apóstolo Paulo. (Paulo foi um missionário pioneiro para os gentios, isto é, os que não eram judeus, e um líder na igreja primitiva. Ele fundou muitas congregações e escreveu muitas das cartas do Novo Testamento.) Em muitas de suas cartas, Paulo fala de suas próprias orações por várias igrejas ou indivíduos (p.ex., Rm 1.9-10; 2Co 13.7; Fp 1.4-11; Cl 1.3,9-12; 1Ts 1.2-3; 2Ts 1.11-12; 2Tm 1.3; Fm 4-6). Ocasionalmente, ele registra suas orações na carta (p.ex., Ef 1.15-19; 3.14-19; 1Tm 3.11-13). Ao mesmo tempo, Paulo pede frequentemente que as igrejas orem por ele, sabendo que somente por intermédio das orações das igrejas o seu ministério terá o seu melhor efeito (Rm 15.30-32; 2Co 1.11; Ef 6.18-20; Fp 1.19; Cl 4.3-4; 1Ts 5.25; 2Ts 3.1-2).</p>
+
+            <h2>OS PROPÓSITOS DAS ORAÇÕES DE INTERCESSÃO</h2>
+            <p>Em várias orações de intercessão na Bíblia, muitos dos membros do povo fiel de Deus imploraram que Ele rescindisse ou detivesse o seu juízo (Gn 18.23-32; Nm 14.13-19; Jl 2.17), restaurasse o seu povo (Ne 1; Dn 9), resgatasse indivíduos do perigo (At 12.5,12; Rm 15.31) e abençoasse o seu povo (Nm 6.24-26; 1 Rs 18.41-45; Sl 122.6-8). Os intercessores também oravam para que viesse o poder do Espírito Santo (At 8.15-17; Ef 3.14-17), pela cura das pessoas (1 Rs 17.20-21; At 28.8; Tg 5.14-16), pelo perdão dos pecados (Ed 9.5-15; Dn 9; At 7.60), pela boa liderança das pessoas investidas de autoridade (1 Cr 29.19; 1Tm 2.1-2), por crescimento espiritual (Fp 1.9-11; Cl 1.10-11), por pastores eficazes (2Tm 1.3-7), por um trabalho missionário eficaz (Mt 9.38; Ef 6.19-20), pela salvação espiritual de outras pessoas (Rm 10.1), e pelo louvor de outras pessoas a Deus (Sl 67.3-5). Qualquer coisa que o Espírito Santo ou a Bíblia revele como sendo a vontade de Deus - os seus desejos, planos e propósitos (veja o artigo A VONTADE DE DEUS, p. 1201) - é um tema apropriado para oração de intercessão.</p>
+
+            <p>Um princípio infalível e que Deus sempre honrará é o poder da oração e fé persistente e perseverante.</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>Intercessão é suplicar por outros com persistência. Como você tem intercedido por pessoas específicas (família, amigos, líderes, nação) em suas orações?</li>
+                    <li>Cristo e o Espírito intercedem por nós (Rm 8.34; 8.26). Como isso te encoraja a orar mais ousadamente e confiar na intercessão celestial?</li>
+                    <li>Os exemplos bíblicos mostram intercessão por perdão, cura, liderança e salvação. Escolha uma área ou pessoa e comece a interceder diariamente por ela esta semana.</li>
+                </ul>
+            </div>
+
+           
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

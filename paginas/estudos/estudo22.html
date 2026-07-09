@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Cidade de Jerusalém | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">História Bíblica</span>
+            <h1>A Cidade de Jerusalém: Capital de Israel, centro de adoração e símbolo eterno</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 9 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>E Davi habitou na fortaleza, pelo que se chamou a Cidade de Davi. E edificou a cidade ao redor, desde Milo até completar o circuito; e Joabe renovou o resto da cidade.</blockquote>
+                <cite>1 Crônicas 11:7-8</cite>
+            </div>
+
+            <h2>A HISTÓRIA DA CIDADE DE JERUSALÉM</h2>
+            <p>A primeira referência à cidade de Jerusalém provavelmente se encontra em Gênesis 14.18, onde Melquisedeque é descrito como o rei de Salém (isto é, Jerusalém, veja Gn 14.18, nota). Quando os israelitas estavam prontos para cruzar o rio Jordão e entrar na terra prometida, a cidade se chamava "banda dos jebuseus" (Js 15.8) ou "Jebus" (1 Cr 11.4). Ela nunca foi capturada durante a conquista da terra de Canaã por Josué, e permaneceu sob o controle cananeu até que Davi se tornou rei. Depois que o exército de Davi atacou Jebus e dela tomou posse, Davi tornou-a sua capital (2Sm 5.5-7; 1 Cr 11.4-7).</p>
+
+            <p>Jerusalém serviu como capital política de Israel, enquanto o reino esteve unido, e mais tarde do reino do sul, Judá. (Para obter um histórico e detalhes de como Israel se tornou um reino dividido, veja as Introduções de 1 e 2 Reis e 2 Crônicas, e veja 1 Rs 12-14 e 2Cr 10-11. Para um resumo e ilustração, veja o mapa O REINO DIVIDIDO, p. 587.) Salomão, o filho de Davi, que o sucedeu como rei, edificou o templo do Senhor em Jerusalém (1 Rs 5-8; 2Cr 2-5; veja o artigo O TEMPLO, p. 730, e a ilustração O TEMPLO DE SALOMÃO, p. 572), de modo que a cidade também se tornou o centro religioso para a adoração a Deus.</p>
+
+            <p>Devido à persistente rebelião de Israel, Deus permitiu que Nabucodonosor da Babilônia tomasse a cidade em 586 a.C., e a destruísse juntamente com o seu templo (2Rs 25.1-11; 2Cr 36.17-19). Jerusalém permaneceu um monte de destroços até que os judeus (que haviam sido capturados e deportados pelos babilônios) retornaram da Pérsia, em 536 a.C., para reconstruir o templo e também a cidade (Ed 3.8-13; 5.1-6.15; Ne 3-4).</p>
+
+            <p>Nos tempos do Novo Testamento, Jerusalém novamente havia se tornado o centro da vida política e religiosa dos judeus. No entanto, em 70 d.C., depois de frequente rebelião dos judeus contra as autoridades romanas, a cidade e o seu templo foram destruídos uma vez mais.</p>
+
+            <p>Quando Davi fez de Jerusalém a sua capital, ela começou a assumir outros nomes que representavam o seu caráter: "Sião" (2Sm 5.7), "a Cidade de Davi" (1 Rs 2.10), "a santa cidade" (Ne 11.1), "a cidade de Deus" (Sl 46.4), "a cidade do grande Rei" (Sl 48.2), "cidade de justiça, cidade fiel" (Is 1.26), "a Cidade do Senhor" (Is 60.14), "O Senhor Está Ali" (Ez 48.35), e "a cidade de verdade" (Zc 8.3). Alguns desses nomes são descrições proféticas para a futura cidade de Jerusalém.</p>
+
+            <h2>O SIGNIFICADO DE JERUSALÉM PARA OS ISRAELITAS</h2>
+            <p>A cidade de Jerusalém tinha significado especial para o povo de Deus no Antigo Testamento.</p>
+
+            <p>(1) Quando reviu a sua lei com os israelitas às margens de Canaã, Deus disse por meio de Moisés que, em dado momento no futuro, Ele escolheria um lugar "para ali pôr o seu nome" (Dt 12.5,11,21; 14.23-24). Este lugar viria a ser a cidade de Jerusalém (1 Rs 11.13; 14.21), onde foi edificado o templo do Deus vivo. Foi assim que a cidade obteve os nomes de "a santa cidade", "a cidade de Deus" e "a Cidade do Senhor". Três vezes por ano, cada homem israelita devia viajar a Jerusalém: "todo varão entre ti aparecerá perante o Senhor, teu Deus, no lugar que escolher, na Festa dos Pães Asmos, e na Festa das Semanas, e na Festa dos Tabernáculos" (Dt 16.16; cf. 16.2,6,11,15; veja o quadro FESTAS DO ANTIGO TESTAMENTO, p. 234).</p>
+
+            <p>(2) Jerusalém foi a cidade em que Deus revelou a sua mensagem ao seu povo (Is 2.3) e, nesse sentido, foi "o vale da Visão" mencionado em Isaías 22.1. Por isso os israelitas foram instruídos a orar "para a banda desta cidade" (1 Rs 8.44; cf. Dn 6.10). Os montes ao redor de Jerusalém simbolizavam o Senhor em volta do seu povo com eterna proteção (Sl 125.1-2). Basicamente, Jerusalém era o símbolo de tudo o que Deus desejava para o seu povo. Sempre que o povo de Deus estava em Jerusalém, devia se lembrar da autoridade de Deus, do seu poder, da sua santidade e fidelidade, e do seu eterno compromisso de ser o seu Deus.</p>
+
+            <p>(3) Quando o povo de Deus arruinou o seu relacionamento com Ele em razão da constante rebelião, do fascínio pelos falsos deuses e da recusa em obedecer aos seus mandamentos (veja o artigo A NATUREZA DA IDOLATRIA, p. 476), o Senhor permitiu que os babilônios destruíssem Jerusalém juntamente com o seu templo. Ao permitir a destruição deste símbolo consagrado da sua constante presença, Deus indicava que Ele mesmo estava se afastando do seu povo. A promessa de Deus de um "concerto perpétuo" com o seu povo sempre esteve condicionada à sua obediência a Ele (veja o artigo O CONCERTO DE DEUS COM OS ISRAELITAS, p. 349). Deus estava advertindo o seu povo, daquela época e de hoje, para que permanecessem fiéis a Ele caso quisessem continuar a receber as suas bênçãos e promessas.</p>
+
+            <h2>O SIGNIFICADO DE JERUSALÉM PARA A IGREJA CRISTÃ</h2>
+            <p>A cidade de Jerusalém também foi importante para a igreja cristã.</p>
+
+            <p>(1) Jerusalém foi o berço do cristianismo. Foi ali que Jesus Cristo foi crucificado e ressuscitou dos mortos. Foi também em Jerusalém que o Cristo ressuscitado "derramou" o Espírito Santo sobre os seus discípulos no dia de Pentecostes (enchendo-os e capacitando-os para o serviço, At 2). A partir dessa cidade, a mensagem de Jesus Cristo se espalhou "até aos confins da terra" (At 1.8; cf. Lc 24.47). A igreja de Jerusalém foi a igreja mãe de todas as igrejas do Novo Testamento, e foi também a igreja base dos apóstolos (At 1.12-26; 8.1), os líderes pioneiros do ministério entre os seguidores de Jesus. Quando houve uma controvérsia a respeito dos gentios (isto é, os não judeus), se os que criam em Jesus tinham de obedecer a certas leis religiosas dos judeus, Jerusalém foi a cidade onde o primeiro grande concílio da igreja se reuniu para decidir a questão (At 15.1-31; Gl 2.1-10).</p>
+
+            <p>(2) Os autores do Novo Testamento aceitaram grande parte do significado de Jerusalém para o Antigo Testamento, mas também reconheceram o seu simbolismo relacionado a uma cidade celestial. Em outras palavras, quando o Novo Testamento retrata Jerusalém como a cidade santa, não se refere apenas a um lugar na terra, mas no céu, onde Deus habita e onde Cristo governa à sua direita (isto é, do lugar de maior honra e autoridade). Dali, Ele envia as suas bênçãos e dali Jesus irá retornar. Paulo fala sobre a Jerusalém "que é de cima", que é a nossa mãe (Gl 4.26). O autor da epístola aos Hebreus, no Novo Testamento, indica que, indo a Jesus Cristo em busca de salvação, os crentes não vão a um monte terreno, mas "à cidade do Deus vivo, à Jerusalém celestial" (Hb 12.22). Em vez de preparar uma cidade na terra para os seus fiéis seguidores, Deus está preparando a nova Jerusalém, que um dia descerá "do céu, adereçada como uma esposa ataviada para o seu marido" (Ap 21.2; cf. 3.12). Nesse grande dia, as promessas de concerto de Deus se cumprirão completamente: "Eis aqui o tabernáculo de Deus com os homens, pois com eles habitará, e eles serão o seu povo, e o mesmo Deus estará com eles e será o seu Deus" (Ap 21.3). O último capítulo da Bíblia diz: "nela [a cidade celestial] estará o trono de Deus e do Cordeiro" (Ap 22.3), onde o povo de Deus lhe servirá e reinará com Ele para sempre.</p>
+
+            <p>(3) A cidade terrena de Jerusalém ainda terá um papel no futuro reino milenar de Jesus (quando Cristo voltará para governar a terra durante mil anos depois de derrotar os exércitos do anticristo e antes do juízo final; veja Is 11.1-11; Ap 20)? Isaías profetiza sobre "céus novos e nova terra" (Is 65.17), mas ressalta que a Jerusalém atual ainda terá uma participação no cumprimento dos planos de Deus. Isaías 65 trata das condições durante o milênio (o reinado de mil anos de Cristo na terra). Muitos creem que, quando Cristo voltar para estabelecer o seu reino na terra (Ap 20.1-6), Ele estabelecerá o seu trono na cidade de Jerusalém. Depois do juízo do grande trono branco (Ap 20.11-15), que é o juízo final de todos os que rejeitaram a Cristo (e talvez dos que o aceitaram durante o milênio), a nova Jerusalém descerá do céu à terra e se tornará a sede do reino eterno de Deus (veja Ap 21.2, nota).</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>Jerusalém simboliza a presença e a fidelidade de Deus. Como isso impacta sua visão da igreja local como "cidade de Deus" hoje?</li>
+                    <li>A destruição de Jerusalém foi consequência da rebelião. Em que áreas da sua vida você precisa maior obediência para manter a comunhão com Deus?</li>
+                    <li>A Nova Jerusalém é o destino final dos redimidos. Como a esperança nessa cidade celestial motiva você a viver fielmente agora?</li>
+                </ul>
+            </div>
+
+           
+        </div>
+    </article>
+
+    
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

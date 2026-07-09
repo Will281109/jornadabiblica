@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Glória de Deus | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+   
+
+    <article>
+        <div class="study-header">
+            <span class="category">Teologia Bíblica</span>
+            <h1>A Glória de Deus</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 9 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>Então, se levantou a glória do Senhor de sobre o querubim para a entrada da casa; e encheu-se a casa de uma nuvem, e o átrio se encheu do resplendor da glória do Senhor.</blockquote>
+                <cite>Ez 10.4</cite>
+            </div>
+
+            <h2>A GLÓRIA DE DEUS DEFINIDA</h2>
+            <p>A frase "a glória de Deus" é usada de várias maneiras na Bíblia.</p>
+
+            <p>(1) Às vezes ela descreve o esplendor, a magnificência e a majestade de Deus (cf. 1 Cr 29.11; Hc 3.3-5). Mas o vocabulário humano não é adequado para descrever a extrema glória de Deus, que é tão sobrenaturalmente intensa que nenhum homem pode experimentá-la diretamente e sobreviver (veja Êx 33.18-23). Na melhor hipótese, pode-se ver apenas um "aspecto da semelhança da glória do Senhor" (cf. a visão de Ezequiel do trono de Deus, Ez 1.26-28). Neste sentido, a glória de Deus indica a sua singularidade, a sua santidade (isto é, pureza, perfeição, plenitude e separação do mal, cf. Is 6.1-3), e a sua transcendência (isto é, o fato de que Ele é diferente, independente e maior do que qualquer coisa que criou; cf. Rm 11.36; Hb 13.21). Pedro usa o termo "a magnífica glória" como um nome para Deus (2Pe 1.17). Para mais detalhes a respeito destes aspectos do caráter de Deus, veja o artigo OS ATRIBUTOS DE DEUS, p. 1025.</p>
+
+            <p>(2) A glória de Deus também pode se referir à presença visível de Deus entre o seu povo, às vezes chamada a glória "shekhinah". Shekhinah é uma palavra hebraica que significa "habitação [de Deus]", e é usada para descrever uma manifestação visível (isto é, demonstração, expressão, aspecto) da presença e da glória de Deus. Moisés e os israelitas viram uma forma da glória shekhinah de Deus nas colunas de nuvem e de fogo que os guiavam de dia e de noite (Êx 13.21). Em Êx 29.43 Deus se refere à sua presença no tabernáculo (a "tenda de encontro" portátil e lugar de adoração) como "a minha glória" (cf. Is 60.2). A shekhinah cobriu o monte Sinai quando Deus deu a sua lei a Moisés (veja Êx 24.16-17, nota); ela encheu o tabernáculo quando este foi terminado (Êx 40.34; veja a ilustração O TABERNÁCULO, p. 153); ela guiou Israel no deserto (Êx 40.36-38); e posteriormente encheu o templo de Salomão durante a sua cerimônia de dedicação (2Cr 7.1; 1 Rs 8.11-13; veja a ilustração O TEMPLO DE SALOMÃO, p. 572). Mais especificamente, Deus morava entre os querubins (as figuras de anjos sobre a Arca do Concerto) no Santo dos Santos do templo (1Sm 4.4; 2Sm 6.2; Sl 80.1; veja a ilustração MOBILIÁRIO DO TEMPLO, p. 572). Ezequiel viu a glória do Senhor se levantar e deixar o templo por causa da idolatria generalizada (isto é, o povo estava adorando ídolos, falsos deuses e coisas no lugar do Deus verdadeiro, Ez 10.4,18-19). O equivalente no Novo Testamento da glória shekhinah é a presença de Jesus Cristo - a glória de Deus em carne humana -, o qual veio viver entre nós (Jo 1.14). Os pastores de Belém viram a glória do Senhor no nascimento de Jesus (Lc 2.9); os discípulos a viram na transfiguração de Cristo (veja Mt 17.2; 2Pe 1.16-18 para uma explicação desta experiência); e Estevão a viu enquanto estava sendo morto por causa de sua fé em Cristo (At 7.55).</p>
+
+            <p>(3) Um terceiro aspecto da glória de Deus é a sua santa presença e poder - e os efeitos desta presença e poder no mundo e na vida de cada pessoa. Embora os céus "declarem" (isto é, expressem, revelem, demonstrem, deem evidências) a glória de Deus (Sl 19.1; cf. Rm 1.19-20), e toda a terra esteja cheia da sua glória (Is 6.3; cf. Hc 2.14), o brilho total de sua grandeza e majestade ainda não foi revelado. Por esta razão, as pessoas com frequência falham em reconhecer a grandeza de Deus e, como resultado, elas com frequência e erroneamente consideram a sua presença como certa. No entanto, os servos de Cristo experimentam a glória e a presença de Deus de muitas maneiras, incluindo a sua proximidade, direção, amor, força, sabedoria, respostas à oração, dons espirituais (isto é, as habilidades dadas por Deus), e demonstrações do seu Espírito Santo (veja 2Co 3.18, nota; Ef 3.16-19, nota; 1Pe 4.14, nota; veja o quadro OS DONS DO ESPÍRITO SANTO, p. 2062).</p>
+
+            <p>(4) Finalmente, o Antigo Testamento adverte que qualquer tipo de idolatria (isto é, a adoração a falsos deuses ou a outras coisas no lugar do verdadeiro Deus) viola e é intrusa à glória de Deus e desonra o seu Nome (veja o artigo A NATUREZA DA IDOLATRIA, p. 476). Sempre que Deus revela a si mesmo como o nosso Redentor (isto é, Salvador, Libertador espiritual), o seu nome é glorificado (veja Sl 79.9; Jr 14.21). Todo o ministério de Cristo na terra trouxe glória e honra a Deus (Jo 14.13; 17.1,4-5).</p>
+
+            <h2>A GLÓRIA DE DEUS REVELADA EM JESUS CRISTO</h2>
+            <p>Quando Isaías falou sobre a vinda de Jesus Cristo, ele profetizou que a glória de Deus seria revelada nele em benefício de toda a humanidade, e que toda a humanidade a veria (Is 40.5). Tanto João (Jo 1.14) como o escritor aos Hebreus (Hb 1.3) testificam que Jesus Cristo cumpriu esta profecia (veja o quadro PROFECIAS DO ANTIGO TESTAMENTO CUMPRIDAS EM CRISTO, p. 1035). A glória de Cristo era a mesma glória que Ele tinha com seu Pai, isto é, Deus, antes do mundo ter início (Jo 1.14; 17.5). A glória do seu ministério ultrapassou, em muito, a glória de qualquer ministério no Antigo Testamento (2Co 3.7-11). Paulo chama Jesus de "o Senhor da glória" (1Co 2.8), e Tiago o chama de "nosso Senhor Jesus Cristo, Senhor da glória" (Tg 2.1). Repetidamente, o Novo Testamento faz referência ao relacionamento e à ligação inseparável entre Jesus Cristo e a glória de Deus. Os milagres de Jesus revelaram a glória de Deus (Jo 2.11; 11.40-44; veja o quadro OS MILAGRES DE JESUS, p. 1911). Quando Jesus foi transfigurado em uma "nuvem luminosa" (veja Mt 17.5 para uma descrição desta experiência), esta foi uma demonstração visível de sua glória brilhante; e Deus Pai confirmou este evento falando de forma audível para honrar o seu Filho, Jesus (cf. 2Pe 1.16-19). Cristo descreveu a sua morte iminente como o início da sua glorificação (Jo 12.23-24; cf. 17.2-5). Após a sua ressurreição, Ele ascendeu ao céu em glória (cf. At 1.9; 1Tm 3.16). Cristo agora está exaltado em glória (Ap 5.12-13) e algum dia voltará "nas nuvens do céu, com poder e grande glória" (Mt 24.30; cf. 25.31; Mc 14.62; 1Ts 4.17).</p>
+
+            <h2>A GLÓRIA DE DEUS EXPERIMENTADA NA VIDA DO SEU POVO</h2>
+            <p>Como a glória de Deus afeta os seus servos e se aplica à vida de cada um deles?</p>
+
+            <p>(1) Com relação à sua glória celestial extraordinária e majestosa, ainda é verdade que ninguém pode experimentar a sua glória completa e viver. Sabemos que ela está lá, mas não podemos vê-la diretamente. A Palavra de Deus revela que Ele habita na luz e na glória inacessíveis, algo que nenhum homem mortal pode ver face a face (1Tm 6.16). Ainda assim, Deus demonstra a sua glória visivelmente de duas maneiras: "na igreja, por Jesus Cristo, em todas as gerações, para todo o sempre" (Ef 3.21). Em outras palavras, Deus se manifesta e revela as suas obras através de seu Filho, Jesus Cristo, e através da vida de seus servos fiéis que servem aos seus propósitos e se reúnem para adorá-lo. Isto acontece porque o seu Espírito Santo vive neles (1Co 3.16; 6.19; 2Co 6.16) e está ativo em suas vidas (veja o quadro A OBRA DO ESPÍRITO SANTO, p. 2147).</p>
+
+            <p>(2) Alguns do povo de Deus nos tempos bíblicos conheceram a glória shekhinah de Deus (veja o ponto 2 na seção A Glória de Deus Definida, acima). Ao longo de toda a história até os dias atuais também houve outros que tiveram visões de Deus similares àquelas de Isaías (Is 6) e de Ezequiel (Ez 1), embora isto não fosse comum na época e nem agora. A realidade plena da glória de Deus, porém, é algo que todo o povo de Deus algum dia experimentará quando vir a Jesus face a face. Como o objetivo final do plano de Deus de salvação espiritual, seus servos fiéis serão trazidos diante da gloriosa presença de Deus (Hb 2.10; 1Pe 5.10; Jd 24), compartilharão a glória de Cristo (Rm 8.17-18) e receberão uma coroa de glória (1 Pe 5.4). Até mesmo seus corpos ressuscitados mostrarão a glória do Cristo ressurreto (1 Co 15.42-43; Fp 3.21; veja o artigo A RESSURREIÇÃO DO CORPO, p. 2114).</p>
+
+            <p>(3) Em uma base mais imediata, os servos de Cristo experimentam a presença de Deus através do poder e da obra do seu precioso e bendito Espírito Santo, que traz a presença de Deus e do Senhor Jesus para perto deles (2Co 3.17; 1Pe 4.14). Quando o Espírito se torna poderosamente ativo na igreja (isto é, entre os servos de Cristo) através dos seus dons e ministérios sobrenaturais (1Co 12.1-12), a glória de Deus se torna evidente ao povo de um modo convincente e inegável (veja o artigo DONS ESPIRITUAIS PARA OS CRENTES, p. 2101).</p>
+
+            <p>(4) Aqueles que aceitaram a Cristo e o seu sacrifício pelos pecados que cometeram, e entregaram as suas vidas à sua liderança estão agora unidos com Jesus Cristo pelo seu precioso Espírito e podem tomar parte em sua glória (veja Jo 17.22, nota). Na verdade, Pedro diz isso sobre qualquer indivíduo que ousadamente se identifica com Cristo, e sofre insultos por sua fé nele: "Sobre vós repousa o Espírito da glória de Deus" (1 Pe 4.14). Um dos motivos pelos quais Jesus entrou no mundo foi a bênção de revelar a sua glória às pessoas (Lc 2.29-32). Como servos de Jesus, devemos viver a nossa vida inteira para a glória de Deus, de modo que Ele seja honrado e glorificado em nós (Jo 17.10; 1Co 10.31; 2Co 3.18).</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>A glória de Deus é esplendor, majestade e presença santa. Como isso afeta sua visão de Deus e sua adoração diária?</li>
+                    <li>Jesus revela plenamente a glória de Deus (Jo 1.14). Como isso muda sua forma de ver Cristo e buscar intimidade com Ele?</li>
+                    <li>Vivemos para glorificar a Deus (1Co 10.31). Em que área da sua vida (palavras, ações, relacionamentos) você pode refletir mais a glória de Deus esta semana?</li>
+                </ul>
+            </div>
+
+           
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

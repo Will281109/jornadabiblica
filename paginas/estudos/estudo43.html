@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Igreja | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">Teologia Bíblica / Eclesiologia</span>
+            <h1>A Igreja</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 12 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+
+            <div class="verse-card">
+                <blockquote>Pois também eu te digo que tu és Pedro e sobre esta pedra edificarei a minha igreja, e as portas do inferno não prevalecerão contra ela.</blockquote>
+                <cite>Mateus 16.18</cite>
+            </div>
+
+            <p>A palavra grega ekklêsia (igreja) significa uma reunião ou congregação de pessoas chamadas com um propósito. No Novo Testamento, refere-se à comunidade do povo de Deus — aqueles que aceitam a mensagem de Cristo, confiam nEle e se reúnem como cidadãos do reino de Deus (Ef 2.19) para adorar e honrar a Deus. Pode designar a igreja local (Mt 18.17; At 15.4) ou a igreja universal (Mt 16.18; Ef 2.21-22).</p>
+
+            <h2>A NATUREZA E AS IMAGENS DA IGREJA NO NOVO TESTAMENTO</h2>
+
+            <p>(1) A igreja é o povo de Deus (1Co 1.2; 10.32; 1Pe 2.4-10): salvos pela morte de Jesus (1Pe 1.18-19), peregrinos na terra rumo ao céu (Hb 11.13-16; 13.12-14), priorizando relacionamento com Deus e representação Dele (1Pe 2.5).</p>
+
+            <p>(2) A igreja é "convocada" (ekkaleõ) do mundo para o reino de Deus: separada de costumes corruptos (2Co 6.16-18; veja artigo A SEPARAÇÃO ESPIRITUAL).</p>
+
+            <p>(3) A igreja é o templo de Deus e do Espírito Santo (1Co 3.16; Ef 2.11-22; 1Pe 2.4-10): onde a presença de Deus é evidente, exigindo santidade (veja artigo A SANTIFICAÇÃO).</p>
+
+            <p>(4) A igreja é o corpo de Cristo (1Co 12.12-27; Ef 1.22; 4.15; Cl 1.18): organismo vivo unido a Cristo (cabeça), com membros trabalhando em unidade e cada um cumprindo funções dadas por Deus.</p>
+
+            <p>(5) A igreja é a esposa de Cristo (2Co 11.2; Ef 5.22-27; Ap 19.7-9): comunidade fiel, devotada, amada e íntima com Cristo.</p>
+
+            <p>(6) A igreja é uma comunhão espiritual (koinônia) (2Co 13.14; Fp 2.1): compartilhando o Espírito (Ef 4.4), batismo no Espírito (At 1.5; 2.4), amor mútuo (Jo 13.34-35) e propósito comum.</p>
+
+            <p>(7) A igreja é um ministério espiritual (diakonia): servindo com dons do Espírito (Rm 12.6; 1Co 12.4-11,28-31; Ef 4.11; veja artigo DONS ESPIRITUAIS).</p>
+
+            <p>(8) A igreja é um exército em conflito espiritual (Ef 6.10-17): combatendo com armas espirituais (Palavra de Deus como espada - Ef 6.17; Hb 4.12), contra Satanás e pecado (veja quadro REINO DE DEUS VS REINO DE SATANÁS).</p>
+
+            <p>(9) A igreja é "a coluna e firmeza da verdade" (1Tm 3.15): guarda, defende e confirma a verdade contra falsos ensinadores (veja artigo FALSOS ENSINADORES).</p>
+
+            <p>(10) A igreja tem esperança futura: no retorno de Cristo (Jo 14.3; Tt 2.13; Hb 9.28; veja artigos A ESPERANÇA e O ARREBATAMENTO).</p>
+
+            <p>(11) A igreja é invisível (todos os verdadeiros fiéis unidos pela fé - veja artigo FÉ E GRAÇA) e visível (congregações locais com fiéis que perseveram, mas também falsos que são "caídos", "mortos" ou "mornos" - Ap 2-3).</p>
+
+            <p>(12) A igreja é edificada sobre a confissão de que Jesus é o Filho de Deus (Mt 16.16-18): a "pedra" é Cristo, proclamado corajosamente. Nada impede o avanço da igreja contra as portas do inferno.</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>A igreja é o corpo de Cristo. Como você contribui com seus dons para edificar e unir a comunidade local? Identifique uma função que pode assumir.</li>
+                    <li>A igreja é separada do mundo e santificada. Examine sua vida: há costumes mundanos que precisam ser abandonados para maior pureza e testemunho?</li>
+                    <li>A igreja persevera em unidade e esperança no retorno de Cristo. Ore pela sua congregação, fortaleça comunhão com irmãos e viva com expectativa do Reino pleno.</li>
+                </ul>
+            </div>
+
+            
+
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

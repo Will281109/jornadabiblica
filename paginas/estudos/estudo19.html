@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Concerto de Deus com Davi | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        .content-body h3 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 30px 0 15px; font-size: 1.5rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* GLOSSÁRIO/NOTA */
+        .term-note {
+            background: #f0f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            border: 1px dashed var(--turquoise);
+            margin: 30px 0;
+        }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <nav class="top-nav">
+        
+    </nav>
+
+    <article>
+        <div class="study-header">
+            <span class="category">Concertos de Deus</span>
+            <h1>O Concerto de Deus com Davi: A promessa de um trono eterno</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 7 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>Porém a tua casa e o teu reino serão firmados para sempre diante de ti; teu trono será firme para sempre.</blockquote>
+                <cite>2 Samuel 7:16</cite>
+            </div>
+
+            <h2>A NATUREZA DO CONCERTO COM DAVI</h2>
+            <p>Enquanto um contrato se refere a um acordo legal, um concerto é um “acordo de vida” entre duas ou mais partes. Quando Deus faz um concerto, Ele define os termos com base em suas promessas, seus padrões e suas regras. Os benefícios desse tipo de concerto dependem da obediência do povo, da sua confiança em Deus e da sua fidelidade a Ele.</p>
+
+            <p>1. Embora a palavra “concerto” não apareça em 2 Samuel 7, está claro que Deus estava estabelecendo um acordo solene de vida com Davi. Em Salmos 89.3-4, por exemplo, Deus declara: “Fiz um concerto com o meu escolhido; jurei ao meu servo Davi: a tua descendência estabelecerei para sempre e edificarei o teu trono de geração em geração” (cf. Sl 89.34-36).<br>
+            Essa promessa — de que o governo sobre o povo de Deus seria estabelecido para sempre por meio da linhagem familiar de Davi — é precisamente o que Deus afirma em 2 Samuel 7 (especialmente o v. 16). Mais adiante, o próprio Davi menciona o “concerto eterno” feito com ele (2Sm 23.5), referindo-se claramente a esse evento.</p>
+
+            <p>2. Os mesmos princípios presentes nos demais concertos do Antigo Testamento aparecem aqui:</p>
+            <ul>
+                <li>Deus estabelece promessas e obrigações.</li>
+                <li>O ser humano responde com fé obediente.</li>
+            </ul>
+
+            <p>3. (a) No concerto com Davi, Deus prometeu imediatamente estabelecer o reino do filho de Davi, Salomão, que edificaria uma casa para o Senhor — referência direta ao templo (2Sm 7.11-13).</p>
+            <p>(b) Ao mesmo tempo, a promessa de que a dinastia de Davi duraria para sempre era condicional quanto à permanência no trono histórico: dependia da fidelidade e obediência de Davi e de seus descendentes. O caráter “eterno” do concerto implicava que Deus manteria um descendente de Davi no trono de Jerusalém enquanto houvesse fidelidade à aliança.</p>
+
+            <p>4. Durante quatro séculos, a linhagem davídica permaneceu no trono de Judá.<br>
+            Judá era o reino do sul, surgido após a divisão de Israel depois da morte de Salomão. A tribo de Judá constituía a maior parte desse reino, e por meio dela Deus preservaria seu povo, manteria sua promessa messiânica e, por fim, traria o Messias (cf. Zc 10.4; Mt 2.6; Hb 7.14; Ap 5.5). A capital era Jerusalém.</p>
+            <p>Contudo, quando reis de Judá — especialmente Manassés e os que reinaram após o rei Josias — persistiram na idolatria e na rebeldia contra Deus, o Senhor permitiu o juízo. O rei Nabucodonosor II invadiu Judá, sitiou Jerusalém e, em 586 a.C., destruiu a cidade e o templo (cf. 2Rs 25; 2Cr 36). Foi a primeira vez, desde o Egito, que o povo de Deus ficou sob domínio estrangeiro dessa maneira.</p>
+
+            <h2>JESUS CRISTO E ESTE CONCERTO</h2>
+            <p>Havia um aspecto do concerto que era absolutamente incondicional: o reino de Davi seria estabelecido para sempre.</p>
+
+            <p>1. O núcleo da promessa era messiânico.<br>
+            O Messias — o “Ungido”, o Rei eterno — viria da linhagem de Davi. Ele governaria não apenas Israel, mas os fiéis de todas as nações (cf. Is 9.6-7; 11.1,10; Mq 5.2,4).</p>
+            <ul>
+                <li>Nasceria em Belém (Mq 5.2).</li>
+                <li>Seu domínio alcançaria os confins da terra (Zc 9.10).</li>
+                <li>Seria chamado “O Senhor, Justiça Nossa” (Jr 23.5-6).</li>
+                <li>Trazia salvação do pecado (Zc 13.1).</li>
+            </ul>
+
+            <p>2. O cumprimento começou com o nascimento de Jesus Cristo, anunciado pelo anjo Gabriel a Maria, descendente de Davi (Lc 1.30-33; cf. At 2.29-35).</p>
+
+            <p>3. A promessa a Davi amplia promessas anteriores.<br>
+            Ela se conecta à profecia de Gênesis 3.15 (a derrota de Satanás pela descendência da mulher) e dá continuidade ao concerto estabelecido com Abraão.</p>
+
+            <p>4. O cumprimento definitivo envolveu a ressurreição e exaltação de Cristo.<br>
+            Após ressuscitar, Cristo foi exaltado à destra de Deus (At 2.29-33), posição de suprema autoridade, de onde reina como Rei dos reis e Senhor dos senhores.</p>
+
+            <div class="verse-card">
+                <blockquote>Eis que vêm dias, diz o Senhor, em que levantarei a Davi um Renovo justo; e, reinando como rei, prosperará e executará o juízo e a justiça na terra.</blockquote>
+                <cite>Jeremias 23:5</cite>
+            </div>
+
+            <h2>O REINADO ETERNO DE CRISTO</h2>
+            <p>O reinado prometido no concerto davídico se manifesta em três dimensões:</p>
+            <ol>
+                <li>Seu governo atual sobre o Reino de Deus e liderança da igreja.</li>
+                <li>Seu futuro reino milenar, quando governará as nações (Ap 20.4).</li>
+                <li>Seu reino eterno no novo céu e na nova terra (Ap 21–22).</li>
+            </ol>
+            <p>Assim, o concerto com Davi encontra seu cumprimento pleno em Cristo: a promessa de um trono eterno não se limita à continuidade política de uma dinastia, mas culmina no governo redentor e universal do Messias, cuja autoridade jamais terá fim.</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>Como a promessa eterna do trono de Davi cumpre-se em Jesus na sua vida hoje? Você reconhece Cristo como o Rei soberano sobre todos os aspectos da sua existência?</li>
+                    <li>Em que áreas você precisa exercer fé obediente, como os descendentes de Davi foram chamados a fazer?</li>
+                    <li>A gratidão pelo cumprimento messiânico em Cristo: como isso fortalece sua esperança no reinado eterno dEle?</li>
+                </ul>
+            </div>
+
+            
+        </div>
+    </article>
+
+  
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

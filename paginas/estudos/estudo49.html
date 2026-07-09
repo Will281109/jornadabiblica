@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riqueza e Pobreza | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { width: 100%; height: 5px; background: #eee; position: fixed; top: 0; left: 0; z-index: 1000; }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* NAVEGAÇÃO */
+        .top-nav { max-width: 800px; margin: 0 auto; padding: 40px 5% 0; }
+        .btn-back-top { display: inline-flex; align-items: center; gap: 8px; color: var(--turquoise); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CABEÇALHO */
+        .study-header { padding: 40px 5% 40px; max-width: 800px; margin: 0 auto; text-align: center; }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body { max-width: 800px; margin: 0 auto; padding: 0 5% 60px; font-size: 1.1rem; }
+        .content-body p { margin-bottom: 25px; text-align: justify; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; border-bottom: 2px solid var(--soft-gray); padding-bottom: 10px; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card { background: var(--white); border-left: 5px solid var(--turquoise); padding: 30px; margin: 40px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 0 10px 10px 0; }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS E PONTOS */
+        .point-number { font-weight: 700; color: var(--turquoise); margin-right: 5px; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section { background: var(--navy-blue); color: white; padding: 40px; border-radius: 15px; margin-top: 50px; margin-bottom: 50px; }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* RODAPÉ DO CONTEÚDO */
+        .finish-container { text-align: center; padding: 40px 0; border-top: 1px solid var(--soft-gray); }
+        .btn-finish { display: inline-block; background-color: var(--turquoise); color: white; padding: 15px 40px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: 0.3s; font-size: 1rem; border: none; cursor: pointer; }
+        .btn-finish:hover { background-color: var(--turquoise-hover); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3); }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); font-size: 0.9rem; color: #888; }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container"><div class="progress-bar" id="myBar"></div></div>
+
+   
+
+    <article>
+        <div class="study-header">
+            <span class="category">Ética Cristã / Vida Prática</span>
+            <h1>Riqueza e Pobreza</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 13 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+
+            <div class="verse-card">
+                <blockquote>“E, vendo Jesus que ele ficara muito triste, disse: Quão dificilmente entrarão no Reino de Deus os que têm riquezas! Porque é mais fácil entrar um camelo pelo fundo de uma agulha do que entrar um rico no Reino de Deus.”</blockquote>
+                <cite>Lucas 18.24-25</cite>
+            </div>
+
+            <p>Uma das declarações mais chocantes de Jesus é que é quase impossível um rico entrar no reino de Deus. No entanto, esta é apenas uma das muitas declarações que Ele fez sobre riqueza e pobreza, e a perspectiva presente nesta passagem é repetida por escritores e figuras principais em várias cartas do Novo Testamento.</p>
+
+            <h2>RIQUEZAS</h2>
+
+            <p><span class="point-number">(1)</span> A visão predominante entre os judeus era que a riqueza era um sinal do favor especial de Deus, e a pobreza um sinal de desaprovação. Os fariseus tinham esta opinião e olharam para Jesus sentindo-se superiores (Lc 16.14). Embora esta ideia equivocada se repita na história, é claramente denunciada e rejeitada por Cristo (Lc 6.20; 16.3; 18.24-25).</p>
+
+            <p><span class="point-number">(2)</span> A Bíblia relaciona a ganância e a busca da riqueza com o pecado de <strong>idolatria</strong>. A idolatria é algo demoníaco, relacionada com o poder do diabo (1Co 10.19-20; Cl 3.5). O desejo por riquezas leva, muitas vezes, à escravidão espiritual (Mt 6.24).</p>
+
+            <p><span class="point-number">(3)</span> As riquezas são um obstáculo tanto para a salvação quanto para o discipulado. Elas fornecem uma falsa sensação de segurança, enganam (Mt 13.22) e exigem a fidelidade total do coração, assumindo o lugar de Deus. A busca por riquezas sufoca a vida espiritual (Lc 8.14) e leva a tentações e desejos nocivos (1Tm 6.9). Por estas razões, nenhum cristão deve ser dirigido pelo desejo de enriquecer materialmente.</p>
+
+            <p><span class="point-number">(4)</span> O acúmulo egoísta indica que a pessoa perdeu a perspectiva eterna. Pessoas gananciosas não têm Deus no centro de seus objetivos. A tragédia da mulher de Ló deveu-se à sua ligação com o terreno em vez do celestial. As riquezas terrenas não durarão para sempre e não trarão benefício no dia do julgamento (Pv 27.24).</p>
+
+            <p><span class="point-number">(5)</span> Para o cristão, as verdadeiras riquezas são encontradas por meio da fé em Deus e no amor ao próximo. Os verdadeiros ricos são aqueles que ganharam a liberdade do apego ao mundo porque confiam que Deus suprirá suas necessidades (Fp 4.19; Hb 13.5-6).</p>
+
+            <p><span class="point-number">(6)</span> A responsabilidade cristã deve ser a humildade, gratidão e fidelidade. Devemos reconhecer que tudo pertence a Deus e administrar posses com sabedoria, agindo como <strong>mordomos</strong> (gestores) e não como donos. Os cristãos ricos devem ser generosos e prontos para compartilhar (1Tm 6.17-19).</p>
+
+            <p><span class="point-number">(7)</span> Cada cristão deve examinar seu próprio coração: Será que sou ganancioso? Egoísta? Desejo o prestígio que as riquezas conferem?</p>
+
+            <h2>POBREZA</h2>
+
+            <p>Jesus considerava parte fundamental de sua missão "evangelizar os pobres" (Lc 4.18). O evangelho é uma mensagem de esperança aos desfavorecidos (Mt 5.3; Tg 2.5).</p>
+
+            <p><span class="point-number">(1)</span> Os "pobres" (gr. <em>ptochos</em>) são os carentes e muitas vezes oprimidos. Bíblicamente, representam aqueles que, em necessidade, humildemente se dirigem a Deus. Se forem fiéis, podem esperar o momento da libertação divina do pecado e sofrimento.</p>
+
+            <p><span class="point-number">(2)</span> A libertação virá com certeza aos que confiam em Deus. No presente, muitos encontram alívio através das ofertas generosas do povo de Deus que foi abençoado com bens materiais.</p>
+
+            <p><span class="point-number">(3)</span> Deus declara que os pobres "são ricos" se confiaram suas vidas a Ele (Ap 2.9). Eles não devem ser vistos como inferiores; muitas vezes, têm uma perspectiva mais precisa sobre o que realmente importa na vida espiritual.</p>
+
+            <div class="application-section">
+                <h3>Autoexame e Meditação</h3>
+                <ul>
+                    <li>Avalie suas prioridades: Você busca segurança no saldo bancário ou na providência de Deus?</li>
+                    <li>Pratique a mordomia: Veja seus recursos como ferramentas para o Reino, não apenas para conforto pessoal.</li>
+                    <li>Examine sua atitude: Você olha para os pobres com a compaixão de Cristo ou com a arrogância dos fariseus?</li>
+                </ul>
+            </div>
+
+            
+
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

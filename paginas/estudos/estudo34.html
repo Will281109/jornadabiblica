@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Vontade de Deus | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+   
+
+    <article>
+        <div class="study-header">
+            <span class="category">Teologia Bíblica</span>
+            <h1>A Vontade de Deus</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 8 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>Todavia, ao Senhor agradou moê-lo, fazendo-o enfermar; quando a sua alma se puser por expiação do pecado, verá a sua posteridade, prolongará os dias, e o bom prazer do Senhor prosperará na sua mão.</blockquote>
+                <cite>Is 53.10</cite>
+            </div>
+
+            <h2>DEFINIÇÃO DA VONTADE DE DEUS</h2>
+            <p>De modo geral, a Bíblia se refere à vontade de Deus em três sentidos diferentes.</p>
+
+            <p>(1) Em algumas passagens, "a vontade de Deus" é outra maneira de dizer "a lei de Deus". Por exemplo, para Davi a expressão "tua lei" equivale a "tua vontade", em Salmos 40.8. De modo semelhante, o apóstolo Paulo (um líder pioneiro de muitas igrejas do NT e autor de muitas das epístolas, ou "livros", do NT) considera o conhecimento da lei de Deus um sinônimo do conhecimento da vontade de Deus (Rm 2.17-18). Uma vez que a lei de Deus nos instrui sobre como devemos viver, ela pode ser apropriadamente chamada de "vontade de Deus" - o propósito e o desejo de Deus para a nossa vida. "Lei" quer dizer, essencialmente, "instrução", e inclui toda a Palavra escrita de Deus. Em um sentido geral, a vontade de Deus se refere aos seus planos e propósitos para nós e para o mundo.</p>
+
+            <p>(2) "A vontade de Deus" também é usada para designar qualquer coisa que seja expressa como desejo de Deus. Isto pode ser apropriadamente chamado de "vontade perfeita" de Deus, porque é o que Deus deseja idealmente para nós - o seu melhor e mais nobre propósito. Por exemplo, é a vontade revelada ou o desejo de Deus que todos sejam salvos (1Tm 2.4; 2Pe 3.9) e que ninguém que tenha recebido a sua salvação se afaste e abandone o seu relacionamento com Ele (veja Jo 6.40, nota). Esta verdade não quer dizer que todos serão salvos, mas apenas que Deus deseja que todos sejam espiritualmente salvos. O fato é que as pessoas frequentemente preferem rejeitar o melhor que Deus deseja para elas.</p>
+
+            <p>(3) Finalmente, a "vontade de Deus" pode se referir ao que Deus permite que aconteça, embora Ele não cause isso especificamente nem deseje que aconteça. Isso pode ser considerado como a "vontade tolerante" de Deus. Na realidade, grande parte do que acontece no mundo é contrário à vontade perfeita de Deus (isto é, não está de acordo com ela, ou se opõe a ela). Por exemplo, Deus se opõe à rebelião, à luxúria, à violência, ao ódio e à resistência contra Ele, no entanto Ele permite que o mal continue por algum tempo. Deus não força ninguém a crer nele ou a aceitar o seu Filho, Jesus. É nossa escolha confiar ou não a nossa vida a Ele. Somos livres para recusar um relacionamento pessoal com Ele e permanecer espiritualmente perdidos e condenados por toda a eternidade. De maneira similar, Deus permite que muitas dificuldades e muitos males afetem a nossa vida no mundo atual (1 Pe 3.17; 4.19) que ainda sofre as consequências da rebelião contra Deus, embora essas coisas não sejam o desejo ou a suprema vontade de Deus (veja 1Jo 5.19, nota; veja os artigos A PROVIDÊNCIA DE DEUS, p. 89, e O SOFRIMENTO DOS JUSTOS, p. 853).</p>
+
+            <h2>RESPOSTA À VONTADE DE DEUS</h2>
+            <p>O ensinamento bíblico sobre a vontade de Deus é mais do que uma mera doutrina (isto é, ensinamento, crença) ou princípio espiritual, mas diz respeito à nossa vida de maneira prática, diariamente.</p>
+
+            <p>(1) Em primeiro lugar, devemos aprender o que é a vontade perfeita de Deus, isto é, devemos nos familiarizar com o que Ele nos revelou na Bíblia (incluindo a sua lei). Como vivemos em tempos de impiedade, devemos entender "qual seja a vontade do Senhor" (Ef 5.17). Nada do que Ele planejou para nós irá contradizer o que Ele já revelou na sua Palavra.</p>
+
+            <p>(2) Depois de sabermos o que Deus nos revelou em sua Palavra a respeito de como devemos viver, temos de nos comprometer em cumprir de fato a sua vontade e satisfazer os seus desejos para nós. O autor de Salmos, por exemplo, pede a Deus: "Ensina-me a fazer a tua vontade" (Sl 143.10). A seguir, ele relaciona esta expressão diretamente a um pedido para que o Espírito o "guie [...] por terra plana", o que significa que ele quer a ajuda de Deus para fazer o que é correto. De maneira similar, Paulo espera que os cristãos tessalonicenses sigam a vontade de Deus, evitando a imoralidade sexual e vivendo de maneira santa e honrada (1Ts 4.3-4). Em outras passagens, Paulo ora para que os cristãos sejam cheios com o conhecimento da vontade de Deus, para que possam "andar dignamente diante do Senhor, agradando-lhe em tudo" (Cl 1.9-10).</p>
+
+            <p>(3) Cristo convoca os seus seguidores para orar para que seja feita a vontade de Deus (cf. Mt 6.10; 26.42; Lc 11.2; Rm 15.30-32; Tg 4.13-15). Isto quer dizer que devemos desejar sinceramente que os propósitos perfeitos de Deus se cumpram em nossa vida, em nossa família (veja Mt 6.10, nota) e no mundo. Demonstramos essa sinceridade quando fazemos efetivamente o que sabemos que Deus deseja que façamos. Se isto for o nosso compromisso e a nossa oração, então podemos ter a certeza de que o nosso presente e futuro estão sob os cuidados protetores de Deus (cf. At 18.21; 1Co 4.19; 16.7). No entanto, se houver pecado deliberado em nossa vida e rebelião contra a Palavra de Deus, Ele não atenderá as nossas orações (veja o artigo A ORAÇÃO EFICAZ, p. 600). Não podemos esperar que a vontade de Deus seja feita na terra como no céu (como o próprio Jesus orou, em Mt 6.10) se nós mesmos não estamos tentando cumpri-la em nossa vida.</p>
+
+            <p>(4) Finalmente, não devemos usar a vontade de Deus como desculpa para uma atitude passiva ou indiferente com relação à nossa batalha contra o pecado, o mal, a complacência espiritual e as concessões. Em outras palavras, não devemos viver com a atitude de que as coisas são simplesmente como Deus deseja e não há nada para fazermos a respeito. Esta não é a intenção de Deus. É Satanás, e não Deus, o responsável por todo o mal, toda a crueldade e injustiça que existem no mundo (veja 1Jo 5.19, nota); e é Satanás que provoca grande parte da dor e do sofrimento experimentado pelas pessoas (cf. Jó 1.6-12; 2.1-6; Lc 13.16; 2Co 12.7). Da mesma maneira como Jesus veio destruir as obras do diabo (1Jo 3.8), é a vontade clara de Deus que os seus seguidores guerreiem contra o mal. Faremos isso, em parte, transmitindo a sua mensagem no poder do Espírito Santo e nos posicionando contra as forças do mal no campo espiritual (Ef 6.10-20; 1 Ts 5.8; veja o artigo O RELACIONAMENTO DO CRISTÃO COM O MUNDO).</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>A vontade de Deus tem três aspectos: lei revelada, desejo perfeito e permissão tolerante. Qual desses você mais precisa compreender ou aplicar hoje?</li>
+                    <li>Deus deseja que todos sejam salvos (1Tm 2.4). Como isso motiva você a orar por pessoas distantes de Cristo e a compartilhar o evangelho?</li>
+                    <li>Orar "venha o teu reino, seja feita a tua vontade" (Mt 6.10) exige ação. Em que área da sua vida você pode se alinhar mais ativamente à vontade perfeita de Deus esta semana?</li>
+                </ul>
+            </div>
+
+          
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

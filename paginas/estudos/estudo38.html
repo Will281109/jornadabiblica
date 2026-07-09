@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Espírito Santo no Antigo Testamento | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+    <article>
+        <div class="study-header">
+            <span class="category">Teologia Bíblica</span>
+            <h1>O Espírito Santo no Antigo Testamento</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 9 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>E há de ser que, depois, derramarei o meu Espírito sobre toda a carne, e vossos filhos e vossas filhas profetizarão, os vossos velhos terão sonhos, os vossos jovens terão visões. E também sobre os servos e sobre as servas, naqueles dias, derramarei o meu Espírito.</blockquote>
+                <cite>Jl 2.28-29</cite>
+            </div>
+
+            <p>O Espírito Santo é uma das três pessoas do Deus "trino" (três-em-Um) eterno (veja o artigo A DOUTRINA DO ESPÍRITO SANTO, p. 1941). O único Deus verdadeiro é um Ser único e singular (Dt 6.4; Is 45.21; 1Co 8.5-6; Ef 4.6; 1Tm 2.5), o qual se revelou em três pessoas distintas (não separadas), mas inter-relacionadas e completamente unificadas: Pai, Filho e Espírito Santo (p.ex., Mt 28.19; 2Co 13.14; 1 Pe 1.2). Cada pessoa é plenamente divina (isto é, plenamente Deus) e igual, possuindo todos os atributos de Deus; mas não são três Deuses, e sim apenas Um (veja Mt 3.17, nota; Mc 1.11, nota). Outra maneira como este conceito de Deus foi descrito é "três em Pessoa, Um em essência". Devemos ter cuidado para não interpretar isto erroneamente, como se Deus tivesse simplesmente se revelado em três diferentes "modos" ou expressões, em momentos diferentes na história (como se Deus Pai, no Antigo Testamento, fosse Jesus no Novo Testamento, e o Espírito Santo agora). Durante os séculos, esse falso ensinamento trouxe divisão à igreja. O entendimento correto desta doutrina, ou ensinamento, é que todas as três pessoas da Divindade existem distintamente ao mesmo tempo. Em termos teológicos, o conceito correto de um Deus em três pessoas distintas, inter-relacionadas e unificadas é chamado Trindade. Embora o conceito de uma Trindade "três-em-Um" não tenha paralelo ou equivalente no mundo humano, é absolutamente escriturário e essencial para um entendimento apropriado da natureza complexa e multifacetada de Deus.</p>
+
+            <p>Embora todo o poder e propósito do Espírito Santo não fossem revelados até o ministério de Jesus (veja o artigo JESUS E O ESPÍRITO SANTO, p. 1787) e depois dele, no Pentecostes (veja At 2), há passagens no Antigo Testamento que se referem a Ele e à sua obra. Este artigo examina os ensinamentos do Antigo Testamento a respeito do Espírito Santo.</p>
+
+            <h2>A PALAVRA "ESPÍRITO"</h2>
+            <p>A palavra hebraica para "Espírito" é ruach, uma palavra que às vezes é traduzida como "sopro" e "fôlego". Isto quer dizer que as referências do Antigo Testamento ao sopro de Deus ou ao fôlego de Deus (p.ex., Gn 2.7; Ez 37.9-10,14) podem também se referir à atividade do Espírito de Deus.</p>
+
+            <h2>A OBRA DO ESPÍRITO SANTO NO ANTIGO TESTAMENTO</h2>
+            <p>A Bíblia descreve várias atividades do Espírito Santo durante os tempos do Antigo Testamento.</p>
+
+            <p>(1) O Espírito Santo teve um papel ativo na criação. O segundo versículo da Bíblia diz que "o Espírito de Deus se movia sobre a face das águas" (Gn 1.2), preparando-se para que a palavra criativa de Deus formasse o mundo e pronunciasse a existência da vida terrena. Tanto a Palavra de Deus (isto é, a segunda pessoa da Trindade - mencionada como o Verbo eterno, Jo 1.1-14) como o Espírito de Deus foram agentes ativos na criação (veja Jó 26.13; Sl 33.6; veja o artigo A CRIAÇÃO, p. 7). O Espírito poderia ser considerado o autor da vida. Quando Deus criou Adão, sem dúvida foi o seu Espírito que soprou nele "o fôlego da vida" (Gn 2.7; cf. Jó 27.3), e o Espírito Santo continua a se envolver para dar vida às criaturas de Deus (Jó 33.4; Sl 104.30).</p>
+
+            <p>(2) O Espírito estava ativo na transmissão da mensagem de Deus ao seu povo. Por exemplo, foi o Espírito que instruiu os israelitas no deserto (Ne 9.20). Quando os salmistas de Israel (isto é, os autores de cânticos, poetas de louvor) cantavam e ministravam, faziam isso pela inspiração - motivação, orientação e capacitação - do Espírito do Senhor, que estava essencialmente ministrando por seu intermédio (2Sm 23.2; cf. At 1.16,20). De maneira similar, o Espírito de Deus inspirou os seus profetas para que declarassem corajosamente a sua mensagem e transmitissem a sua Palavra para o povo (Nm 11.29; 1 Sm 10.5-6,10; 2Cr 20.14; 24.19-20; Ne 9.30; Is 61.1-3; Mq 3.8; Zc 7.12; cf. 2Pe 1.20-21). Segundo Ezequiel, uma pista para detectar falsos profetas é o fato de que eles "só profetizam o que vê o seu coração", em lugar de seguir o Espírito de Deus (Ez 13.2-3). No entanto, era possível que o Espírito de Deus "viesse sobre" alguém (isto é, operasse por intermédio dessa pessoa, influenciasse ou usasse essa pessoa para os propósitos de Deus) que não estivesse em um relacionamento correto com Deus para transmitir uma mensagem verdadeira a respeito do povo de Deus (veja Nm 24.2, nota).</p>
+
+            <p>(3) Os líderes fiéis do povo de Deus no Antigo Testamento eram energizados pelo Espírito do Senhor. Moisés, por exemplo, sentia tal comunhão com o Espírito de Deus que compartilhava os mesmos sentimentos de Deus. Ele sofreu quando Deus sofreu e se irou com o pecado quando Deus se irou (veja Êx 33.11, nota; cf. Êx 32.19). Quando Moisés escolheu setenta anciãos (isto é, líderes e autoridades respeitadas e influentes) para ajudá-lo a liderar os israelitas, Deus tomou o Espírito que estava sobre Moisés e o pôs sobre eles (Nm 11.16-17; veja 11.12, nota). De maneira similar, quando Josué foi encarregado de suceder a Moisés como o próximo líder de Israel, Deus indicou que "o Espírito" (isto é, o Espírito Santo) estava nele (Nm 27.18, nota). O mesmo Espírito veio sobre Gideão (Jz 6.34), Davi (1 Sm 16.13) e Zorobabel (Zc 4.6). Está claro que, para o Antigo Testamento, a maior qualificação necessária para liderança era a presença do Espírito de Deus.</p>
+
+            <p>(4) O Espírito de Deus também podia vir sobre (isto é, capacitar, influenciar, operar em) indivíduos, para equipá-los para tarefas ou serviços especiais. Um exemplo notável do Antigo Testamento foi José, que foi reconhecido como tendo o precioso Espírito em si mesmo, o que lhe permitiu servir eficazmente na administração de Faraó (Gn 41.38). Além disso, considere Bezalel e Aoliabe, dois artesãos talentosos, a quem Deus encheu com o seu Espírito, para que fizessem o trabalho artístico necessário para a construção do tabernáculo e ensinassem também sua habilidade aos outros (veja Êx 31.1-11; 35.30-35; veja as ilustrações e descrições de O TABERNÁCULO e MOBILIÁRIO DO TABERNÁCULO, p. 153). A ideia de "estar cheio com o Espírito Santo", neste sentido, não é exatamente a mesma que o batismo no Espírito Santo, no Novo Testamento (veja o artigo O BATISMO NO ESPÍRITO SANTO, p. 1918). No Antigo Testamento, o Espírito Santo vinha sobre alguns poucos indivíduos escolhidos, e os capacitava, indivíduos a quem Deus escolhera para serviços especiais (veja Êx 31.3, nota). O Espírito do Senhor veio sobre muitos dos juízes, como Otniel (Jz 3.9-10), Gideão (Jz 6.34), Jefté (Jz 11.29) e Sansão (Jz 14.5-6; 15.14-16). Estes exemplos revelam o princípio eterno de Deus de que quando Ele decide usar pessoas, de maneira grandiosa e poderosa, o seu Espírito vem sobre elas; Ele é aquele que os capacita.</p>
+
+            <p>(5) Havia também uma consciência entre o povo fiel de Deus, no Antigo Testamento, de que o Espírito desejava guiá-los por um caminho de justiça (isto é, um modo de vida em conformidade com os padrões de Deus, conservando um relacionamento correto com Ele); Davi declarou isto, em alguns dos seus salmos (Sl 51.10-13; 143.10). Quando o povo de Deus seguia o seu próprio caminho, em vez de dar ouvidos a Deus, na realidade estavam se recusando a seguir a orientação do Espírito (veja Gn 16.2, nota). Aqueles que se recusavam a responder positivamente e se submeter ao Espírito de Deus inevitavelmente recebiam alguma forma de juízo da parte de Deus (veja Nm 14.29, nota; Dt 1.26, nota).</p>
+
+            <p>(6) Observe, uma vez mais, que nos tempos do Antigo Testamento, o Espírito Santo vinha sobre (ou enchia) apenas algumas pessoas, capacitando-as para o serviço ou para a profecia. Não havia um derramamento geral do Espírito Santo (cf. Jl 2.28-29; At 2.4,16-18). A obra e o derramamento (isto é, capacitação) do Espírito, neste sentido mais amplo, não se iniciou até o grande dia de Pentecostes (veja At 2).</p>
+
+            <h2>A PROMESSA DO PODER TOTAL DO ESPÍRITO</h2>
+            <p>O Antigo Testamento constantemente olha à frente, para a era vindoura do Espírito - o Novo Testamento ou a era da igreja -, quando Jesus enviaria o Espírito Santo para capacitar os seus seguidores, para que eles pudessem cumprir a sua missão no mundo.</p>
+
+            <p>Por exemplo, Moisés ansiava que Deus pusesse o seu Espírito sobre todo o seu povo (Nm 11.29) para que eles pudessem proclamar a mensagem de Deus.</p>
+
+            <p>(1) Em várias ocasiões, os profetas falaram sobre o papel que o Espírito teria na vida do Messias que viria (isto é, o "Ungido", Salvador, Cristo). Isaías retratou especialmente o Rei e "Servo do Senhor" que viria como aquele sobre o qual o Espírito de Deus repousaria, de uma maneira extraordinária (veja Is 11.1-2; 42.1; 61.1-3). Quando Jesus leu as palavras de Is 61, na sinagoga de sua cidade natal, em Nazaré, aplicou-as a si mesmo, dizendo: "Hoje se cumpriu esta Escritura em vossos ouvidos" (Lc 4.21).</p>
+
+            <p>(2) Outras profecias do Antigo Testamento apontam para o futuro, para a ocasião em que haveria um derramamento geral do Espírito Santo, quando Deus enviaria generosamente o seu Espírito para estar sobre todo o povo de Deus. Por exemplo, Isaías profetizou que o Espírito viria sobre as pessoas e não as deixaria; Ele estaria até mesmo com os seus descendentes (Is 59.20-21). Mas a passagem mais importante do Antigo Testamento que aponta para esta experiência contínua é Jl 2.28-29, uma passagem citada por Pedro no dia de Pentecostes (At 2.17-18). A mesma passagem pode ser encontrada também em Is 32.15-17; 44.3-5; Ez 11.19-20; 36.26-27; 37.14; 39.29. Deus prometeu que, quando a vida e o poder do seu Espírito viessem sobre o seu povo, Ele os capacitaria a profetizar, ter visões, ter sonhos proféticos, viver em obediência a Deus e transmitir a sua mensagem com grande poder e eficácia. Por meio dessas profecias e promessas, os profetas do Antigo Testamento previram a era messiânica (isto é, a época de Cristo e da sua obra contínua por intermédio dos seus seguidores). A partir de então, o Espírito Santo viria e estaria ativo nas vidas de todo o povo de Deus, influenciando toda a humanidade. Esse tempo finalmente chegou, no domingo de Pentecostes (dez dias depois que Jesus ascendeu aos céus), e foi seguido imediatamente por uma grande onda de salvação espiritual, com a adesão de milhares de pessoas ao reino de Deus apenas naquele dia (cf. Jl 2.28,32; At 2.41; 4.4; 13.44,48-49). E a onda de salvação está cada vez maior.</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>O Espírito Santo atuava no AT de forma seletiva (criação, profecia, liderança). Como isso contrasta com o derramamento geral prometido em Jl 2.28-29 e cumprido em Pentecostes?</li>
+                    <li>O Espírito capacita para serviço e obediência. Em que área da sua vida você sente necessidade de mais capacitação do Espírito Santo hoje?</li>
+                    <li>A promessa de poder do Espírito é para todos os crentes. Ore pedindo um enchimento fresco do Espírito para testemunhar, obedecer e servir com ousadia esta semana.</li>
+                </ul>
+            </div>
+
+           
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

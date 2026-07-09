@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Templo | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">História Bíblica</span>
+            <h1>O Templo: Símbolo da presença de Deus e cumprimento em Cristo</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 10 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>Assim, se acabou toda a obra que Salomão fez para a Casa do Senhor; então, trouxe Salomão as coisas consagradas de Davi, seu pai; a prata, e o ouro, e todos os utensílios, e pô-los entre os tesouros da Casa de Deus.</blockquote>
+                <cite>2 Crônicas 5:1</cite>
+            </div>
+
+            <h2>A HISTÓRIA DO TEMPLO</h2>
+            <p>(1) Antes de o templo ser edificado, Israel tinha o tabernáculo, a tenda que eles construíram sob as instruções de Deus enquanto estavam acampados no deserto no monte Sinai (Êx 25-27; 30; 36-38; 39.32-40.33; veja as ilustrações O TABERNÁCULO e MOBILIÁRIO DO TABERNÁCULO, p. 153). O tempo no deserto veio depois do milagroso êxodo (ou saída em massa) dos israelitas após séculos de escravidão no Egito. Depois de entrarem na terra prometida de Canaã, eles mantiveram esse santuário móvel até o tempo do rei Salomão. Durante os primeiros anos do seu reinado, ele comissionou milhares de pessoas para participarem da construção do templo de Deus (veja 1 Rs 5.13-18). Em seu quarto ano de reinado, as fundações foram colocadas, e sete anos depois o templo estava terminado (1 Rs 6.37-38; veja as ilustrações O TEMPLO DE SALOMÃO e MOBILIÁRIO DO TEMPLO, p. 572). Assim, ficou estabelecido em Jerusalém um lugar fixo para adorar e sacrificar a Deus. Na verdade, o templo fez de Jerusalém o centro de adoração para todos os habitantes de Israel (veja o artigo A CIDADE DE JERUSALÉM, p. 695).</p>
+
+            <p>(2) Durante todo o período dos reis, o templo passou por vários ciclos de profanação (isto é, corrupção, abuso, ruína) e restauração. Ele foi atacado por Sisaque do Egito durante o reinado do rei Roboão (2Cr 12.9) e foi renovado pelo rei Asa (2Cr 15.8,18). Após outro período de rebelião e declínio espiritual, o rei Joás restaurou o templo novamente (2Cr 24.4-14). Posteriormente, o rei Acaz tomou alguns dos utensílios do templo, enviou-os ao rei da Assíria como estratégia política e fechou o templo (2Cr 28.21,24). Seu filho, Ezequias, mais uma vez abriu, reparou e purificou o templo - física e espiritualmente (2Cr 29.1-19) - apenas para ser contaminado e corrompido outra vez por seu filho, Manassés (2Cr 33.1-7). O neto de Manassés, Josias, foi o último rei de Judá a restaurar o templo (2Cr 34.1,8-13). Depois disso, os reis de Judá continuaram a desafiar o Senhor e a adorar falsos deuses até que o Deus verdadeiro finalmente permitiu que Nabucodonosor, o rei da Babilônia, destruísse completamente o templo em 586 a.C. (2Rs 25.13-17; 2Cr 36.18-19). Antes e depois dessa destruição, os babilônios deportaram os judeus para regiões de todo o império (veja a Introdução de Esdras e 2Rs 24.1, nota, para uma recapitulação desse processo; veja o mapa O EXÍLIO DO REINO DO SUL, p. 654).</p>
+
+            <p>(3) Cinquenta anos depois, o rei Ciro da Pérsia (que prevaleceu sobre os babilônios) permitiu que os judeus retornassem da Babilônia para a sua terra natal e reconstruíssem o templo (Ed 1.1-4; veja o mapa O RETORNO DO EXÍLIO, p. 786). Zorobabel liderou o esforço de reconstrução (Ed 3.8), mas não sem a oposição do povo que estava vivendo naquela terra (Ed 4.1-4). Após um atraso de aproximadamente uma década, o povo obteve a permissão para retomar o projeto (Ed 4.24-5.2), e o templo foi terminado e consagrado em 516 a.C. (Ed 6.14-18). No início da era do Novo Testamento, o rei Herodes gastou muito tempo e dinheiro reparando e embelezando o segundo templo (Jo 2.20). Este foi o templo que Jesus purificou em duas ocasiões, expulsando os mercadores e cambistas que tiravam vantagens do povo e impedindo que o povo usasse o templo para orações e adoração (veja Mt 21.12-13; Jo 2.13-21). No ano 70 d.C., porém, após rebeliões frequentes dos judeus contra as autoridades romanas, o templo foi destruído junto com toda a cidade de Jerusalém, que se tornou imprópria para viver.</p>
+
+            <h2>O SIGNIFICADO DO TEMPLO PARA OS ISRAELITAS</h2>
+            <p>De muitas maneiras entre os israelitas, o templo possuía a mesma importância que a cidade de Jerusalém (veja o artigo A CIDADE DE JERUSALÉM, p. 695).</p>
+
+            <p>(1) Ele simbolizava a presença e a proteção de Deus entre o seu povo (cf. Êx 25.8; 29.43-46). Quando o templo foi consagrado, "desceu fogo do céu e consumiu o holocausto e os sacrifícios; e a glória do Senhor encheu a casa" (2Cr 7.1-2; cf. Êx 40.34-38). Na verdade, a presença de Deus foi tão intensa que os sacerdotes nem puderam entrar no templo para realizar as suas obrigações. Como um legado duradouro, Deus prometeu colocar o seu nome ali (2Cr 6.20,33), o que significa que Ele se identificaria com o templo e este representaria o seu caráter e a sua presença desde que fosse usado adequadamente. Por isso a Bíblia às vezes descreve o povo de Deus orando na direção do templo (2Cr 6.24,26,29,32), e Deus ouvindo de seu santo templo (Sl 18.6).</p>
+
+            <p>(2) O templo também representava a redenção de Deus para o seu povo (isto é, como Ele salva e resgata das consequências finais do pecado, e restaura o relacionamento do povo com Ele). Havia duas funções importantes que ocorriam ali: os sacrifícios diários pelo pecado sobre o altar de bronze e o Dia da Expiação anual (veja o artigo O DIA DA EXPIAÇÃO, p. 210). Este era o único dia do ano em que o sumo sacerdote entraria no Lugar Santíssimo para espargir o sangue do sacrifício sobre o propiciatório da arca do concerto a fim de fazer a expiação (isto é, cobrir, como um pagamento de resgate) pelos pecados do povo (cf. Lv 16; 1 Rs 8.6-9). Através desses rituais do templo, os israelitas eram lembrados do alto preço do pecado, do perdão, e de um relacionamento renovado com Deus.</p>
+
+            <p>(3) Em nenhum momento na história do povo de Deus, Deus teve mais de um lugar ou templo físico de habitação. Isto demonstrava o fato de que há somente um único Deus - o Senhor todo-poderoso, o Deus da aliança dos israelitas (veja o artigo O CONCERTO DE DEUS COM OS ISRAELITAS, p. 349).</p>
+
+            <p>(4) No entanto, o templo não dava garantias absolutas da presença de Deus. Ele apenas simbolizava a presença de Deus desde que o povo rejeitasse todos os outros deuses e seguisse a lei e as instruções de Deus. Miqueias, por exemplo, criticou os líderes do povo de Deus, que eram violentos e materialistas e que, no entanto, de alguma maneira pensavam que escapariam do desastre desde que tivessem o símbolo da presença de Deus (Mq 3.9-11). Miqueias profetizou que Deus lhes ensinaria uma lição destruindo Jerusalém e o seu templo. Mais tarde, Jeremias repreendeu o povo rebelde de Judá pelo uso constante e descuidado das palavras: "Templo do Senhor, templo do Senhor, templo do Senhor!" (Jr 7.2-4,8-12). A repetição imprudente desta frase lhes dava um falso senso de segurança; mas, por causa do estilo de vida ímpio adotado pelo povo, Deus destruiria o símbolo da sua presença - o templo (Jr 7.14-15). Deus até mesmo disse a Jeremias que era inútil orar pelo povo, porque o profeta não seria ouvido (Jr 7.16). A única esperança deles seria mudar os seus caminhos e voltar a seguir os caminhos de Deus (Jr 7.5-7).</p>
+
+            <h2>O SIGNIFICADO DO TEMPLO PARA A IGREJA CRISTÃ</h2>
+            <p>O papel do templo no Novo Testamento deve ser entendido à luz do que o templo simbolizava no Antigo Testamento.</p>
+
+            <p>(1) O próprio Senhor Jesus, como os profetas do Antigo Testamento, criticou o mau uso do templo. Entre os seus primeiros (Jo 2.13-17) e os últimos grandes atos públicos (Mt 21.12-13), Jesus expulsou à força do templo aqueles que estavam distorcendo o seu verdadeiro propósito espiritual (veja Lc 19.45, nota). Ele prosseguiu até predizer o dia em que o templo seria completamente destruído (Mt 24.1-2; Mc 13.1-2; Lc 21.5-6).</p>
+
+            <p>(2) Os seguidores de Cristo que fizeram parte da primeira igreja em Jerusalém frequentemente entravam no templo à hora da oração (At 2.46; 3.1; 5.21,42). Embora esse fosse o seu costume, eles também entendiam que o templo não era o único lugar onde os crentes podiam orar (veja At 4.23-31). Estêvão (um dos líderes da igreja e primeiro a ser martirizado, ou morto, pela fé em Cristo) e posteriormente Paulo (que escreveu muitos dos livros do NT da Bíblia), testificaram que o Deus vivo não pode ser confinado em um templo feito por mãos humanas (At 7.48-50; 17.24).</p>
+
+            <p>(3) O foco de adoração para os cristãos mudou do templo para o próprio Senhor Jesus Cristo. Ele - não o templo - agora representa a presença de Deus entre o seu povo. Na verdade, mais que um representante, Ele veio à terra como o Emanuel - "Deus conosco" (Mt 1.23). Ele é o Verbo de Deus em forma humana (Jo 1.14), e nele habita corporalmente toda a plenitude da divindade (Cl 2.9). Na verdade, Jesus chega a chamar a si mesmo de templo (Jo 2.19-22). Pela sua morte na cruz, Jesus cumpriu o propósito final que nenhum dos sacrifícios do templo jamais poderia ter cumprido - o de realmente prover a purificação do pecado de uma vez por todas (cf. Hb 9.1-10.18). Em sua conversa com a mulher samaritana, Jesus disse que a adoração logo ocorreria, não em um edifício específico, mas "em espírito e em verdade", ensinando que a verdadeira adoração é uma questão espiritual e um privilégio de qualquer pessoa que genuinamente aceite a verdade da Palavra de Deus e receba o Espírito através de um relacionamento com Cristo (veja Jo 4.23, nota).</p>
+
+            <p>(4) Visto que Jesus Cristo incorporou o verdadeiro significado e propósito do templo, e visto que a igreja é considerada o "corpo" de Cristo (Rm 12.5; 1Co 12.12-27; Ef 1.22-23; Cl 1.18), a igreja foi designada como "templo de Deus" - um lugar em que Jesus reside (1Co 3.16; 2Co 6.16; cf. Ef 2.21-22). Através do seu Espírito, Cristo vive em sua igreja (entre as pessoas como um corpo, e dentro das pessoas individualmente). Por essa razão, Ele exige que a igreja seja santa (isto é, moralmente pura, espiritualmente íntegra, separada do pecado e consagrada aos propósitos de Deus; veja o artigo A IGREJA, p. 1650). Assim como no Antigo Testamento, Deus não tolera qualquer corrupção em seu templo, o que significa que Ele promete eliminar qualquer um que cause destruição à sua igreja, ao seu povo ou aos seus propósitos (1Co 3.16-17; veja 3.17, nota, para exemplos de como as pessoas corrompem e destroem a igreja).</p>
+
+            <p>(5) Não só o Espírito Santo está vivendo e é ativo na igreja como um todo, mas também nos cristãos individualmente, que também são descritos como o seu templo (1Co 6.19). Por essa razão, Paulo alerta veementemente contra qualquer corrupção ou abuso do nosso corpo através de comportamentos imorais ou destrutivos (veja 1Co 6.18-19, notas).</p>
+
+            <p>(6) Finalmente, note que não haverá nenhuma necessidade de um templo na nova Jerusalém celestial (Ap 21.22). Isto se deve ao fato de que o templo era apenas um símbolo da presença de Deus entre o seu povo, e não a sua realidade completa. No entanto, nenhum templo será necessário quando Deus estiver morando bem ali entre eles: "o seu templo é o Senhor, Deus Todo-Poderoso, e o Cordeiro" (Ap 21.22). O Cordeiro é Cristo, que sacrificou a própria vida pelos pecados do mundo, mas que está agora vivo e ativo em sua igreja. Ele reinará como o Rei entre o seu povo para sempre (Ap 11.15; 22.5).</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>O templo simbolizava a presença de Deus. Como você cultiva a consciência da presença do Espírito Santo no seu corpo e na igreja local hoje?</li>
+                    <li>Jesus é o templo definitivo. Como isso muda sua visão dos sacrifícios antigos e da cruz como expiação final pelos pecados?</li>
+                    <li>O templo exigia santidade. Em que áreas da sua vida (corpo, mente, relacionamentos) você precisa maior pureza para ser um "templo" vivo de Deus?</li>
+                </ul>
+            </div>
+
+           
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

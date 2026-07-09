@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Sofrimento dos Justos | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">Vida Cristã</span>
+            <h1>O Sofrimento dos Justos: Por que Deus permite a dor aos fiéis?</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 11 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>Então, saiu Satanás da presença do Senhor e feriu a Jó de uma chaga maligna, desde a planta do pé até ao alto da cabeça. E Jó, tomando um pedaço de telha para raspar com ele as feridas, assentou-se no meio da cinza.</blockquote>
+                <cite>Jó 2:7-8</cite>
+            </div>
+
+            <p>A fidelidade a Deus não assegura que a vida de uma pessoa seja livre de problemas, dor e sofrimentos (veja At 28.16, nota). Na verdade, Jesus ensinou que devemos esperar dificuldades e desafios nesta vida (Jo 16.33; veja 2Tm 3.12, nota). A Bíblia oferece inúmeros exemplos de pessoas piedosas que suportaram quantidade significativa de sofrimento por várias razões. Entre esses indivíduos estão José, o rei Davi, Jó, o profeta Jeremias, e o apóstolo Paulo. Jesus Cristo, naturalmente, suportou o sofrimento máximo, para realizar o bem maior e para tornar a salvação espiritual disponível para todos (veja Is 53; 1 Pe 3.18).</p>
+
+            <h2>AS PERGUNTAS E A REALIDADE DO SOFRIMENTO</h2>
+            <p>"Como pode um Deus de amor permitir que o mal e o sofrimento continuem?" "Por que coisas ruins acontecem às pessoas boas?" "Onde está Deus, quando acontece uma tragédia?" Embora essas perguntas possam assumir variadas formas, todas representam um esforço para entender o supremo poder de Deus e a sua bondade, em contraste com o redemoinho que está tão disseminado no mundo que Ele criou. Para muitas pessoas, é difícil conciliar a ideia de um Deus amoroso e todo-poderoso com todas as coisas ruins que elas veem ao seu redor. Algumas olham para a tragédia e concluem que se Deus é amor, Ele não deve ser todo-poderoso, ou impediria o sofrimento. Outras supõem que se Deus é todo-poderoso, mas permite que os inocentes sofram, então Ele não deve ser amor. No entanto, o amor não necessariamente contradiz ou elimina o sofrimento. O questionamento sobre como um Deus amoroso pode permitir o mal e o sofrimento mostra um mal-entendido sobre o que é normal e o que é excepcional no mundo. Como a humanidade se rebelou contra Deus e escolheu o seu próprio caminho, o pecado e o mal assumiram posições de controle e viraram o mundo de cabeça para baixo, e o mundo não é mais como Deus o criou. Por esse motivo, a desordem e a destruição se tornaram a norma em nosso mundo rebelde. O fato de que ainda exista algum bem - e que esse bem possa resultar inclusive do sofrimento - é prova do amor e da paciência de Deus com um mundo que continua a desafiá-lo.</p>
+
+            <h2>A CAUSA E A ORIGEM DO SOFRIMENTO</h2>
+            <p>É certo que todos encontram problemas. As pessoas olham, agem, e pensam de maneira diferente, mas o sofrimento é um idioma universal. Cada um de nós conhece a dor e o sofrimento, a doença e o desastre, as provações e a tragédia. Embora não consigamos entender o porquê de alguns problemas específicos, é importante entender algumas razões gerais por que Deus permite o sofrimento. O não entendimento dessa questão é uma das principais razões pelas quais muitas pessoas lutam para crer em Deus e aceitar a Cristo. Mesmo alguns que creem em Deus tendem a culpá-lo - diretamente ou indiretamente - pelos problemas no mundo. Mas os que culpam a Deus por não evitar os problemas não entendem plenamente a origem do mal nem por que Deus permite o sofrimento. A Palavra de Deus descreve claramente como o mal entrou no mundo e quem é responsável por isso. Em poucas palavras, Deus proporcionou uma oportunidade para que vivéssemos em perfeição, mas a humanidade preferiu usar mal a sua bênção e liberdade (veja Gn 1.26-31; 2.15-22; 3.1-8). Tudo o que Deus criou era bom, originalmente, incluindo Adão e Eva. Como parte da criação perfeita de Deus, Ele deu aos seres humanos o livre-arbítrio - a capacidade de escolher. Mas quando eles usaram o seu livre-arbítrio para ignorar o mandamento protetor de Deus, a sua escolha de desafiá-lo abriu a porta para que o mal infectasse toda a raça humana (Rm 5.12). O pecado e o mal são as consequências naturais da escolha humana. O fato é que são as escolhas humanas, e não as escolhas de Deus, que tornam o sofrimento inevitável. Muitas pessoas poderiam perguntar: "Mas Deus não poderia simplesmente eliminar o mal e o sofrimento?" Se fizesse isso, Ele teria de eliminar toda a imperfeição humana e nos forçar a viver sem pecado. Isso infringiria o livre-arbítrio que Ele nos deu para segui-lo ou rejeitá-lo. O cristianismo não consiste em Deus anulando a nossa capacidade de escolher - nem as consequências da nossa escolha. A fé cristã traz as pessoas ao ponto de escolher, voluntariamente e continuamente, o bem, e não o mal - independentemente da dificuldade envolvida. Frequentemente Deus permite que suportemos tempos difíceis, para que possamos crescer e aprender a confiar que Ele nos dará forças para superar dificuldades futuras. Tenha em mente que Jó é descrito como sincero e reto (Jó 1.8; 2.3), mas Deus permitiu que Satanás trouxesse tragédia à vida de Jó para demonstrar o amor sincero de Jó e a sua dependência de Deus, independentemente das circunstâncias.</p>
+
+            <h2>RAZÕES POR QUE OS JUSTOS SOFREM</h2>
+            <p>Há várias razões pelas quais o povo de Deus sofre.</p>
+
+            <p>(1) Como todas as outras pessoas que já viveram, os seguidores de Deus vivenciam o sofrimento como uma consequência do pecado original de Adão e Eva. Quando eles decidiram voluntariamente desafiar a Deus e ignorar a sua ordem, o pecado entrou no mundo, e com ele vieram a dor, a tristeza, o conflito e, por fim, a morte. Essas coisas agora invadem a vida de todos os seres humanos (Gn 3.16-19). Paulo afirma o seguinte: "Pelo que, como por um homem entrou o pecado no mundo, e pelo pecado, a morte, assim também a morte passou a todos os homens, por isso que todos pecaram" (Rm 5.12, veja nota). Na verdade, a Palavra de Deus nos diz que todo o universo criado geme sob os efeitos do pecado e anseia pelo momento em que haverá um novo céu e uma nova terra (Rm 8.20-23; 2Pe 3.10-13).<br><strong>RESPOSTA:</strong> Nós devemos resistir às atitudes e ações pecaminosas sempre confiando na graça de Deus, na sua ajuda, força e consolação, mesmo quando não parece mais haver esperança nem respostas (cf. 1Co 10.13).</p>
+
+            <p>(2) Às vezes, as pessoas sofrem como resultado de seus próprios atos (veja o artigo A PROVIDÊNCIA DE DEUS, p. 89). O princípio de que "tudo o que o homem semear, isso também ceifará" (Gl 6.7) se aplica, de modo geral, a todos. Se dirigirmos de maneira imprudente, poderemos nos envolver em um acidente grave. Se tivermos hábitos alimentares indisciplinados, provavelmente teremos problemas de saúde. Deus pode usar esse sofrimento como uma maneira de nos ensinar disciplina, para que possamos obter "um fruto pacífico de justiça" (Hb 12.11; veja 12.5, nota). Isto não quer dizer que todas as coisas más que acontecem a alguém são um resultado direto de suas escolhas. O sofrimento de uma pessoa pode ser o resultado das escolhas de outra pessoa - como uma reação em cadeia. Por exemplo, alguém bebe e dirige, e mata uma pessoa inocente. Ou as autoridades de um governo opressor tomam uma decisão que nega as liberdades do povo. Grande parte do sofrimento no mundo é resultado de escolhas humanas más ou insensatas.<br><strong>RESPOSTA:</strong> Devemos usar de sabedoria e seguir a orientação da Palavra de Deus, e evitar toda e qualquer coisa que possa nos desviar do cuidado protetor de Deus.</p>
+
+            <p>(3) Os cristãos e os não cristãos sofrem, de igual maneira, porque vivem em um mundo pecador e corrupto. Estamos todos cercados pelos efeitos do pecado. Fome, doenças, homicídios e guerras, nada disso fazia parte do projeto original de Deus. Todos os tipos de dor e sofrimento são o resultado natural do pecado. O sofrimento serve como advertência de que há algo errado, e indica ao povo o fato de que o mundo precisa da ajuda de Deus. O povo de Deus sentirá particularmente uma sensação de tensão, aflição e angústia ao ver o poder que o mal tem sobre tantas vidas (veja Ez 9.4; At 17.16; 2Pe 2.8, nota).<br><strong>RESPOSTA:</strong> Devemos orar e confiar que Deus trará a vitória sobre o poder do pecado na vida das pessoas, permitindo que Ele nos use para influenciar as pessoas para Ele.</p>
+
+            <p>(4) As pessoas sofrem como resultado da obra do diabo, e este visa, em particular, os seguidores de Deus.<br>(a) As Escrituras deixam claro que Satanás, sendo "o deus deste século" (2Co 4.4), exerce considerável controle sobre o mundo nesta época (veja 1Jo 5.19, nota; cf. Gl 1.4; Hb 2.14), causando-nos problemas de diversas maneiras (cf. 1 Pe 5.8-9). A história de Jó se centra em um homem reto e temente a Deus, a quem Deus permitiu que vivenciasse sofrimentos intensos, causados por Satanás (veja, em particular, Jó 1-2). Jesus declarou que uma das mulheres que Ele havia curado havia sido aleijada e "presa" por Satanás durante dezoito anos (cf. Lc 13.11,16). Paulo, que escreveu muitos dos livros do Novo Testamento, reconheceu que o seu espinho na carne (isto é, provavelmente algum mal físico ou alguma inconveniência não definida) era "um mensageiro de Satanás, para me esbofetear" (2Co 12.7). Quando nos envolvermos em batalhas espirituais contra "os príncipes das trevas deste século" (Ef 6.12), inevitavelmente encontraremos oposição e adversidade. Para lidar com esse tipo de ataques, Deus nos deu uma armadura espiritual (Ef 6.10-18; veja 6.11, nota) e armas espirituais (2Co 10.3-6).<br><strong>RESPOSTA:</strong> Devemos vestir - e usar - toda a armadura de Deus (Ef 6.10-18), confiando fielmente que Ele nos dará forças para a vitória.<br>(b) Satanás e os seus seguidores sempre ridicularizaram e perseguiram o povo de Deus. Os que amam a Jesus e vivem de acordo com os seus princípios e padrões de verdade sofrerão pela sua fé. Na verdade, o sofrimento por causa da justiça frequentemente é um sinal de devoção genuína a Cristo (veja Mt 5.10, nota; 1Pe 4.12, nota).<br><strong>RESPOSTA:</strong> Uma vez que todos os que seguem a Cristo estão destinados a sofrer críticas e oposição por causa de seu compromisso com Deus e com os seus padrões, eles devem estar preparados para resistir, permanecer firmes e continuar confiando que Deus endireitará e corrigirá as coisas, no final (Mt 5.10-11; 1Co 15.58; 1 Pe 2.23).</p>
+
+            <p>(5) Em um sentido mais positivo, outra razão pela qual os cristãos sofrem é o fato de que eles têm "a mente de Cristo" (veja 1Co 2.16, nota). Ser um cristão não significa apenas seguir a Cristo e ser como Ele, mas também implica unidade com Ele. Como resultado, os que seguem a Cristo compartilham os seus sofrimentos (veja 1 Pe 2.21, nota). Por exemplo, da mesma maneira como Cristo se entristeceu pela cidade de Jerusalém, porque o seu povo se recusava a aceitar a sua salvação (veja Lc 19.41, nota), os cristãos de hoje devem ter um sentimento de tristeza pela desorientação espiritual da humanidade. Paulo descreve os seus próprios sentimentos por Cristo (2Co 11.23-32; veja 11.23, nota) considerando sua preocupação com as igrejas que ele havia fundado: "Quem enfraquece, que eu também não enfraqueça? Quem se escandaliza, que eu não me abrase?" (2Co 11.29). Esse tipo de angústia mental e empatia com aqueles a quem amamos e lideramos deve ser uma parte natural da nossa vida (cf. Rm 12.15). Tenha em mente que compartilhar dos sofrimentos de Cristo proporciona uma oportunidade para que nós também compartilhemos da sua glória (Rm 8.17).<br><strong>RESPOSTA:</strong> Devemos ser gratos pelo fato de que, embora soframos por Cristo, também receberemos a sua consolação quando precisarmos dela (2Co 1.5).</p>
+
+            <p>(6) O próprio Deus pode usar o sofrimento em nossa vida como um catalisador para crescimento espiritual ou mudança. Embora algumas pessoas considerem o sofrimento humano como evidência da falta de compaixão de Deus, os testes da vida provam, na realidade, que Deus considera algumas coisas mais importantes do que a consolação. Em outras palavras, há coisas vitais para a nossa vida que podem ser desenvolvidas com o sofrimento e a dor.<br>(a) Ele usa o sofrimento para convencer o seu povo espiritualmente voluntarioso a se afastar dos seus pecados e renovar a sua fé e confiar nele (veja o livro dos Juízes).<br><strong>RESPOSTA:</strong> Devemos admitir a Deus qualquer pecado de que tenhamos consciência em nossa vida, e examinar a nós mesmos para ver se há algo em nós que desagrade o Espírito Santo.<br>(b) Às vezes, Deus usa o sofrimento para testar a nossa fé, para revelar se permaneceremos fiéis a Ele. Foi por esse motivo que Deus permitiu que Satanás perturbasse Jó (veja Jó 1.6-12; 2.1-6). Tiago chama as várias dificuldades que enfrentamos de "prova da vossa fé" (Tg 1.3; veja 1.2, nota) porque com elas a nossa fé em Cristo se torna mais forte e mais madura (veja Dt 8.3, nota; 1Pe 1.7, nota).<br><strong>RESPOSTA:</strong> Devemos permitir que os tempos difíceis fortaleçam a nossa fé, percebendo que a fé genuína em Deus resultará em "louvor, e honra, e glória na revelação de Jesus Cristo" (1Pe 1.7).<br>(c) Deus usa o sofrimento não apenas para fortalecer a nossa fé, mas também para nos ajudar a crescer espiritualmente e desenvolver um sólido caráter cristão. Segundo Paulo e também Tiago, Deus quer que aprendamos a ter paciência com o sofrimento (Rm 5.3-5; Tg 1.3). Com o sofrimento aprendemos a confiar menos em nós mesmos e mais em Deus (veja Rm 5.3, nota; 2Co 12.9, nota).<br><strong>RESPOSTA:</strong> Devemos ser sensíveis e abertos para o que Deus pode querer que aprendamos com o sofrimento.<br>(d) Deus também pode nos conduzir por tempos de dificuldade e dor para sermos mais capazes de consolar e encorajar outras pessoas quando elas sofrem (veja 2Co 1.4, nota). Dessa maneira, a eficácia do nosso ministério se aprofunda e aumenta (2Co 4.7-12; veja 4.11-12, nota).<br><strong>RESPOSTA:</strong> Devemos usar as nossas experiências dolorosas para encorajar e fortalecer outras pessoas.</p>
+
+            <p>(7) Finalmente, Deus pode usar, e usa, o sofrimento das pessoas justas para promover a causa do seu reino e realizar o seu propósito de trazer as pessoas a um relacionamento com Ele.<br>(a) Por exemplo, todas as injustiças que José sofreu como resultado das ações invejosas de seus irmãos, faziam parte do plano de Deus de "conservar vossa sucessão na terra e para guardar-vos em vida por um grande livramento" (Gn 45.7; veja o artigo A PROVIDÊNCIA DE DEUS, p. 89). O principal exemplo deste princípio é o sofrimento de Cristo, "o Santo e o Justo" (At 3.14), que sofreu perseguição, agonia e morte para finalizar o plano de salvação de Deus e abrir a porta para quem decidir receber um relacionamento pessoal com Ele. Isto não desculpa a iniquidade dos que crucificaram Jesus (At 2.23), mas mostra como Deus pode usar o sofrimento dos justos pelas mãos de pessoas pecadoras para realizar os seus próprios propósitos e para a sua própria honra.<br><strong>RESPOSTA:</strong> Em meio ao nosso sofrimento, devemos procurar maneiras de transmitir a vida e o amor de Cristo aos outros, particularmente aqueles que podem ser parte da razão para o nosso sofrimento.<br>(b) Frequentemente, Deus permite que o sofrimento aconteça para que as pessoas se convertam a Ele. Para os crentes e os não crentes, de igual maneira, os problemas e as dificuldades revelam a fraqueza e a inadequação humanas - mentalmente e moralmente. As pessoas que percebem isto têm menos probabilidade de resistir à oferta de Deus de salvação e auxílio e mais probabilidade de viver com gratidão e humildade para com Deus e o próximo. Deus não nos pede que entendamos tudo, mas que confiemos nele. Em última análise, o sofrimento nos mostra a necessidade que temos de Deus. O sofrimento nos lembra de que a terra é corrupta, e precisamos que Cristo nos salve do curso de destruição destinado à terra.<br><strong>RESPOSTA:</strong> Em tempos de sofrimento - seja o nosso ou o de outras pessoas - devemos encorajar as pessoas a confiar que Deus dará ajuda, alívio e paz (Fp 4.6-7; 1 Pe 5.7).</p>
+
+            <h2>O RELACIONAMENTO DE DEUS COM O SOFRIMENTO DO SEU POVO</h2>
+            <p>(1) A primeira coisa a lembrar é a seguinte: Deus está envolvido nos nossos sofrimentos. Embora Satanás seja descrito como "o deus deste século" (2Co 4.4), ele pode nos perturbar apenas da maneira como Deus permite (cf. Jó 1-2; veja os artigos A PROVIDÊNCIA DE DEUS, p. 89, e A VONTADE DE DEUS, p. 1201). Deus prometeu, na sua Palavra, que não permitirá que sejamos tentados além daquilo que conseguimos suportar com a sua ajuda (1Co 10.13).</p>
+
+            <p>(2) Deus também prometeu trazer o bem a partir de todos os sofrimentos e perseguições que sofrem aqueles que o amam (veja Rm 8.28, nota). José reconheceu esta verdade com o seu próprio sofrimento (cf. Gn 50.20), e o autor da epístola aos Hebreus mostra como Deus usa as circunstâncias dolorosas de nossa vida para o nosso próprio crescimento e benefício (veja Hb 12.5, nota). Se permitirmos, o sofrimento nos transformará, produzindo algo melhor e mais forte em nós.</p>
+
+            <p>(3) Além disso, Deus prometeu ficar ao nosso lado, em nossa dor - andar conosco "pelo vale da sombra da morte" (Sl 23.4; cf. Is 43.2). Ele faz isso pelo seu Espírito Santo, que nos consola em todas as nossas tribulações (veja 2Co 1.4, nota). A cada um dos seus filhos, Deus dá graça e força suficiente para que suportem toda e qualquer tribulação da vida (1Co 10.13; veja 2Co 12.9, nota).</p>
+
+            <p>(4) Finalmente, não se esqueça de que o Senhor Jesus compartilha da sua dor. Quando oramos a Ele, temos um sumo sacerdote (isto é, um mediador, entre nós e Deus Pai) que se compadece e que sentiu todas as formas de aflições e tentações que nós sofremos (Hb 4.15). Na verdade, Ele suportou mais do que jamais suportaremos, porque nunca cedeu à pressão e tentação do pecado, e Ele assumiu o peso de todos os pecados da humanidade sobre si mesmo, quando morreu em nosso lugar. E como Ele "tomou sobre si as nossas enfermidades e as nossas dores" (Is 53.4), podemos encontrar alívio, ajuda e cura pelo que Ele sofreu e suportou por nós (Is 53.5).</p>
+
+            <h2>O CRESCIMENTO PELO SOFRIMENTO</h2>
+            <p>Uma experiência dolorosa pode trazer destruição ou bênção - dependendo da reação de uma pessoa. O problema é que muitas pessoas passam o seu tempo tentando descobrir e entender por que estão sofrendo, antes de decidir como responder. No entanto, refletir muito tempo sobre a causa pode nos deixar amargurados com Deus, porque nunca poderemos compreender plenamente as razões. A Bíblia constantemente nos impede de nos concentrar na origem ou na razão para o sofrimento; em vez disso, devemos nos concentrar na maneira como poderemos nos aproximar mais de Deus pelo sofrimento. A verdadeira pergunta para o cristão não deveria ser "Deus é responsável pela minha aflição?", mas sim "Como posso reagir a isso, para me tornar tudo o que Deus quer que eu seja?" Se confiarmos em Deus, a dor e o sofrimento poderão servir a alguns propósitos positivos, incluindo: (1) conseguir a nossa atenção; (2) permitir que Deus demonstre o seu poder (Jo 9.1-3); (3) pôr à prova a nossa integridade (Jó 2.1-3); (4) produzir perseverança e caráter (Rm 5.3-5); (5) proporcionar disciplina (Hb 12.10-11); (6) eliminar o orgulho egoísta (2Co 12.7); (7) desenvolver maturidade (Tg 1.2-4); (8) edificar a fé (1 Pe 1.3-7); (9) ajudar-nos a nos relacionar com Cristo e a sermos cada vez mais parecidos com Ele (Rm 8.28-29); (10) proporcionar oportunidades para servir e consolar outras pessoas (2Co 1.3-6); (11) modificar a nossa perspectiva das coisas terrenas para as coisas eternas (2Co 4.17-18); (12) fazer com que os rebeldes se convertam a Deus (1 Co 5.1-5) e (13) proporcionar esperança e oportunidade para uma recompensa eterna maior. Mesmo quando aflições em particular parecerem não servir a nenhum propósito e não proporcionarem respostas nesta vida, se fizerem com que confiemos mais em Deus, obteremos maior honra quando nos unirmos a Deus por toda a eternidade. Então entenderemos que "as aflições deste tempo presente não são para comparar com a glória que em nós há de ser revelada" (Rm 8.18).</p>
+
+            <h2>A VITÓRIA SOBRE O SOFRIMENTO PESSOAL</h2>
+            <p>Quando passarmos por provas, tribulações, aflições, dor e dificuldades, quais passos podemos dar para suportarmos o sofrimento e ainda sermos vitoriosos sobre ele?</p>
+
+            <p>(1) Em primeiro lugar, considere as várias razões por que os humanos sofrem (veja a seção acima) e como essas razões se aplicam à sua situação. Se você puder identificar uma razão específica, poderá seguir a resposta apropriada e converter a experiência em algo positivo.</p>
+
+            <p>(2) Creia que Deus se interessa profundamente por você, independentemente de quão graves são as suas circunstâncias (veja Rm 8.36, nota; 2Co 1.8-10, nota; Tg 5.11, nota; 1Pe 5.7, nota). O sofrimento nunca deve fazer com que você negue o amor de Deus por você, nem que você o rejeite como seu Salvador e Senhor - Aquele que perdoa os seus pecados e é Líder da sua vida.</p>
+
+            <p>(3) Converta-se a Deus com oração sincera e intensa e procure um relacionamento mais profundo com Ele. E seja paciente enquanto espera que Ele livre você da sua situação (veja Sl 27.8-14; 40.1-3; 130).</p>
+
+            <p>(4) Espere que Deus lhe dê a ajuda e a força necessária para suportar qualquer dificuldade até que Ele escolha o momento exato para livrar você da dor (1Co 10.13; 2Co 12.7-10). Lembre-se sempre de que "em todas estas coisas somos mais do que vencedores, por aquele que nos amou" (Rm 8.37; cf. Jo 16.33). A maior honra de Deus e a nossa fé mais forte não resultam de remover ou escapar ao sofrimento, mas de demonstrar o poder de Deus por meio da fraqueza humana (veja 2Co 4.7, nota).</p>
+
+            <p>(5) Leia a Palavra de Deus, especialmente os salmos, que oferecem consolação em tempos de aflição (p.ex., Sl 11; 16; 23; 27; 40; 46; 61; 91; 121; 125; 138).</p>
+
+            <p>(6) Busque a sabedoria e o discernimento de Deus a respeito da sua situação particular - pela oração, leitura da Bíblia, orientação do Espírito Santo e o conselho de cristãos maduros e piedosos.</p>
+
+            <p>(7) Se o sofrimento for físico, siga os passos esquematizados no artigo A CURA DIVINA, p. 1625.</p>
+
+            <p>(8) Quando você estiver passando por dificuldades ou sofrimento, lembre-se da predição de Cristo de que você terá problemas na sua vida, como seu seguidor (Jo 16.33). Mas olhe à frente com grande expectativa, para aquele tempo em que Deus "limpará de seus olhos toda lágrima, e não haverá mais morte, nem pranto, nem clamor, nem dor" (Ap 21.4).</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>Em meio ao sofrimento, qual "resposta" da lista acima você mais precisa praticar agora (ex: resistir ao pecado, confiar na graça, usar como oportunidade de testemunho)?</li>
+                    <li>Como o exemplo de Jó (fidelidade apesar da dor) e de Cristo (sofrimento redentor) pode mudar sua perspectiva sobre as dificuldades atuais?</li>
+                    <li>Escolha um salmo de consolo (ex: Sl 23, 46 ou 91) e leia-o diariamente esta semana, orando para que Deus transforme seu sofrimento em crescimento e vitória.</li>
+                </ul>
+            </div>
+
+          
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

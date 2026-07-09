@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cidades na Bíblia | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+            --accent-red: #e57373;
+            --gold: #d4af37;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { width: 100%; height: 5px; background: #eee; position: fixed; top: 0; left: 0; z-index: 1000; }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR */
+        .top-nav { max-width: 900px; margin: 0 auto; padding: 40px 5% 0; }
+        .btn-back-top { display: inline-flex; align-items: center; gap: 8px; color: var(--turquoise); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CABEÇALHO */
+        .study-header { padding: 40px 5% 40px; max-width: 900px; margin: 0 auto; text-align: center; }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.8rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+
+        /* CONTEÚDO */
+        .content-body { max-width: 900px; margin: 0 auto; padding: 0 5% 60px; font-size: 1.1rem; }
+        .content-body p { margin-bottom: 25px; text-align: justify; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 50px 0 25px; font-size: 2rem; border-bottom: 2px solid var(--soft-gray); padding-bottom: 10px; position: relative; }
+        .content-body h3 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 35px 0 15px; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+        
+        /* BOXES ESPECIAIS */
+        .summary-box { background: #f0f4f8; padding: 30px; border-radius: 12px; margin-bottom: 40px; border-left: 5px solid var(--navy-blue); }
+        .summary-box h3 { margin-top: 0; color: var(--navy-blue); }
+
+        .contrast-box { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+        .contrast-item { background: #fff; padding: 20px; border-radius: 8px; border: 1px solid var(--soft-gray); }
+        .contrast-item h4 { color: var(--turquoise); margin-bottom: 10px; text-transform: uppercase; font-size: 0.9rem; }
+
+        /* CARTÕES DE VERSÍCULOS */
+        .verse-card { background: var(--white); border-left: 5px solid var(--turquoise); padding: 25px; margin: 30px 0; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-radius: 0 10px 10px 0; }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.1rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.85rem; display: block; margin-top: 10px; }
+
+        /* LISTAS */
+        ul.passage-list { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+        ul.passage-list li { background: var(--navy-blue); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; }
+
+        .finish-container { text-align: center; padding: 40px 0; border-top: 1px solid var(--soft-gray); margin-top: 60px; }
+        .btn-finish { display: inline-block; background-color: var(--turquoise); color: white; padding: 18px 45px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); background: #f9f9f9; }
+
+        @media (max-width: 600px) {
+            .contrast-box { grid-template-columns: 1fr; }
+            .study-header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container"><div class="progress-bar" id="myBar"></div></div>
+
+   
+    <article>
+        <div class="study-header">
+            <span class="category">Temas Bíblicos</span>
+            <h1>Cidades na Bíblia</h1>
+            <ul class="passage-list">
+                <li>Gênesis 4</li>
+                <li>Gênesis 11</li>
+                <li>2 Samuel 6</li>
+                <li>Ezequiel 47</li>
+                <li>Mateus 5</li>
+                <li>Apocalipse 21-22</li>
+            </ul>
+        </div>
+
+        <div class="content-body">
+            
+            <div class="summary-box">
+                <h3>A Perspectiva Bíblica</h3>
+                <p>Inicialmente, a Bíblia não tem uma visão muito positiva das cidades. Elas nascem como fortalezas de proteção fundadas por homens em fuga. No entanto, a grande surpresa da narrativa é que o plano de Deus não é apenas restaurar um jardim, mas integrar esse jardim à vida urbana.</p>
+            </div>
+
+            <h3><i class="fa-solid fa-person-hiking"></i> A Primeira Cidade: O Refúgio de Caim</h3>
+            <p>Após assassinar seu irmão Abel, Caim cede ao "monstro" do pecado. Como consequência, ele se torna um fugitivo. Com medo de ser morto, Caim constrói a primeira cidade: <strong>Enoque</strong>.</p>
+            
+            <div class="verse-card">
+                <blockquote>"Caim teve relações com sua mulher, e ela concebeu e deu à luz Enoque; e Caim construiu uma cidade, e chamou a cidade de Enoque, em homenagem ao nome de seu filho."</blockquote>
+                <cite>Gênesis 4:17</cite>
+            </div>
+
+            <p>Diferente das cidades modernas, as cidades antigas eram cercadas por muralhas imponentes. Para Caim, a cidade era um lugar de <strong>autopreservação</strong> contra o medo. Infelizmente, essa cultura gerou vingança, como visto em Lameque, que se vangloriava de sua violência (Gênesis 4:23-24).</p>
+
+            <h3><i class="fa-solid fa-gopuram"></i> Babilônia: A Cidade Monstruosa</h3>
+            <p>A Babilônia (Babel) representa a tentativa humana de alcançar o céu por esforço próprio. Enquanto o Jardim do Éden era protegido por Deus, a Babilônia era protegida por muros e orgulho.</p>
+
+            <div class="contrast-box">
+                <div class="contrast-item">
+                    <h4>Babilônia (Homem)</h4>
+                    <p>Torre no centro. Autopreservação. Paz imposta pelo medo. Recursos retidos.</p>
+                </div>
+                <div class="contrast-item">
+                    <h4>Éden (Deus)</h4>
+                    <p>Árvore da Vida no centro. Generosidade. Presença celestial. Rios que fluem para fora.</p>
+                </div>
+            </div>
+
+            <h3><i class="fa-solid fa-crown"></i> Jerusalém: A Cidade-Jardim que Deu Errado</h3>
+            <p>Davi escolheu Jerusalém para ser a capital. Quando trouxe a Arca da Aliança para lá, Jerusalém tornou-se uma imagem da cidade-jardim de Deus — um lugar de festa, abundância e paz (2 Samuel 6:12-19).</p>
+            <p>Contudo, Davi seguiu os passos de Caim ao assassinar Urias. A cidade-jardim corrompeu-se, tornando-se um "covil de ladrões". Eventualmente, um monstro maior — a Babilônia histórica — destruiu seus muros e levou o povo para o exílio (2 Reis 25).</p>
+
+            <h3><i class="fa-solid fa-droplet"></i> A Esperança Profética</h3>
+            <p>Os profetas nunca perderam a esperança. Ezequiel teve uma visão de uma nova Jerusalém onde águas jorravam do templo, transformando o deserto em vida e curando até o Mar Morto.</p>
+
+            <div class="verse-card">
+                <blockquote>"E junto ao rio, em suas margens, crescerão todos os tipos de árvores frutíferas... seus frutos servirão de alimento e suas folhas de remédio."</blockquote>
+                <cite>Ezequiel 47:12</cite>
+            </div>
+
+            <h2>Jesus e a Cidade no Alto do Monte</h2>
+            <p>Jesus não começou seu ministério nas grandes capitais corruptas, mas nas colinas da Galileia. Ele chamou seus seguidores para serem uma nova espécie de cidade.</p>
+
+            <div class="verse-card">
+                <blockquote>"Vocês são a luz do mundo. Uma cidade construída sobre um monte não pode ser escondida."</blockquote>
+                <cite>Mateus 5:14</cite>
+            </div>
+
+            <p>A ética de Jesus inverteu a lógica de Caim: em vez de muros para autoproteção, Ele ensinou a <strong>generosidade radical</strong>. Em vez de vingança, o <strong>perdão</strong>. Jesus venceu o medo da morte — o alicerce das cidades humanas — ao ser ressuscitado.</p>
+
+            <h3><i class="fa-solid fa-earth-americas"></i> Cidadãos de uma Nova Criação</h3>
+            <p>Hoje, os seguidores de Jesus vivem como "estrangeiros e peregrinos". Eles buscam o bem da cidade terrena onde vivem, mas sabem que sua cidadania real está nos céus.</p>
+
+            <div class="verse-card">
+                <blockquote>"Pois aqui não temos cidade permanente, mas buscamos a cidade que está por vir."</blockquote>
+                <cite>Hebreus 13:14</cite>
+            </div>
+
+            <h2>O Destino Final: A Cidade-Jardim</h2>
+            <p>A história da Bíblia não termina no Éden, nem termina em uma destruição. Termina com Deus trazendo Sua cidade para a Terra. A Nova Jerusalém é a fusão perfeita entre a cultura humana redimida e a criação de Deus.</p>
+
+            <div class="verse-card">
+                <blockquote>"A cidade não precisa de sol nem de lua... pois a glória de Deus a ilumina, e o Cordeiro é a sua lâmpada... as suas portas jamais se fecharão."</blockquote>
+                <cite>Apocalipse 21:23-25</cite>
+            </div>
+
+            <p>Nesta cidade final, os muros não servem para excluir por medo, pois a paz é eterna e a presença de Deus é plena.</p>
+
+            
+        </div>
+    </article>
+
+
+    <script>
+        window.onscroll = function() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        };
+    </script>
+</body>
+</html>

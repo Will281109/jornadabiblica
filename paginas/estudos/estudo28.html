@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Esperança segundo a Bíblia | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+   
+
+    <article>
+        <div class="study-header">
+            <span class="category">Vida Cristã</span>
+            <h1>A Esperança segundo a Bíblia</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 8 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>Ó minha alma, espera somente em Deus, porque dele vem a minha esperança. Só ele é a minha rocha e a minha salvação; é a minha defesa; não serei abalado.</blockquote>
+                <cite>Sl 62.5-6</cite>
+            </div>
+
+            <h2>A DEFINIÇÃO DE ESPERANÇA BÍBLICA</h2>
+            <p>O conceito de esperança aponta para o futuro (cf. Rm 8.24-25). No entanto, envolve muito mais do que um desejo ou anseio por algo no futuro. A esperança bíblica implica uma segurança profunda, uma confiança firme, a respeito das coisas futuras, particularmente as que se baseiam nas promessas de Deus e no que Ele nos revelou através da sua Palavra. Em outras palavras, a esperança bíblica está ligada diretamente a - e não pode estar separada de - uma fé firme (Rm 15.13; Hb 11.1) e uma confiança total em Deus (Sl 33.21-22), O salmista faz claramente um paralelo (isto é, uma analogia ou uma relação direta entre uma coisa e outra) entre "confiança" e "esperança": "Não confieis em príncipes nem em filhos de homens, em quem não há salvação. [...] Bem-aventurado aquele que tem o Deus de Jacó por seu auxílio e cuja esperança está posta no Senhor, seu Deus" (Sl 146.3-5; cf. Jr 17.7). Isto significa que a esperança certa do povo de Deus é uma esperança que "não traz confusão" (Rm 5.5; cf. Sl 22.4-5; Is 49.23). A esperança é como uma âncora que pode nos manter firmes em todas as circunstâncias da vida (Hb 6.19-20).</p>
+
+            <h2>A BASE DA ESPERANÇA DOS CRENTES</h2>
+            <p>O alicerce para a esperança confiante de um justo está baseado na natureza e no caráter de Deus, em seu Filho, Jesus Cristo, e na sua Palavra (como revelada na Bíblia; veja o artigo OS ATRIBUTOS DE DEUS, p. 1025).</p>
+
+            <p>(1) A Escritura revela como Deus sempre provou ser fiel ao seu povo no passado. O Salmo 22, por exemplo, revela a luta de Davi com uma situação pessoal que ameaça a sua vida. Quando ele reflete sobre as ações passadas de Deus, porém, sente-se confiante de que Deus irá resgatá-lo: "Em ti confiaram nossos pais; confiaram, e tu os livraste" (Sl 22.4). O poder miraculoso que Deus demonstrou em benefício de seu povo fiel fica evidente no êxodo (quando os israelitas foram resgatados da escravidão no Egito), na conquista de Canaã (a terra que Deus havia prometido a Israel), nos milagres de Jesus e dos líderes pioneiros da igreja primitiva do Novo Testamento, e na vida de incontáveis cristãos desde então (veja os quadros OS MILAGRES DE JESUS, p. 1911, e OS MILAGRES DOS APÓSTOLOS, p. 1912). Todos esses atos poderosos de livramento, resgate, salvação e cura deveriam fazer com que confiássemos no Senhor como o nosso ajudador (cf. Sl 105; 124.8; Hb 13.6; veja Êx 6.7, nota). Por outro lado, aqueles que não têm um relacionamento pessoal com Deus não têm motivos ou uma base firme para a esperança (Ef 2.12; 1Ts 4.13).</p>
+
+            <p>(2) A revelação completa da nova aliança em Jesus Cristo (isto é, o plano de Deus de salvação espiritual, um novo relacionamento entre Deus e as pessoas através da vida, morte e ressurreição de seu Filho, Jesus Cristo) concede ainda mais motivos para termos uma esperança confiante em Deus. O Filho de Deus veio para nos libertar e destruir as obras do diabo (1 Jo 3.8), que é chamado de "o deus deste século" (2Co 4.4; cf. Gl 1.4; Hb 2.14; veja 1 Jo 5.19, nota; veja o artigo O SOFRIMENTO DOS JUSTOS, p. 853). Quando Jesus expulsou demônios (isto é, ordenou que saíssem das pessoas em cujos corpos habitavam) durante o seu ministério terreno, Ele demonstrou a sua autoridade e o seu poder sobre Satanás (veja o artigo PODER SOBRE SATANÁS E OS DEMÔNIOS, p. 1707). Em última análise, através da sua morte e ressurreição, Jesus despedaçou o poder do império espiritual maligno de Satanás (cf. Jo 12.31), e demonstrou o poder do reino de Deus (veja o artigo O REINO DE DEUS, p. 1638). Pedro exclama sobre a nossa esperança: "Bendito seja o Deus e Pai de nosso Senhor Jesus Cristo, que, segundo a sua grande misericórdia, nos gerou de novo para uma viva esperança, pela ressurreição de Jesus Cristo dentre os mortos" (1 Pe 1.3). Por essa razão, o próprio Senhor Jesus é chamado de a nossa esperança (Cl 1.27; 1 Tm 1.1), e temos acesso ao seu poder pelo Espírito Santo, a quem Jesus enviou para nos guiar e nos capacitar (Rm 15.12-13; cf. 1Pe 1.13; veja Êx 17.11, nota). A obra salvadora de Jesus Cristo continuará em nossa vida, tornando-nos confiantes de que "aquele que em vós começou a boa obra a aperfeiçoará até ao Dia de Jesus Cristo" (Fp 1.6), quando Ele "aparecerá segunda vez, sem pecado, aos que o esperam para a salvação" (Hb 9.28).</p>
+
+            <p>(3) A Palavra de Deus é a terceira base da esperança. Deus revelou a sua Palavra através dos profetas e apóstolos (isto é, mensageiros e líderes pioneiros da igreja em seus estágios iniciais, alguns dos quais escreveram as cartas do NT na Bíblia Sagrada). O Espírito Santo de Deus inspirou esses mensageiros piedosos a escrever exatamente o que Ele queria transmitir ao seu povo - sem nenhum erro (2Tm 3.16; 2Pe 1.19-21; veja o artigo A INSPIRAÇÃO E A AUTORIDADE DAS ESCRITURAS, p. 2275). Nenhuma obra escrita na história suportou mais exames minuciosos e resistiu a mais tentativas de desacreditá-la e destruí-la do que a Bíblia. No entanto, ela prevaleceu e provou ser mais do que confiável em incontáveis vidas por toda a história. Até o dia de hoje, suas promessas e profecias continuam a ser cumpridas. Nada que Deus predisse em sua Palavra deixou de acontecer exatamente como Ele disse, e nada do que ainda está por vir deixará de acontecer como na Palavra está predito (cf. Mt 5.18; Lc 21.32-33; veja os quadros PROFECIAS DO ANTIGO TESTAMENTO CUMPRIDAS EM CRISTO, p. 1035, e OS ÚLTIMOS DIAS DA HISTÓRIA, p. 2408). Visto que a sua Palavra eterna "permanece no céu" (Sl 119.89), devemos colocar a nossa esperança nesta Palavra (Sl 119.49,74,81,114,147; 130.5; cf. At 26.6; Rm 15.4), porque ela resiste a tudo e jamais falhará. Na verdade, tudo o que sabemos a respeito de Deus e de Jesus Cristo está revelado em sua Palavra inspirada.</p>
+
+            <h2>O FOCO DA ESPERANÇA DO CRENTE</h2>
+            <p>A máxima esperança e confiança de um cristão não deve estar em outros seres humanos (Sl 33.16-17; 147.10-11), ou nos bens materiais, ou no dinheiro (Sl 20.7; Mt 6.19-21; Lc 12.13-21; 1Tm 6.17; veja Nm 18.20, nota; veja o artigo RIQUEZA E POBREZA, p. 1810). Em vez disso, a esperança de um cristão deve estar em Deus, em seu Filho, Jesus Cristo, e em sua Palavra. E o que esta esperança envolve?</p>
+
+            <p>(1) Temos esperança na graça de Deus (isto é, em seu favor imerecido, sua misericórdia, bondade e ajuda), e no fato de que Ele nos ajudará a atravessar qualquer dificuldade ou sofrimento que enfrentarmos nesta vida (Sl 33.18-19; 42.1-5; 71.1-5,13-14; Jr 17.17-18). Às vezes, Ele nos resgatará dessas situações; em outras ocasiões, Ele nos dará a força necessária para suportarmos as aflições que continuarão.</p>
+
+            <p>(2) Temos a esperança de que chegará o tempo em que os nossos sofrimentos finalmente terminarão, quando a aflição e a corrupção que o pecado trouxe sobre a terra terão fim, e quando o nosso corpo será ressuscitado para vivermos para sempre (Rm 8.18-25; cf. Sl 16.9-10; 2Pe 3.12; veja At 24.15, nota; veja o artigo A RESSURREIÇÃO DO CORPO, p. 2114).</p>
+
+            <p>(3) Temos a esperança de que Deus levará o nosso crescimento espiritual e salvação à perfeição - quando passarmos desta vida, e o nosso relacionamento com Deus continuar pela eternidade (1 Ts 5.8; veja o artigo TERMOS BÍBLICOS PARA DESIGNAR SALVAÇÃO, p. 2012).</p>
+
+            <p>(4) Temos a esperança de ter um lar eterno no novo céu (2Co 5.1-5; 2Pe 3.13; veja Jo 14.2, nota), naquela cidade "da qual o artífice e construtor é Deus" (Hb 11.10).</p>
+
+            <p>(5) Temos o que as Escrituras chamam de "bem-aventurada esperança" (Tt 2.13) - a ocasião em que Jesus voltará e os seus servos fiéis serão arrebatados da terra para encontrá-lo nos ares (1 Ts 4.13-18; veja o artigo O ARREBATAMENTO, p. 2232). Quando esse dia chegar, os servos de Jesus o verão como Ele é, e passarão a ser semelhantes a Ele (Fp 3.20-21; 1Jo 3.2-3).</p>
+
+            <p>(6) Temos a esperança de recebermos um galardão pelo serviço fiel a Deus nesta vida - uma coroa de justiça (2Tm 4.8), de glória (1 Pe 5.4), e a coroa da vida (Ap 2.10).</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>A esperança bíblica é uma âncora firme baseada em Deus e Sua Palavra. Em que área da sua vida você mais precisa ancorar sua esperança nEle hoje?</li>
+                    <li>Reflita nas bases da esperança (fidelidade de Deus no passado, nova aliança em Cristo, Palavra eterna). Qual dessas mais fortalece sua confiança agora?</li>
+                    <li>A "bem-aventurada esperança" é a volta de Jesus. Como essa expectativa pode mudar sua perspectiva sobre dificuldades atuais e motivar uma vida fiel?</li>
+                </ul>
+            </div>
+
+            
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

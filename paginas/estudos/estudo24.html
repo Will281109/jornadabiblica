@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Adoração | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">Vida Cristã</span>
+            <h1>A Adoração: Expressão sincera de reverência e amor a Deus</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 12 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>E Esdras abriu o livro perante os olhos de todo o povo; porque estava acima de todo o povo; e, abrindo-o ele, todo o povo se pôs em pé. E Esdras louvou o Senhor, o grande Deus; e todo o povo respondeu: Amém! Amém! — levantando as mãos; e inclinaram-se e adoraram o Senhor, com o rosto em terra.</blockquote>
+                <cite>Neemias 8:5-6</cite>
+            </div>
+
+            <h2>DEFINIÇÃO DE ADORAÇÃO AO DEUS VERDADEIRO</h2>
+            <p>A palavra "adoração" em inglês (worship) deriva de uma antiga palavra inglesa, worthship, que descreve atos e atitudes que estimam e honram a dignidade de Deus e expressam reverência e admiração por Ele. A verdadeira adoração é centrada em Deus, e não no homem. Ela se concentra nas características do caráter de Deus (veja o artigo OS ATRIBUTOS DE DEUS, p. 1025). A adoração cristã implica uma resposta apropriada dos seguidores de Jesus ao caráter de Deus e à sua presença, expressando gratidão por quem Ele é e pelo que Ele fez por nós. A adoração sincera exige um compromisso de fé e o reconhecimento de que Deus é o Criador todo-poderoso do céu e da terra. Significa confessar que Jesus é o Senhor - o Líder e a autoridade suprema - das nossas vidas. Nós fomos criados para honrar e adorar a Deus (Sl 100.2-3; Is 43.6-7; Rm 12.1; Cl 1.16-17; Ap 4.11).</p>
+
+            <h2>BREVE HISTÓRIA DA ADORAÇÃO AO DEUS VERDADEIRO</h2>
+            <p>Os seres humanos adoram a Deus desde o princípio da história. Adão e Eva desfrutaram de um relacionamento pessoal com Deus no jardim do Éden (cf. Gn 3.8). Os seus filhos, Caim e Abel, trouxeram ofertas (heb. minchah, palavra também traduzida como "tributo" ou "presente") ao Senhor. Caim trouxe vida vegetal, e Abel trouxe vida animal (Gn 4.3-4). Os descendentes de Sete invocaram "o nome do Senhor" (Gn 4.26). Noé edificou um altar ao Senhor para uma oferta de holocausto depois do dilúvio (Gn 8.20). Abraão erigiu muitos altares por toda a região que posteriormente se tornaria a terra prometida de Israel, para que ele pudesse apresentar ofertas a Deus (Gn 12.7-8; 13.4,18; 22.9) e sentir íntima comunhão pessoal com Ele (Gn 18.23-33; 22.11-18).</p>
+
+            <p>No entanto, foi apenas depois do êxodo (a partida de Israel em massa da escravidão no Egito) que Israel construiu o tabernáculo (a estrutura móvel que servia de centro de adoração e representava a presença de Deus) e a adoração pública foi formalizada entre o povo de Deus. Depois disso, sacrifícios foram oferecidos continuamente, especialmente no sábado (isto é, o dia que Deus separou para o descanso e a adoração; veja o quadro SACRIFÍCIOS DO ANTIGO TESTAMENTO, p. 192). Deus também estabeleceu várias festas religiosas anuais como ocasiões para adoração pública (Êx 23.14-17; Lv 1-7; 16; 23.4-44; Dt 12; 16; veja o quadro FESTAS DO ANTIGO TESTAMENTO, p. 234). Posteriormente, essa adoração foi centralizada no templo em Jerusalém (observe os planos de Davi, registrados em 1 Cr 22-26). Quando o templo foi destruído, em 586 a.C., os judeus construíram sinagogas para servirem de lugar para instrução e adoração enquanto estivessem no exílio (veja a Introdução de Esdras, para uma visão geral do "exílio") ou onde quer que estivessem estabelecidos. Essas construções continuaram a ser usadas para adoração mesmo depois que o segundo templo foi edificado, sob a liderança de Zorobabel (Ed 3-6). Havia sinagogas por toda a Judeia e por todo o mundo romano durante os tempos do Novo Testamento (p.ex., Lc 4.16; Jo 6.59; At 6.9; 13.14; 14.1; 17.1,10; 18.4; 19.8; 22.19).</p>
+
+            <p>Nos primeiros dias da igreja do Novo Testamento, a adoração tinha lugar no templo de Jerusalém e também em lares (At 2.46-47). Fora de Jerusalém, os cristãos adoravam nas sinagogas, enquanto podiam fazer isso. Quando não mais lhes foi permitido, eles passaram a se encontrar em outros lugares - normalmente nas casas das pessoas (cf. At 18.7; Rm 16.5; Cl 4.15; Fm 2), embora, às vezes, tivessem acesso a algum edifício público (At 19.9-10).</p>
+
+            <h2>EXPRESSÕES DA ADORAÇÃO CRISTÃ</h2>
+            <p>A adoração verdadeira e sincera descrita na Bíblia assume diversas formas e posturas, incluindo: inclinar-se (Gn 24.52; 1Rs 1.47-48), ficar em pé (Êx 33.10), dançar (2Sm 6.14), bater palmas e gritar (Sl 47.1), levantar as mãos (Sl 134.2; 1Tm 2.8), ajoelhar-se (Dn 6.10), andar e saltar (At 3.8), e prostrar-se com o rosto voltado para o chão (Ap 5.14). Se tais formas de expressão forem convenientes e representarem respostas sinceras à consciência da presença de Deus, serão aceitáveis a Deus. Independentemente da posição adotada, vários elementos tendem a caracterizar a verdadeira adoração.</p>
+
+            <p>(1) Dois princípios essenciais ajudam a dirigir e orientar a adoração cristã,<br>
+            (a) A adoração genuína acontece em espírito e em verdade (veja Jo 4.23, nota). Em outras palavras, a adoração não é apenas uma atividade física ou mental, mas também um exercício espiritual - uma resposta apropriada à maneira como Deus se revelou a nós, especificamente por meio do seu Filho, Jesus Cristo (cf. Jo 14.6). A adoração envolve a interação sincera entre o espírito humano e o Santo Espírito de Deus (1Co 12.7-12).<br>
+            (b) A prática da adoração cristã deve se adequar ao padrão do Novo Testamento para a igreja (veja At 7.44, nota). Os seguidores de Cristo hoje precisam desejar e buscar as mesmas formas de expressão e experiência de adoração descritas por todo o Novo Testamento (veja a seção "Princípio de interpretação" na Introdução de Atos, NT).</p>
+
+            <p>(2) A característica essencial da adoração no Antigo Testamento era o sistema de sacrifícios (veja Nm 28-29). Uma vez que o sacrifício de Cristo na cruz satisfez definitivamente esse sistema, não mais há necessidade do derramamento de sangue como parte da adoração cristã (veja Hb 9.1-10.18). Com o sacramento, ou cerimônia simbólica, da Ceia do Senhor (isto é, a comunhão), a igreja do Novo Testamento comemorava continuamente o sacrifício único de Cristo (1 Co 11.23-26). Além disso, a igreja é incentivada a oferecer "sempre, por ele, a Deus sacrifício de louvor, isto é, o fruto dos lábios que confessam o seu nome" (Hb 13.15) e oferecer o próprio corpo "em sacrifício vivo, santo e agradável a Deus" (Rm 12.1, nota).</p>
+
+            <p>(3) Louvar a Deus é essencial para a adoração cristã. O louvor era um elemento primordial na adoração de Israel (p.ex., Sl 100.4; 106.1; 111.1; 113.1; 117), bem como no princípio da adoração cristã (At 2.46-47; 16.25; Rm 15.10-11; Hb 2.12; veja o artigo O LOUVOR, p. 914).</p>
+
+            <p>(4) Uma maneira importante de louvar a Deus é entoar salmos, hinos e cânticos espirituais. O Antigo Testamento está cheio de incentivos para cantar ao Senhor (p.ex., 1Cr 16.23; Sl 95.1; 96.1-2; 98.1,5-6; 100.1-2). Na ocasião do nascimento de Jesus, toda a multidão celestial irrompeu em um cântico de louvor (Lc 2.13-14). A igreja do Novo Testamento era uma comunidade que cantava (1Co 14.15; Ef 5.19; Cl 3.16; Tg 5.13). A Bíblia descreve os cristãos do Novo Testamento cantando com a mente (isto é, com um idioma humano conhecido) ou com o espírito (isto é, em uma linguagem espiritual, ou "línguas"; veja 1Co 14.15, nota). Sob nenhuma circunstância eles consideravam o canto uma forma de diversão, disfarçada de adoração. Embora a música seja uma expressão importante da adoração, devemos tomar o cuidado de não considerá-la o meio principal de adorar, nem permitir que ela assuma o lugar da adoração genuína. A música certamente pode inspirar e facilitar a adoração, mas também pode às vezes dominar os sentidos e desviar a atenção de Deus. Dessa maneira, as pessoas acabam adorando uma canção, um cantor, ou ainda um sentimento, em vez de adorarem a Deus.</p>
+
+            <p>(5) A oração é outro aspecto vital da adoração. Os santos do Antigo Testamento se comunicavam constantemente com Deus por meio da oração (p.ex., Gn 20.17; Nm 11.2; 1Sm 8.6; 2Sm 7.27; Dn 9.3-19; cf. Tg 5.17-18). Os líderes da igreja do Novo Testamento também oraram continuamente depois que Jesus subiu aos céus (At 1.14) e a oração se tornou uma parte regular da adoração cristã (At 2.42; 20.36; 1Ts 5.17; veja o artigo A ORAÇÃO EFICAZ, p. 600). Essas orações poderiam ser pessoais (p.ex., At 4.24-30), ou intercessórias, isto é, orações em favor de outras pessoas (p.ex., Rm 15.30-32; Ef 6.18). A oração cristã deve sempre envolver agradecimento a Deus (Ef 5.20; Fp 4.6; Cl 3.15,17; 1Ts 5.18). Como o canto, ela pode ser feita com uma linguagem humana conhecida, ou em línguas (1Co 14.13-15).</p>
+
+            <p>(6) A confissão do pecado (isto é, admitir abertamente as nossas ofensas a Deus) era, claramente, uma parte importante da adoração no Antigo Testamento. Deus havia estabelecido o Dia da Expiação para os israelitas, como uma ocasião para a confissão nacional de suas ofensas a Ele (Lv 16; veja o artigo O DIA DA EXPIAÇÃO, p. 210). Em sua oração na consagração do templo, Salomão reconheceu a importância da confissão (1Rs 8.30-39). Quando Esdras e Neemias perceberam quanto o povo de Deus havia infringido e negligenciado a sua lei, lideraram toda a nação de Judá em uma intensa oração pública de confissão (Ne 9). Quando Jesus deu aos seus seguidores um exemplo de como orar (frequentemente mencionado como a Oração do Senhor), Ele os ensinou a pedir perdão pelos seus pecados (Mt 6.12). Tiago instruiu os crentes a confessar os seus pecados uns aos outros (Tg 5.16), porque admitir os erros e falhas espirituais pode gerar responsabilidade e inspirar a certeza do perdão piedoso de Deus (1 Jo 1.9).</p>
+
+            <p>(7) A adoração também inclui a leitura pública da Palavra de Deus e a pregação da sua verdade. Nos tempos do Antigo Testamento, Deus determinou que a cada sete anos, na Festa dos Tabernáculos, todos os israelitas deveriam se congregar para a leitura pública da Lei de Moisés (Dt 31.9-13). O mais claro exemplo deste elemento na adoração do Antigo Testamento aconteceu durante o período de Esdras e Neemias (veja Ne 8.1-12). A leitura das Escrituras se tornou uma parte regular da adoração na sinagoga, no sábado (veja Lc 4.16-19; At 13.15). De maneira similar, quando os crentes do Novo Testamento se congregavam para adorar, também ouviam a Palavra de Deus (1Tm 4.13; cf. Cl 4.16; 1Ts 5.27), juntamente com o ensinamento, a pregação e instruções práticas baseadas na verdade da Palavra (1Tm 4.13; 2Tm 4.2; cf. At 19.8-10).</p>
+
+            <p>(8) Sempre que o povo de Deus no Antigo Testamento se congregava nos átrios do Senhor (isto é, lugares de adoração), eram instruídos a trazer dízimos (a décima parte da sua renda ou produção) e ofertas (Sl 96.8; Ml 3.10). No Novo Testamento, Paulo escreveu aos cristãos de Corinto a respeito da coleta para a igreja de Jerusalém: "No primeiro dia da semana, cada um de vós ponha de parte o que puder ajuntar, conforme a sua prosperidade" (1Co 16.2). Este é um exemplo de como a verdadeira adoração a Deus nos proporciona a oportunidade de oferecermos os nossos dízimos e nossas ofertas a Ele (veja o artigo DÍZIMOS E OFERTAS, p. 1589).</p>
+
+            <p>(9) Um elemento singular da adoração no Novo Testamento era, e ainda é, o papel do Espírito Santo, sua manifestação e obras realizadas através dos seguidores de Cristo. Entre os "dons" espirituais - destinados a honrar a Cristo e edificar a igreja - estão a mensagem de sabedoria, a mensagem de conhecimento, a fé extraordinária, dons de cura, poderes milagrosos, profecia, o discernimento de espíritos, o falar em línguas e a interpretação de línguas (1Co 12.7-10). A natureza carismática (isto é, guiada pelo Espírito, entusiástica) da adoração dos primeiros cristãos é descrita nas instruções de Paulo: "Quando vos ajuntais, cada um de vós tem salmo, tem doutrina, tem revelação, tem língua, tem interpretação" (1Co 14.26). Em suas cartas à igreja de Corinto, Paulo forneceu princípios para guiar e regulamentar esses aspectos da adoração (veja 1 Co 14.26-33, notas). O princípio prioritário era que qualquer exercício dos dons do Espírito Santo durante a adoração tinha de fortalecer e auxiliar toda a congregação (1Co 12.7; 14.26; veja o artigo DONS ESPIRITUAIS PARA OS CRENTES, p. 2101).</p>
+
+            <p>(10) O outro elemento primordial na adoração do Novo Testamento foi a celebração dos sacramentos - as cerimônias simbólicas do batismo e da Ceia do Senhor (isto é, a comunhão). A Ceia do Senhor (ou o "partir do pão", veja At 2.42) parece ter sido observada diariamente entre os crentes, logo depois do Pentecostes (isto é, o dia em que Deus enviou o seu Espírito Santo para encher e capacitar os seguidores de Cristo, At 2.46-47). Posteriormente, a Ceia se tornou uma celebração ao menos semanal (At 20.7,11). O batismo, como Cristo ordenou (Mt 28.19-20), acontecia sempre que as pessoas se convertiam à fé em Cristo e passavam a fazer parte da igreja (At 2.41; 8.12; 9.18; 10.48; 16.30-33; 19.1-5).</p>
+
+            <h2>AS BÊNÇÃOS DE DEUS PARA OS VERDADEIROS ADORADORES</h2>
+            <p>Quando acontece a verdadeira adoração, Deus tem muitas bênçãos armazenadas para o seu povo. Ele promete: (1) estar presente (Mt 18.20) e ter comunhão íntima com eles (Ap 3.20); (2) guiá-los e circundá-los com a sua glória (cf. Êx 40.35; 2Cr 7.1; 1 Pe 4.14); (3) derramar bênçãos sobre eles (Ez 34.26), especialmente a paz (Sl 29.11; veja o artigo A PAZ DE DEUS, p. 1287); (4) dar-lhes alegria abundante (Sl 122.1; Jo 15.11); (5) atender às suas orações, quando feitas com fé sincera (Mc 11.24; Tg 5.15; veja o artigo A ORAÇÃO EFICAZ, p. 600); (6) enchê-los com o seu Espírito Santo e com coragem de viver para Cristo e contar a outros a respeito dele (At 4.31); (7) trabalhar entre eles de maneira especial e notória por intermédio do Espírito Santo (1Co 12.7-13); (8) guiá-los em toda a verdade, por meio do Espírito (Jo 15.26; 16.13); (9) purificá-los, desenvolvê-los e consagrá-los para os seus propósitos pelo poder e pela instrução da sua Palavra e do Espírito Santo (Jo 17.17-19); (10) consolá-los, encorajá-los e fortalecê-los (Is 40.1; 1Co 14.26; 2Co 1.3-4; 1Ts 5.11); (11) expor a realidade do pecado, da justiça e do juízo (veja Jo 16.8, nota); e (12) salvar espiritualmente as pessoas cujo pecado for revelado a elas durante um culto de adoração (1Co 14.22-25).</p>
+
+            <h2>OBSTÁCULOS PARA A VERDADEIRA ADORAÇÃO</h2>
+            <p>Apenas o fato de alguém afirmar que é parte do povo de Deus e congregar-se para adorar não garante que a verdadeira adoração esteja acontecendo, ou que Deus esteja aceitando o louvor e ouvindo as orações dessa pessoa.</p>
+
+            <p>(1) Se a adoração for meramente uma questão de palavras e formalidades e se o coração não estiver concentrado no Senhor, então Ele não aceitará a adoração. Cristo repreendeu severamente os fariseus por sua hipocrisia, porque observavam rigidamente as regulamentações da lei de Deus enquanto o coração permanecia longe dele (Mt 15.7-9; 23.23-28; Mc 7.5-7). Perceba a crítica similar feita à igreja de Éfeso, que continuava a adorar o Senhor, embora o povo tivesse perdido o seu verdadeiro amor por Cristo (Ap 2.1-5). Em sua carta à igreja de Corinto, Paulo avisa aos crentes que aquele que participa da Ceia do Senhor sem antes se arrepender de seus pecados e ter a devida consideração pelos seus irmãos está, na realidade, atraindo juízo sobre si mesmo (1 Co 11.28-30; veja 11.27, nota). Em resumo, só podemos esperar que Deus aceite a nossa adoração se o nosso coração estiver em um relacionamento correto com Ele (Tg 4.8; cf. Sl 24.3-4).</p>
+
+            <p>(2) Outro obstáculo para a verdadeira adoração é adotar um modo de vida de concessão espiritual, pecado e imoralidade. Deus se recusou a aceitar os sacrifícios do rei Saul porque ele desobedeceu à ordem de Deus (1Sm 15.1-23). Isaías repreendeu o povo de Deus referindo-se a eles como "nação pecadora", "povo carregado da iniquidade da semente de malignos" (Is 1.4), embora eles ainda estivessem oferecendo sacrifícios e celebrando seus dias santos. Por essa razão, o Senhor declarou através de Isaías: "As vossas Festas da Lua Nova, e as vossas solenidades, as aborrece a minha alma; já me são pesadas; já estou cansado de as sofrer. Pelo que, quando estendeis as mãos, escondo de vós os olhos; sim, quando multiplicais as vossas orações, não as ouço, porque as vossas mãos estão cheias de sangue" (Is 1.14-15). No Novo Testamento, Jesus exortou os adoradores da igreja de Sardes a despertar: "não achei as tuas obras perfeitas diante de Deus" (Ap 3.2). De modo semelhante, Tiago indica que Deus não ouvirá as orações egoístas daqueles que não se separam das crenças e dos comportamentos profanos do mundo (Tg 4.1-5; veja o artigo A ORAÇÃO EFICAZ, p. 600). O povo de Deus pode esperar que Ele manifeste a sua poderosa presença e aceite a adoração do seu povo somente se eles conservarem a vida espiritualmente pura (Sl 24.3-4; Tg 4.8). A adoração deve ser mais do que um culto ou uma cerimônia; é um modo de vida que estima e honra a Deus - em palavras e ações - em todas as situações (Rm 12.1; Hb 13.15-16).</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>A adoração é centrada em Deus e não em mim. Como você pode ajustar sua vida diária para que ela seja um "sacrifício vivo" contínuo (Rm 12.1)?</li>
+                    <li>Quais obstáculos (hipocrisia, pecado não confessado, foco em emoções ou música) estão impedindo uma adoração mais verdadeira no seu coração ou na sua igreja?</li>
+                    <li>Escolha uma expressão bíblica de adoração (louvor, confissão, oração, leitura da Palavra, oferta) para priorizar esta semana e veja como Deus responde.</li>
+                </ul>
+            </div>
+
+            
+        </div>
+    </article>
+
+   
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

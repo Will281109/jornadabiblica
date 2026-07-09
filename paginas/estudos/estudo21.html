@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristo no Antigo Testamento | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        .content-body h3 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 30px 0 15px; font-size: 1.5rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+   
+
+    <article>
+        <div class="study-header">
+            <span class="category">Cristologia Bíblica</span>
+            <h1>Cristo no Antigo Testamento: Tipos e profecias que apontam para Jesus</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 8 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>Então, desceu e mergulhou no Jordão sete vezes, conforme a palavra do homem de Deus; e a sua carne tornou, como a carne de um menino, e ficou purificado.</blockquote>
+                <cite>2 Reis 5:14</cite>
+            </div>
+
+            <p>Um dos ensinamentos mais básicos do Novo Testamento é o de que Jesus Cristo (o Messias) cumpriu pessoalmente o Antigo Testamento (isto é, cumpriu as leis, as profecias e seus propósitos). O autor da Epístola aos Hebreus diz que, no passado, Deus falava ao povo por intermédio dos profetas, mas, nestes últimos dias, falou-nos pelo Filho (Hb 1.1-2). O próprio Senhor Jesus afirmou que não veio revogar a Lei ou os Profetas, mas cumprir (Mt 5.17). Depois da sua ressurreição, explicou aos discípulos como a Lei de Moisés, os Profetas e os Salmos haviam anunciado sua morte e ressurreição (Lc 24.25-27,44-46).</p>
+
+            <p>Para compreender corretamente essa relação entre Antigo e Novo Testamento, é necessário considerar o conceito de tipologia (simbolismo profético).</p>
+
+            <h2>O Conceito de Tipo</h2>
+            <p>Em teologia, um “tipo” é um símbolo profético — uma pessoa, evento ou instituição histórica que aponta para uma realidade futura mais plena. Essa realidade final é chamada de antítipo. Assim, elementos do Antigo Testamento encontram seu cumprimento definitivo em Cristo.</p>
+
+            <h2>PRINCÍPIOS DA TIPOLOGIA</h2>
+            <p>Um exame cuidadoso do Antigo Testamento revela que muitos eventos e personagens foram ordenados por Deus de modo a prenunciar o Messias. Dois princípios orientam esse entendimento:</p>
+            <ul>
+                <li>(1) Inserção no plano redentor de Deus. Qualquer interpretação tipológica deve considerar como o evento se relaciona com o propósito divino de salvar e restaurar espiritualmente a humanidade. A pergunta central é: de que maneira essa passagem aponta para a vinda do Messias prometido?</li>
+                <li>(2) Cumprimento em nível mais profundo. O cumprimento em Cristo ocorre em dimensão espiritual mais elevada que o fato histórico original. Muitas vezes, os próprios participantes do evento não tinham consciência de seu significado profético.</li>
+            </ul>
+            <p>Por exemplo, Davi, ao compor o Salmo 22, provavelmente não compreendia plenamente que suas palavras antecipavam o sofrimento de Cristo. Da mesma forma, Jeremias 31.15, que descreve o choro em Ramá durante o exílio babilônico, é aplicado em Mateus 2.18 ao massacre dos meninos em Belém ordenado por Herodes.</p>
+            <p>Frequentemente, o sentido cristológico torna-se claro apenas à luz da revelação neotestamentária.</p>
+
+            <h2>CATEGORIAS DOS TIPOS PROFÉTICOS</h2>
+            <p>Podemos identificar pelo menos quatro padrões principais pelos quais o Antigo Testamento aponta para Cristo.</p>
+
+            <p>(1) Passagens explicitamente citadas no Novo Testamento<br>
+            Alguns textos são claramente reconhecidos como profecias messiânicas:</p>
+            <ul>
+                <li>Isaías 7.14 — nascimento virginal (Mt 1.23)</li>
+                <li>Miqueias 5.2 — nascimento em Belém (Mt 2.6)</li>
+                <li>Zacarias 9.9 — entrada triunfal</li>
+                <li>Salmo 16.8-11 — ressurreição (At 2.25-32)</li>
+                <li>Melquisedeque (Gn 14.18-20; Sl 110.4) — tipo do sacerdócio eterno, conforme ensinado em Hebreus</li>
+            </ul>
+
+            <p>(2) Referências e alusões implícitas<br>
+            O Novo Testamento frequentemente associa eventos do Antigo Testamento ao ministério de Cristo:</p>
+            <ul>
+                <li>Gênesis 3.15 — promessa da vitória sobre a serpente</li>
+                <li>Êxodo 12 — o cordeiro pascal como símbolo do sacrifício de Cristo</li>
+                <li>Números 21.4-9 — a serpente levantada no deserto como figura da cruz</li>
+                <li>Isaías 53 — o Servo sofredor</li>
+                <li>Salmo 33.6 — criação pela Palavra, relacionada a João 1.1-3</li>
+            </ul>
+
+            <p>(3) Tipos ligados ao tema da redenção<br>
+            A libertação de Israel do Egito é o maior ato redentor do Antigo Testamento e prefigura a salvação realizada por Cristo. Entre os elementos tipológicos do Êxodo estão:</p>
+            <ul>
+                <li>Moisés</li>
+                <li>A Páscoa</li>
+                <li>A travessia do Mar Vermelho</li>
+                <li>O maná</li>
+                <li>A água da rocha</li>
+                <li>O tabernáculo</li>
+                <li>O sumo sacerdote</li>
+            </ul>
+            <p>Todos apontam para a obra redentora que seria plenamente realizada em Cristo.</p>
+
+            <p>(4) Modelos de como Deus lida com seu povo<br>
+            Certos eventos funcionam como padrões espirituais:</p>
+            <p>(a) A promessa a Abraão. Abraão aguardou o nascimento de Isaque segundo o tempo determinado por Deus. De modo semelhante, Cristo veio na “plenitude dos tempos” (Gl 4.4). A salvação é iniciativa divina, não resultado de esforço humano.</p>
+            <p>(b) O clamor de Israel no Egito. Antes da libertação, o povo clamou a Deus (Êx 2.23-24). Assim também, a salvação espiritual exige arrependimento e invocação do Senhor (Rm 10.13).</p>
+            <p>(c) Naamã e o Jordão (2Rs 5.1-14). Quando Naamã buscou cura de sua lepra, precisou humilhar-se e obedecer à palavra do profeta. Essa narrativa antecipa dois aspectos centrais do evangelho:</p>
+            <ol>
+                <li>A graça de Deus estende-se além de Israel (cf. Lc 4.27; Rm 15.8-12).</li>
+                <li>A purificação exige humildade e submissão.</li>
+            </ol>
+            <p>Assim como Naamã foi purificado ao obedecer, o pecador é purificado ao confiar em Cristo e abandonar o orgulho.</p>
+
+            <h2>Conclusão</h2>
+            <p>O Antigo Testamento não é apenas um registro histórico de homens piedosos. Ele contém promessas, instituições, eventos e objetos que foram ordenados por Deus como antecipações da obra redentora de Cristo.</p>
+            <p>Essas revelações possuem significado espiritual profundo tanto no antigo quanto no novo concerto. Em síntese, toda a Escritura converge para a pessoa e a obra de Jesus Cristo, que é o cumprimento pleno das promessas de Deus.</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>Como a história de Naamã (humildade + obediência = purificação) reflete o caminho da salvação em Cristo na sua vida? Onde você ainda resiste em se humilhar?</li>
+                    <li>Escolha um tipo do AT (ex: cordeiro pascal, serpente de bronze, maná) e reflita: como ele aponta para Jesus e fortalece sua fé hoje?</li>
+                    <li>A Bíblia toda converge para Cristo. Como isso muda sua leitura do Antigo Testamento? Comece a buscar Jesus em cada página.</li>
+                </ul>
+            </div>
+
+          
+        </div>
+    </article>
+
+    
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fugindo da Idolatria no Mundo Moderno | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* GLOSSÁRIO/NOTA */
+        .term-note {
+            background: #f0f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            border: 1px dashed var(--turquoise);
+            margin: 30px 0;
+        }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">Doutrina e Vida Cristã</span>
+            <h1>Fugindo da Idolatria no Mundo Moderno: Como identificar e destruir ídolos ocultos</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 7 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <p>A idolatria não acabou com o exílio babilônico. Ela apenas mudou de forma. Hoje, poucos curvam-se diante de estátuas de madeira, mas muitos corações ainda servem a outros "senhores". O apóstolo João encerra sua primeira carta com um alerta direto: "Filhinhos, guardai-vos dos ídolos" (1 João 5:21).</p>
+
+            <div class="verse-card">
+                <blockquote>Ninguém pode servir a dois senhores; porque ou há de odiar um e amar o outro, ou se dedicará a um e desprezará o outro. Não podeis servir a Deus e a Mamom.</blockquote>
+                <cite>Mateus 6:24</cite>
+            </div>
+
+            <h2>Ídolos modernos que disputam o trono de Deus</h2>
+            <p>A Bíblia define idolatria como qualquer coisa que toma o lugar de Deus no centro da nossa vida, confiança, tempo e afeto.</p>
+
+            <div class="term-note">
+                <strong>💡 Nota prática:</strong> Colossenses 3:5 chama a avareza (cobiça) de "idolatria". O que mais ocupa seu pensamento, suas emoções e suas decisões diárias? Isso revela seu deus funcional.
+            </div>
+
+            <h2>Formas comuns de idolatria hoje</h2>
+            <ul>
+                <li><strong>Materialismo e sucesso financeiro</strong> — Quando a segurança vem do saldo bancário, não de Deus (Lucas 12:15–21).</li>
+                <li><strong>A imagem e aprovação humana</strong> — Buscar validação nas redes sociais, likes e opiniões alheias (Gálatas 1:10).</li>
+                <li><strong>O eu (egoísmo e autonomia)</strong> — "Meu corpo, minhas regras", "Eu mereço ser feliz acima de tudo" (Filipenses 3:19).</li>
+                <li><strong>Relacionamentos e família</strong> — Colocar cônjuge, filhos ou amigos acima de Cristo (Mateus 10:37).</li>
+                <li><strong>Entretenimento e prazer</strong> — Horas intermináveis em séries, jogos ou pornografia, enquanto a Palavra é negligenciada.</li>
+            </ul>
+
+            <h2>Como identificar um ídolo no coração</h2>
+            <p>Timothy Keller sugere perguntas reveladoras:</p>
+            <ul>
+                <li>Com o que você mais se preocupa?</li>
+                <li>Com o que você mais se alegra ou se entristece?</li>
+                <li>Em que você investe mais tempo e dinheiro?</li>
+                <li>Se perdesse isso, sua vida perderia sentido?</li>
+            </ul>
+
+            <div class="verse-card">
+                <blockquote>Portanto, quer comais, quer bebais, ou façais qualquer outra coisa, fazei tudo para a glória de Deus.</blockquote>
+                <cite>1 Coríntios 10:31</cite>
+            </div>
+
+            <h2>A solução: Arrependimento e substituição</h2>
+            <p>Não basta parar de idolatrar — é preciso substituir o ídolo por algo maior: o próprio Deus. Isso acontece por meio de:</p>
+            <ul>
+                <li>Confissão e arrependimento genuíno (1 João 1:9)</li>
+                <li>Meditação constante na Palavra e oração</li>
+                <li>Comunhão com irmãos que nos ajudam a discernir</li>
+                <li>Obediência prática: redirecionar tempo, recursos e afeto para Cristo</li>
+            </ul>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>Faça as perguntas de identificação acima. Qual ídolo moderno está mais forte na sua vida agora?</li>
+                    <li>O que você mais teme perder? Como isso revela onde está sua verdadeira confiança?</li>
+                    <li>Escolha uma área específica e crie um plano prático esta semana para colocar Cristo no centro (ex: limite de tempo nas redes, devocional diário, generosidade financeira).</li>
+                </ul>
+            </div>
+
+            
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

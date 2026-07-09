@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Cuidado dos Pobres e Desfavorecidos | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">Teologia Bíblica / Ética Cristã</span>
+            <h1>O Cuidado dos Pobres e Desfavorecidos</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 12 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+
+            <div class="verse-card">
+                <blockquote>Porque sei que são muitas as vossas transgressões e enormes os vossos pecados; afligis o justo, tomais resgate e rejeitais os necessitados na porta. Portanto, o que for prudente guardará silêncio naquele tempo, porque o tempo será mau. Buscai o bem e não o mal, para que vivais; e assim o Senhor, o Deus dos Exércitos, estará convosco, como dizeis.</blockquote>
+                <cite>Amós 5.12-14</cite>
+            </div>
+
+            <p>Neste mundo, há ricos e pobres, há os que têm e os que não têm. Não é raro que aqueles que têm riqueza material se aproveitem dos que têm pouco. Como resultado, os que já têm mais do que necessitam frequentemente ficam ainda mais ricos às custas dos que ainda estão em necessidade (veja Sl 10.2,9-10; Is 3.14-15; Jr 2.34; Am 2.6-7; 5.12-13; Tg 2.6).</p>
+
+            <p>Mas a Bíblia se opõe violentamente aos maus tratos contra os que são menos privilegiados ou estão em necessidade. Se estivermos verdadeiramente obedecendo a Jesus e seguindo o seu exemplo, estaremos dispostos a deixar de lado os nossos próprios interesses, para servir e cuidar das necessidades dos outros (cf. 1Jo 3.16).</p>
+
+            <p>Na verdade, a Bíblia questiona o nosso amor por Deus, se não satisfizermos as necessidades dos outros: “Quem, pois, tiver bens do mundo e, vendo o seu irmão necessitado, lhe cerrar o seu coração, como estará nele a caridade (o amor) de Deus? Meus filhinhos, não amemos de palavra, nem de língua, mas por obra e em verdade” (1Jo 3.17-18).</p>
+
+            <p>O amor genuíno por Deus e pelos outros não é simplesmente uma questão de se preocupar ou se interessar; na verdade, o amor piedoso é ativo e satisfaz necessidades reais de maneira tangível. A Bíblia tem muito a dizer a respeito de como o povo de Deus deve tratar os pobres e menos privilegiados.</p>
+
+            <h2>O INTERESSE DE DEUS PELOS POBRES E MENOS PRIVILEGIADOS</h2>
+
+            <p>De várias maneiras, Deus expressou o seu grande interesse e compaixão pelos pobres, necessitados e oprimidos.</p>
+
+            <p>(1) O Senhor é o defensor dos que são pobres ou necessitados. Ele se revela como o seu refúgio (Sl 14.6; Is 25.4), o seu auxílio (Sl 40.17; 70.5), aquele que os livra (1Sm 2.8; Sl 12.5; 34.6; 35.10; 113.7; cf. Lc 1.52-53) e o seu sustento (Sl 10.14; 68.10; 132.15).</p>
+
+            <p>(2) Quando Deus revelou a sua lei aos israelitas, Ele proporcionou várias maneiras de aliviar – e, na verdade, eliminar – a pobreza na sua comunidade (veja Dt 15.7-11). O seu propósito global era “que entre ti não haja pobre; pois o Senhor abundantemente te abençoará na terra que o Senhor, teu Deus, te dará por herança, para a possuíres” (Dt 15.4).</p>
+
+            <p>Por este motivo, a lei de Deus não permitia a cobrança de juros nos empréstimos aos pobres (Êx 22.25; Lv 25.35-36). Se uma pessoa pobre oferecesse algo como garantia, a pessoa que lhe emprestasse o dinheiro teria que devolver o item até o pôr do sol. O salário devia ser pago diariamente (Dt 24.14-15). Durante a colheita, grãos caídos e cantos do campo eram deixados para os pobres (Lv 19.9-10; Dt 24.19-21). A cada sete anos, dívidas eram canceladas (Dt 15.1-6), e não se podia recusar empréstimo por proximidade do ano sabático (Dt 15.7-11). No Ano do Jubileu (a cada 50 anos), terras eram devolvidas às famílias originais (Lv 25.8-55). A justiça devia ser imparcial, sem favoritismo (Êx 23.2-3,6; Dt 1.17; cf. Pv 31.9).</p>
+
+            <p>(3) Lamentavelmente, os israelitas nem sempre obedeceram. Muitos ricos exploravam os pobres, e o Senhor enviou juízo pelos profetas (Is 1.21-25; Jr 17.11; Am 4.1-3; 5.11-13; Mq 2.1-5; Hc 2.6-8; Zc 7.8-14).</p>
+
+            <h2>A RESPONSABILIDADE DOS CRISTÃOS DO NOVO TESTAMENTO COM OS POBRES E MENOS PRIVILEGIADOS</h2>
+
+            <p>(1) Grande parte do ministério de Jesus foi dirigida aos pobres e menos privilegiados: explorados e oprimidos (Lc 4.18-19), samaritanos (Lc 17.11-19; Jo 4.1-42), leprosos (Mt 8.2-4), viúvas (Lc 7.11-15; 20.45-47), etc. Ele advertiu severamente os ricos que ignoravam os necessitados (Mc 10.17-25; Lc 6.24-25; 12.16-20; 16.19-31).</p>
+
+            <p>(2) Jesus esperava doação generosa aos necessitados (Mt 6.1-4; 19.21; Lc 12.33; 14.12-14; 18.22) e considerava isso requisito para o reino (Mt 25.31-46): o que fazemos (ou deixamos de fazer) aos “pequeninos” é feito a Ele (Mt 25.40).</p>
+
+            <p>(3) A igreja primitiva demonstrava compaixão ativa: oferta de Antioquia (At 11.28-30), pedido dos líderes para lembrar dos pobres (Gl 2.10), coleta de Paulo para Jerusalém (Rm 15.26; 1Co 16.1-4; 2Co 8–9), elogio às macedônias (2Co 8.1-4; 9.2). Dar generosamente é dom do Espírito (Rm 12.8; 1Tm 6.17-19).</p>
+
+            <p>(4) Prioridade: ajudar principalmente os irmãos na fé (“principalmente aos domésticos da fé” – Gl 6.10), mas também todos, para igualdade (2Co 8.14-15; Ef 4.28; Tt 3.14) e testemunho de Cristo.</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>Deus defende os pobres e instituiu leis para protegê-los e promover igualdade. Como isso desafia nossa visão moderna de riqueza e pobreza?</li>
+                    <li>Jesus priorizou os necessitados e nos chama a fazer o mesmo (Mt 25.40). Em que situação ao seu redor você pode demonstrar amor ativo esta semana?</li>
+                    <li>A igreja primitiva compartilhava bens e ajudava os necessitados. Ore por sensibilidade às necessidades dos irmãos na fé e por generosidade em sua vida.</li>
+                </ul>
+            </div>
+
+            
+
+        </div>
+    </article>
+
+   
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

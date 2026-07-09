@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lento para a Ira </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* GLOSSÁRIO/NOTA */
+        .term-note {
+            background: #f0f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            border: 1px dashed var(--turquoise);
+            margin: 30px 0;
+        }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">O Caráter de Deus</span>
+            <h1>Lento para a Ira: O que o "Nariz Comprido" de Deus nos ensina?</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 6 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <p>Tentar descrever como Deus é pode ser difícil — ou até mesmo assustador. Mas quando os autores bíblicos refletiram sobre o mistério de Deus, eles consistentemente descreveram o caráter de Deus desta forma: <strong>compassivo, misericordioso, tardio em irar-se e transbordante de amor leal e fidelidade.</strong></p>
+
+            <p>Vamos analisar mais de perto essa terceira descrição e entender o que significa Deus ser “tardio em irar-se”. Existe uma caracterização popular de Deus como um governante irado nas nuvens, punindo as pessoas. Mas essa não é uma representação precisa. Embora Deus se irrite, sua ira aponta para sua compaixão e amor leal.</p>
+
+            <div class="term-note">
+                <strong>💡 Nota do Hebraico:</strong> Em hebraico, a expressão “tardio em irar-se” é pronunciada <em>'erek 'appayim</em>, ou literalmente, <strong>“de nariz comprido”</strong>. No pensamento bíblico, uma pessoa de nariz comprido demora mais para o "nariz esquentar", ou seja, é paciente.
+            </div>
+
+            <h2>A ira contra a maldade humana</h2>
+            <p>Vemos Deus se irar ao longo da narrativa bíblica, mas Deus não tem nariz nem fica quente! Essas são metáforas que usam nossa experiência humana para descrever como Deus se sente ao testemunhar a maldade. Deus se ira quando os humanos oprimem uns aos outros e destroem o seu mundo bom.</p>
+
+            <div class="verse-card">
+                <blockquote>"O Senhor é misericordioso e compassivo, tardio em irar-se e transbordante de amor."</blockquote>
+                <cite>Salmo 103:8</cite>
+            </div>
+
+            <p>Um exemplo clássico é o Êxodo. Deus deu ao Faraó <strong>dez chances</strong> de mudar. A ira de Deus só se manifestou plenamente após a décima recusa, quando a própria maldade de Faraó se voltou contra ele. Deus não seria bom se não se irasse com a opressão.</p>
+
+            <h2>A Ira como Consequência</h2>
+            <p>Ao longo da Bíblia, a ira de Deus se manifesta permitindo que as pessoas experimentem as <strong>consequências de seus próprios atos</strong>. Quando Israel escolhia deuses violentos de outras nações, Deus os "entregava" nas mãos desses inimigos. Ele respeita a vontade humana, mesmo quando ela leva à ruína.</p>
+
+            <h2>Jesus está em nosso lugar</h2>
+            <p>O apóstolo Paulo diz que Deus é paciente, dando tempo para que as pessoas caiam em si (Romanos 2:1-4). Deus não quer nos deixar na autodestruição.</p>
+            
+            <p>Foi por isso que Jesus foi à cruz. Ele se colocou no lugar do povo que estava escolhendo a morte e assumiu as consequências. Na ressurreição, vemos a ira de Deus contra o mal e seu amor pelas pessoas trabalhando juntos para proporcionar vida.</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>Como a paciência de Deus ("nariz comprido") afetou sua história pessoal até hoje?</li>
+                    <li>Deus se ira com a injustiça porque Ele ama as pessoas. Como essa visão muda seu medo de Deus?</li>
+                    <li>Jesus assumiu as consequências por nós. Como você pode responder a esse amor hoje?</li>
+                </ul>
+            </div>
+
+          
+        </div>
+    </article>
+
+   
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

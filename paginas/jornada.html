@@ -1,0 +1,57 @@
+<div class="map-selector-card" id="btn-change-map" style="cursor: pointer;">
+    <div class="map-info">
+        <span class="map-tag" id="current-world-tag">Mundo 1</span>
+        <h2 id="current-world-title">Jornada Inicial</h2>
+        <p id="current-world-progress">Fase 1 de 16</p>
+    </div>
+    <div class="map-icon-badge"><i class="fa-solid fa-map"></i></div>
+</div>
+
+<div class="community-shortcut-banner" id="btn-jornada-comunidade" style="background: var(--v2-bg-surface); border: 1px solid var(--border-subtle); padding: 12px 16px; border-radius: 16px; display: flex; align-items: center; justify-content: space-between; margin: 12px 0; cursor: pointer;">
+    <div style="display: flex; gap: 12px; align-items: center;">
+        <div style="background: rgba(72, 126, 86, 0.1); color: #487E56; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.1rem;">
+            <i class="fa-solid fa-users"></i>
+        </div>
+        <div style="text-align: left;">
+            <h4 style="margin: 0; font-size: 0.88rem; font-weight: 800; color: var(--text-main);">Comunidade Oficial</h4>
+            <p style="margin: 2px 0 0 0; font-size: 0.75rem; color: var(--text-muted);">Entre no Telegram, Instagram e YouTube</p>
+        </div>
+    </div>
+    <i class="fa-solid fa-chevron-right" style="color: var(--text-muted); font-size: 0.85rem;"></i>
+</div>
+
+<div class="trail-scroll-view" id="map-trail-view">
+    <div id="journey-container" class="game-trail">
+        </div>
+</div>
+
+<div id="active-quiz-overlay" style="display: none; position: absolute; inset: 0; background: var(--v2-bg-app); padding: 20px; z-index: 50; flex-direction: column;">
+    <div class="quiz-header-progress" style="margin-bottom: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <span id="quiz-title-indicator" style="font-weight: 800; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase;">Fase 1 - Pergunta 1/10</span>
+            <button id="btn-quit-quiz" style="background: none; border: none; font-size: 1.2rem; color: var(--text-muted); cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="mini-progress-track">
+            <div id="quiz-progress-bar" class="mini-progress-bar" style="width: 0%;"></div>
+        </div>
+    </div>
+
+    <div class="quiz-question-box" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px 0;">
+        <h2 id="quiz-question-text" style="font-size: 1.35rem; font-weight: 700; color: var(--text-main); line-height: 1.5;">Pergunta aqui?</h2>
+    </div>
+
+    <div id="quiz-options-container" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+        </div>
+</div>
+
+<div id="worlds-picker-overlay" style="display: none; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(4px); z-index: 100; align-items: flex-end;">
+    <div style="background: #F9F8F4; width: 100%; max-height: 80%; border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 -10px 25px rgba(0,0,0,0.15); font-family: system-ui, -apple-system, sans-serif;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <h3 style="margin: 0; font-size: 1.3rem; font-weight: 800; color: #2E2922;">Selecione o Mundo</h3>
+            <button id="btn-close-worlds" style="background: none; border: none; font-size: 1.4rem; color: #8A8378; cursor: pointer; padding: 4px;"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        
+        <div id="worlds-list-container" style="display: flex; flex-direction: column; gap: 12px; overflow-y: auto; padding-bottom: 16px;">
+            </div>
+    </div>
+</div>

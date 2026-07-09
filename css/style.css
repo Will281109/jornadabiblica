@@ -1,0 +1,616 @@
+/* ==========================================================================
+   1. RESET, VARIÁVEIS DE DESIGN & TEMA ORGANIC & PEACEFUL
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+}
+
+:root {
+    /* Cores de Fundo (Camadas Orgânicas e Confortáveis) */
+    --v2-bg-deep: #EAE3D2;        /* Fundo externo (base de borda/terra suave) */
+    --v2-bg-app: #FDFBF7;         /* Fundo do corpo do celular (Marfim / Off-White caloroso) */
+    --v2-bg-surface: #F4F0E6;     /* Fundo de cards comuns (Areia suave) */
+    --v2-bg-surface-light: rgba(44, 37, 30, 0.04);
+    
+    /* Cores de Ação (Verde Oliva Nobre & Lavanda Estilizado) */
+    --gradient-primary: linear-gradient(135deg, #3A5F43 0%, #2D4A34 100%); /* Verde Oliva */
+    --gradient-success: linear-gradient(135deg, #487E56 0%, #355E3F 100%);
+    --gradient-danger: linear-gradient(135deg, #D95D55 0%, #B33F38 100%);
+    --gradient-warning: linear-gradient(135deg, #E69D45 0%, #C47B27 100%);
+    
+    /* Cores de Texto e Bordas (Contraste Suave) */
+    --text-main: #2C251E;         /* Castanho bem escuro (suave para a vista) */
+    --text-muted: #706556;        /* Camurça / Tom terroso médio */
+    --border-subtle: #EAE3D2;     /* Bordas perfeitamente integradas */
+    
+    /* Gamificação Elementos Puros */
+    --color-streak: #E0532B;
+    --color-coin: #D4A327;
+    --color-heart: #D94161;
+    --color-lavender: #C084FC;    /* Toque especial de Lavanda para detalhes */
+}
+
+body.v2-theme {
+    background-color: var(--v2-bg-deep);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Congela a tela externa para simular app nativo */
+}
+
+/* Container do Celular (Viewport Fixo) */
+#app {
+    width: 100%;
+    max-width: 440px;
+    height: 100vh;
+    background-color: var(--v2-bg-app);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(44, 37, 30, 0.15);
+}
+
+/* ==========================================================================
+   2. HEADER DE STATUS FLUTUANTE (Premium & Minimalista)
+   ========================================================================== */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: rgba(253, 251, 247, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+    z-index: 20;
+}
+
+.status-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--v2-bg-surface);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    border: 1px solid var(--border-subtle);
+}
+
+.highlight-streak i { color: var(--color-streak); }
+.highlight-coin i { color: var(--color-coin); }
+.highlight-heart i { color: var(--color-heart); }
+
+/* ==========================================================================
+   3. ARQUITETURA DE TELAS E ROLAGEM INDEPENDENTE
+   ========================================================================== */
+#screen-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    -webkit-overflow-scrolling: touch;
+}
+
+#screen-container::-webkit-scrollbar {
+    width: 0px;
+}
+
+.app-screen {
+    display: none;
+    flex-direction: column;
+    height: auto;
+    min-height: 100%;
+}
+
+.app-screen.active {
+    display: flex;
+    animation: slideUpFade 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.page-heading {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+    color: var(--text-main);
+}
+
+/* ==========================================================================
+   4. DESIGN DOS NOVOS CARDS CONVIDATIVOS (Estética Clean)
+   ========================================================================== */
+/* Seletor de Cidades/Mapas */
+.map-selector-card {
+    background: var(--gradient-primary);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px -5px rgba(58, 95, 67, 0.3);
+    transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+    color: #FDFBF7;
+}
+
+.map-selector-card:active { transform: scale(0.97); }
+
+.map-info .map-tag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(253, 251, 247, 0.2);
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: 700;
+    color: #FDFBF7;
+}
+
+.map-info h2 { font-size: 1.4rem; font-weight: 800; margin-top: 6px; margin-bottom: 2px; }
+.map-info p { font-size: 0.85rem; color: rgba(253, 251, 247, 0.8); }
+
+.map-icon-badge {
+    width: 46px;
+    height: 46px;
+    background: rgba(253, 251, 247, 0.15);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #FDFBF7;
+}
+
+/* Banner de Treino de Flashcards */
+.quick-training-banner {
+    background: var(--v2-bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 18px;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 24px;
+    transition: background-color 0.2s;
+}
+
+.quick-training-banner:active { background-color: rgba(44, 37, 30, 0.02); }
+.banner-body { display: flex; align-items: center; gap: 14px; }
+
+.banner-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(192, 132, 252, 0.15); /* Detalhe em Lavanda */
+    color: #9333EA;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.banner-text h3 { font-size: 0.95rem; font-weight: 700; color: var(--text-main); }
+.banner-text p { font-size: 0.8rem; color: var(--text-muted); margin-top: 1px; }
+
+.banner-badge {
+    background: var(--color-lavender);
+    color: #2C251E;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 8px;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   5. A NOVA TRILHA GAMIFICADA (Estilo Linha Única Fluida)
+   ========================================================================== */
+.trail-scroll-view {
+    width: 100%;
+    padding: 10px 0 30px 0;
+}
+
+.game-trail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    position: relative;
+}
+
+.trail-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+/* Zigue-zague vertical */
+.trail-node:nth-child(4n+1) .node-button { transform: translateX(-30px); }
+.trail-node:nth-child(4n+2) .node-button { transform: translateX(0px); }
+.trail-node:nth-child(4n+3) .node-button { transform: translateX(30px); }
+.trail-node:nth-child(4n+4) .node-button { transform: translateX(0px); }
+
+.trail-node:nth-child(4n+1) .node-title { transform: translateX(-30px); }
+.trail-node:nth-child(4n+3) .node-title { transform: translateX(30px); }
+
+/* Botão Circular Gamer Estilo Físico 3D */
+.node-button {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    font-size: 1.4rem;
+    color: #FDFBF7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    background: #D5CDBD; /* Cor base terrosa para bloqueados */
+    box-shadow: 0 6px 0 #B3A997;
+    transition: transform 0.1s;
+}
+
+/* Estados das Lições */
+.trail-node.completed .node-button {
+    background: var(--gradient-success);
+    box-shadow: 0 6px 0 #284730;
+}
+
+.trail-node.current .node-button {
+    background: var(--gradient-primary);
+    box-shadow: 0 6px 0 #1D3022;
+    transform: scale(1.08);
+}
+.trail-node.current:nth-child(4n+1) .node-button { transform: translateX(-30px) scale(1.08); }
+.trail-node.current:nth-child(4n+3) .node-button { transform: translateX(30px) scale(1.08); }
+
+.trail-node.locked .node-button {
+    background: #E5DEC9;
+    box-shadow: 0 6px 0 #C4BAA3;
+    color: #A39885;
+    cursor: not-allowed;
+}
+
+.node-button:active:not(:disabled) {
+    transform: translateY(5px) !important;
+    box-shadow: 0 1px 0 transparent !important;
+}
+
+.node-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.trail-node.current .node-title { color: #3A5F43; }
+
+/* ==========================================================================
+   6. MODAIS ESTILO "BOTTOM SHEET" E VISUAL FLASHCARD 3D
+   ========================================================================== */
+.app-modal {
+    position: absolute;
+    inset: 0;
+    background: rgba(44, 37, 30, 0.4); /* Sombra acobreada/escura suave */
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: flex-end;
+    z-index: 100;
+}
+
+.app-modal:has(.center-sheet) {
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-sheet {
+    width: 100%;
+    background: #FDFBF7; /* Fundo Marfim */
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    padding: 24px 20px;
+    max-height: 80%;
+    overflow-y: auto;
+    border-top: 1px solid var(--border-subtle);
+    animation: slideSheetUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.center-sheet {
+    border-radius: 24px !important;
+    max-height: auto;
+    border-top: none;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+@keyframes slideSheetUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+.modal-sheet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-sheet-header h3 { font-size: 1.2rem; font-weight: 800; color: var(--text-main); }
+
+.btn-close-sheet {
+    background: var(--v2-bg-surface-light);
+    border: none;
+    color: var(--text-main);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+/* Estrutura 3D do Flashcard */
+.perspective-container {
+    perspective: 1000px;
+    width: 100%;
+    height: 250px;
+    margin: 16px 0 20px 0;
+}
+
+.v2-card-flip {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1);
+    cursor: pointer;
+}
+
+.v2-card-flip.flipped { transform: rotateY(180deg); }
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid var(--border-subtle);
+}
+
+.face-front { background: linear-gradient(135deg, #F4F0E6 0%, #FDFBF7 100%); color: var(--text-main); }
+.face-back { background: linear-gradient(135deg, #E6F0E8 0%, #FDFBF7 100%); transform: rotateY(180deg); color: var(--text-main); }
+
+.card-badge-category { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); position: absolute; top: 16px; letter-spacing: 1px;}
+.card-main-text { font-size: 1.15rem; line-height: 1.6; font-weight: 600; }
+.card-hint-action { font-size: 0.75rem; color: var(--text-muted); position: absolute; bottom: 16px; }
+.card-answer-title { font-size: 1.8rem; font-weight: 800; color: #355E3F; }
+.card-sub-text { font-size: 0.9rem; color: var(--text-muted); margin-top: 6px; }
+
+/* Botões do Flashcard */
+.flashcard-decision-buttons { display: flex; gap: 12px; width: 100%; }
+.action-btn {
+    flex: 1; padding: 14px; border: none; border-radius: 14px; font-weight: 700; font-size: 0.95rem;
+    color: #FDFBF7; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.choice-wrong { background: var(--gradient-danger); }
+.choice-right { background: var(--gradient-success); }
+
+/* Progresso do Bloco */
+.mini-progress-track { width: 100%; height: 6px; background: rgba(0,0,0,0.05); border-radius: 10px; overflow: hidden; }
+.mini-progress-bar { height: 100%; background: var(--gradient-primary); transition: width 0.3s; }
+
+/* ==========================================================================
+   7. OUTRAS TELAS (BUSCA, BIBLIOTECA E COMUNIDADE)
+   ========================================================================== */
+.modern-search-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.modern-search-box input {
+    width: 100%;
+    padding: 14px 14px 14px 44px;
+    background: var(--v2-bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    outline: none;
+}
+.modern-search-box input::placeholder { color: var(--text-muted); }
+.modern-search-box .search-icon {
+    position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted);
+}
+
+.list-wrapper { display: flex; flex-direction: column; gap: 12px; }
+
+/* Cartão Telegram */
+.community-hero-card {
+    background: linear-gradient(135deg, #F4F0E6 0%, #EAE3D2 100%);
+    border: 1px solid var(--border-subtle);
+    border-radius: 24px;
+    padding: 30px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto 0;
+}
+
+.hero-icon-circle {
+    width: 70px;
+    height: 70px;
+    background: rgba(58, 95, 67, 0.1);
+    color: #3A5F43;
+    font-size: 2.2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.community-hero-card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; color: var(--text-main); }
+.community-hero-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px; }
+.btn-primary-action {
+    width: 100%; padding: 14px; border: none; border-radius: 14px; background: #3A5F43; color: #FDFBF7;
+    font-weight: 700; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+
+/* ==========================================================================
+   8. BARRA DE NAVEGAÇÃO INFERIOR TÁTIL (Estilo Nativo Confortável)
+   ========================================================================== */
+.app-navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(244, 240, 230, 0.95); /* Areia suave translúcido */
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border-subtle);
+    padding: 10px 0 calc(10px + env(safe-area-inset-bottom, 0px)) 0;
+    z-index: 20;
+}
+
+.nav-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #9E9380; /* Tom camurça desbotado para inativos */
+    cursor: pointer;
+    flex: 1;
+    transition: color 0.2s;
+}
+
+.nav-button i { font-size: 1.35rem; }
+.nav-button span { font-size: 0.72rem; font-weight: 700; }
+
+.nav-button.active {
+    color: #3A5F43; /* Ativo acende em Verde Oliva */
+}
+
+/* Classes de Estado Gerais */
+.hidden { display: none !important; }
+
+/* Painel de Feedback Estilo Duolingo */
+.quiz-feedback-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    animation: slideSheetUp 0.2s ease-out;
+    z-index: 60;
+}
+.quiz-feedback-bar.correct-bar { background: #E6F4EA; border-top: 2px solid #355E3F; color: #2D4A34; }
+.quiz-feedback-bar.wrong-bar { background: #FCE8E6; border-top: 2px solid #B33F38; color: #61231E; }
+
+.feedback-title { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.1rem; }
+.btn-next-question {
+    width: 100%; padding: 14px; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.15); transition: transform 0.1s;
+}
+.btn-next-question:active { transform: translateY(2px); box-shadow: 0 2px 0 rgba(0,0,0,0.15); }
+.correct-bar .btn-next-question { background: var(--gradient-success); color: white; }
+.wrong-bar .btn-next-question { background: var(--gradient-danger); color: white; }
+
+/* Painel Especial de Transição de Fila/Repescagem */
+.quiz-feedback-bar.warning-transition-bar {
+    background: #FFF3CD;
+    border-top: 2px solid #E69D45;
+    color: #664D03;
+}
+.warning-transition-bar .btn-next-question {
+    background: var(--gradient-warning);
+    color: white;
+}
+
+/* Modal Centralizado de Parabéns (Tela Cheia Fluida) */
+.victory-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--v2-bg-app);
+    z-index: 70;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    text-align: center;
+    animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.victory-icon {
+    font-size: 4rem;
+    color: #D4A327; /* Dourado */
+    margin-bottom: 20px;
+    animation: pulseIcon 1.5s infinite ease-in-out;
+}
+
+.victory-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.victory-subtitle {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+@keyframes pulseIcon {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+/* Seletor de Mundos */
+.world-selector-sheet {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--v2-bg-app);
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: slideSheetUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.world-option-card {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px; border-radius: 16px; border: 2px solid var(--border-subtle);
+    background: var(--v2-bg-surface); cursor: pointer; transition: all 0.1s;
+}
+.world-option-card.active-world { border-color: #487E56; background: rgba(72, 126, 86, 0.05); }
+.world-option-card.locked-world { opacity: 0.6; cursor: not-allowed; background: var(--v2-bg-deep); }

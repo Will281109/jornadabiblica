@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Palavra de Deus | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">Teologia Bíblica</span>
+            <h1>A Palavra de Deus</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 9 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>Porque, assim como descem a chuva e a neve dos céus e para lá não tornam, mas regam a terra e a fazem produzir, e brotar, e dar semente ao semeador, e pão ao que come, assim será a palavra que sair da minha boca; ela não voltará para mim vazia; antes, fará o que me apraz e prosperará naquilo para que a enviei.</blockquote>
+                <cite>Is 55.10-11</cite>
+            </div>
+
+            <h2>A NATUREZA DA PALAVRA DE DEUS</h2>
+            <p>A expressão "a palavra de Deus" (também "a palavra do Senhor", ou simplesmente "a Palavra") possui várias referências na Bíblia.</p>
+
+            <p>(1) Óbviamente, refere-se em primeiro lugar a qualquer coisa que Deus tenha dito diretamente. Quando Deus falava com Adão e Eva (p.ex., Gn 2.16-17; Gn 3.9-19), o que Ele dizia era a Palavra de Deus. De maneira similar, Deus falou a sua Palavra a Abraão (p.ex., Gn 12.1-3), Isaque (p.ex., Gn 26.1-5), Jacó (p.ex., Gn 28.13-15) e Moisés (p.ex., Êx 3-4). Deus também falou a toda a nação de Israel no monte Sinai, quando entregou os Dez Mandamentos (veja Êx 20.1-19). Até mesmo quando Moisés transmitiu os mandamentos ao povo, as palavras que eles ouviram foram a Palavra de Deus.</p>
+
+            <p>(2) Além das palavras diretas, Deus também falava por meio dos profetas (veja o artigo O PROFETA NO ANTIGO TESTAMENTO, p. 1133). Quando os profetas transmitiam uma mensagem ao povo de Deus, normalmente começavam com a frase "Assim diz o Senhor", ou "A palavra do Senhor veio a mim". Assim, quando os israelitas ouviam as palavras de um profeta, ouviam a Palavra de Deus.</p>
+
+            <p>(3) O mesmo é verdade a respeito do que diziam os apóstolos (os líderes pioneiros e mensageiros da igreja primitiva) no Novo Testamento. Embora eles não iniciassem suas mensagens com "Assim diz o Senhor" quando eram orientados por Deus a falar, o que eles proclamavam era verdadeiramente a palavra de Deus. Por exemplo, o sermão de Paulo ao povo da Antioquia da Pisídia (At 13.16-41) criou tal comoção que "no sábado seguinte, ajuntou-se quase toda a cidade a ouvir a palavra de Deus" (At 13.44). Em sua carta aos Tessalonicenses, Paulo disse: "pois, havendo recebido de nós a palavra da pregação de Deus, a recebestes, não como palavra de homens, mas (segundo é, na verdade) como palavra de Deus" (1 Ts 2.13; cf. At 8.25).</p>
+
+            <p>(4) Naturalmente, tudo o que Jesus disse era a Palavra de Deus, porque Ele é plenamente Deus (Jo 1.1,18; 10.30; 1 Jo 5.20). Lucas, o autor do terceiro Evangelho (isto é, a "boa-nova" ou história de Deus, um dos quatro relatos de primeira mão sobre a vida de Cristo: Mateus, Marcos, Lucas e João), afirma claramente que, quando o povo ouvia Jesus, ouvia a Palavra de Deus (Lc 5.1). Observe que, enquanto os profetas do Antigo Testamento normalmente iniciavam a sua mensagem com alguma forma de "Assim diz o Senhor", Jesus iniciava as suas mensagens com "Eu vos digo" (p.ex., Mt 5.18,20,22,32,39; 11.22,24; Mc 9.1; 10.15; Lc 10.12; 12.4; Jo 5.19; 6.26; 8.34). Ele tinha a autoridade divina (isto é, de Deus) em si mesmo para proferir a Palavra de Deus. É tão importante ouvir as palavras de Jesus que Ele mesmo diz: "quem ouve a minha palavra e crê naquele que me enviou tem a vida eterna e não entrará em condenação" (Jo 5.24). Jesus é tão intimamente identificado com a Palavra de Deus que é, na realidade, chamado de "o Verbo" ou "a Palavra" (Jo 1.1,14; 1 Jo 1.1; Ap 19.13-16; veja Jo 1.1, nota).</p>
+
+            <p>(5) A Palavra de Deus é o registro escrito do que os profetas, os apóstolos e Jesus disseram - isto é, as Escrituras. No Novo Testamento, não fazia diferença se um autor usasse a expressão "Moisés disse", "Davi disse", "o Espírito Santo diz" ou "Deus diz" (veja At 3.22; Rm 10.5,19; Hb 3.7; 4.7); o que está escrito na Bíblia é a Palavra de Deus (veja o artigo A INSPIRAÇÃO E A AUTORIDADE DAS ESCRITURAS, p. 2275).</p>
+
+            <p>(6) Embora não tenha o mesmo nível de autoridade que as Escrituras (isto é, o registro escrito da Palavra de Deus, na forma da Bíblia), a proclamação oral feita por pregadores ou profetas na igreja hoje pode ser chamada de palavra de Deus.<br>(a) Pedro indicou que o que os seus leitores recebiam pela pregação da Palavra (isto é, mensagem baseada na Palavra de Deus escrita, de acordo com ela e com a verdadeira mensagem de Jesus) era a Palavra de Deus (1 Pe 1.25), e Paulo instruiu Timóteo, dizendo: "que pregues a palavra" (2Tm 4.2). Essa pregação, no entanto, nunca deve ser isolada nem considerada independente da Palavra escrita de Deus. Na verdade, o teste para determinar se a Palavra de Deus está sendo verdadeiramente proclamada em um sermão ou uma mensagem é verificar se tal mensagem corresponde e está de acordo com a Palavra escrita (veja o artigo FALSOS ENSINADORES, p. 1737).<br>(b) E quanto à pessoa que recebe uma profecia (isto é, uma mensagem de Deus para entregar a outros) ou uma revelação especial em um contexto de adoração (1Co 14.26-32); essa pessoa está recebendo a Palavra de Deus? A resposta poderia ser "sim", mas sob certas condições. Paulo enfatiza que essas mensagens estão sujeitas à avaliação na igreja ou congregação, de modo que é possível que não sejam confirmadas como palavra de Deus (veja 1Co 14.29, nota). Somente em um sentido secundário ou inferior podemos nos referir aos profetas de hoje como alguém falando sob a inspiração do Espírito Santo. A revelação de uma pessoa que hoje fala como um profeta - ou com um dom profético - nunca deve ser exaltada a ponto de ser considerada indefectível ou perfeitamente confiável como as Escrituras (veja 1Co 14.31, nota; veja os artigos DONS ESPIRITUAIS PARA OS CRENTES, p. 2101, e DONS DO MINISTÉRIO DE LIDERANÇA PARA A IGREJA, p. 2183). Qualquer mensagem verdadeira de Deus hoje está subordinada e depende do que Deus já revelou por meio da sua Palavra escrita (isto é, a Bíblia).</p>
+
+            <h2>O PODER DA PALAVRA DE DEUS</h2>
+            <p>A palavra de Deus "permanece no céu" para sempre (Sl 119.89; Is 40.8; 1Pe 1.24-25). Mas esta palavra não está estagnada nem inativa; ela é dinâmica, poderosa (cf. Hb 4.12), e realiza grandes coisas (Is 55.11).</p>
+
+            <p>(1) A palavra de Deus é a palavra criativa. De acordo com o relato da criação, as coisas passaram a existir quando Deus proferiu a sua palavra (p.ex., Gn 1.3-4,6-7,9). O salmista resume o processo quando diz: "Pela palavra do Senhor foram feitos os céus" (Sl 33.6; cf. v. 9), e o autor da epístola aos Hebreus diz: "Pela fé, entendemos que os mundos, pela palavra de Deus, foram criados" (Hb 11.3; cf. 2Pe 3.5). Observe que, segundo João, a Palavra que Deus usou para criar todas as coisas foi Jesus Cristo (Jo 1.1-3; veja o artigo A CRIAÇÃO, p. 7).</p>
+
+            <p>(2) A palavra de Deus também tem o poder de sustentar a criação. Nas palavras do autor da epístola aos Hebreus, Deus sustenta "todas as coisas pela palavra do seu poder" (Hb 1.3; veja também Sl 147.15-18). Como a palavra criativa, esta palavra também é relacionada a Jesus Cristo, como Paulo afirmou: "todas as coisas subsistem por ele [Jesus]" (Cl 1.17).</p>
+
+            <p>(3) A palavra de Deus tem o poder de dar, revelar e transmitir nova vida. Pedro testemunha que nós nascemos de novo "pela palavra de Deus, viva e que permanece para sempre" (1 Pe 1.23; cf. 2Tm 3.15; Tg 1.18). É por esse motivo que o próprio Jesus é chamado de "a Palavra da vida" (1Jo 1.1).</p>
+
+            <p>(4) A palavra de Deus também distribui graça (isto é, a benevolência, o favor imerecido, a misericórdia e a ajuda de Deus), poder e revelação, por isso os seguidores de Cristo podem crescer na sua fé e no seu comprometimento com Deus. Isaías emprega uma imagem poderosa: assim como a água desce do céu e faz as coisas crescerem fisicamente, também a Palavra que vem da boca de Deus nos faz crescer espiritualmente (Is 55.10-11). Pedro ecoa o mesmo pensamento quando escreve que, quando bebemos o "leite racional" da Palavra de Deus, crescemos em nosso relacionamento com Ele (1 Pe 2.2).</p>
+
+            <p>(5) A Palavra de Deus é "a espada do Espírito" que Deus nos deu para combatermos Satanás e os seus esquemas perversos (Ef 6.17; cf. Ap 19.13-15). Observe como, na narrativa da vitória de Jesus sobre as tentações, cada vez que derrota Satanás, Ele o faz declarando "Está escrito" (isto é, "permanece como a Palavra - infalível, sem imperfeições, completamente confiável - de Deus"; cf. Lc 4.1-11; veja Mt 4.1-11, nota).</p>
+
+            <p>(6) Finalmente, a Palavra de Deus tem o poder de nos julgar. Os profetas do Antigo Testamento e os apóstolos do Novo Testamento frequentemente proferiam palavras de correção, disciplina e juízo recebidas do Senhor. O próprio Jesus disse que a sua palavra condenará os que o rejeitam (Jo 12.48), e o autor da epístola aos Hebreus escreve que a palavra poderosa de Deus julga e "é apta para discernir os pensamentos e intenções do coração" (veja Hb 4.12, nota). Em outras palavras, os que decidem ignorar a Palavra de Deus um dia a receberão como a palavra final de juízo e condenação.</p>
+
+            <h2>A NOSSA RESPOSTA À PALAVRA DE DEUS</h2>
+            <p>A Bíblia descreve, de maneira clara e inconfundível, como devemos responder à Palavra de Deus em todas as suas diferentes formas. Devemos ouvir e receber ansiosamente a palavra de Deus (Is 1.10; Jr 7.1-2; At 17.11) e confiar que Deus nos ajudará a entendê-la (Mt 13.23). Devemos honrar e louvar a Palavra de Deus (Sl 56.4,10), amá-la (Sl 119.47,113) e deixar que ela seja a nossa alegria e nosso deleite (Sl 119.16,47). Devemos aceitar o que a Palavra de Deus diz (Mc 4.20; At 2.41; 1Ts 2.13), deixar que ela se aprofunde em nosso coração (Sl 119.11), confiar nela (Sl 119.42) e depositar a nossa esperança em suas promessas (Sl 119.74,81,114; 130.5). Acima de tudo, devemos aplicá-la diretamente à nossa vida diária. Isto significa que devemos obedecer ao que ela ordena (Sl 119.17,67; Tg 1.22-24) e viver de acordo com os seus princípios, suas instruções e diretrizes (Sl 119.9). Deus exige que aqueles que ministram e ensinam a Palavra (cf. 1Tm 5.17) a manejem corretamente (2Tm 2.15) e a preguem fielmente (2Tm 4.2). Na verdade, todos os seguidores de Jesus devem proclamar a Palavra de Deus - transmitir a sua mensagem de esperança, perdão e nova vida - onde quer que estejam.</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>A Palavra de Deus é poderosa, criativa e transforma vidas (Is 55.10-11). Como você tem recebido e aplicado a Bíblia em sua rotina diária?</li>
+                    <li>Jesus é a Palavra viva (Jo 1.1,14). Como isso muda sua visão de ler a Bíblia e ouvir a voz de Deus?</li>
+                    <li>Devemos obedecer, amar e proclamar a Palavra. Em que área da sua vida você pode ser mais fiel em aplicar ou compartilhar a Palavra de Deus esta semana?</li>
+                </ul>
+            </div>
+
+            
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falsos Ensinadores | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">Teologia Bíblica / Discernimento Espiritual</span>
+            <h1>Falsos Ensinadores</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 11 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+
+            <div class="verse-card">
+                <blockquote>Porque se levantarão falsos cristos e falsos profetas e farão sinais e prodígios, para enganarem, se for possível, até os escolhidos.</blockquote>
+                <cite>Marcos 13.22</cite>
+            </div>
+
+            <p>Os seguidores de Jesus devem estar atentos: dentro das igrejas podem surgir líderes que pregam a Palavra, mas são como os corruptos doutores da lei dos tempos de Jesus (Mt 24.11,24). Nem todos que afirmam conhecer e seguir Cristo são verdadeiros crentes. Há pastores, evangelistas, professores, músicos e líderes que aparentam ser genuínos, mas não o são.</p>
+
+            <h2>DESCRIÇÃO DOS FALSOS ENSINADORES</h2>
+
+            <p>(1) Exteriormente parecem "justos aos homens" (Mt 23.28), vêm "vestidos como ovelhas, mas interiormente são lobos devoradores" (Mt 7.15). Podem basear mensagens na Bíblia, falar de altos padrões morais, mostrar preocupação com a obra de Deus e salvação de almas. Parecem carismáticos, espirituais, habilitados pelo Espírito, fazem milagres e têm sucesso aparente (Mt 7.21-23; 24.11,24; 2Co 11.13-15).</p>
+
+            <p>(2) Estão relacionados aos falsos profetas do AT (Dt 13.3; 1Rs 18.40; Jr 14.14) e fariseus do NT (Mt 23). Interiormente cheios de "rapina e iniquidade" (Mt 23.25), hipocrisia e padrões duplos (Mt 23.27-28). Jesus os expôs severamente por tornarem difícil a aceitação da verdade.</p>
+
+            <p>(3) Adquirem influência de duas formas: (a) Alguns começam sinceros, mas perdem o amor por Cristo por orgulho, insegurança ou desejos imorais, tornando-se instrumentos de Satanás disfarçados (2Co 11.15; 1Co 6.9-10; Gl 5.19-21). (b) Outros nunca foram genuínos: Satanás os plantou desde o início (Mt 13.24-28,36-43) para prejudicar a obra de Cristo e envergonhar Seu nome.</p>
+
+            <h2>PROVA E DISCERNIMENTO</h2>
+
+            <p>Jesus advertiu 14 vezes nos Evangelhos para tomar cuidado com falsos líderes (Mt 7.15; 16.6,11; 24.4,24; Mc 4.24; 8.15; 12.38-40; 13.5; Lc 12.1; 17.23; 20.46; 21.8). A Bíblia instrui a provar os espíritos e líderes (1Ts 5.21; 1Jo 4.1).</p>
+
+            <p>Passos para discernir e expor falsos ensinadores:</p>
+
+            <p>(1) Discernir o caráter: Vida de oração consistente? Honestidade, integridade, disciplina moral? Fruto do Espírito (Gl 5.22-23)? Amor genuíno pelos perdidos (Jo 3.16)? Ódio à iniquidade e amor à justiça (Hb 1.9)? Pregam e vivem contra o pecado?</p>
+
+            <p>(2) Discernir motivações: Buscam honrar Cristo acima de tudo (2Co 8.23; Fp 1.20)? Conduzir a igreja à santidade (At 26.18; 2Co 6.16-18)? Levar perdidos a Cristo (1Co 9.19-22)? Proclamar e defender a verdade do NT (Fp 1.16; Jd 3)?</p>
+
+            <p>(3) Avaliar o fruto: Vida e mensagem produzem caráter ímpio ou profundidade espiritual? Seus seguidores são comprometidos com toda a Palavra ou divididos/confusos? (Mt 7.16; veja artigo OS ATOS DA NATUREZA PECAMINOSA E O FRUTO DO ESPÍRITO).</p>
+
+            <p>(4) Discernir confiança na Palavra: Crêem que a Bíblia é totalmente inspirada e autoritativa? Submetem-se a todos os seus ensinamentos? (2Jo 9-11; veja artigo A INSPIRAÇÃO E A AUTORIDADE DAS ESCRITURAS). Se não, a mensagem é duvidosa.</p>
+
+            <p>(5) Testar integridade financeira: Recusam grandes quantias para si? Administram finanças com responsabilidade? Promovem a obra de Deus conforme padrões do NT (1Tm 3.3; 6.9-10)?</p>
+
+            <p>Apesar do discernimento, alguns falsos permanecerão ocultos até Deus expô-los (Mt 13.24-30).</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>Jesus advertiu repetidamente sobre falsos líderes. Como você prova os ensinos e vidas de pastores, pregadores e influenciadores cristãos que segue (1Jo 4.1; 1Ts 5.21)?</li>
+                    <li>Avalie o fruto: o caráter, motivações e mensagem produzem santidade e compromisso com a Palavra? Ore por discernimento para não ser enganado (Mt 24.24).</li>
+                    <li>Guarde-se da hipocrisia. Examine sua própria vida: você é genuíno em amor por Cristo e submissão à verdade, ou há áreas de orgulho e dissimulação?</li>
+                </ul>
+            </div>
+
+           
+
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

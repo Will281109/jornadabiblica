@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Amor na Bíblia | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+            --accent-red: #e57373;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { width: 100%; height: 5px; background: #eee; position: fixed; top: 0; left: 0; z-index: 1000; }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR */
+        .top-nav { max-width: 850px; margin: 0 auto; padding: 40px 5% 0; }
+        .btn-back-top { display: inline-flex; align-items: center; gap: 8px; color: var(--turquoise); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CABEÇALHO */
+        .study-header { padding: 40px 5% 40px; max-width: 850px; margin: 0 auto; text-align: center; }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.8rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+
+        /* CONTEÚDO */
+        .content-body { max-width: 850px; margin: 0 auto; padding: 0 5% 60px; font-size: 1.1rem; }
+        .content-body p { margin-bottom: 25px; text-align: justify; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 50px 0 25px; font-size: 2rem; border-bottom: 2px solid var(--soft-gray); padding-bottom: 10px; }
+        .content-body h3 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 35px 0 15px; font-size: 1.5rem; }
+        
+        /* BOXES ESPECIAIS */
+        .summary-box { background: #f0f4f8; padding: 30px; border-radius: 12px; margin-bottom: 40px; border-left: 5px solid var(--navy-blue); }
+        .summary-box h3 { margin-top: 0; color: var(--navy-blue); }
+
+        .term-note { background: #fff5f5; padding: 25px; border-radius: 8px; border: 1px dashed var(--accent-red); margin: 30px 0; }
+        .term-note strong { color: var(--accent-red); }
+
+        /* CARTÕES DE VERSÍCULOS */
+        .verse-card { background: var(--white); border-left: 5px solid var(--turquoise); padding: 25px; margin: 30px 0; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-radius: 0 10px 10px 0; }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.15rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; display: block; margin-top: 10px; }
+
+        /* LISTAS ESTILIZADAS */
+        .content-body ul { margin-bottom: 25px; padding-left: 20px; }
+        .content-body ul li { margin-bottom: 12px; position: relative; list-style: none; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: -20px; }
+
+        /* RODAPÉ DO CONTEÚDO */
+        .finish-container { text-align: center; padding: 40px 0; border-top: 1px solid var(--soft-gray); margin-top: 60px; }
+        .btn-finish { display: inline-block; background-color: var(--turquoise); color: white; padding: 18px 45px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+        .btn-finish:hover { background-color: var(--turquoise-hover); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3); }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); background: #f9f9f9; }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 2rem; }
+            .content-body h2 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container"><div class="progress-bar" id="myBar"></div></div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">O Caráter de Deus</span>
+            <h1>O Amor na Bíblia</h1>
+        </div>
+
+        <div class="content-body">
+            
+            <p>Na Bíblia, o amor é a essência do caráter de Deus e a qualidade que define seu relacionamento altruísta e vital com a humanidade. Os autores bíblicos demonstram o significado do amor por meio de histórias, poesia e discursos.</p>
+
+            <div class="term-note">
+                <strong>💡 Raízes Linguísticas:</strong><br>
+                Palavras hebraicas como <strong>khesed</strong> (amor leal) e <strong>ahavah</strong> (amor afetuoso) ensinam qualidades essenciais. Termos gregos como <strong>agápe</strong> (amor divino) e <strong>philia</strong> (amor familiar) enfatizam as maneiras únicas de amar.
+            </div>
+
+            <p>Além dos termos específicos, a narrativa abrangente da Bíblia descreve o amor como o ato de colocar os outros em primeiro lugar — servindo aos interesses e ao bem-estar do outro.</p>
+
+            <div class="summary-box">
+                <h3>A Grande Ideia</h3>
+                <p>A Bíblia descreve o amor, em última análise, como o ato de colocar os outros em primeiro lugar — servindo aos interesses e ao bem-estar de outra pessoa.</p>
+            </div>
+
+            <h2>O Amor de Deus segundo a Bíblia</h2>
+            <p>O amor de Deus pode descrever o amor de Deus pela humanidade ou o amor da humanidade por Deus. Os autores bíblicos nos mostram como o amor de Deus pela humanidade é altruísta, justo e inquebrável. Eles também mostram como Deus age com amor para com as pessoas e como as pessoas respondem ao amor de Deus, convidando os leitores a amar a Deus com tudo o que têm.</p>
+
+            <h2>Onde a Bíblia fala sobre amor?</h2>
+            <p>Em todo lugar! Toda a Bíblia demonstra o amor de Deus e mostra como os seres humanos amam (ou deixam de amar) a Deus e uns aos outros. Veja alguns exemplos:</p>
+            <ul>
+                <li><strong>Levítico 19:34:</strong> Instrução para tratar refugiados e imigrantes como nativos e amá-los como a si mesmos.</li>
+                <li><strong>Deuteronômio 6:4-5:</strong> O mandamento de ouvir e amar a Deus com todo o coração, alma e força.</li>
+                <li><strong>1 Samuel 18:3:</strong> Jônatas dedica lealdade a Davi "porque o amava como a si mesmo".</li>
+                <li><strong>Cântico dos Cânticos 3:2:</strong> A busca poética e apaixonada pelo ser amado.</li>
+                <li><strong>João 12:42-43:</strong> O exemplo negativo de líderes que amavam a admiração humana mais que a Deus.</li>
+                <li><strong>João 3:16:</strong> A maior declaração do amor sacrificial de Deus pelo mundo.</li>
+                <li><strong>1 Coríntios 13:</strong> A definição crucial do que o amor é e o que ele não é.</li>
+            </ul>
+
+            <h2>Como o amor é descrito biblicamente</h2>
+            <p>Os autores bíblicos usam narrativas, poesia e discursos. Podemos nos identificar com personagens aprendendo o amor por meio do enredo (como o Filho Pródigo em Lucas 15) ou pelas metáforas na poesia (Cântico dos Cânticos 8:6-7). Também encontramos mensagens diretas em epístolas, como em 1 João 3:16: "Nisto conhecemos o amor: que Jesus deu a sua vida por nós".</p>
+
+            <h2>Características do Amor na Bíblia</h2>
+            <p>Em 1 Coríntios 13:1-8, Paulo descreve que nada importa se não tivermos amor. Uma pessoa amorosa é paciente, bondosa, esperançosa e perseverante. Ela se afasta da violência e se recusa a alimentar a inveja, o orgulho ou o egoísmo.</p>
+            <p>João diz que <strong>Deus é amor</strong> (1 João 4:16). É a essência de quem Ele é. Quando aprendemos a amar da maneira bíblica, estamos aprendendo a viver de acordo com o caráter de Deus.</p>
+
+            <h3>Símbolos do Amor</h3>
+            <p>Na Bíblia Hebraica, o amor é simbolizado pela fidelidade de Rute (Rute 1:14-22) ou comparado a um estandarte de lealdade (Cântico 2:4). Até a serpente de bronze (Números 21:6-9) simboliza o amor curador, um símbolo que Jesus usou para si mesmo em João 3:14-16.</p>
+            <p>O <strong>sangue</strong> também se torna um símbolo comovente. Dar a própria vida (derramar o sangue) pelo bem-estar de outro é a forma suprema de amor, vista de forma mais notável no sacrifício de Jesus (Mateus 26:28).</p>
+
+            <h2>O que Deus diz sobre o amor na Bíblia</h2>
+            
+            <div class="verse-card">
+                <blockquote>"Dê graças ao Senhor, porque Ele é bom; Pois a Sua misericórdia é eterna."</blockquote>
+                <cite>Salmos 118:29</cite>
+            </div>
+
+            <div class="verse-card">
+                <blockquote>"Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna."</blockquote>
+                <cite>João 3:16-17</cite>
+            </div>
+
+            <div class="verse-card">
+                <blockquote>"Um novo mandamento lhes dou: Amem-se uns aos outros. Assim como eu os amei, vocês devem amar-se uns aos outros."</blockquote>
+                <cite>João 13:34-35</cite>
+            </div>
+
+            <div class="verse-card">
+                <blockquote>"Mas Deus demonstra seu amor por nós: Cristo morreu em nosso favor quando ainda éramos pecadores."</blockquote>
+                <cite>Romanos 5:7-8</cite>
+            </div>
+
+            <div class="verse-card">
+                <blockquote>"O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha... O amor jamais acaba."</blockquote>
+                <cite>1 Coríntios 13:1-8</cite>
+            </div>
+
+            <div class="verse-card">
+                <blockquote>"Nisto conhecemos o amor: que ele deu a sua vida por nós; e nós devemos dar a nossa vida pelos irmãos."</blockquote>
+                <cite>1 João 3:16-17</cite>
+            </div>
+
+            <h2>O que é o verdadeiro amor segundo a Bíblia?</h2>
+            <p>Para Paulo, o amor é superior a dons espirituais ou grandes obras. Ele é prático: paciente, bondoso e perseverante. Para João, o amor caracteriza a essência de Deus. Vemos isso na vida de Jesus: em vez de revidar com força à opressão, Ele oferece a própria vida para abençoar e curar a humanidade.</p>
+
+            <h2>O que Jesus diz sobre o amor?</h2>
+            <h3>Palavras de Jesus</h3>
+            <ul>
+                <li><strong>Amor aos Inimigos:</strong> "Amem os seus inimigos e orem por aqueles que os perseguem" (Mateus 5:44).</li>
+                <li><strong>Perdão e Amor:</strong> A história da mulher que ungiu os pés de Jesus (Lucas 7:47).</li>
+                <li><strong>Prioridade:</strong> "Ninguém pode servir a dois senhores... Não podeis servir a Deus e às riquezas" (Lucas 16:13).</li>
+                <li><strong>O Mandamento Maior:</strong> "Que vos ameis uns aos outros, assim como eu vos amei" (João 15:12).</li>
+            </ul>
+
+            <h3>Ações Amorosas de Jesus</h3>
+            <ul>
+                <li><strong>Lavar os pés:</strong> Jesus assume a posição de servo para mostrar amor aos discípulos (João 13:1-5).</li>
+                <li><strong>O Jovem Rico:</strong> Olhando para o homem com compaixão, mesmo sabendo que ele hesitaria em segui-lo (Marcos 10:21).</li>
+                <li><strong>O Perdão na Cruz:</strong> "Pai, perdoa-lhes, porque não sabem o que fazem" (Lucas 23:34).</li>
+            </ul>
+
+            <h2>Livros Bíblicos focados no Amor</h2>
+            <ul>
+                <li><strong>Deuteronômio:</strong> O livro da Torá que mais menciona o amor.</li>
+                <li><strong>Salmos e Provérbios:</strong> Repletos de cânticos e sabedoria sobre o amor leal.</li>
+                <li><strong>Cântico dos Cânticos:</strong> Uma coleção de poemas sobre o amor humano e lealdade.</li>
+                <li><strong>Evangelho de João e 1 João:</strong> Os textos que mais enfatizam o amor como marca do cristão.</li>
+            </ul>
+
+            <h2>Histórias de Amor na Bíblia</h2>
+            <p>A Bíblia retrata diversos tipos de amor:</p>
+            <ul>
+                <li><strong>Amizade:</strong> Jônatas e Davi (1 Samuel 18:1).</li>
+                <li><strong>Cuidado Familiar:</strong> Rute e Noemi (Rute 4:14-16).</li>
+                <li><strong>Busca pela Sabedoria:</strong> Personificada como uma mulher que anseia amar (Provérbios 8-9).</li>
+                <li><strong>Noivo e Noiva:</strong> O amor de Jesus pela Igreja (Efésios 5:25-32).</li>
+            </ul>
+
+            <h2>O que significa amar seus inimigos?</h2>
+            <p>Jesus ensina que a prova definitiva do amor é como tratamos quem nos faz mal. Ele personificou isso: quando caluniado e agredido, não revidou. Amar o inimigo significa ser generoso, perdoador e compassivo sem distinção, refletindo a natureza do próprio Deus.</p>
+
+            <h2>O que significa amar o próximo?</h2>
+            <p>Amar o próximo é inseparável de amar a Deus (Marcos 12:29-31). Significa cuidar ativamente da saúde e do bem-estar do outro da mesma forma que cuidamos de nós mesmos. É uma ação radical de serviço.</p>
+
+            <h2>O que significa amar uns aos outros?</h2>
+            <p>É a marca distintiva dos seguidores de Jesus. Significa ouvir, ser paciente e perdoar fraquezas. Veja o que as cartas ensinam:</p>
+            <ul>
+                <li><strong>Romanos 12:9-10:</strong> "O amor deve ser livre de hipocrisia... Amem-se fraternalmente".</li>
+                <li><strong>Gálatas 5:13:</strong> "Servi uns aos outros mediante o amor".</li>
+                <li><strong>1 Pedro 4:8:</strong> "O amor cobre uma multidão de pecados".</li>
+                <li><strong>1 João 4:7:</strong> "Amemo-nos uns aos outros, porque o amor vem de Deus".</li>
+                <li><strong>1 Tessalonicenses 3:12:</strong> O desejo de que o amor cresça e transborde.</li>
+            </ul>
+
+           
+    </article>
+
+ 
+
+    <script>
+        window.onscroll = function() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        };
+    </script>
+</body>
+</html>

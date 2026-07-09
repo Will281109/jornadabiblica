@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Paz de Deus | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">Vida Cristã</span>
+            <h1>A Paz de Deus</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 9 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>Eis que eu farei vir sobre ela saúde e cura, e os sararei, e lhes manifestarei abundância de paz e de verdade.</blockquote>
+                <cite>Jr 33.6</cite>
+            </div>
+
+            <h2>A DEFINIÇÃO DE PAZ</h2>
+            <p>A palavra hebraica para paz é shalom. Este termo indica muito mais do que a ausência de guerras, conflitos ou aflições. O significado básico de shalom é a presença positiva de harmonia (isto é, união, cooperação, boas relações), plenitude, bons propósitos, bem-estar e contentamento em todas as áreas da vida.</p>
+
+            <p>(1) Paz pode se referir às relações internacionais calmas e tranquilas, tais como um acordo de paz entre nações que estiveram anteriormente em guerra (p.ex., 1Sm 7.14; 1 Rs 4.24; 1Cr 19.19).</p>
+
+            <p>(2) Ela também pode se referir a um sentimento de tranquilidade e segurança dentro de uma nação, resultante de um clima social e econômico favorável durante tempos de prosperidade (2Sm 3.21-23; 1Cr 22.9; Sl 122.6-7).</p>
+
+            <p>(3) Experimentar a paz pode incluir união, cooperação e contentamento nas relações humanas, tanto dentro de casa (Pv 17.1; 1 Co 7.15) como fora de casa (Rm 12.18; Hb 12.14; 1Pe 3.11).</p>
+
+            <p>(4) Ela pode se referir a um sentimento de plenitude e bem-estar, incluindo estar livre de ansiedades e medos. Isto pode ser chamado de paz dentro da própria alma (Sl 4.8; 119.165; cf. Jó 3.26) e com Deus (Nm 6.26; Rm 5.1).</p>
+
+            <p>(5) Embora a palavra shalom não seja usada em Gn 1-2, shalom descreve o mundo criado original que existia em perfeita harmonia e plenitude. Quando Deus criou os céus e a terra, Ele criou um mundo pacífico. O total bem-estar da criação é refletido na declaração: "E viu Deus tudo quanto tinha feito, e eis que era muito bom" (Gn 1.31).</p>
+
+            <h2>O ROMPIMENTO DA PAZ</h2>
+            <p>Quando Adão e Eva deram ouvidos à serpente, caíram pelo engano de Satanás e comeram do fruto da árvore proibida (Gn 3.1-7). Esta desobediência introduziu o pecado (isto é, provocação e rebelião contra Deus e persistência em seguir o próprio caminho sem respeito a Deus) e rompeu a harmonia original da criação.</p>
+
+            <p>(1) Quando isto aconteceu, Adão e Eva experimentaram culpa e vergonha pela primeira vez em relação a Deus (Gn 3.8), e eles perderam a sua paz interior.</p>
+
+            <p>(2) O pecado de Adão e Eva no Jardim do Éden destruiu o relacionamento perfeito que eles tinham com Deus. Antes da sua desobediência, eles desfrutavam um profundo relacionamento pessoal e uma interação íntima com Deus (cf. Gn 3.8); mas, depois disso, eles "se esconderam da presença de Deus entre as árvores do jardim" (Gn 3.8). Em vez de estarem ansiosos por falarem com Deus, eles agora tinham medo da sua presença (Gn 3.10). Eles perderam a sua paz com Deus pelo prazer enganoso do seu próprio caminho.</p>
+
+            <p>(3) Além disso, o relacionamento pacífico e agradável entre Adão e Eva como marido e mulher foi rompido. Quando Deus começou a discutir com eles sobre o pecado que praticaram, Adão culpou Eva (Gn 3.12); e Deus disse que esse tipo de tensão e conflito iria continuar entre homem e mulher (Gn 3.16). Na verdade, esse tipo de tensão de relacionamento é responsável por boa parte dos conflitos sociais que agora fazem parte da existência humana, desde brigas e violência em nossos lares (cf. 1Sm 1.1-8; Pv 15.18; 17.1) até conflitos e guerras internacionais.</p>
+
+            <p>(4) Finalmente, o pecado rompeu a harmonia e a união entre a humanidade e a natureza. Antes de Adão pecar, seu trabalho no Jardim do Éden era um prazer (Gn 2.15); e ele andava livremente entre os animais, dando o nome a cada um (Gn 2.19-20). No entanto, depois da queda (isto é, quando as pessoas desafiaram a Deus pela primeira vez e o pecado rompeu o relacionamento da humanidade com Deus), parte da maldição de Deus incluía a animosidade entre as pessoas e a serpente (Gn 3.15). Além disso, o trabalho das pessoas iria envolver suor, exaustão e labuta (Gn 3.17-19). Onde uma vez tinha havido harmonia entre a raça humana e o meio ambiente, havia agora lutas e conflitos, de forma que "toda a criação geme e está juntamente com dores de parto até agora" (Rm 8.22, nota).</p>
+
+            <h2>A RESTAURAÇÃO DA PAZ</h2>
+            <p>Embora o efeito do pecado na existência humana tenha sido a destruição da paz e do bem-estar para todo o mundo criado, Deus planejou restaurar a shalom. A vida e a mensagem do Filho de Deus, Jesus Cristo, dizem respeito à história da restauração da paz. Deus enviou Jesus ao mundo para abrir caminho para a paz entre as pessoas e Deus, concedendo o perdão e a liberdade do pecado, e a esperança de um relacionamento pessoal e eterno com Deus.</p>
+
+            <p>(1) Visto que Satanás iniciou a destruição da paz no nosso mundo, o seu poder precisava ser destruído a fim de que a paz pudesse ser restabelecida na terra. Na verdade, muitas das promessas do Antigo Testamento com relação à vinda do Messias (isto é, Cristo) eram promessas de uma futura vitória e paz. Davi profetizou que o Filho de Deus governaria as nações (Sl 2.8-9; cf. Ap 2.26-27; 19.15). Isaías profetizou que o Messias reinaria como o Príncipe da Paz (Is 9.6-7). Ezequiel predisse que a nova aliança - ou "acordo de vida" - que Deus planejou para colocar em prática através do Messias seria uma aliança de paz (Ez 34.25; 37.26). Miqueias, profetizando o nascimento do futuro governante mundial vindo de Belém, declarou que "ele será a nossa paz" (Mq 5.5; veja o quadro PROFECIAS DO ANTIGO TESTAMENTO CUMPRIDAS EM CRISTO, p. 1035).</p>
+
+            <p>(2) Quando Jesus nasceu, os anjos anunciaram que a paz de Deus tinha agora chegado à terra (Lc 2.14). O próprio Jesus veio para destruir a obra do diabo (1 Jo 3.8) e para derrubar todas as barreiras de conflitos que impedem a paz em nossa vida (Ef 2.12-17). Jesus deixou aos seus discípulos um legado duradouro de paz à medida que se aproximava o momento em que Ele morreria na cruz (Jo 14.27; 16.33). Pela sua morte e ressurreição, Jesus literalmente desarmou os poderes e as potestades hostis no reino espiritual, tornando possível a verdadeira paz (Cl 1.20; 2.14-15; cf. Is 53.4-5). Por esta razão, quando cremos em Jesus Cristo (isto é, quando aceitamos a sua mensagem e sacrifício por nós e ativamente confiamos a nossa vida a Ele), somos justificados - ou feitos retos diante de Deus - e temos paz com Deus (Rm 5.1). Assim, a mensagem que os cristãos devem compartilhar com os outros é chamada de "boas-novas de paz" (At 10.36; cf. Is 52.7).</p>
+
+            <p>(3) Meramente saber que Cristo veio como o Príncipe da Paz não garante que a paz se tornará, automaticamente, parte da nossa vida. Experimentar a paz com Deus exige que estejamos unidos a Cristo pela fé. O primeiro passo é crer no Senhor Jesus Cristo. Esta "crença" é mais do que apenas uma concordância ou aceitação intelectual. É uma confiança ativa pela qual uma pessoa aceita o sacrifício de Cristo pelos pecados e entrega o controle de sua vida à liderança de Cristo. Uma pessoa que responde a Cristo dessa forma é perdoada e justificada (isto é, torna-se reta diante de Deus) através da fé (Rm 3.21-28; 4.11-13; Gl 2.16; veja o artigo FÉ E GRAÇA, p. 2029). Junto com a fé, devemos seguir as diretrizes de Deus e obedecer aos seus mandamentos, a fim de vivermos em paz (Lv 26.3,6). Os profetas do Antigo Testamento declaram frequentemente que não há paz real para os ímpios (Is 57.21; 59.8; Jr 6.14; 8.11; Ez 13.10,16). A fim de que possamos experimentar continuamente a paz de Deus, Ele nos deu o Espírito Santo, que desenvolve o seu caráter e os seus propósitos em nós, o que envolve a paz de Deus (Gl 5.22; cf. Rm 14.17; Ef 4.3). Com a ajuda do Espírito, devemos orar pela paz (Sl 122.6-7; Jr 29.7; veja Fp 4.7, nota), deixando que a paz dirija os nossos corações (Cl 3.15), desejando e buscando a paz (Sl 34.14; Jr 29.7; 2Tm 2.22; 1Pe 3.11), e fazendo o melhor que pudermos para vivermos em paz com os outros (Rm 12.18; 2Co 13.11; 1Ts 5.13; Hb 12.14).</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>Shalom é mais que ausência de conflito — é harmonia plena com Deus, consigo e com os outros. Como você tem experimentado essa paz verdadeira em sua vida?</li>
+                    <li>O pecado rompeu a paz original, mas Cristo a restaura (Rm 5.1). Em que área (relacionamento com Deus, família, ansiedades) você precisa buscar mais a paz de Cristo?</li>
+                    <li>Deus chama para buscar e promover a paz (Sl 34.14). Ore pedindo que o Espírito Santo gere paz em seu coração e o use para ser instrumento de paz ao seu redor esta semana.</li>
+                </ul>
+            </div>
+
+            
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

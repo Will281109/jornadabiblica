@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natureza Humana: O que Significa Ser Humano | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">Teologia Bíblica</span>
+            <h1>Natureza Humana: O que Significa Ser Humano</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 10 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>Lembra-te do teu Criador [...] antes que se quebre a cadeia de prata, e se despedace o copo de ouro, e se despedace o cântaro junto à fonte, e se despedace a roda junto ao poço, e o pó volte à terra, como o era, e o espírito volte a Deus, que o deu.</blockquote>
+                <cite>Ec 12.1,6-7</cite>
+            </div>
+
+            <p>De todas as criaturas que Deus criou, o ser humano é de longe o mais nobre, superior e complexo. Por causa do orgulho, no entanto, o homem frequentemente se esquece de que Deus é o seu Criador, de que é criatura dependente de Deus. Este artigo examina a perspectiva bíblica sobre o que realmente significa ser humano.</p>
+
+            <h2>CRIADOS À IMAGEM DE DEUS</h2>
+            <p>(1) A Bíblia afirma claramente que a raça humana, por decisão especial de Deus, foi criada à imagem e semelhança de Deus (Gn 1.26-27). Isto significa que Adão e Eva não eram produtos de evolução (Gn 1.27; Mt 19.4; Mc 10.6; veja o artigo A CRIAÇÃO, p. 7). O fato de terem sido criados à semelhança de Deus significa que eles eram capazes de responder a Deus e ter um relacionamento pessoal com Ele. Também eram capazes de refletir e demonstrar características divinas, como o amor, a glória (isto é, esplendor, beleza, criatividade) e santidade (isto é, pureza moral e espiritual, integridade e separação do mal - qualidade que foi arruinada quando os seres humanos decidiram desafiar a Deus; veja Gn 1.26, nota; veja o artigo OS ATRIBUTOS DE DEUS, p. 1025).</p>
+
+            <p>(2) Observe pelo menos três aspectos diferentes da imagem de Deus na humanidade (veja Gn 1.26, nota): Adão e Eva possuíam uma semelhança moral com Deus, pelo fato de que foram originalmente criados justos e santos. Ou seja, eles estavam em um relacionamento correto com Deus, dedicados completamente a bons propósitos e separados do mal (cf. Ef 4.24), com o coração capaz de amar e desejar fazer o que é certo. Eles possuíam uma semelhança com Deus em sua inteligência, porque foram criados com espírito, mente, emoções e o poder de escolha (Gn 2.19-20; 3.6-7). De certa forma, a constituição física das pessoas também estava na imagem de Deus, em uma maneira que não acontecia com os animais. Deus deu aos seres humanos a forma em que Ele apareceria visivelmente no Antigo Testamento (Gn 18.1-2), e a forma que o seu Filho assumiria quando viesse à terra (Lc 1.35; Fp 2.7) para dar a vida em pagamento pelo nosso pecado.</p>
+
+            <p>(3) Quando Adão e Eva decidiram desafiar o mandamento direto de Deus e o pecado entrou em sua existência, a imagem de Deus neles foi gravemente danificada, mas não totalmente destruída.<br>(a) Certamente, a semelhança moral com Deus foi corrompida quando eles se rebelaram contra Deus (cf. Gn 6.5), de modo que não mais foram perfeitos e santos. Em vez disso, eles assumiram uma tendência inata para pecar (isto é, para se rebelar contra Deus e seguir o próprio caminho egoísta), a qual transmitiram aos seus filhos (cf. Gn 4; veja Rm 5.12, nota). O Novo Testamento confirma que a imagem de Deus nos seres humanos foi corrompida e distorcida pelo pecado, quando indica que a salvação espiritual requer que sejamos renovados à semelhança moral e original com Deus (cf. Ef 4.22-24; Cl 3.10).<br>(b) Ao mesmo tempo, os seres humanos pecadores ainda conservam muitos aspectos da semelhança com Deus, incluindo a inteligência e a capacidade de se relacionar e comunicar com Deus (cf. Gn 3.8-19; At 17.27-28). Esses aspectos da imagem de Deus em nós foram também danificados, mas não totalmente eliminados, quando Adão e Eva pecaram no jardim do Éden (cf. Gn 9.6; Tg 3.9).</p>
+
+            <h2>ASPECTOS DE SER HUMANO</h2>
+            <p>Ao criar os seres humanos à sua própria imagem, Deus designou as pessoas como seres triunos (isto é, "trifacetados"), com espírito, alma e corpo (1Ts 5.23; Hb 4.12).</p>
+
+            <p>(1) Deus formou Adão do pó da terra (corpo) e soprou em suas narinas o fôlego da vida (espírito), e ele se tornou "alma vivente" (alma, Gn 2.7). Deus pretendia que, ao comer da árvore da vida e obedecer à sua instrução de não comer da árvore da ciência do bem e do mal, a humanidade continuasse a viver em sua condição perfeitamente criada (cf. Gn 2.16-17; 3.22-24). Somente depois que a morte entrou no mundo, como resultado do pecado humano, é que lemos sobre o corpo retornando ao pó e o espírito voltando para junto de Deus (Gn 3.19; 35.18; Ec 12.7; Ap 6.9; veja o artigo A MORTE, p. 876). Em outras palavras, a separação do corpo do espírito e da alma (isto é, o momento da morte física) é resultado da maldição de Deus sobre a raça humana por causa do pecado. Esse dilema será solucionado somente quando o corpo ressuscitar "no último dia" (Jo 6.40; veja o artigo A RESSURREIÇÃO DO CORPO, p. 2114).</p>
+
+            <p>(2) A alma (heb. nephesh; gr. psychê), frequentemente traduzida como "vida", pode ser brevemente definida como a parte não material do ser humano, que resulta da união de corpo e espírito. Ela inclui a mente, as emoções e o livre-arbítrio. Juntamente com o espírito humano, a alma continuará a viver quando a pessoa morrer fisicamente. (Nesse sentido, há certa superposição na Bíblia no uso das palavras "alma" e "espírito".) A alma está tão intimamente conectada à personalidade interior que o termo é usado, às vezes, como sinônimo de "pessoa" (p.ex., Lv 4.2; 7.20; Js 20.3). O corpo (heb. basar; gr. soma) pode ser brevemente definido como o elemento físico e material de um indivíduo que retorna ao pó quando este morre (às vezes, chamado de "carne"). O espírito (heb. ruach; gr. pneuma) pode ser brevemente definido como o componente de vida não material do ser humano - a essência verdadeira da pessoa, dada por Deus - incluindo as nossas capacidades espirituais e a nossa consciência. É o aspecto pelo qual temos contato mais direto com o Espírito de Deus.</p>
+
+            <p>(3) Dos três componentes que constituem "toda" a pessoa humana, somente o espírito e a alma são indestrutíveis e sobrevivem à morte, quer para viver no céu (Ap 6.9; 20.4), quer no inferno (cf. Sl 16.10; Mt 16.26). No entanto, a Bíblia insiste que, enquanto estivermos vivos, devemos cuidar bem do nosso corpo, evitando as influências e os comportamentos maus e imorais (Rm 6.6,12-13; 1Co 6.13-20; 1Ts 4.3-4) e dedicando-os ao serviço de Deus (Rm 6.13; 12.1; veja o artigo PADRÕES DE MORALIDADE SEXUAL, p. 2327). O corpo também passará por uma transformação quando ressuscitar (isto é, quando voltar à vida para se unir à alma e ao espírito). Esta é a maneira como a nossa completa qualidade de ser humano será restaurada, no final, se tivermos entregado a nossa vida a Jesus Cristo.</p>
+
+            <h2>AS RESPONSABILIDADES DE SER HUMANO</h2>
+            <p>Quando criou os seres humanos, Deus lhes confiou várias responsabilidades.</p>
+
+            <p>(1) Deus os criou à sua própria imagem para que pudesse desenvolver com eles um relacionamento pessoal de amor por toda a eternidade, e para que eles o reconhecessem e honrassem como Senhor - o líder e a autoridade em sua vida. O desejo de Deus de que as pessoas tivessem um relacionamento correto com Ele era tão forte que, quando Satanás conseguiu tentar Adão e Eva para que lhe desobedecessem, o Senhor prometeu enviar um Salvador para redimir a humanidade, isto é, para salvar, resgatar, restaurar, libertar e comprar de volta (veja Gn 3.15, nota; veja o artigo A CRIAÇÃO, p. 7).</p>
+
+            <p>(2) O propósito de Deus era que os seres humanos o amassem mais do que qualquer outra coisa, e que eles amassem uns aos outros como a si mesmos. Este mandamento duplo de amor completo e altruísta resume toda a lei de Deus (Lv 19.18; Dt 6.4-5; Mt 22.37-40; Rm 13.9-10).</p>
+
+            <p>(3) Deus também estabeleceu a instituição do casamento (Gn 2.21-24). Ele determinou que o casamento devia ser monogâmico (um relacionamento fiel, com um cônjuge do sexo oposto) - um relacionamento vitalício entre marido e mulher (cf. Mt 19.5-9; Ef 5.22-33). Dentro dos limites do casamento, Deus ordenou à raça humana: "Frutificai, e multiplicai-vos" (Gn 1.28; 9.7). Um marido e uma esposa deviam desfrutar um relacionamento sexual satisfatório que produzisse filhos em um contexto familiar. Deus considera a família e a criação dos filhos em relacionamentos familiares saudáveis as maiores prioridades do mundo (veja Gn 1.28, nota).</p>
+
+            <p>(4) Deus também deu a Adão e seus descendentes autoridade sobre a terra e as demais criaturas (Gn 1.28). Ainda no jardim do Éden, Adão recebeu a responsabilidade de cuidar do jardim e de dar nomes aos animais (Gn 2.15,19-20).</p>
+
+            <p>(5) Quando Adão e Eva desafiaram a Deus, comendo o fruto proibido, perderam uma grande parte de sua autoridade sobre o mundo, entregando-a a Satanás, "o deus deste século" (2Co 4.4), que então passou a ter considerável controle sobre o mundo (veja 1 Jo 5.19, nota; cf. Gl 1.4; Ef 6.12; veja o artigo A PROVIDÊNCIA DE DEUS, p. 89). Mas Deus ainda espera que os seus seguidores obedeçam às suas instruções e cuidem bem do mundo, consagrando o que têm para os propósitos de Deus, e administrando a criação de maneira que honre a Deus (cf. Sl 8.6-8; Hb 2.7-8).</p>
+
+            <p>(6) Por causa da presença do pecado e seus efeitos destrutivos no mundo, Deus enviou o seu Filho, Jesus, para resgatar as pessoas das consequências do pecado e restaurar o seu relacionamento com elas. Os seus fiéis seguidores agora têm a impressionante tarefa e o privilégio de levar essa mensagem de Cristo, do amor de Deus para a salvação que é direcionado a todas as pessoas, por toda a terra (Mt 28.18-20; At 1.8). Jesus descreveu os seus seguidores como a luz do mundo e o sal da terra (Mt 5.13-16). Isto significa que eles devem mostrar aos outros o caminho até Deus e exercer uma influência espiritual de melhorar o mundo.</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>Fomos criados à imagem de Deus (Gn 1.26-27). Como isso afeta sua visão de si mesmo, dos outros e do seu propósito na vida?</li>
+                    <li>O pecado danificou a imagem de Deus em nós, mas não a destruiu. Em que área da sua vida (intelecto, emoções, vontade) você percebe mais necessidade de renovação espiritual?</li>
+                    <li>Deus nos deu responsabilidades: relacionamento com Ele, amor ao próximo, família, cuidado com a criação e testemunho. Qual dessas você pode priorizar mais esta semana?</li>
+                </ul>
+            </div>
+
+            
+        </div>
+    </article>
+
+   
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

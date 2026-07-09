@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Profeta no Antigo Testamento | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">Teologia Bíblica</span>
+            <h1>O Profeta no Antigo Testamento</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 10 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>Depois disso, ouvi a voz do Senhor, que dizia: A quem enviarei, e quem há de ir por nós? Então, disse eu: eis-me aqui, envia-me a mim. Então, disse ele: Vai e dize a este povo: Ouvis, de fato, e não entendeis, e vedes, em verdade, mas não percebeis.</blockquote>
+                <cite>Is 6.8-9</cite>
+            </div>
+
+            <h2>O LUGAR DOS PROFETAS NA HISTÓRIA DOS HEBREUS</h2>
+            <p>(1) Os profetas do Antigo Testamento eram homens e mulheres chamados, comissionados, capacitados e usados por Deus de modo excepcional para transmitir a sua mensagem ao povo. Em geral, os profetas de Deus mantinham uma profunda intimidade espiritual com Deus que ia muito além da típica fé comum. Alguns dos profetas, porém, pareciam ter ministérios muito isolados, e às vezes alguns demonstravam uma surpreendente falta de fé. Mesmo assim nenhuma categoria de pessoas em toda a literatura apresenta um retrato mais único e dramático - em sua mensagem e em seu caráter - do que os profetas do Antigo Testamento. Sacerdotes, juizes, reis, sábios conselheiros e escritores de salmos, cada um teve um lugar distinto na história de Israel. Mas nenhum deles jamais subiu à estatura dos profetas ou continuou a ter tanta influência a respeito do plano, do propósito e da mensagem de Deus ao longo da história.</p>
+
+            <p>(2) Os profetas tiveram uma grande influência na composição do próprio Antigo Testamento, como fica evidente nas três divisões da Bíblia em hebraico: A Torá (o "ensino" ou a lei, os cinco primeiros livros do AT), Os Profetas e Os Escritos (cf. Lc 24.44). A categoria Os Profetas incluía seis livros históricos escritos a partir da perspectiva profética: Josué, Juizes, 1 e 2 Samuel e 1 e 2 Reis. É provável que os autores destes livros fossem profetas ou tivessem dons proféticos. Em segundo lugar, havia os dezesseis livros proféticos específicos (Isaías a Malaquias). Finalmente, Moisés, o autor dos cinco primeiros livros da Bíblia (a Torá ou Pentateuco), era um profeta (Dt 18.15). Assim, os profetas escreveram dois terços completos do Antigo Testamento.</p>
+
+            <h2>PALAVRAS HEBRAICAS PARA OS PROFETAS</h2>
+            <p>(1) Ro'eh. Este substantivo hebraico, traduzido como "vidente" em português, indica uma habilidade especial para ver no reino espiritual e prever os eventos futuros. Este título sugere que o profeta não era enganado pelas aparências exteriores, mas via a situação como realmente era, a partir da perspectiva de Deus. Uma outra palavra para vidente, chozeh, indica que o profeta recebia sonhos, visões e revelações de Deus que o capacitavam a transmitir realidades e verdades espirituais ao povo de Deus.</p>
+
+            <p>(2) Nabi'.<br>(a) Esta é a principal palavra hebraica para "profeta", que ocorre 316 vezes no Antigo Testamento (nebhi'im é a sua forma plural). Embora a origem dessa palavra não seja clara, o significado do verbo hebraico "profetizar" significa: "comunicar muitas palavras da mente de Deus e pelo Espírito de Deus" (Gesenius, Hebrew Lexicon). Assim, um nabi' era um porta-voz que falava livremente sob o poder e a solicitação do Espírito de Deus. A palavra grega prophétês, de onde a palavra "profeta" em português é derivada, significa "alguém que fala em nome de outro". Os profetas falavam da parte de Deus ao povo da aliança - aqueles com quem Ele tinha feito um "acordo de vida" baseado em sua lei e promessas e na fidelidade e obediência do povo (veja o artigo O CONCERTO DE DEUS COM OS ISRAELITAS, p. 349). A mensagem dos profetas era baseada diretamente no que ouviam, viam e recebiam de Deus.<br>(b) No Antigo Testamento, o profeta também era designado por termos como "homem de Deus" (veja 2Rs 4.21, nota), "servo de Deus" (cf. Is 20.3; Dn 6.20), homem que tem o "Espírito sobre si" (cf. Is 61.1-3), "atalaia" (Ez 3.17) e "o mensageiro do Senhor" (Ag 1.13). Os profetas também interpretavam sonhos proféticos (p.ex., José, Daniel) e forneciam uma compreensão da história - presente e futura - a partir de uma perspectiva profética.</p>
+
+            <h2>A PESSOA DO ESPÍRITO E A PALAVRA</h2>
+            <p>O profeta não era simplesmente outro líder religioso na história dos hebreus, mas uma pessoa sobre a qual o Espírito de Deus havia sido derramado e que era totalmente dominada pela palavra de Deus (Ez 37.1,4). Pelo fato de o Espírito e a mensagem de Deus estarem nele (ou nela), o profeta (ou a profetisa) do Antigo Testamento tinha as três seguintes características:</p>
+
+            <p>(1) Conhecimento revelado por Deus. O profeta recebia de Deus um conhecimento a respeito do povo, dos eventos e da verdade. O principal propósito desse conhecimento era incentivar o povo a se manter fiel a Deus e aos propósitos de Deus para eles. A característica distinta da profecia do Antigo Testamento era que os propósitos e as instruções de Deus para o seu povo eram claros, por meio de instruções, correções e advertências. Deus usava os profetas para pronunciar o seu juízo antes que este ocorresse. Em meio à história problemática de Israel e de Judá, Deus usou pessoas fiéis para entregar profecias específicas sobre o Messias (isto é, o "Ungido", o Salvador, o Cristo) e sobre o reino de Deus, bem como predições sobre eventos mundiais futuros.</p>
+
+            <p>(2) Poderes dados por Deus. Os profetas também estavam envolvidos em atividades miraculosas quando eram cheios do Espírito de Deus e capacitados por Ele. Os profetas demonstravam a vida, os propósitos e o poder de Deus de maneiras sobrenaturais.</p>
+
+            <p>(3) Um estilo de vida único e distinto. A vida dos profetas estava longe do comum. Geralmente tinham de abandonar caminhos e modos de vida normais já que a sua existência girava quase inteiramente em torno de receber e entregar as mensagens de Deus. Eles protestavam fortemente contra a idolatria (isto é, adorar falsos deuses e outras coisas no lugar do verdadeiro Deus), a imoralidade e todo tipo de mal entre o povo de Deus. Eles também falavam contra a corrupção na vida dos reis e sacerdotes, e eram ativistas que lutavam por mudanças positivas em Israel. A principal missão dos profetas era promover o reino de Deus e a sua justiça (isto é, uma conduta correta e um relacionamento correto com Deus), e eles ousadamente entregavam as suas mensagens sem se importar com o risco pessoal.</p>
+
+            <h2>OITO CARACTERÍSTICAS DO PROFETA DO ANTIGO TESTAMENTO</h2>
+            <p>Que tipo de pessoa era o profeta do Antigo Testamento?</p>
+
+            <p>(1) Um profeta tinha um relacionamento íntimo com Deus e se tornava um confidente de Deus (Am 3.7). Ele via eventos e pessoas a partir da perspectiva de Deus, e não do ponto de vista humano.</p>
+
+            <p>(2) Por vivenciar um relacionamento e uma comunicação tão íntima com Deus, o profeta frequentemente sentia a tristeza de Deus pela rebelião e pelo pecado do povo. Ele entendia o propósito, os planos e os desejos de Deus melhor do que qualquer outra pessoa, e por isso também experimentava as emoções e as reações de Deus. O profeta não só ouvia a voz de Deus, como também sentia o coração de Deus (Jr 6.11; 15.16-17; 20.9).</p>
+
+            <p>(3) Assim como Deus, o profeta amava profundamente o povo de Deus. Quando o povo se feria, o profeta sentia uma dor profunda (veja o livro de Lamentações). Um profeta verdadeiro queria sempre o melhor de Deus para o povo (Ez 18.23), o que implicava entregar fielmente mensagens que ofereciam advertências e correção, bem como palavras de esperança, conforto e estímulo.</p>
+
+            <p>(4) O profeta sabia que ter total confiança em Deus e absoluta lealdade a Ele resultaria no melhor para o povo. Por isso, advertia-os de que não confiassem em coisas como sabedoria humana, riqueza, poder ou falsos deuses (Jr 8.9-10; Os 10.13-14; Am 6.8). Eles continuamente exortavam o povo a que vivessem conforme os padrões de Deus e as exigências da aliança a fim de desfrutarem a liberdade e os benefícios de Deus.</p>
+
+            <p>(5) O profeta era extremamente sensível ao pecado e ao mal (Jr 2.12-13,19; 25.3-7; Am 8.4-7; Mq 3.8), o que significava que ele era impaciente com a crueldade, o crime, a imoralidade e a injustiça. O que podia parecer para a maioria das pessoas apenas um leve desvio da lei de Deus era visto pelo profeta como um desastre. Ele tinha pouca tolerância à transigência, à complacência, à hipocrisia e às desculpas espirituais (Is 32.11; Jr 6.20; 7.8-15,21-23; Am 4.1; 6.1). Melhor do que qualquer pessoa, o profeta compartilhava o amor que Deus tem pela justiça e pela bondade, e o seu ódio pela impiedade e pelas iniquidades (cf. Hb 1.9, nota).</p>
+
+            <p>(6) O profeta constantemente desafiava a espiritualidade superficial e artificial do povo de Deus, e com aflição tentava estimular a obediência sincera à lei de Deus. Ele era totalmente dedicado ao Senhor, desprezando compromissos apáticos e exigindo completa fidelidade a Deus.</p>
+
+            <p>(7) O profeta tinha uma visão para o futuro. Às vezes ela era expressa em predições de condenação e destruição (p.ex., Is 63.1-6; Jr 11.22-23; 13.15-21; Ez 14.12-21; Am 5.16-20,27). Em outras vezes, as visões eram de esperança, restauração e renovação (p.ex., Is 61-62; 65.17-66.24; Jr 33; Ez 37). Os profetas expressaram várias profecias sobre a vinda do Messias (veja o quadro PROFECIAS DO ANTIGO TESTAMENTO CUMPRIDAS EM CRISTO, p. 1035).</p>
+
+            <p>(8) Finalmente, o profeta era com frequência uma pessoa que sofria solidão e tristezas (Jr 14.17-18; 20.14-18; Am 7.10-13; Jo 3-4). Ele era frequentemente perseguido por líderes ímpios e maltratado por falsos profetas que prediziam paz, prosperidade e segurança para o povo rebelde (Jr 15.15; 20.1-6; 26.8-11; Am 5.10; cf. Mt 23.29-36; At 7.51-53). Ao mesmo tempo, porém, o verdadeiro profeta desfrutava tamanha harmonia com Deus que o povo e seus líderes não podiam ignorar o seu caráter ou a sua mensagem (Ez 3.8-11).</p>
+
+            <h2>O PROFETA E O SACERDOTE</h2>
+            <p>Durante a maior parte da história de Israel, houve tensão entre os sacerdotes e os profetas. Deus pretendia que eles trabalhassem juntos, mas os sacerdotes tendiam a negligenciar a corrupção moral e espiritual, o que com frequência trazia grandes aflições ao povo de Deus.</p>
+
+            <p>(1) Os sacerdotes com frequência queriam preservar o status quo - manter as coisas como estavam - mesmo quando as condições espirituais não eram boas. Era mais conveniente para os sacerdotes conduzir a adoração se as pessoas seguissem estruturas e cerimônias formais independentemente de como conduziam a si mesmas em outros aspectos da vida. Embora pudessem crer que o comportamento piedoso era o padrão adequado, pareciam despreocupados quando a crença não tinha um efeito positivo na conduta.</p>
+
+            <p>(2) O profeta, por outro lado, colocava grande ênfase no estilo de vida, na conduta e nas questões morais. Ele confrontava constantemente aqueles que confiavam nos rituais e deveres religiosos para mantê-los em um relacionamento correto com Deus. Assim, o profeta frequentemente irritava o povo e condenava as suas ações. No entanto, mesmo que significasse ficar sozinho, o profeta estava disposto a defender a verdade. Os verdadeiros profetas sabiam que o conhecimento espiritual era sem valor a menos que as pessoas aplicassem os princípios eternos de Deus de modo prático em sua vida. O profeta servia como um professor de ética, um reformador moral e um provocador de pensamento. Ele expunha o pecado e a rebelião contra Deus no esforço de levar as pessoas a uma vida santa (isto é, pureza moral e espiritual, separação do mal e completa dedicação aos propósitos de Deus).</p>
+
+            <h2>A MENSAGEM DOS PROFETAS DO ANTIGO TESTAMENTO</h2>
+            <p>A mensagem dos profetas enfatizava três temas principais:</p>
+
+            <p>(1) A natureza e o caráter de Deus (veja o artigo OS ATRIBUTOS DE DEUS, p. 1025).<br>(a) Eles declaravam que Deus é o Criador todo-poderoso do universo (p.ex., Is 40.28) e o Senhor soberano da história, o que significa que Ele tem toda a capacidade e autoridade para fazer os acontecimentos históricos servirem aos seus propósitos finais de salvação espiritual e juízo (cf. Is 44.28; 45.1; Am 5.27; Hc 1.6).<br>(b) Eles enfatizavam que Deus é santo (isto é, puro, íntegro, separado do mal), reto (isto é, completamente correto em caráter e ações), e justo (isto é, justo e imparcial). Como resultado, Ele é repelido pelo pecado, pela maldade e injustiça. Mas, pelo fato de sua santidade e justiça estarem equilibradas com a misericórdia, Ele é paciente e tardio em irar-se e em julgar. Deus é santo por natureza, de forma que Ele exige que o seu povo seja separado do mal, ou seja, "Santo ao Senhor" (Zc 14.20, NAA; cf. Is 29.22-24; Jr 2.3). Como parte de seu concerto singular com Israel, Deus exigiu que o seu povo obedecesse aos seus mandamentos.</p>
+
+            <p>(2) Pecado e arrependimento. Os profetas do Antigo Testamento compartilharam a tristeza de Deus pela contínua desobediência, infidelidade, idolatria, injustiça e imoralidade do povo da aliança. Como resultado, os profetas falaram palavras severas de juízo contra eles. A mensagem era a mesma de João Batista e de Jesus: "arrepender-se ou perecer". Se o povo não abandonasse as suas ações rebeldes e voltasse a servir a Deus, destruiría a si mesmo e sofreria o juízo de Deus. Os profetas profetizaram juízos catastróficos como a destruição de Samaria pela Assíria (p.ex., Os 5.8-12; 9.3-7; 10.6-15), e a destruição de Jerusalém pela Babilônia (p.ex., Jr 19.7-15; 32.28-36; Ez 5.5-12; 21.2,24-27; veja os mapas O EXÍLIO DO REINO DO NORTE e O EXÍLIO DO REINO DO SUL, p. 654).</p>
+
+            <p>(3) Profecia e espera pelo Messias (isto é, o "Ungido", o Salvador, o Cristo).<br>(a) Embora o povo de Deus do Antigo Testamento como um todo fosse infiel a Deus e ao concerto, os profetas nunca deixaram de ter uma mensagem de esperança. Eles sabiam que Deus cumpriria as promessas da aliança feita com Abraão (veja o artigo O CONCERTO DE DEUS COM ABRAÃO, ISAQUE E JACÓ, p. 52) através do que permanecessem fiéis a Ele. No final, o Messias viria, e, através dele, Deus Pai oferecería a salvação espiritual a todas as pessoas.<br>(b) Os profetas estavam entre o colapso espiritual da sua própria geração e a esperança emergente do tempo que seria cumprido após a vinda do Messias. O dilema mais difícil para eles era ter de entregar a mensagem de Deus a pessoas teimosas e rebeldes sabendo que ela seria rejeitada e ignorada até que as predições de fato viessem a acontecer (cf. Is 6.9-13). Os profetas eram tanto defensores da antiga aliança de Deus (isto é, meio pelo qual o povo permanecia em um relacionamento correto com Deus, principalmente pela obediência e pelo sacrifício sincero, antes da vinda de Cristo) como precursores que preparavam o caminho para a nova aliança (isto é, o plano de salvação espiritual de Deus, a mensagem de esperança para um relacionamento renovado com Deus através de Cristo). Eles viviam no presente, mas apontavam para o futuro (veja o artigo O ANTIGO CONCERTO E O NOVO CONCERTO, p. 2312).</p>
+
+            <h2>OS FALSOS PROFETAS</h2>
+            <p>Há várias referências a falsos profetas no Antigo Testamento. Por exemplo, o rei Acabe juntou quatrocentos falsos profetas (2Cr 18.4-7). A Bíblia diz que um espírito mentiroso estava na boca desses profetas (2Cr 18.18-22). De acordo com o Antigo Testamento, um profeta era considerado falso (1) se desviasse as pessoas do verdadeiro Deus para um falso "deus", ou para alguma forma de idolatria (Dt 13.1-5); (2) se praticasse a adivinhação (isto é, tentar descobrir um conhecimento oculto através de meios sobrenaturais ímpios), astrologia, feitiçaria (isto é, o suposto uso de magia), bruxaria e outros (veja Dt 18.10-11); (3) se as profecias rejeitassem ou fossem conflitantes com a clara mensagem de Deus contida nas Escrituras (Dt 13.1-5); (4) se ele recusasse expor os pecados do povo de Deus (Jr 23.9-18); ou (5) se o que foi predito não viesse a acontecer (Dt 18.20-22). Note que os profetas sob a nova aliança (depois de Cristo) não falaram com a mesma finalidade ou perfeita confiabilidade como falaram os profetas do Antigo Testamento, que eram a principal voz de revelação da parte de Deus a Israel. No Novo Testamento, a profecia é apenas um dos cinco principais dons ministeriais na igreja (veja o artigo DONS DO MINISTÉRIO DE LIDERANÇA PARA A IGREJA, p. 2183). Os profetas do Novo Testamento tinham limitações que os profetas do Antigo Testamento não tinham (cf. 1Co 14.29-33) por causa da complexidade e da natureza independente do ministério nos tempos do Novo Testamento (veja o artigo DONS ESPIRITUAIS PARA OS CRENTES, p. 2101).</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>O profeta era chamado para falar a verdade de Deus, mesmo em meio à rejeição. Como isso inspira sua própria disposição de obedecer e testemunhar, mesmo quando difícil?</li>
+                    <li>Os profetas sentiam o coração de Deus (tristeza pelo pecado, amor pelo povo). Como cultivar maior sensibilidade ao Espírito de Deus em sua vida diária?</li>
+                    <li>A mensagem central era arrependimento e esperança no Messias. Ore pedindo coragem para confrontar o pecado (em si e nos outros) e proclamar a esperança em Cristo.</li>
+                </ul>
+            </div>
+
+            
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poder sobre Satanás e os Demônios | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+   
+
+    <article>
+        <div class="study-header">
+            <span class="category">Teologia Bíblica / Guerra Espiritual</span>
+            <h1>Poder sobre Satanás e os Demônios</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 13 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+
+            <div class="verse-card">
+                <blockquote>Ninguém pode roubar os bens do valente, entrando-lhe em sua casa, se primeiro não manietar o valente; e, então, roubará a sua casa.</blockquote>
+                <cite>Marcos 3.27</cite>
+            </div>
+
+            <p>Jesus veio destruir as obras de Satanás (1Jo 3.8), estabelecer o reino de Deus (veja estudo O REINO DE DEUS) e nos libertar do poder de Satanás (Mt 12.28; Lc 4.18; 13.16; At 26.18). No Evangelho de Marcos, destaca-se o confronto direto de Jesus com Satanás e demônios, ilustrado em Mc 3.27: manietar o "valente" (Satanás) para roubar sua casa (libertar os escravizados por demônios). O poder de Jesus se manifesta especialmente na expulsão de demônios (daimonion).</p>
+
+            <h2>SATANÁS E SEUS DEMÔNIOS</h2>
+
+            <p>Satanás ("acusador/adversário") era um anjo criado perfeito, mas rebelou-se por orgulho antes da criação do mundo (Ez 28.12-15). Não é igual a Deus: é criado, subordinado e limitado (não onipresente, onipotente ou onisciente). Sua atividade é delegada a demônios (Mt 8.28; Ap 16.13-14; Jó 1.12).</p>
+
+            <p>Demônios são anjos caídos que seguiram Satanás (Ap 12.4,7), exilados na terra e atmosfera, operando sob permissão de Deus. Formam um império organizado (Ef 6.10-12; Ef 2.2), maligno e hostil a Deus e humanos (Mt 12.43-45).</p>
+
+            <p>(1) O mundo está alienado de Deus e dominado por Satanás (Jo 12.31; 2Co 4.4; veja artigo O RELACIONAMENTO DO CRISTÃO COM O MUNDO).</p>
+
+            <p>(2) Demônios têm personalidade, inteligência e são completamente malignos, sob autoridade de Satanás (Mt 4.10).</p>
+
+            <p>(3) Podem habitar corpos de pessoas sem relacionamento com Deus, escravizando-as, influenciando voz, imoralidade e destruição (Mc 5.15; Lc 4.41; At 16.18).</p>
+
+            <p>(4) Causam enfermidades físicas (Mt 9.32-33; 12.22; 17.14-18; Lc 13.11,16), mas nem toda doença é demoníaca (Mt 4.24).</p>
+
+            <p>(5) São o poder por trás de ídolos e falsas religiões (1Co 10.20; veja artigo A NATUREZA DA IDOLATRIA).</p>
+
+            <p>(6) Espiritismo e feitiçaria lidam com demônios, levando à escravidão (At 13.8-10; 19.19; Gl 5.20; Ap 9.20).</p>
+
+            <p>(7) No fim dos tempos, promovem ocultismo, violência e engano em massa (Mt 24.24; 2Co 11.14-15; 1Tm 4.1; 2Ts 2.9; Ap 13.2-8; 16.13-14).</p>
+
+            <h2>JESUS E OS DEMÔNIOS</h2>
+
+            <p>Jesus confrontou e expulsou demônios repetidamente (Mc 1.23-28,32-34,39; 3.10-12,14-15; 5.1-20; 6.7,13; 7.24-30; 9.14-29; 16.17), demonstrando autoridade para libertar escravizados (Mc 1.27; Lc 4.18). Seu propósito inclui destruir obras de Satanás (Mt 12.29; Jo 12.31). A derrota final veio pela cruz e ressurreição (Hb 2.14), restaurando o reino de Deus (veja quadro REINO DE DEUS VS REINO DE SATANÁS). O inferno foi preparado para Satanás e demônios (Mt 8.29; 25.41).</p>
+
+            <h2>CRENTES E DEMÔNIOS</h2>
+
+            <p>(1) Cristãos verdadeiros não podem ser possuídos, pois o Espírito Santo habita neles (2Co 6.15-16). Demônios podem influenciar pensamentos e ações de quem não anda no Espírito (Mt 16.23; 2Co 11.3,14).</p>
+
+            <p>(2) Jesus deu autoridade sobre Satanás e demônios aos seguidores (Mc 16.17; Lc 10.17-19; At 26.18). Enfrentamos guerra espiritual pelo poder do Espírito (Lc 4.14-19; Ef 6.10-18).</p>
+
+            <p>(3) Conflito em três estágios (Mc 3.27): declarar guerra, invadir território de Satanás (orações e Palavra destroem fortalezas – 2Co 10.4-5), e tomar o que ele possui (libertar escravizados para Cristo – At 26.18).</p>
+
+            <p>Passos práticos:</p>
+            <ul>
+                <li>Reconhecer guerra espiritual contra forças malignas, não contra pessoas (Ef 6.12).</li>
+                <li>Viver na verdade e santidade (Ef 6.14; Rm 12.1-2).</li>
+                <li>Ter fé no poder de Deus para quebrar controle demoníaco (Ef 6.16; At 26.18).</li>
+                <li>Proclamar o reino de Cristo (Mt 4.23; At 1.8; Rm 1.16).</li>
+                <li>Desafiar Satanás em nome de Jesus, usando Palavra, oração, jejum e expulsão (Ef 6.17-18; Mc 16.17; veja artigo SINAIS DOS CRENTES).</li>
+                <li>Orar para o Espírito convencer pecadores (Jo 16.8-11).</li>
+                <li>Buscar enchimento do Espírito e dons (At 4.29-33; 1Co 12.7-11).</li>
+            </ul>
+
+            <p>Esteja preparado: dedique-se à oração e Palavra, pois sem isso não se enfrenta Satanás (At 19.13-16). Mantenha alerta, confie em Deus e exerça autoridade em Jesus sem medo (Ef 6.10-18; 1Pe 5.8-9).</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>Jesus já venceu Satanás na cruz (Hb 2.14). Como você exerce autoridade sobre influências malignas na sua vida diária (pensamentos, tentações)?</li>
+                    <li>Esteja equipado: ore diariamente, leia a Palavra e busque o enchimento do Espírito para resistir ao diabo (Ef 6.10-18; Tg 4.7).</li>
+                    <li>Libertação é missão: ore por pessoas oprimidas, proclame o evangelho e confie no poder de Jesus para quebrar fortalezas (At 26.18; Mc 16.17).</li>
+                </ul>
+            </div>
+
+            
+
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

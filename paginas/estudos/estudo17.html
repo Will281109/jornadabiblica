@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Natureza da Idolatria | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        .content-body h3 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 30px 0 15px; font-size: 1.5rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* GLOSSÁRIO/NOTA */
+        .term-note {
+            background: #f0f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            border: 1px dashed var(--turquoise);
+            margin: 30px 0;
+        }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+  
+
+    <article>
+        <div class="study-header">
+            <span class="category">Pecados e Advertências</span>
+            <h1>A Natureza da Idolatria: Por que o coração humano troca Deus por vaidades?</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 8 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>Então, disse Samuel ao povo: Não temais; vós tendes cometido todo este mal; porém não vos desvieis de seguir ao Senhor, mas servi ao Senhor com todo o vosso coração. E não vos desvieis; pois seguiríeis as vaidades, que nada aproveitam e tampouco vos livrarão, porque vaidades são.</blockquote>
+                <cite>1 Samuel 12:20–21</cite>
+            </div>
+
+            <h2>I. Descrição da Idolatria</h2>
+            <p>A idolatria é a adoração de ídolos, imagens ou qualquer substituto de Deus — coisas ou pessoas colocadas no lugar do verdadeiro Senhor. É um pecado grave que atravessa toda a história do povo de Deus.</p>
+
+            <h3>1. Primeiros registros</h3>
+            <p>O primeiro caso registrado é quando Jacó ordenou que sua família se livrasse dos deuses estrangeiros antes de ir a Betel (Gênesis 35:1–4). Depois, veio a adoração coletiva do bezerro de ouro no Sinai, enquanto Moisés recebia a Lei (Êxodo 32:1–6).</p>
+
+            <h3>2. Período dos Juízes e Monarquia</h3>
+            <p>No livro de Juízes, o povo repetidamente se voltava para falsos deuses. Nos reinados de Saul e Davi não há evidências claras de idolatria, mas nos últimos anos de Salomão o padrão começou (1 Reis 11:1–8). Após a divisão do reino:</p>
+            <ul>
+                <li>Todos os reis do norte (Israel) praticaram idolatria;</li>
+                <li>Muitos reis do sul (Judá) também caíram nisso.</li>
+            </ul>
+            <p>Somente após o exílio babilônico (70 anos de cativeiro) a idolatria de imagens cessou entre os judeus.</p>
+
+            <h2>II. A Atração da Idolatria</h2>
+            <p>Por que era tão atraente? Vários fatores contribuíam:</p>
+            <ul>
+                <li><strong>Influência das nações pagãs</strong>: Israel imitava os vizinhos politeístas, que viam muitos deuses como vantagem.</li>
+                <li><strong>Ausência de exigência moral rigorosa</strong>: Falsos deuses permitiam imoralidade sexual e prostituição cultual, ao contrário da Lei de Deus.</li>
+                <li><strong>Resultados aparentes e influência demoníaca</strong>: Ídolos prometiam fertilidade, colheitas e vitórias — e por trás deles havia poderes espirituais malignos.</li>
+            </ul>
+
+            <h2>III. O Caráter Essencial da Idolatria</h2>
+            <h3>1. O ídolo em si não é nada</h3>
+            <p>Os ídolos são apenas madeira ou pedra (Jeremias 2:11; 16:20). Paulo afirma: “Sabemos que o ídolo nada é no mundo” (1 Coríntios 8:4). A Bíblia os chama de “vaidades” e os ridiculariza (Salmos 115:4–8; Isaías 44:9–20).</p>
+
+            <div class="verse-card">
+                <blockquote>As coisas que os gentios sacrificam, as sacrificam aos demônios e não a Deus.</blockquote>
+                <cite>1 Coríntios 10:20</cite>
+            </div>
+
+            <h3>2. Por trás dos ídolos: demônios</h3>
+            <p>O poder real vem de demônios (Deuteronômio 32:17; Salmos 106:36–37). Satanás, “o deus deste século” (2 Coríntios 4:4), pode produzir sinais e benefícios temporários.</p>
+
+            <h3>3. Conexão com o ocultismo</h3>
+            <p>Idolatria está ligada a espiritismo, feitiçaria, adivinhação e bruxaria (Deuteronômio 18:9–11).</p>
+
+            <h3>4. Avareza como idolatria</h3>
+            <p>No Novo Testamento, a cobiça é chamada de idolatria (Colossenses 3:5). “Ninguém pode servir a dois senhores” (Mateus 6:24).</p>
+
+            <h2>IV. A Resposta de Deus à Idolatria</h2>
+            <p>Deus não tolera. Os dois primeiros mandamentos proíbem qualquer outro deus ou imagem (Êxodo 20:3–4). Ele ordenou destruir ídolos (Deuteronômio 7:4–5).</p>
+
+            <p>A história de Israel mostra juízo: ciclo em Juízes, destruição do norte pelos assírios (2 Reis 17), e de Judá pelos babilônios (2 Reis 25).</p>
+
+            <div class="verse-card">
+                <blockquote>Fugi da idolatria... filhinhos, guardai-vos dos ídolos.</blockquote>
+                <cite>1 Coríntios 10:14; 1 João 5:21</cite>
+            </div>
+
+            <p>Os idólatras não herdarão o Reino (1 Coríntios 6:9–10; Apocalipse 22:15).</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>O que ocupa o lugar prioritário no seu coração hoje? Dinheiro, sucesso, relacionamentos ou opiniões humanas?</li>
+                    <li>Como a avareza ou o materialismo pode ser uma forma sutil de idolatria na sua vida?</li>
+                    <li>Deus chama para servir com todo o coração. O que você precisa abandonar para voltar a Ele plenamente?</li>
+                </ul>
+            </div>
+
+           
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

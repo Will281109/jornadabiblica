@@ -1,0 +1,23 @@
+<div class="missions-screen-wrapper" style="padding: 16px 16px 80px 16px;">
+    
+    <!-- Cabeçalho da Tela -->
+    <div style="margin-bottom: 20px;">
+        <h2 style="font-size: 1.4rem; font-weight: 800; margin: 0; color: var(--text-main);">Missões e Conquistas</h2>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 4px 0 0 0;">Cumpra desafios bíblicos e resgate suas recompensas.</p>
+    </div>
+
+    <!-- Navegação em Abas (Duas Páginas Internas) -->
+    <div class="missions-tabs" style="display: flex; background: var(--v2-bg-deep); padding: 4px; border-radius: 14px; margin-bottom: 16px; border: 1px solid var(--border-subtle);">
+        <button id="tab-active-missions" class="tab-btn active" style="flex: 1; padding: 10px; border: none; background: var(--v2-bg-surface); border-radius: 10px; color: var(--text-main); font-weight: 700; font-size: 0.85rem; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
+            <i class="fa-solid fa-hourglass-half"></i> Em Andamento
+        </button>
+        <button id="tab-completed-missions" class="tab-btn" style="flex: 1; padding: 10px; border: none; background: transparent; border-radius: 10px; color: var(--text-muted); font-weight: 700; font-size: 0.85rem; cursor: pointer;">
+            <i class="fa-solid fa-trophy" style="color: #D4A327;"></i> Galeria de Troféus
+        </button>
+    </div>
+
+    <!-- Container Único de Injeção Dinâmica -->
+    <div id="missions-dynamic-container" style="display: flex; flex-direction: column; gap: 12px;">
+        <!-- Injetado via JavaScript -->
+    </div>
+</div>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Oração Eficaz | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        .content-body h3 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 30px 0 15px; font-size: 1.5rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+    <article>
+        <div class="study-header">
+            <span class="category">Vida de Oração</span>
+            <h1>A Oração Eficaz: Como orar de modo que Deus responda</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 9 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>Mas Elias subiu ao cume do Carmelo, e se inclinou por terra, e meteu o seu rosto entre os seus joelhos. E disse ao seu moço: Sobe agora e olha para a banda do mar. E subiu, e olhou, e disse: Não há nada. Então, disse ele: Torna lá sete vezes. E sucedeu que, à sétima vez, disse: Eis aqui uma pequena nuvem, como a mão de um homem, subindo do mar. Então, disse ele: Sobe e dize a Acabe: Aparelha o teu carro e desce, para que a chuva te não apanhe. E sucedeu que, entretanto, os céus se enegreceram com nuvens e vento, e veio uma grande chuva; e Acabe subiu ao carro e foi para Jezreel.</blockquote>
+                <cite>1 Reis 18:42b-45</cite>
+            </div>
+
+            <p>No nível mais básico, oração é a comunicação ou conversa da pessoa com Deus. No entanto, ela é multifacetada, podendo assumir diversas formas e incluir múltiplos elementos, assim como qualquer diálogo verdadeiro. Além de “oração” e “orar”, a Bíblia descreve essa prática como: invocar a Deus (Sl 17.6), invocar o nome do Senhor (Gn 4.26), clamar ao Senhor (Sl 3.4), levantar a alma ao Senhor (Sl 25.1), buscar ao Senhor (Is 55.6), chegar com confiança ao trono da graça (Hb 4.16) e aproximar-se de Deus (Hb 10.22).</p>
+
+            <h2>RAZÕES PARA A ORAÇÃO</h2>
+            <p>A Bíblia apresenta razões claras para que as pessoas — especialmente as que afirmam seguir a Deus — orem.</p>
+
+            <p>1. Deus ordena que oremos.<br>
+            Esse mandamento aparece nos salmos (1Cr 16.11; Sl 105.4), nos profetas (Is 55.6; Am 5.4,6), nos apóstolos (Ef 6.17-18; Cl 4.2; 1Ts 5.17) e no próprio Jesus Cristo (Mt 26.41; Lc 18.1; Jo 16.24). Deus deseja comunhão com seu povo; a oração aprofunda o relacionamento com Ele.</p>
+
+            <p>2. A oração conecta o crente ao poder e aos planos de Deus.<br>
+            Jesus prometeu que seus seguidores receberiam o Espírito Santo se orassem persistentemente (Lc 11.5-13). Após sua ascensão, eles perseveraram em oração (At 1.14) até que o Espírito foi derramado no Pentecostes (At 2.1-4).<br>
+            O apóstolo Paulo de Tarso solicitava constantemente oração, reconhecendo que seu ministério dependia da intervenção divina (Rm 15.30-32; Ef 6.18-20; Fp 1.19). Tiago ensina que a “oração da fé” pode resultar em cura (Tg 5.14-15).</p>
+
+            <p>3. Deus escolheu agir, em muitos casos, mediante a oração do seu povo.<br>
+            Há propósitos do reino que não se cumprem sem intercessão. Cristo declarou: “Rogai ao Senhor da seara que mande ceifeiros” (Mt 9.38). A omissão na oração pode limitar a manifestação da vontade de Deus na vida pessoal e na comunidade.</p>
+
+            <h2>REQUISITOS PARA A ORAÇÃO EFICAZ</h2>
+            <p>Embora não exista fórmula rígida, há condições espirituais fundamentais.</p>
+
+            <p>1. Fé genuína.<br>
+            Jesus afirmou: “Tudo o que pedirdes, orando, crede que o recebereis” (Mc 11.24). A oração deve ser feita com convicção de que Deus ouve, pode agir e fará o que é melhor (Hb 10.22; Tg 1.6).</p>
+
+            <p>2. Orar em nome de Jesus.<br>
+            Significa agir sob sua autoridade e alinhado ao seu caráter e propósitos (Jo 14.13-14). Não é mera expressão verbal, mas consciência de quem Ele é e do que representa.</p>
+
+            <p>3. Conformidade com a vontade de Deus.<br>
+            “Se pedirmos alguma coisa, segundo a sua vontade, ele nos ouve” (1Jo 5.14). A oração eficaz harmoniza-se com os propósitos divinos revelados nas Escrituras. O profeta Elias tinha confiança ao orar por fogo e chuva porque conhecia a palavra prévia do Senhor (1Rs 18.1).</p>
+
+            <p>4. Vida alinhada à vontade de Deus.<br>
+            A eficácia da oração está vinculada à obediência (1Jo 3.22). Pecado deliberado compromete a comunhão (Sl 66.18; Tg 4.3). A promessa de 2Cr 7.14 demonstra que arrependimento e humildade restauram o acesso à resposta divina.</p>
+
+            <p>5. Persistência.<br>
+            A parábola da viúva persistente (Lc 18.1-7) ensina perseverança. “Pedi, buscai, batei” (Mt 7.7-8) indica continuidade. A persistência não expressa incredulidade, mas confiança perseverante. Moisés (Êx 17.11) e Elias (1Rs 18.41-45) exemplificam essa constância.</p>
+
+            <h2>ELEMENTOS BÍBLICOS E MÉTODOS DA ORAÇÃO</h2>
+            <h3>1. Elementos essenciais</h3>
+            <ul>
+                <li>Louvor e adoração (Sl 150; Rm 15.11).</li>
+                <li>Ação de graças (Sl 100.4; Fp 4.6).</li>
+                <li>Confissão sincera (Sl 51; 1Jo 1.9).</li>
+                <li>Petição específica (Tg 4.2-3).</li>
+                <li>Intercessão pelos outros (Lc 22.31-32).</li>
+            </ul>
+
+            <h3>2. Formas de oração</h3>
+            <ul>
+                <li>Em silêncio (1Sm 1.13) ou em voz alta (Ne 9.4).</li>
+                <li>Com palavras próprias ou textos bíblicos.</li>
+                <li>No entendimento ou “no Espírito” (1Co 14.14-18).</li>
+                <li>Com gemidos inexprimíveis (Rm 8.26).</li>
+                <li>Por meio de cânticos (Ef 5.19-20).</li>
+                <li>Acompanhada de jejum (Dn 9.3-4; Mt 6.16).</li>
+            </ul>
+
+            <h3>3. Posturas na oração</h3>
+            <p>A Bíblia registra oração em pé (1Rs 8.22), sentado (1Cr 17.16), de joelhos (Dn 6.10), prostrado (Sl 95.6), deitado (2Sm 12.16) e com mãos erguidas (1Tm 2.8). A postura é secundária; a atitude interior é central.</p>
+
+            <h2>EXEMPLOS DE ORAÇÃO EFICAZ</h2>
+            <ul>
+                <li>Moisés — intercedeu eficazmente por Israel.</li>
+                <li>Sansão — recebeu força sobrenatural após arrependimento (Jz 16.21-30).</li>
+                <li>Elias — orou por seca, fogo e chuva (1Rs 17–18; Tg 5.17-18).</li>
+                <li>Ezequias — teve sua vida prolongada após oração (2Rs 20.2-6).</li>
+                <li>Daniel — foi preservado na cova dos leões (Dn 6.10-22).</li>
+                <li>A igreja primitiva orou por Pedro, e ele foi libertado miraculosamente (At 12.3-11).</li>
+            </ul>
+
+            <p>A oração eficaz não é técnica, mas relacional. Ela envolve fé, submissão à vontade divina, vida obediente e perseverança. Quando esses princípios são observados, a oração torna-se instrumento pelo qual Deus manifesta seu poder e cumpre seus propósitos na história e na vida de seu povo.</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>Você tem orado com persistência como Elias, mesmo quando não vê resultados imediatos? Qual área da sua vida precisa dessa perseverança hoje?</li>
+                    <li>Seus pedidos estão alinhados à vontade de Deus revelada na Bíblia? Como você pode ajustar suas orações para refletir mais os propósitos dEle?</li>
+                    <li>Qual elemento da oração (louvor, confissão, intercessão, etc.) você mais negligencia? Escolha um para fortalecer esta semana.</li>
+                </ul>
+            </div>
+
+            
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

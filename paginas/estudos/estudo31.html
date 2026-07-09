@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Vinho no Antigo Testamento | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">Vida Cristã</span>
+            <h1>O Vinho no Antigo Testamento</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 10 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>Para quem são os ais? Para quem, os pesares? Para quem, as pelejas? Para quem, as queixas? Para quem, as feridas sem causa? E para quem, os olhos vermelhos? Para os que se demoram perto do vinho, para os que andam buscando bebida misturada. Não olhes para o vinho, quando se mostra vermelho, quando resplandece no copo e se escoa suavemente. No seu fim, morderá como a cobra e, como o basilisco, picará. Os teus olhos olharão para as mulheres estranhas, e o teu coração falará perversidades. E serás como o que dorme no meio do mar e como o que dorme no topo do mastro e dirás: Espancaram-me, e não me doeu; bateram-me, e não o senti; quando virei a despertar?</blockquote>
+                <cite>Pv 23.29-35</cite>
+            </div>
+
+            <h2>UMA TERRA DE VINHAS</h2>
+            <p>A terra de Israel - a "terra prometida" do povo do concerto de Deus no Antigo Testamento - era descrita como uma "terra que mana leite e mel" (Êx 3.8). Mas também era uma terra abençoada com campos férteis, vinhas e bosques de oliveiras (cf. Nm 16.14; Dt 6.11-12; Js 24.13; 1Sm 8.14; Ne 5.4-5,11; Sl 107.37; Ct 1.6; Is 36.16-17; 65.21; Jr 32.15; Ez 28.26; Am 9.14; Hc 3.17). Com seu clima agradável, a terra era tão adequada para o plantio de vinhas e cultivo de videiras que a colheita da uva propiciava uma das melhores safras anuais de Israel. Não é de admirar que o Antigo Testamento menciona com tanta frequência uvas, passas e o vinho. Quando secas e convertidas em passas, as uvas podiam ser preservadas como alimento nutritivo e fonte de energia a ser consumida durante o ano todo. Além disso, o suco de uvas fervido e reduzido a um concentrado não se deteriorava nem fermentava, podendo ser usado durante muito tempo como xarope doce, geleia, ou reconstituído como suco de uva com a adição de água. (Para mais detalhes, veja o artigo O VINHO NOS TEMPOS DO NOVO TESTAMENTO, p. 1843.)</p>
+
+            <p>O vinho era uma bebida comum nas refeições dos tempos do Antigo Testamento. Às vezes, o vinho usado pelos israelitas era claramente fermentado e apresentava um problema potencial de embriaguez. (A fermentação é o processo bioquímico em que um micro-organismo, como o fermento, decompõe açúcares em álcool e dióxido de carbono.) A primeira menção ao vinho no Antigo Testamento está relacionada com embriaguez, vergonha e maldição (Gn 9.21-25; veja Gn 9.21, nota). O Antigo Testamento contém várias advertências veementes sobre o vinho fermentado, como: "o vinho é escarnecedor, e a bebida forte, alvoroçadora; e todo aquele que neles errar nunca será sábio" (Pv 20.1). Ou: "até o sacerdote e o profeta erram por causa da bebida forte; são absorvidos do vinho, desencaminham-se por causa da bebida forte, andam errados na visão e tropeçam no juízo" (Is 28.7). Devido ao poder de corrupção das bebidas alcoólicas, Deus ordenou que todos os sacerdotes de Israel se abstivessem de consumir vinho e outras bebidas fermentadas durante o tempo de seu ministério. Infringir essa instrução era suficientemente grave para garantir a pena de morte para o sacerdote transgressor (Lv 10.9-11). Deus também fez da abstinência do vinho e de bebidas fermentadas um requisito para todos os que fizessem o voto nazireu (veja a seção final).</p>
+
+            <p>O Antigo Testamento se refere, às vezes, ao vinho em um sentido favorável e com um contexto de alegria. Por exemplo, Zacarias, o sacerdote, quando fala da restauração de Deus aos filhos de Efraim, diz: "O seu coração se alegrará como pelo vinho" (10.7a). Mas então, o profeta continua: "seus filhos o verão [a restauração de Deus] e se alegrarão; o seu coração se regozijará no Senhor" (10.7b). De modo que não é o vinho que os alegra, mas o seu relacionamento com Deus e a sua bênção. Todas as referências positivas ao vinho no Antigo Testamento (como em Zc 10.7) devem ser consideradas à luz de muitas passagens que descrevem o desastroso resultado do vinho inebriante, como Gênesis 19.30-38; Provérbios 23.29-35 (com notas); 31.4-5 (com nota); Isaías 28.7-8; Jeremias 25.27; 51.39,57. Na maioria dos casos em que o vinho é descrito em termos favoráveis na Bíblia, a referência é provavelmente ao suco de uva fresco e não fermentado, que também é mencionado com o nome de "vinho".</p>
+
+            <h2>PALAVRAS HEBRAICAS PARA O VINHO</h2>
+            <p>De modo geral, há duas palavras hebraicas traduzidas como "vinho" no Antigo Testamento.</p>
+
+            <p>(1) A palavra mais comum é yayin, termo genérico usado 141 vezes no Antigo Testamento para indicar vários tipos de vinho fermentado (alcoólico) ou não fermentado (veja Ne 5.18, que se refere a "todo o vinho [yayin]").<br>(a) Por um lado, a palavra yayin é mais frequentemente aplicada a todos os tipos de suco de uva fermentado (veja Gn 9.20-21; 19.32-33; 1Sm 25.36-37; Pv 23.30-31). As consequências desastrosas do uso de vinho fermentado são descritas em várias passagens por todo o Antigo Testamento, em particular Provérbios 23.29-35.<br>(b) Por outro lado, yayin se refere, às vezes, ao suco de uva doce e não fermentado, em particular o suco fresco, recém-obtido das uvas. Isaías, ao profetizar sobre a destruição de Moabe, diz: "Já o pisador não pisará as uvas [yayin] nos lagares" (Is 16.10). O profeta Jeremias diz: "porque fiz que o vinho [yayin] acabasse nos lagares; já não pisarão uvas com júbilo" (Jr 48.33). Na verdade, Jeremias se refere ao suco ainda nas uvas como yayin (veja Jr 40.10,12). Outro caso em que yayin se refere, definitivamente, ao suco de uva não fermentado se encontra em Lamentações, onde o autor descreve crianças de peito que ciamam por suas mães, pedindo o seu alimento habitual de "trigo e vinho" (Lm 2.12). A ideia de que o termo "vinho" pode se referir ao suco de uva não fermentado é respaldada por vários estudos acadêmicos. (Veja R. P. Teachout, "The Use of 'Wine' in the Old Testament", dissertação de Ph.D., Dallas Theological Seminary, 1979.) The Jewish Encyclopedia (1901) afirma: "O vinho fresco, antes da fermentação, era chamado 'yayin mi-gat' (vinho do barril; Sanh. 70a)". Além disso, a Encyclopaedia Judaica (1971) verifica que a palavra yayin era usada para se referir ao suco de uva em vários estágios, incluindo "o vinho recém-prensado, antes da fermentação". Para comentários sobre a palavra oinos, termo equivalente no Novo Testamento grego à palavra hebraica yayin, veja o artigo O VINHO NOS TEMPOS DO NOVO TESTAMENTO, p. 1843.</p>
+
+            <p>(2) A outra palavra hebraica traduzida como "vinho" é tirosh, que significa "vinho novo" ou "vinho da colheita" (p.ex., Nm 18.12; Dt 7.13; veja Harris, Archer, Waltke, Theological Wordbook of the Old Testament; Moody, 1960). Tirosh aparece 38 vezes no Antigo Testamento e nunca em referência a bebida fermentada. Essa palavra pode descrever o suco que ainda está no cacho de uvas (Is 65.8) ou o suco de uvas recém-colhidas (Dt 11.14; Jl 2.24). Tirosh é frequentemente traduzida como "vinho novo", uma vez que, na maior parte das passagens, a referência é claramente ao suco recém-extraído das uvas (p.ex., Pv 3.10; Is 65.8).</p>
+
+            <p>(3) Uma palavra correlata, shekhar, é usada 23 vezes no Antigo Testamento. Ela é correlata do verbo hebraico shakhar, que pode significar "beber livremente" ou "embriagar". Esta palavra é frequentemente traduzida como "bebida forte" (p.ex., Nm 6.3) ou "bebida fermentada" (p.ex., 1Sm 1.15, NVI; "cerveja", NTLH). Shekhar também pode se referir a bebidas fermentadas, feitas de outras frutas, como romãs, maçãs ou tâmaras. The Jewish Encyclopedia (1901) sugere que yayin se refere, às vezes, a uma bebida fermentada diluída em água, ao passo que shekhar não era diluída. Às vezes, no entanto, a palavra pode se referir a um suco doce, não fermentado e agradável (Robert P. Teachout, "The Use of 'Wine' in the Old Testament", dissertação de Th.D., Dallas Theological Seminary, 1979). Na maioria dos casos em que yayin e shekhar são usadas juntas, formam uma única figura de linguagem que se refere a bebidas inebriantes. Várias passagens do Antigo Testamento revelam as trágicas consequências do uso de yayin e shekhar, quando essas palavras se referem a bebidas fermentadas (alcoólicas) e inebriantes (p.ex., 4.17; 23.29-35; Gn 9.20-27; 19.31-38). Em alguns casos, até mesmo as bebidas propriamente ditas - e não apenas os seus efeitos - são condenadas (veja Pv 20.1, nota; veja o artigo O VINHO NOS TEMPOS DO NOVO TESTAMENTO, p. 1843). As bebidas alcoólicas podem fazer uma pessoa desafiar os padrões de Deus e perder o autocontrole, comportando-se de maneira imoral. Algumas pessoas dependem de substâncias como bebidas alcoólicas para sentir alívio, alegria e satisfação - sentimentos que devem ser encontrados em Deus e nos seus propósitos. A Palavra de Deus enfatiza claramente que, para evitar a infelicidade, a aflição e o arrependimento relativos ao consumo de álcool, os que desejam seguir a Deus e seus planos devem se abster de bebidas que embriagam e viciam (veja Pv 23.29-35, notas).</p>
+
+            <h2>OS NAZIREUS E O VINHO</h2>
+            <p>A palavra "nazireu" (heb. nazir, de nazar, "separar") se referia a uma pessoa que havia feito um voto especial de se dedicar completamente ao Senhor e ser consagrada aos seus propósitos. O compromisso podia ser por um período específico de tempo ou para a vida toda (Jz 13.5; 1Sm 1.11).</p>
+
+            <p>(1) O texto de Nm 6.1-8 descreve os requisitos para o voto nazireu, que incluía a abstinência de toda e qualquer bebida fermentada. Além disso, os nazireus não cortavam os cabelos e não podiam se aproximar de um cadáver.</p>
+
+            <p>(2) O modo de vida dos nazireus servia de exemplo do mais nobre padrão de Deus de santidade e dedicação aos seus propósitos (cf. Am 2.11-12).</p>
+
+            <p>(3) O voto nazireu era totalmente voluntário e pretendia ensinar a Israel que a total devoção a Deus deve vir, em primeiro lugar, do coração de uma pessoa, e então ser expresso exteriormente por meio da renúncia a si mesmo, da disciplina moral e espiritual e da pureza pessoal (Nm 6.3-8).</p>
+
+            <p>Deus deu aos nazireus instruções claras sobre o uso do vinho.</p>
+
+            <p>(1) Os nazireus deviam se abster de beber "vinho ou vinagre de bebida forte" (Nm 6.3; veja Dt 14.26, nota). Na verdade, eles não tinham permissão de comer ou beber qualquer produto feito a partir de uvas. É muito provável que Deus tenha dado esse comando como salvaguarda contra a tentação de usar bebidas alcoólicas e contra a possibilidade de um nazireu beber vinho alcoólico por engano (Nm 6.3-4). Deus não queria que a pessoa totalmente dedicada fosse exposta à possibilidade de embriaguez ou vício (cf. Lv 10.8-11; Pv 31.4-5). Por isso o padrão mais elevado imposto ao povo de Deus, com respeito a bebidas alcoólicas, era a total abstinência (Nm 6.3-4).</p>
+
+            <p>(2) O consumo de álcool frequentemente leva a vários outros pecados (como a imoralidade sexual ou a atividade criminosa). Ao exigir que evitassem tudo o que fosse feito de uvas, Deus ensinava aos nazireus que eles deveriam evitar qualquer coisa que sugerisse pecado, levasse ao pecado ou os tentasse a cometer pecado.</p>
+
+            <p>(3) Durante os tempos do profeta Amós, o povo ridicularizou e rejeitou os elevados padrões de Deus para os nazireus. Esse profeta declarou aos ímpios: "vós aos nazireus destes vinho a beber" (veja Am 2.12, nota). O profeta Isaías também declarou: "Até o sacerdote e o profeta erram por causa da bebida forte; são absorvidos do vinho, desencaminham-se por causa da bebida forte, andam errados na visão e tropeçam no juízo. Porque todas as suas mesas estão cheias de vômitos e de imundícia; não há nenhum lugar limpo" (Is 28.7-8). Isto acontecia, porque esses líderes rejeitavam o elevado padrão de Deus de abstinência total (veja Pv 31.4-5, nota).</p>
+
+            <p>(4) A essência do voto nazireu - a total devoção a Deus e aos seus elevados padrões - é um padrão para os seguidores de Cristo do Novo Testamento (cf. Rm 12.1; 2Co 6.17; 7.1). Como os nazireus do Antigo Testamento, eles devem se abster de qualquer coisa que conduza ao pecado ou estimule o desejo de praticar algo nocivo. Certamente, qualquer substância ou conduta que possa abrir caminho para o vício em drogas ou álcool, ou que leve alguém a desafiar a Deus e perder a fé nele, está fora dos limites para um cristão comprometido (veja 1Ts 5.6, nota; Tt 2.2, nota; veja o artigo O VINHO NOS TEMPOS DO NOVO TESTAMENTO, p. 1843).</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>O vinho no AT é associado tanto a bênçãos (terra fértil, alegria) quanto a perigos (embriaguez, pecado). Como isso influencia sua visão sobre o consumo de álcool hoje?</li>
+                    <li>Os nazireus abstinham-se totalmente para se consagrar a Deus. Que áreas da sua vida você precisa "separar" ou renunciar para maior dedicação ao Senhor?</li>
+                    <li>A Bíblia alerta sobre os efeitos do vinho inebriante (Pv 23.29-35). Ore pedindo sabedoria e autocontrole para não cair em excessos que prejudiquem seu testemunho.</li>
+                </ul>
+            </div>
+
+            
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Temor do Senhor | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fcfaf5;
+            --royal-blue: #1a3a5f;
+            --gold-leaf: #b89130;
+            --text-dark: #2c3e50;
+            --soft-gray: #e2e8f0;
+            --white: #ffffff;
+            --ivory: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        .progress-container { width: 100%; height: 5px; background: #eee; position: fixed; top: 0; left: 0; z-index: 1000; }
+        .progress-bar { height: 5px; background: var(--gold-leaf); width: 0%; }
+
+        .top-nav { max-width: 900px; margin: 0 auto; padding: 40px 5% 0; }
+        .btn-back-top { display: inline-flex; align-items: center; gap: 8px; color: var(--royal-blue); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .btn-back-top:hover { color: var(--gold-leaf); transform: translateX(-5px); }
+
+        .study-header { padding: 40px 5% 40px; max-width: 900px; margin: 0 auto; text-align: center; }
+        .category { color: var(--gold-leaf); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.8rem; color: var(--royal-blue); margin: 20px 0; }
+
+        .content-body { max-width: 850px; margin: 0 auto; padding: 0 5% 60px; font-size: 1.15rem; text-align: justify; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--royal-blue); margin: 50px 0 25px; border-bottom: 2px solid var(--gold-leaf); padding-bottom: 10px; }
+        .content-body h3 { color: var(--gold-leaf); margin: 35px 0 15px; font-size: 1.4rem; font-family: 'Merriweather', serif; }
+        .content-body p { margin-bottom: 22px; }
+
+        .verse-card { background: var(--white); border: 1px solid var(--soft-gray); padding: 35px; margin: 40px 0; box-shadow: 0 15px 35px rgba(0,0,0,0.03); border-radius: 12px; position: relative; }
+        .verse-card::before { content: "\f658"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--bg-color); padding: 0 15px; color: var(--gold-leaf); font-size: 1.5rem; }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-size: 1.25rem; font-style: italic; color: var(--royal-blue); text-align: center; margin-bottom: 15px; }
+        .verse-card cite { display: block; text-align: center; font-weight: 700; color: var(--gold-leaf); font-style: normal; }
+
+        .concept-item { background: var(--white); padding: 25px; margin-bottom: 20px; border-radius: 8px; border-left: 4px solid var(--royal-blue); transition: 0.3s; }
+        .concept-item:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .concept-num { font-weight: 800; color: var(--gold-leaf); margin-right: 10px; font-size: 1.2rem; }
+
+        .reward-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin: 30px 0; }
+        .reward-card { background: #fff; border: 1px solid #eee; padding: 15px 20px; border-radius: 8px; display: flex; align-items: center; gap: 15px; font-weight: 600; color: var(--royal-blue); }
+        .reward-card i { color: var(--gold-leaf); }
+
+        .finish-container { text-align: center; padding: 40px 0; border-top: 1px solid var(--soft-gray); margin-top: 60px; }
+        .btn-finish { display: inline-block; background-color: var(--royal-blue); color: white; padding: 18px 45px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+        .btn-finish:hover { background-color: var(--gold-leaf); transform: translateY(-3px); }
+
+        footer { text-align: center; padding: 60px; background: #f1f4f8; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 2.1rem; }
+            .content-body { font-size: 1.05rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container"><div class="progress-bar" id="myBar"></div></div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">Sabedoria e Vida Cristã</span>
+            <h1>O Temor do Senhor</h1>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>“...para que temas ao Senhor, teu Deus, e guardes todos os seus estatutos e mandamentos, que eu te ordeno, tu, e teu filho, e o filho de teu filho, todos os dias da tua vida; e que teus dias sejam prolongados.”</blockquote>
+                <cite>(Deuteronômio 6:1-2)</cite>
+            </div>
+
+            <p>Um mandamento frequente dado ao povo de Deus no Antigo Testamento é o de “temer a Deus” ou “temer ao Senhor”. É importante entendermos o que esse mandamento significa para os seguidores de Cristo hoje. Somente quando temermos verdadeiramente o Senhor seremos libertos de todos os temores destrutivos e satânicos. Com o temor de Deus, podemos evitar ser ludibriados, cair na tendência de seguir o nosso próprio caminho, desafiar a Deus e ceder aos encantos do comportamento imoral.</p>
+
+            <h2>O QUE SIGNIFICA TEMER A DEUS?</h2>
+            <p>O mandamento amplo de “temer ao Senhor” envolve vários aspectos do relacionamento do crente com Deus:</p>
+
+            <div class="concept-item">
+                <span class="concept-num">(1)</span> Reconhecer que Deus não é apenas amoroso, misericordioso e clemente; Ele também é santo, justo e reto. Aceitar que sua santidade faz com que Ele julgue o pecado.
+            </div>
+
+            <div class="concept-item">
+                <span class="concept-num">(2)</span> Ter respeito pela sua santidade, dedicar-lhe completa reverência e honrá-lo como o Deus de grande glória, majestade, pureza e poder (Êx 19.16; Sl 33.8-9).
+            </div>
+
+            <div class="concept-item">
+                <span class="concept-num">(3)</span> Depositar nele a sua fé e confiar apenas nEle para a salvação. O temor a Deus produz confiança, esperança e fé — essenciais quando buscamos misericórdia e perdão (Sl 115.11; 130.4).
+            </div>
+
+            <div class="concept-item">
+                <span class="concept-num">(4)</span> Reconhecer que Ele se ira com o pecado e tem poder para punir os que o desafiam e infringem as suas leis (Gn 3.8-10; Hb 10.31).
+            </div>
+
+            <h2>POR QUE DEVEMOS TEMER A DEUS?</h2>
+            <p>As razões para temermos a Deus decorrem do próprio significado da expressão:</p>
+            <p><strong>(1)</strong> Por causa do seu poder incomparável como Criador (Sl 33.6-9);<br>
+            <strong>(2)</strong> Pelo poder que Ele continua a exercer sobre a criação (Jn 1.11-16);<br>
+            <strong>(3)</strong> Pela percepção de sua santidade, pureza e perfeição (Ap 15.4);<br>
+            <strong>(4)</strong> Pela manifestação de Sua glória (Mt 17.1-8);<br>
+            <strong>(5)</strong> Pelas contínuas bênçãos e o perdão dos nossos pecados (Sl 130.4);<br>
+            <strong>(6)</strong> Pelo fato de que Ele julgará toda a raça humana (Hb 10.26-31).</p>
+
+            <h2>COMO O TEMOR A DEUS AFETA A NOSSA VIDA?</h2>
+            
+            <h3>(1) Obediência e rejeição do pecado</h3>
+            <p>Se temermos verdadeiramente ao Senhor, obedeceremos aos seus mandamentos e diremos “não” ao pecado. Salomão ensinou: “Pelo temor do Senhor, os homens se desviam do mal” (Pv 16.6). Por outro lado, quem vive em iniquidade o faz porque “não há temor de Deus perante os seus olhos” (Sl 36.1-4).</p>
+
+            <h3>(2) Impacto nas famílias</h3>
+            <p>Deus ordena que os pais ensinem seus filhos a temê-lo. A Bíblia afirma que o temor do Senhor é o princípio da sabedoria (Pv 9.10), e o objetivo cristão deve ser que os filhos vivam conforme essa sabedoria.</p>
+
+            <h3>(3) Efeito santificador</h3>
+            <p>O temor purifica e promove maturidade espiritual. Ele nos leva a odiar o pecado, ter cuidado com o que dizemos (Ec 5.2) e impede o enfraquecimento da determinação moral, produzindo purificação duradoura (Sl 19.9).</p>
+
+            <h3>(4) Motivação para adoração</h3>
+            <p>O temor reverente motiva o povo a adorá-lo com todo o ser. Em Apocalipse, o anjo proclama: “Temei a Deus e dai-lhe glória [...] adorai aquele que fez o céu, e a terra” (Ap 14.6-7).</p>
+
+            <h3>(5) Recompensas prometidas</h3>
+            <div class="reward-grid">
+                <div class="reward-card"><i class="fa-solid fa-gem"></i> Riquezas, honra e vida (Pv 22.4)</div>
+                <div class="reward-card"><i class="fa-solid fa-shield-halved"></i> Segurança e proteção (Pv 14.26)</div>
+                <div class="reward-card"><i class="fa-solid fa-wheat-awn"></i> Provisão das necessidades (Sl 111.5)</div>
+                <div class="reward-card"><i class="fa-solid fa-hourglass-half"></i> Vida longa (Pv 10.27)</div>
+            </div>
+
+            <h3>(6) Consolação espiritual</h3>
+            <p>Traz humilde confiança e profunda consolação. O Novo Testamento liga o temor do Senhor ao encorajamento do Espírito Santo (At 9.31). Os que o temem têm a certeza de que Deus vai “livrar a sua alma da morte” (Sl 33.18-19).</p>
+
+            
+        </div>
+    </article>
+
+   
+
+    <script>
+        window.onscroll = function() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        };
+    </script>
+</body>
+</html>

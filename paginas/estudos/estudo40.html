@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dízimos e Ofertas | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">Administração Cristã / Finanças Bíblicas</span>
+            <h1>Dízimos e Ofertas</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 14 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+
+            <div class="verse-card">
+                <blockquote>Trazei todos os dízimos à casa do tesouro, para que haja mantimento na minha casa, e depois fazei prova de mim, diz o Senhor dos Exércitos, se eu não vos abrir as janelas do céu e não derramar sobre vós uma bênção tal, que dela vos advenha a maior abastança.</blockquote>
+                <cite>Malaquias 3.10</cite>
+            </div>
+
+            <h2>O QUE SÃO DÍZIMOS E OFERTAS?</h2>
+
+            <p>A palavra hebraica para "dízimo" (ma'aser) significa, literalmente, "uma décima parte".</p>
+
+            <p>(1) Na lei de Deus, os israelitas deviam dar uma décima parte de seu gado, produção de terras e renda, como reconhecimento das bênçãos de Deus (Lv 27.30-32; Dt 14.22-29). O dízimo devia ser a primeira e melhor porção (Pv 3.9-10), não as sobras, demonstrando prioridade a Deus. Era usado para o sustento do culto, sacerdotes e levitas (Nm 18.21,26). Deus responsabilizava o povo pela administração dos recursos (cf. Mt 25.15; Lc 19.13).</p>
+
+            <p>(2) A essência do dízimo é reconhecer que tudo pertence a Deus (Êx 19.5; Sl 24.1; 50.10-12; Ag 2.8). Somos criação Dele e tudo vem Dele (Gn 1.26-27; At 17.28; Jó 1.21; Jo 3.27; 1Co 4.7).</p>
+
+            <p>(3) Além dos dízimos, havia ofertas rituais prescritas: holocausto (Lv 1), manjares (Lv 2), pacífico (Lv 3), pelo pecado (Lv 4) e pela culpa (Lv 5–6; veja quadro SACRIFÍCIOS DO ANTIGO TESTAMENTO).</p>
+
+            <p>(4) Havia também ofertas voluntárias, de boa vontade (Lv 22.18-23; Nm 15.3; Dt 12.6,17). Exemplos: generosidade para o tabernáculo (Êx 35.20-29; 36.3-7), reparos no templo no tempo de Joás (2Rs 12.9-10) e Ezequias (2Cr 31.5-19).</p>
+
+            <p>(5) Houve ocasiões em que o povo reteve egoisticamente, causando disciplina divina: durante a reconstrução do templo (Ag 1.3-6) e nos dias de Malaquias (Ml 3.8-12).</p>
+
+            <h2>COMO E POR QUE DEVEMOS DOAR?</h2>
+
+            <p>Os princípios do Antigo Testamento sobre dízimos e ofertas continuam válidos para cristãos no Novo Testamento:</p>
+
+            <p>(1) Tudo pertence ao Senhor; somos administradores do que Ele nos confiou.</p>
+
+            <p>(2) Devemos servir a Deus, não ao dinheiro (Mt 6.19-24; Cl 3.5).</p>
+
+            <p>(3) Doar promove o reino de Deus, sustenta a igreja, evangeliza e ajuda necessitados (1Co 9.4-14; Gl 2.10; 2Co 8.14; veja estudo O CUIDADO DOS POBRES E DESFAVORECIDOS). É privilégio ajuntar tesouros no céu (Mt 6.20).</p>
+
+            <p>(4) Doar em proporção à renda (1Co 16.2; 2Co 8.3,12). No AT, 10% era mínimo; reter era roubar a Deus (Ml 3.8-10).</p>
+
+            <p>(5) Voluntária, generosa e sacrificial (Êx 25.1-2; 2Co 8.1-5,9; 2Co 8.3; Lc 21.1-4). Demonstra fé na provisão de Deus (Fp 4.18-19).</p>
+
+            <p>(6) Alegre e entusiasmada, não relutante (2Co 9.6-7). Exemplos: tabernáculo (Êx 35), macedônios (2Co 8.1-5).</p>
+
+            <p>(7) Deus recompensa proporcionalmente (Dt 15.4; Ml 3.10-12; Mt 19.21; 1Tm 6.18-19; 2Co 9.6).</p>
+
+            <h2>HOJE EM DIA, OS CRISTÃOS SÃO OBRIGADOS A DAR O DÍZIMO?</h2>
+
+            <p>O dízimo não é mera lei antiga abolida. Jesus cumpriu a lei (Mt 5.17-18), mas princípios éticos permanecem. Abraão deu dízimo antes da lei (Gn 14.18-20). Jesus condenou dízimo hipócrita, mas o endossou quando sincero (Mt 23.23). O NT incentiva maior generosidade; o dízimo é base mínima (2Co 9.7). A atitude é crucial: voluntária, alegre, por amor, não obrigação.</p>
+
+            <h2>POR QUE E ONDE DAMOS O DÍZIMO?</h2>
+
+            <p>O dízimo sustenta a igreja local ("casa do tesouro" – Ml 3.10), onde recebemos e servimos. Priorize a igreja local; ofertas extras podem ir a outros ministérios. Se todos fizessem sua parte, igrejas teriam recursos para cumprir a missão.</p>
+
+            <p>Deus promete bênçãos para quem prova-O fielmente (Ml 3.10). Ele não é limitado por lógica humana; princípios não mudaram.</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>Tudo pertence a Deus. Como você reconhece isso na prática com suas finanças? O dízimo é prioridade ou sobra?</li>
+                    <li>Deus promete abrir as janelas do céu para quem dá fielmente (Ml 3.10). Ore por fé para confiar na provisão Dele ao doar sacrificialmente.</li>
+                    <li>A igreja local depende de doações generosas. Avalie sua contribuição: é proporcional, alegre e voluntária? Planeje um passo de generosidade esta semana.</li>
+                </ul>
+            </div>
+
+            
+
+        </div>
+    </article>
+
+  
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

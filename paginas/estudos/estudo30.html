@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Coração | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+   
+
+    <article>
+        <div class="study-header">
+            <span class="category">Vida Cristã</span>
+            <h1>O Coração</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 9 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>Sobre tudo o que se deve guardar, guarda o teu coração, porque dele procedem as saídas da vida.</blockquote>
+                <cite>Pv 4.23</cite>
+            </div>
+
+            <h2>DEFINIÇÃO DE CORAÇÃO</h2>
+            <p>De modo geral, as pessoas consideram o cérebro como o centro diretor do pensamento e da atividade humana. No entanto, a Bíblia se refere ao coração como o centro da nossa existência: "dele procedem as saídas da vida" (Pv 4.23; cf. Lc 6.45). Quando a Bíblia fala sobre o "coração", não está se referindo ao órgão físico que bombeia o sangue para todo o corpo. O "coração", conforme a Bíblia usa o termo, pode representar a totalidade do intelecto, da emoção e da vontade de uma pessoa (veja Mc 7.20-23, nota).</p>
+
+            <p>(1) O coração é o centro do intelecto. A Bíblia descreve pessoas que conhecem coisas em seu coração (Dt 8.5), oram em seu coração (1Sm 1.12-13), meditam em seu coração (Sl 19.14), escondem a Palavra de Deus no coração (Sl 119.11), fazem planos em seu coração (Sl 140.2), guardam palavras em seu coração (Pv 4.21), pensam em seu coração (Mc 2.8), duvidam em seu coração (Mc 11.23), ponderam em seu coração (Lc 2.19), creem em seu coração (Rm 10.9) e cantam em seu coração (Ef 5.19). Todos esses atos envolvem a mente em essência.</p>
+
+            <p>(2) O coração é o centro das emoções. A Bíblia fala do coração alegre (Êx 4.14), o coração amoroso (Dt 6.5), o coração temeroso (Js 5.1), o coração corajoso (Sl 27.14), o coração arrependido (Sl 51.17), o coração ansioso (Pv 12.25), o coração irado (Pv 19.3), o coração vivificado (Is 57.15), o coração angustiado (Jr 4.19; Rm 9.2), o coração extasiado (Jr 15.16), o coração pesaroso (Lm 2.18), o coração humilde (Mt 11.29), o coração entusiasmado ou inflamado (Lc 24.32) e o coração aflito (Jo 14.1). Todos esses atos são emocionais por natureza.</p>
+
+            <p>(3) Finalmente, o coração é o centro da vontade humana. A vontade pode ser definida como o desejo de uma pessoa, a sua motivação, seu propósito, sua resolução ou capacidade de escolher e decidir. Na Palavra de Deus, lemos sobre o coração endurecido, que resiste a Deus e se recusa a fazer o que Ele ordena (Êx 4.21), o coração que cede ou se submete a Deus (Js 24.23), o coração que tenciona fazer algo (2Cr 6.7), o coração que se dedica à busca de um relacionamento mais profundo com Deus (1 Cr 22.19), o coração que decide (2Cr 6.7), o coração que deseja receber de Deus (Sl 21.1-2), o coração que se volta para as leis de Deus (Sl 119.36) e o coração que quer realizar algo (Rm 10.1). Tudo isso são atos da vontade humana.</p>
+
+            <h2>A NATUREZA E A CONDIÇÃO DO CORAÇÃO DISTANTE DE DEUS</h2>
+            <p>Quando Adão e Eva desafiaram a instrução de Deus e cederam à tentação da serpente para comer da árvore da ciência do bem e do mal, a sua decisão afetou drasticamente o coração humano. Como resultado, ele se abriu para as influências e intenções más, e encheu-se delas. Embora as pessoas possam ser sinceras, estão gravemente equivocadas quando oferecem conselhos para "seguir o coração". A Bíblia apresenta a visão exata e precisa do coração em seu estado natural, distante de Deus. Nas palavras inspiradas por Deus do profeta Jeremias: "Enganoso é o coração, mais do que todas as coisas, e perverso; quem o conhecerá?" (Jr 17.9). Jesus confirmou o diagnóstico de Jeremias quando disse que o que faz uma pessoa espiritualmente impura não é a falha em seguir algum ritual ou obedecer a uma lei cerimonial, mas a disposição de seguir as tendências ímpias que permeiam o próprio coração. Essas tendências incluem "os maus pensamentos, os adultérios, as prostituições, os homicídios, os furtos, a avareza, as maldades, o engano, a dissolução, a inveja, a blasfêmia, a soberba, a loucura" (Mc 7.21-22). Jesus ensinou sobre a gravidade de abrigar o pecado no coração, quando disse que o pecado da ira é equivalente ao homicídio (Mt 5.21-22), e o pecado da cobiça (ou luxúria) é o mesmo que o adultério real (Mt 5.27-28; veja Êx 20.14, nota; Mt 5.28, nota). O coração decidido a fazer o mal corre o sério risco de endurecer-se contra Deus. Aqueles que se recusam persistentemente a aceitar a Palavra de Deus e obedecer ao que Ele ordena, e, em vez disso, seguem os maus desejos do seu coração, colocam-se em uma situação criticamente perigosa. Podem nem mesmo perceber que Deus permite que eles sigam o próprio caminho, até o ponto em que perdem toda sensibilidade para com a Palavra e o Espírito Santo (veja Êx 7.3, nota; Hb 3.8, nota). O principal exemplo desta condição na Bíblia é o coração de Faraó, na época do êxodo (isto é, a milagrosa libertação de Israel da escravidão no Egito; veja Êx 7.3,13,22-23; 8.15,32; 9.12; 10.1; 11.10; 14.17). Paulo viu o mesmo princípio geral de endurecimento do coração em ação no Império Romano (cf. Rm 1.24,26,28) e predisse que isso também aconteceria no fim dos tempos, durante os dias do anticristo (2Ts 2.11-12). O autor da epístola aos Hebreus encheu a sua carta com advertências para que os crentes não endureçam o coração (p.ex., Hb 3.8-12; veja o artigo A APOSTASIA PESSOAL, p. 2301, para uma descrição dos passos que levam a um coração endurecido). Quem continuar a rejeitar a Palavra de Deus acabará com um coração endurecido.</p>
+
+            <h2>O CORAÇÃO ESPIRITUALMENTE RENOVADO</h2>
+            <p>A resposta de Deus à iniquidade do coração humano é a regeneração - o nascimento, a transformação e a renovação espiritual a qual acontece quando as pessoas se arrependem sinceramente, voltam-se para Deus pela fé e aceitam Jesus como o perdoador dos seus pecados e Senhor da sua vida. O conceito espiritual e teológico da regeneração refere-se a um coração que é espiritualmente renascido, renovado, revitalizado, reformado e restaurado, de modo que esteja bem com Deus (veja o artigo REGENERAÇÃO: NASCIMENTO E RENOVAÇÃO ESPIRITUAL, p. 1847).</p>
+
+            <p>(1) A regeneração - "nascer de novo" (Jo 3.3) - é um assunto do coração. Os que se arrependem sinceramente de seus pecados e confessam, em seu coração, que Jesus é Senhor (Rm 10.9) são "nascidos de novo" espiritualmente e recebem um novo coração espiritual de Deus (cf. Sl 51.10; Ez 11.19).</p>
+
+            <p>(2) No coração daqueles que experimentam esse nascimento espiritual, Deus cria um desejo de amá-lo e obedecer-lhe. Repetidamente, Deus enfatizou ao seu povo a necessidade de expressar um amor que vem do coração (veja Dt 4.29, nota; 6.6, nota). Esse tipo de amor verdadeiro por Deus não pode ser separado da obediência à sua Palavra (cf. Sl 119.34,69,112). O verdadeiro amor por Deus e a fiel obediência a Ele andam juntos (Jo 14.15,23; 1Jo 2.5; 5.3). Jesus ensinou que toda a lei de Deus poderia ser resumida em amar a Deus de todo o coração e amar os outros abnegadamente (Mt 22.37-40).</p>
+
+            <p>(3) O amor do coração é o ingrediente essencial - mas frequentemente ausente - na obediência. Com muita frequência, o povo de Deus tentou substituir o amor genuíno do coração pela obediência a rituais e regras religiosas (como dias festivos sagrados, ofertas e sacrifícios; veja Is 1.10-17; Am 5.21-26; Mq 6.6-8; veja Dt 10.12, nota). A ação exterior, sem um sincero desejo de servir a Deus, é insincera, pretensiosa e hipócrita; e é severamente condenada por Jesus (veja Mt 23.13-28; veja Lc 21.1-4, nota).</p>
+
+            <p>(4) Muitas outras atividades espirituais ocorrem no coração dos seguidores de Cristo espiritualmente transformados. Eles louvam a Deus com todo o coração (Sl 9.1), meditam na Palavra de Deus em seu coração (Sl 19.14), clamam a Deus de coração (Sl 84.2), buscam a Deus de todo o coração (Sl 119.2,10), escondem a Palavra de Deus no coração (Sl 119.11; veja Dt 6.6, nota), confiam no Senhor com todo o coração (Pv 3.5), perdoam outras pessoas de coração (Mt 18.35), recebem o amor de Deus derramado em seu coração (Rm 5.5), doam a Deus de coração (2Co 9.7), cantam a Deus de coração (Ef 5.19; Cl 3.16) e amam outros cristãos de coração (1 Pe 1.22). Acima de tudo, eles amam a Deus com todo o seu coração (Mt 22.37; Mc 12.30).</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>O coração é o centro da vida (intelecto, emoção, vontade). Como você tem guardado o seu coração ultimamente (Pv 4.23)?</li>
+                    <li>O coração distante de Deus é enganoso e endurecido. Há alguma área onde você percebe resistência ou endurecimento contra a Palavra de Deus?</li>
+                    <li>A regeneração renova o coração. Ore pedindo que Deus crie em você um coração puro (Sl 51.10) e um desejo maior de amá-Lo e obedecê-Lo de todo o coração.</li>
+                </ul>
+            </div>
+
+         
+    </article>
+
+   
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

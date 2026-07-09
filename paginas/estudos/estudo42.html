@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Cura Divina | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">Teologia Bíblica / Cura Divina</span>
+            <h1>A Cura Divina</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 13 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+
+            <div class="verse-card">
+                <blockquote>E, chegada a tarde, trouxeram-lhe muitos endemoninhados, e ele, com a sua palavra, expulsou deles os espíritos e curou todos os que estavam enfermos, para que se cumprisse o que fora dito pelo profeta Isaías, que diz: Ele tomou sobre si as nossas enfermidades e levou as nossas doenças.</blockquote>
+                <cite>Mateus 8.16-17</cite>
+            </div>
+
+            <h2>DEUS PROVÊ A CURA DE QUE PRECISAMOS</h2>
+
+            <p>(1) O problema de doença e enfermidade está diretamente ligado ao pecado e à morte — consequências da desobediência inicial da humanidade a Deus (Gn 3). O pecado separou o homem de Deus e introduziu sofrimento no mundo. Embora fatores filosóficos, mentais e emocionais afetem a saúde, a Bíblia aponta causas espirituais como raiz: (a) o pecado (Jo 5.5,14), e (b) Satanás, que busca destruir (At 10.38; Mc 9.17,20,25; Lc 13.11; At 19.11-12).</p>
+
+            <p>(2) Pelo sacrifício de Jesus, Deus concede perdão (Mt 26.28; At 10.43), ressurreição e vida eterna (At 4.2; Jo 3.15), e cura (Sl 103.1-5; Lc 4.18). O ministério de Jesus incluiu: ensinar a Palavra, pregar arrependimento e reino de Deus, e curar doenças (Mt 4.23-24; veja quadros O MINISTÉRIO DE JESUS e MILAGRES DE JESUS E DOS APÓSTOLOS).</p>
+
+            <h2>DEUS DESEJA CURAR COMO PARTE DE SEU PLANO</h2>
+
+            <p>A vontade de Deus para a cura é revelada de quatro maneiras principais:</p>
+
+            <p>(1) Pronunciamento de Deus: Em Êx 15.26, prometeu saúde e cura aos fiéis à aliança, declarando: "Eu sou o Senhor, que te sara" (veja nota Êx 15.26; cf. 2Rs 20.5; Sl 103.3).</p>
+
+            <p>(2) Ministério de Jesus: Revelou a vontade do Pai (Jo 6.38; 14.10), curando todos os enfermos e oprimidos (Mt 4.23-24; 8.14-16; 9.35; At 10.38).</p>
+
+            <p>(3) Expiação de Cristo: Is 53.4-5; Mt 8.16-17; 1Pe 2.24. A morte de Jesus cobre pecado e enfermidade, restaurando espírito, alma e corpo (Sl 103.3; Tg 5.14-16).</p>
+
+            <p>(4) Ministério contínuo da igreja: Jesus comissionou discípulos para curar (Lc 9.1-2,6; 10.1,8-9,19). Após Pentecostes, a igreja continuou (At 3.1-10; 5.16; 8.7; 9.34; 14.8-10; 19.11-12; Mc 16.18; 1Co 12.9,28,30; Tg 5.14-16). Formas: imposição de mãos (Mc 16.15-18), unção com óleo e oração (Tg 5.14-16), dons de cura (1Co 12.9).</p>
+
+            <h2>EMPECÍLHOS PARA A CURA</h2>
+
+            <p>Obstáculos incluem: (1) pecado não confessado (Tg 5.16), (2) influência demoníaca (Lc 13.11-13), (3) medo/ansiedade (Pv 3.5-8), (4) decepções passadas (Jo 5.5-7), (5) influência negativa de outros (Mc 10.48), (6) ensinos contrários à Bíblia (Mc 7.13), (7) falha de líderes em orar (Tg 5.14-16), (8) igreja não usar dons (1Co 12.9-10), (9) incredulidade (Mc 6.5-6), (10) egoísmo (1Co 11.29-30). Às vezes não há razão aparente (Gl 4.13; 1Tm 5.23; 2Tm 4.20), ou Deus opera através do sofrimento (2Rs 13.14; veja artigo O SOFRIMENTO DOS JUSTOS).</p>
+
+            <h2>PASSOS A TOMAR</h2>
+
+            <p>(1) Mantenha relacionamento correto com Deus e pessoas (Mt 6.33; Tg 5.16).</p>
+            <p>(2) Busque Deus diariamente em oração e Palavra (Rm 12.3; 1Co 12.9).</p>
+            <p>(3) Sature-se com a Palavra (Jo 15.7; Rm 10.17).</p>
+            <p>(4) Continue confiando, mesmo sem cura imediata (Rm 8.28).</p>
+            <p>(5) Peça oração e unção aos líderes (Tg 5.14-16).</p>
+            <p>(6) Participe de cultos com ministério de cura (At 5.15-16).</p>
+            <p>(7) Espere milagre, confiando no poder de Cristo (Mt 19.26).</p>
+            <p>(8) Regozije-se no Senhor, independentemente do resultado (Fp 4.4).</p>
+            <p>(9) Entenda que atrasos não são "não" definitivo; Deus tem propósitos maiores (Jo 9.3; 2Co 12.7-10).</p>
+            <p>(10) Lembre-se: Deus nunca abandona os devotos (Is 49.15-16). A Bíblia aprova cuidados médicos como dom de Deus (Mt 9.12; Lc 10.34; Cl 4.14).</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>A cura faz parte da expiação de Cristo (Is 53.5). Você crê que Deus deseja curar? Examine barreiras como pecado não confessado ou incredulidade.</li>
+                    <li>Jesus curou todos os que vinham a Ele. Ore com fé, peça unção aos líderes e sature-se com promessas bíblicas de cura (Sl 103.3; Tg 5.15).</li>
+                    <li>Confie no tempo e propósitos de Deus, mesmo em meio ao sofrimento. Dedique tempo diário para adorar e esperar nEle, regozijando-se independentemente do resultado.</li>
+                </ul>
+            </div>
+
+            
+
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

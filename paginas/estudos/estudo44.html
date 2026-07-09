@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Grande Tribulação | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">Escatologia / Fim dos Tempos</span>
+            <h1>A Grande Tribulação</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 12 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+
+            <div class="verse-card">
+                <blockquote>Porque haverá, então, grande aflição, como nunca houve desde o princípio do mundo até agora, nem tampouco haverá jamais.</blockquote>
+                <cite>Mateus 24.21</cite>
+            </div>
+
+            <p>A partir de Mt 24.15, Jesus descreve sinais singulares do fim dos tempos, conhecidos como "tribulação" ou "grande aflição" (Ap 7.14; Mt 24.21). Esses sinais indicam que o fim desta era está próximo (Mt 24.15-29) e culminam no retorno físico de Cristo à terra após a tribulação (Mt 24.30-31; Ap 19.11-20.4), quando Ele destruirá as forças do anticristo e estabelecerá um reinado de paz por mil anos (veja quadro OS ÚLTIMOS DIAS DA HISTÓRIA).</p>
+
+            <h2>O PRIMEIRO SINAL: A ABOMINAÇÃO DA DESOLAÇÃO</h2>
+
+            <p>O evento inicial da grande tribulação é a "abominação da desolação" (Mt 24.15; Dn 9.27), uma profanação visível do templo em Jerusalém pelo Anticristo (2Ts 2.3-4; Ap 13.14-15). Ele erguerá uma imagem de si mesmo no templo e se declarará "Deus".</p>
+
+            <p>(1) Marca o início do estágio final da tribulação, levando ao retorno de Cristo e à batalha do Armagedom (Mt 24.21,29-30; Dn 9.27; Ap 19.11-21).</p>
+
+            <p>(2) Permite que os fiéis durante a tribulação saibam com certeza quando o retorno de Cristo está próximo ("Quando, pois, virdes" – Mt 24.15,33). O intervalo é de 3 anos e meio ou 1260 dias (Dn 9.25-27; Ap 11.1-2; 12.6; 13.5-7).</p>
+
+            <p>(3) Avisos contra enganos: relatos falsos de que Cristo retornou serão mentirosos (Mt 24.23-27). Seu retorno será visível e inconfundível (Mt 24.27-30).</p>
+
+            <h2>FALSOS PROFETAS E ENGAÑOS</h2>
+
+            <p>Durante a tribulação, falsos profetas realizarão "grandes sinais e prodígios" (Mt 24.24), distorcendo a verdade e rejeitando a Palavra de Deus.</p>
+
+            <p>(1) Jesus adverte para vigilância extrema contra mentiras e hipocrisia (Mt 7.22; Gl 1.9).</p>
+
+            <p>(2) Os crentes devem "provar os espíritos" (1Jo 4.1) e testar tudo pela Palavra de Deus (veja artigo FALSOS ENSINADORES).</p>
+
+            <p>(3) Deus permite enganos para provar a sinceridade e o amor pela verdade (Dt 13.3). Quem não ama a verdade será enganado e não terá outra chance (2Ts 2.11). Será difícil até para os escolhidos discernir (Mt 24.24; veja artigo ELEIÇÃO E PREDESTINAÇÃO).</p>
+
+            <h2>CARACTERÍSTICAS DA GRANDE TRIBULAÇÃO</h2>
+
+            <p>Período de intenso sofrimento global (Ap 6-18), dominado pelo Anticristo nos últimos 3,5 anos:</p>
+
+            <ul>
+                <li>Ocorre no mundo todo (Ap 3.10).</li>
+                <li>Pior aflição da história (Dn 12.1; Mt 24.21).</li>
+                <li>Perseguição intensa aos judeus (Jr 30.5-7).</li>
+                <li>Domínio do "homem do pecado" (Dn 9.27; Ap 13.12).</li>
+                <li>Igreja fiel é arrebatada antes (Lc 21.36; 1Ts 5.8-10; Ap 3.10; veja artigo O ARREBATAMENTO).</li>
+                <li>Judeus e gentios se convertem durante (Dt 4.30-31; Ap 7.9-17; 14.6-7).</li>
+                <li>Perseguição feroz aos fiéis (Ap 12.17; 13.15).</li>
+                <li>Ira e juízo de Deus sobre os ímpios (1Ts 5.1-11; Ap 6.16-17).</li>
+                <li>Dias abreviados para preservação da vida (Mt 24.22).</li>
+                <li>Termina com o retorno glorioso de Cristo, resgate dos sobreviventes e juízo (Mt 24.29-31; Ap 19.11-21).</li>
+                <li>Não confundir com o arrebatamento (Mt 24.42,44 – inesperado, antes da tribulação).</li>
+            </ul>
+
+            <p>A tribulação total dura 7 anos, com o Anticristo revelado plenamente nos últimos 3,5 anos (Dn 9.25-27; Ap 13.5-7).</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>A grande tribulação será um tempo de engano intenso. Como você cultiva amor pela verdade hoje para não ser enganado no futuro (2Ts 2.10-11)?</li>
+                    <li>Jesus avisa para vigiar e discernir sinais. Ore por discernimento espiritual e estude a Palavra para reconhecer falsos profetas e doutrinas.</li>
+                    <li>Os fiéis têm esperança no retorno de Cristo. Viva com expectativa do arrebatamento e do Reino, priorizando santidade e testemunho enquanto há tempo.</li>
+                </ul>
+            </div>
+
+           
+
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>

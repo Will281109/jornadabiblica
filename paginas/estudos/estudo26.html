@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Morte | Mergulho Bíblico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --navy-blue: #0a2342;
+            --turquoise: #1cb3a0;
+            --turquoise-hover: #148f7f;
+            --text-dark: #2c3e50;
+            --soft-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.8; }
+
+        /* BARRA DE PROGRESSO */
+        .progress-container { 
+            width: 100%; 
+            height: 5px; 
+            background: #eee; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+        .progress-bar { height: 5px; background: var(--turquoise); width: 0%; }
+
+        /* BOTÃO VOLTAR NO TOPO */
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 5% 0;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-back-top:hover { color: var(--navy-blue); transform: translateX(-5px); }
+
+        /* CAPA DO ESTUDO */
+        .study-header {
+            padding: 40px 5% 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .category { color: var(--turquoise); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .study-header h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--navy-blue); margin: 20px 0; line-height: 1.2; }
+        .meta { font-size: 0.9rem; color: #888; display: flex; justify-content: center; gap: 20px; }
+
+        /* CONTEÚDO */
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            font-size: 1.1rem;
+        }
+        .content-body p { margin-bottom: 25px; }
+        .content-body h2 { font-family: 'Merriweather', serif; color: var(--navy-blue); margin: 40px 0 20px; font-size: 1.8rem; }
+        
+        /* BOX DE VERSÍCULO */
+        .verse-card {
+            background: var(--white);
+            border-left: 5px solid var(--turquoise);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+        .verse-card blockquote { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.2rem; color: var(--navy-blue); margin-bottom: 10px; }
+        .verse-card cite { font-weight: 600; color: var(--turquoise); font-style: normal; font-size: 0.9rem; }
+
+        /* LISTAS PERSONALIZADAS */
+        .content-body ul { list-style: none; margin: 20px 0; }
+        .content-body ul li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .content-body ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; position: absolute; left: 0; }
+
+        /* APLICAÇÃO PRÁTICA */
+        .application-section {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .application-section h3 { font-family: 'Merriweather', serif; color: var(--turquoise); margin-bottom: 20px; }
+        .application-section ul { list-style: none; }
+        .application-section ul li { margin-bottom: 15px; display: flex; gap: 10px; }
+        .application-section ul li::before { content: "•"; color: var(--turquoise); font-weight: bold; }
+
+        /* BOTÃO DE CONCLUÍDO NO FINAL */
+        .finish-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--soft-gray);
+        }
+        .btn-finish {
+            display: inline-block;
+            background-color: var(--turquoise);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-finish:hover { 
+            background-color: var(--turquoise-hover); 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(28, 179, 160, 0.3);
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--soft-gray); }
+
+        @media (max-width: 600px) {
+            .study-header h1 { font-size: 1.8rem; }
+            .btn-finish { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    
+
+    <article>
+        <div class="study-header">
+            <span class="category">Vida Cristã</span>
+            <h1>A Morte</h1>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> 9 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="verse-card">
+                <blockquote>Porque eu sei que o meu Redentor vive, e que por fim se levantará sobre a terra. E depois de consumida a minha pele, ainda em minha carne verei a Deus.</blockquote>
+                <cite>Jó 19:25-26</cite>
+            </div>
+
+            <p>· · ׳ Todos os seres humanos, independentemente de suas crenças, enfrentarão a morte. Na Bíblia, no entanto, a palavra "morte" tem mais de um significado. É importante entender como esses vários significados têm a ver com aqueles que têm um relacionamento pessoal com o Deus verdadeiro.</p>
+
+            <h2>A MORTE COMO RESULTADO DO PECADO</h2>
+            <p>Gênesis 2-3 ensina que a morte entrou no mundo por causa do pecado (isto é, a humanidade se rebelou contra Deus e decidiu seguir o próprio caminho). Os nossos primeiros pais, Adão e Eva, foram criados com a capacidade de viver para sempre, mas quando rejeitaram a ordem de Deus, perderam os benefícios da vida que Deus havia desejado. Na verdade, quando desobedeceram à ordem direta de Deus, eles caíram sob a punição e a maldição do pecado, que é a morte. Esta punição trouxe várias implicações.</p>
+
+            <p>(1) Adão e Eva ficaram sujeitos à morte física. Deus havia colocado a árvore da vida no jardim do Éden, para que, comendo dela continuamente, os seres humanos nunca morressem (veja Gn 2.9, nota). Mas, desde o princípio, Deus equipou os seres humanos com a capacidade e a oportunidade de decidir se aceitavam as suas instruções e o seguiam. Adão e Eva se aproveitaram dessa escolha e a usaram para desafiar a Deus. Depois que eles comeram o fruto da árvore da ciência do bem e do mal, Deus proferiu as seguintes palavras: "Porquanto és pó e em pó te tornarás" (Gn 3.19). Embora eles não morressem fisicamente no dia em que comeram o fruto, ficaram sujeitos à lei da morte, como resultado da maldição de Deus.</p>
+
+            <p>(2) Adão e Eva também sofreram uma morte moral. Deus advertiu Adão de que, se ele comesse o fruto proibido, certamente morrería (Gn 2.17). Esta foi uma advertência séria. Embora a mort-e física de Adão e Eva não fosse imediata, a sua morte moral foi instantânea, uma vez que a sua natureza humana se tornou corrupta, pecadora e desafiante a Deus. Desde Adão e Eva, todas as pessoas nascem com essa natureza pecadora (Rm 8.5-8), o que significa que todos nós temos o desejo inato de seguir o nosso próprio caminho egoísta, sem qualquer preocupação com Deus ou com os outros (veja Gn 3.6, nota; Rm 3.10-18, nota; Ef 2.3; Cl 2.13).</p>
+
+            <p>(3) Adão e Eva também sofreram uma morte espiritual quando desobedeceram a Deus. Em outras palavras, o seu relacionamento íntimo com Deus foi destruído (veja Gn 3.6, nota). Eles não mais esperariam para passear e conversar com Deus no jardim; em vez disso, eles tentaram se esconder da sua presença (Gn 3.8). A Bíblia ensina que, sem Cristo, todas as pessoas estão alienadas, ou separadas, de Deus e da vida que Ele oferece (Ef 4.17-18). É isto o que significa estar espiritualmente morto.</p>
+
+            <p>(4) Finalmente, a morte, como resultado do pecado, envolve a morte eterna. A vida eterna teria sido o resultado final da obediência, se Adão e Eva tivessem decidido dar ouvidos à advertência de Deus (cf. Gn 3.22). Em vez disso, o princípio da morte eterna ficou ativo. Morte eterna quer dizer estar espiritualmente condenado e separado de Deus para sempre; esta morte é o resultado final de rejeitar a Deus e desobedecer às suas instruções (veja Gn 3.4, nota). A Bíblia descreve isto assim: "por castigo, padecerão eterna perdição, ante a face do Senhor e a glória do seu poder" (2Ts 1.9; veja Rm 6.16, nota).</p>
+
+            <p>(5) A única maneira de escapar e obter a vitória sobre a morte em todos os seus aspectos é pela fé em Jesus Cristo, que "aboliu a morte e trouxe à luz a vida e a incorrupção, pelo evangelho" (2Tm 1,10). Com a sua morte, Jesus pagou toda a punição pelo pecado e nos reconciliou com Deus (isto é, restaurou a oportunidade de um relacionamento pessoal com Ele), revertendo a maldição de separação espiritual que resultou do pecado (veja Gn 3.24, nota; 2C0 5.18, nota). Com a sua ressurreição sobrenatural, Ele venceu e rompeu o poder de Satanás, do pecado e da morte física (veja Gn 3.15, nota; Rm 6.10, nota; cf. Rm 5.18-19; 1Co 15.12-28; 1J0 3.8). O fato de que os verdadeiros e fiéis seguidores de Deus não sofrerão a morte eterna, mas serão ressuscitados à vida com Ele, já era parte do sistema de crenças do povo de Deus no Antigo Testamento (veja Jó 19.25-26; SI 16.9-11; veja o artigo A RESSURREIÇÃO DO CORPO, p. 2114).</p>
+
+            <h2>O SIGNIFICADO DA MORTE FÍSICA PARA OS CRENTES</h2>
+            <p>Embora os seguidores de Cristo tenham a certeza da vida ressurreta (Jo 11.25-26), ainda podem passar pela experiência da morte física, mas os que confiaram a vida a Cristo veem a morte de maneira diferente daqueles que não o receberam. A seguir, estão algumas verdades que a Bíblia revela sobre a morte daquele que conhece a Deus e o segue. ár־ Jó 20 877</p>
+
+            <p>(1) Para o cristão, a morte não é o fim da vida, mas um novo princípio. Em vez de ser algo a ser temido (1C0 15.55-57), a morte é o ponto de transição para uma vida mais plena. A morte liberta os cristãos dos problemas deste mundo (2C0 4.17) e de um corpo terrestre a fim de serem "revestidos" com vida e glória celestiais (2C0 5.1-5). Paulo fala da morte física como um sono (1C0 15.6,18,20; ITs 4.13-15), sugerindo que a morte é o descanso do trabalho e do sofrimento da terra (cf. Ap 14.13). A morte significa ir para junto dos antepassados piedosos que morreram antes de nós (veja Gn 25.8, nota). A morte física é uma porta de entrada à presença do Deus vivo (Fp 1.23).</p>
+
+            <p>(2) A Bíblia também fala da morte dos crentes em termos consoladores. A morte dos santos "preciosa é à vista do Senhor" (SI 116.15). É uma entrada "na paz" (Is 57.1-2) e "na glória" (Si 73.24); uma ida ao "paraíso" (Lc 23.43), a ida è casa do nosso Pai, onde há "muitas moradas" (Jo 14.2); uma partida antecipada, para "estarcom Cristo" (Fp 1.23); um "habitarcom o Senhor" (2C0 5.8); um "dormirem Cristo" (1C0 15.18; cf. Jo 11.11; 1Ts 4.13); um "ganho [...] que é ainda muito melhor" (Fp 1.21,23) e uma ocasião para receber "a coroa da justiça" (veja 2Tm 4.8, nota).</p>
+
+            <p>(3) A respeito do período entre a morte de um cristão e a sua ressurreição física, a Bíblia ensina o seguinte:<br>(a) No momento da morte, os que seguem a Cristo "habitajm] com o Senhor" (2Co 5.8; Fp 1.23).<br>(b) Os crentes têm plena consciência (Lc 16.19-31) e sentem alegria, por causa da bondade e do amor de j Deus (cf. Ef 2.7).<br>(c) O céu é como uma casa - um lugar de descanso e segurança (Ap 6.11), e um lugar de j comunidade e comunhão com outros crentes (Jo 14.2, nota),<br>(d) As atividades no céu incluem adoração, | celebração e cânticos (SI 87; Ap 14.2-3; 15.3), tarefas designadas (Lc 19.17), e comer e beber (Lc 14.15; | 22.14-18; Ap 22.2).<br>(e) Enquanto aguardam a ressurreição física, os membros do povo de Deus não são espíritos invisíveis e desencarnados, mas têm uma forma celestial temporária (Lc 9.30-32; 2C0 5.1-4).<br>(f) No céu, os crentes conservam a sua identidade pessoal (Mt 8.11; Lc 9.30-32).<br>(g) O povo de Deus, depois da vida terrena, continuará interessado nos propósitos de Deus na terra (Ap 6.9-11).</p>
+
+            <p>(4) Embora o povo de Deus possa esperar a morte com grande alegria e esperança, as pessoas ainda sofrem quando morre alguém, em particular os entes queridos. Depois da morte de Jacó, por exemplo, José lamentou profundamente por seu pai. A sua reação à morte de seu pai é um modelo para todos os membros do povo de Deus que sofrem a morte de um ente querido (veja Gn 50.1, nota).</p>
+
+            <div class="application-section">
+                <h3>Para Meditar e Aplicar</h3>
+                <ul>
+                    <li>A morte física é inevitável, mas para o crente é transição para a presença de Deus. Como a certeza de Jó ("o meu Redentor vive") pode trazer paz ao pensar na morte?</li>
+                    <li>A morte entrou pelo pecado, mas Cristo venceu. Em que área da sua vida você ainda teme a morte ou a perda, e como confiar mais no Redentor vivo?</li>
+                    <li>O céu é descrito como "casa", "paraíso" e "estar com Cristo". Ore hoje pela esperança eterna e pela consolação para quem está enlutado ou doente.</li>
+                </ul>
+            </div>
+
+        </div>
+    </article>
+
+    
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+
+</body>
+</html>
