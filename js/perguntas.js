@@ -1,5 +1,5 @@
 // Banco de Dados de Questões - Jornada Bíblica
-const BANCO_PERGUNTAS = {
+window.QUIZ_DATABASE = {
     // ==========================================
     // MUNDO 1: HISTÓRIAS E PERSONAGENS CLÁSSICOS (16 Fases)
     // ==========================================
