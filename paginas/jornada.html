@@ -24,8 +24,8 @@
     <div id="journey-container" class="game-trail"></div>
 </div>
 
-<div id="active-quiz-overlay" style="display: none; position: fixed; inset: 0; height: 100vh; height: 100dvh; background: var(--v2-bg-app); z-index: 9999; display: flex; flex-direction: column; overflow: hidden; box-sizing: border-box;">
-    
+<!-- CORRIGIDO: Adicionada a classe hidden e removidos os displays conflitantes do style -->
+<div id="active-quiz-overlay" class="hidden" style="position: fixed; inset: 0; height: 100vh; height: 100dvh; background: var(--v2-bg-app); z-index: 9999; flex-direction: column; overflow: hidden; box-sizing: border-box;">
     <div class="quiz-header-progress" style="padding: 20px 20px 10px 20px; flex-shrink: 0; box-sizing: border-box;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
             <span id="quiz-title-indicator" style="font-weight: 800; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase;">Fase 1 - Pergunta 1/10</span>
@@ -35,18 +35,14 @@
             <div id="quiz-progress-bar" class="mini-progress-bar" style="width: 0%;"></div>
         </div>
     </div>
-
     <div style="flex: 1; overflow-y: auto; padding: 0 20px 20px 20px; display: flex; flex-direction: column; -webkit-overflow-scrolling: touch; box-sizing: border-box;">
-        
         <div class="quiz-question-box" style="display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px 0; min-height: 80px; flex-shrink: 0;">
             <h2 id="quiz-question-text" style="font-size: 1.25rem; font-weight: 700; color: var(--text-main); line-height: 1.5; margin: 0;">Pergunta aqui?</h2>
         </div>
-
         <div id="quiz-options-container" style="display: flex; flex-direction: column; gap: 12px; width: 100%; box-sizing: border-box; padding-bottom: 16px;">
-            </div>
+        </div>
     </div>
-
-    </div>
+</div>
 
 <div id="worlds-picker-overlay" style="display: none; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(4px); z-index: 100; align-items: flex-end;">
     <div style="background: #F9F8F4; width: 100%; max-height: 80%; border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 -10px 25px rgba(0,0,0,0.15); font-family: system-ui, -apple-system, sans-serif;">
@@ -54,7 +50,6 @@
             <h3 style="margin: 0; font-size: 1.3rem; font-weight: 800; color: #2E2922;">Selecione o Mundo</h3>
             <button id="btn-close-worlds" style="background: none; border: none; font-size: 1.4rem; color: #8A8378; cursor: pointer; padding: 4px;"><i class="fa-solid fa-xmark"></i></button>
         </div>
-        
         <div id="worlds-list-container" style="display: flex; flex-direction: column; gap: 12px; overflow-y: auto; padding-bottom: 16px;"></div>
     </div>
 </div>
