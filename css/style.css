@@ -520,12 +520,10 @@ body.v2-theme {
 /* Classes de Estado Gerais */
 .hidden { display: none !important; }
 
-/* Painel de Feedback Estilo Duolingo */
-.quiz-feedback-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+/* Painel de Feedback Estilo Duolingo - Integrado ao Fluxo */
+#quiz-feedback-container {
+    width: 100%;
+    margin-top: auto; /* Garante que fique na parte inferior do container flex */
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -534,6 +532,16 @@ body.v2-theme {
     border-top-right-radius: 20px;
     animation: slideSheetUp 0.2s ease-out;
     z-index: 60;
+    margin-left: -20px; /* Compensa o padding do overlay pai */
+    margin-right: -20px;
+    width: calc(100% + 40px);
+}
+
+.quiz-feedback-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
 }
 .quiz-feedback-bar.correct-bar { background: #E6F4EA; border-top: 2px solid #355E3F; color: #2D4A34; }
 .quiz-feedback-bar.wrong-bar { background: #FCE8E6; border-top: 2px solid #B33F38; color: #61231E; }

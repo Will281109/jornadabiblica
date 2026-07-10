@@ -587,8 +587,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function renderCurrentQuestion() {
-        const oldBar = document.querySelector(".quiz-feedback-bar");
-        if (oldBar) oldBar.remove();
+        const feedbackContainer = document.getElementById("quiz-feedback-container");
+        if (feedbackContainer) {
+            feedbackContainer.innerHTML = "";
+            feedbackContainer.classList.add("hidden");
+            feedbackContainer.className = "hidden"; // Limpa classes de cores
+        }
 
         let currentQuestion;
         let totalCount = currentQuizQuestions.length;
@@ -772,7 +776,9 @@ document.addEventListener("DOMContentLoaded", () => {
         buttons.forEach(b => b.removeAttribute("onclick"));
 
         const isCorrect = (selectedIndex === questionObj.correct);
-        const feedbackBar = document.createElement("div");
+        const feedbackContainer = document.getElementById("quiz-feedback-container");
+        
+        if (!feedbackContainer) return;
 
         if (isCorrect) {
             SoundFX.playCorrect();
@@ -780,8 +786,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if(!isRepescagemPhase) {
                 baseCorrectAnswersCount++;
             }
-            feedbackBar.className = "quiz-feedback-bar correct-bar";
-            feedbackBar.innerHTML = `
+            feedbackContainer.className = "quiz-feedback-bar correct-bar";
+            feedbackContainer.innerHTML = `
                 <div class="feedback-title"><i class="fa-solid fa-circle-check"></i> Você acertou!</div>
                 <button class="btn-next-question" id="btn-next-flow">Continuar</button>
             `;
@@ -800,15 +806,15 @@ document.addEventListener("DOMContentLoaded", () => {
             if (correctBtn) correctBtn.style.border = "2px dashed #487E56";
 
             wrongQuestionsQueue.push(questionObj);
-            feedbackBar.className = "quiz-feedback-bar wrong-bar";
-            feedbackBar.innerHTML = `
+            feedbackContainer.className = "quiz-feedback-bar wrong-bar";
+            feedbackContainer.innerHTML = `
                 <div class="feedback-title"><i class="fa-solid fa-circle-xmark"></i> Resposta incorreta</div>
                 <button class="btn-next-question" id="btn-next-flow">Entendi</button>
             `;
         }
 
+        feedbackContainer.classList.remove("hidden");
         updateHeaderStats();
-        document.getElementById("active-quiz-overlay").appendChild(feedbackBar);
 
         document.getElementById("btn-next-flow").onclick = () => {
             if (gameState.lives <= 0) {
@@ -832,21 +838,20 @@ document.addEventListener("DOMContentLoaded", () => {
         currentQuestionIndex++;
         if (!isRepescagemPhase) {
             if (currentQuestionIndex >= currentQuizQuestions.length) {
-                if (wrongQuestionsQueue.length > 0) {
-                    const oldBar = document.querySelector(".quiz-feedback-bar");
-                    if (oldBar) oldBar.remove();
+                                if (wrongQuestionsQueue.length > 0) {
+                    const feedbackContainer = document.getElementById("quiz-feedback-container");
+                    if (!feedbackContainer) return;
 
                     isRepescagemPhase = true;
                     currentQuestionIndex = 0;
 
-                    const transitionBar = document.createElement("div");
-                    transitionBar.className = "quiz-feedback-bar warning-transition-bar";
-                    transitionBar.innerHTML = `
+                    feedbackContainer.className = "quiz-feedback-bar warning-transition-bar";
+                    feedbackContainer.innerHTML = `
                         <div class="feedback-title"><i class="fa-solid fa-rotate-left"></i> Correção de Erros</div>
                         <p style="font-size: 0.85rem; margin-bottom: 4px;">Vamos ajustar as ${wrongQuestionsQueue.length} questões que você pulou para concluir.</p>
                         <button class="btn-next-question" id="btn-start-repescagem">Revisar</button>
                     `;
-                    document.getElementById("active-quiz-overlay").appendChild(transitionBar);
+                    feedbackContainer.classList.remove("hidden");
                     document.getElementById("btn-start-repescagem").onclick = () => renderCurrentQuestion();
                 } else {
                     triggerQuizSuccess();
@@ -916,6 +921,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const victoryOverlay = document.createElement("div");
         victoryOverlay.className = "victory-overlay";
+        victoryOverlay.style.cssText = "position: fixed; inset: 0; background: var(--v2-bg-app); z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; text-align: center;";
         
         let subTexto = `Você acertou ${percentage}% das questões de primeira e faturou <b>+${moedasGanhass} moedas</b>!`;
         if (mudouMundo) {
