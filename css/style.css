@@ -511,9 +511,10 @@ body.v2-theme {
 }
 
 .app-navbar.navbar-hidden {
-    transform: translateY(100%);
-    opacity: 0;
-    pointer-events: none;
+    transform: translateY(100%) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
 }
 
 /* Classes de Estado Gerais */

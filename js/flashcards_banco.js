@@ -286,7 +286,7 @@ function startFlashcardSession() {
     const dashView = document.getElementById("fc-view-dashboard");
     const studyView = document.getElementById("fc-view-study-session");
     if (dashView) dashView.style.display = "none";
-    if (studyView) studyView.style.display = "block";
+    if (studyView) studyView.style.display = "flex";
     
     // Ocultar a navbar ao iniciar sessão de flashcards
     const navbar = document.querySelector(".app-navbar");
