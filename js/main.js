@@ -31,19 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // ==========================================================================
-    // UTILS - CONTROLE DE ROLAGEM MOBILE (ANTI-RUBBERBANDING)
-    // ==========================================================================
-    function lockBodyScroll() {
-        document.body.style.overflow = "hidden";
-        document.body.style.height = "100dvh";
-    }
-
-    function unlockBodyScroll() {
-        document.body.style.overflow = "";
-        document.body.style.height = "";
-    }
-
-    // ==========================================================================
     // 2. CORE DO APP & SISTEMA DE VIDAS PASSIVAS
     // ==========================================================================
     const navButtons = document.querySelectorAll(".nav-button");
@@ -226,18 +213,11 @@ document.addEventListener("DOMContentLoaded", () => {
             calendarCurrentDate = new Date(); 
             renderStreakCalendar();
             streakModal.classList.remove("hidden");
-            lockBodyScroll();
         };
-        btnCloseStreak.onclick = () => {
-            streakModal.classList.add("hidden");
-            unlockBodyScroll();
-        };
+        btnCloseStreak.onclick = () => streakModal.classList.add("hidden");
         
         streakModal.onclick = (e) => {
-            if (e.target === streakModal) {
-                streakModal.classList.add("hidden");
-                unlockBodyScroll();
-            }
+            if (e.target === streakModal) streakModal.classList.add("hidden");
         };
     }
 
@@ -282,8 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         for (let day = 1; day <= totalDays; day++) {
             const dayBox = document.createElement("div");
-            // Otimizado com aspect-ratio e largura máxima fluida para telas pequenas de celular
-            dayBox.style.cssText = "width: 100%; max-width: 36px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 0.8rem; font-weight: 700; position: relative; margin: auto;";
+            dayBox.style.cssText = "height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 0.8rem; font-weight: 700; position: relative;";
             dayBox.textContent = day;
 
             const currentStringMonth = String(month + 1).padStart(2, '0');
@@ -417,10 +396,10 @@ document.addEventListener("DOMContentLoaded", () => {
             card.className = "mission-card";
 
             if (m.isClaimed) {
-                card.style.cssText = "background: linear-gradient(135deg, var(--v2-bg-surface) 0%, var(--v2-bg-deep) 100%); border: 1px solid rgba(212, 163, 39, 0.25); padding: 16px; border-radius: 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px;";
+                card.style.cssText = "background: linear-gradient(135deg, var(--v2-bg-surface) 0%, var(--v2-bg-deep) 100%); border: 1px solid rgba(212, 163, 39, 0.25); padding: 16px; border-radius: 16px; display: flex; align-items: center; justify-content: space-between;";
                 card.innerHTML = `
                     <div style="display: flex; gap: 14px; align-items: center;">
-                        <div style="background: rgba(212, 163, 39, 0.1); color: #D4A327; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.2rem; border: 1px solid #D4A327; flex-shrink:0;">
+                        <div style="background: rgba(212, 163, 39, 0.1); color: #D4A327; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.2rem; border: 1px solid #D4A327;">
                             <i class="fa-solid ${m.icon}"></i>
                         </div>
                         <div>
@@ -428,15 +407,15 @@ document.addEventListener("DOMContentLoaded", () => {
                             <p style="font-size: 0.75rem; color: var(--text-muted); margin: 3px 0 0 0;">${m.desc}</p>
                         </div>
                     </div>
-                    <div style="font-weight: 800; font-size: 0.75rem; color: #D4A327; padding: 6px 12px; background: rgba(212, 163, 39, 0.08); border-radius: 12px; white-space: nowrap;">
+                    <div style="font-weight: 800; font-size: 0.75rem; color: #D4A327; padding: 6px 12px; background: rgba(212, 163, 39, 0.08); border-radius: 12px;">
                         <i class="fa-solid fa-ribbon"></i> Conquistado
                     </div>
                 `;
             } else if (m.isCompleted) {
-                card.style.cssText = "background: var(--v2-bg-surface); border: 2px solid #D4A327; padding: 16px; border-radius: 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px;";
+                card.style.cssText = "background: var(--v2-bg-surface); border: 2px solid #D4A327; padding: 16px; border-radius: 16px; display: flex; align-items: center; justify-content: space-between;";
                 card.innerHTML = `
                     <div style="display: flex; gap: 14px; align-items: center;">
-                        <div style="background: rgba(212, 163, 39, 0.1); color: #D4A327; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.2rem; border: 2px solid #D4A327; flex-shrink:0;">
+                        <div style="background: rgba(212, 163, 39, 0.1); color: #D4A327; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.2rem; border: 2px solid #D4A327;">
                             <i class="fa-solid ${m.icon}"></i>
                         </div>
                         <div>
@@ -444,15 +423,15 @@ document.addEventListener("DOMContentLoaded", () => {
                             <p style="font-size: 0.75rem; color: var(--text-muted); margin: 3px 0 0 0;">${m.desc}</p>
                         </div>
                     </div>
-                    <button class="claim-reward-action-btn" data-id="${m.id}" data-reward="${m.reward}" style="background: #487E56; border: none; padding: 10px 14px; border-radius: 14px; font-weight: 800; font-size: 0.8rem; color: #FFFFFF; display: flex; align-items: center; gap: 5px; cursor: pointer; white-space: nowrap;">
+                    <button class="claim-reward-action-btn" data-id="${m.id}" data-reward="${m.reward}" style="background: #487E56; border: none; padding: 10px 14px; border-radius: 14px; font-weight: 800; font-size: 0.8rem; color: #FFFFFF; display: flex; align-items: center; gap: 5px; cursor: pointer;">
                         Coletar <i class="fa-solid fa-star"></i> ${m.reward}
                     </button>
                 `;
             } else {
-                card.style.cssText = "background: var(--v2-bg-surface); border: 1px solid var(--border-subtle); padding: 16px; border-radius: 16px; display: flex; align-items: center; justify-content: space-between; opacity: 0.85; gap: 10px;";
+                card.style.cssText = "background: var(--v2-bg-surface); border: 1px solid var(--border-subtle); padding: 16px; border-radius: 16px; display: flex; align-items: center; justify-content: space-between; opacity: 0.85;";
                 card.innerHTML = `
                     <div style="display: flex; gap: 14px; align-items: center;">
-                        <div style="background: var(--v2-bg-deep); color: #8a8a8a; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.2rem; border: 1px dashed var(--border-subtle); flex-shrink:0;">
+                        <div style="background: var(--v2-bg-deep); color: #8a8a8a; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.2rem; border: 1px dashed var(--border-subtle);">
                             <i class="fa-solid ${m.icon}"></i>
                         </div>
                         <div>
@@ -460,7 +439,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <p style="font-size: 0.75rem; color: var(--text-muted); margin: 3px 0 0 0;">${m.desc}</p>
                         </div>
                     </div>
-                    <div style="font-weight: 700; font-size: 0.8rem; color: var(--text-muted); padding: 6px 12px; background: var(--v2-bg-deep); border-radius: 12px; white-space: nowrap;">
+                    <div style="font-weight: 700; font-size: 0.8rem; color: var(--text-muted); padding: 6px 12px; background: var(--v2-bg-deep); border-radius: 12px;">
                         <i class="fa-solid fa-star" style="color: gray;"></i> ${m.reward}
                     </div>
                 `;
@@ -596,13 +575,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const quizOverlay = document.getElementById("active-quiz-overlay");
         if (quizOverlay) {
-            // Resetar scroll do container de perguntas ao abrir novo quiz
-            const quizContent = quizOverlay.querySelector('div[style*="overflow-y: auto"]');
-            if (quizContent) quizContent.scrollTop = 0;
-
             quizOverlay.classList.remove("hidden");
             quizOverlay.style.setProperty("display", "flex", "important"); 
-            lockBodyScroll();
             renderCurrentQuestion();
         }
     }
@@ -632,20 +606,16 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("quiz-progress-bar").style.background = `var(--color-streak)`;
         }
 
-        const questionTextEl = document.getElementById("quiz-question-text");
-        if (questionTextEl) questionTextEl.textContent = currentQuestion.question;
-        
+        document.getElementById("quiz-question-text").textContent = currentQuestion.question;
         const optionsContainer = document.getElementById("quiz-options-container");
-        if (!optionsContainer) return;
         optionsContainer.innerHTML = "";
 
         currentQuestion.options.forEach((opt, idx) => {
             const btn = document.createElement("button");
-            // Estilos adaptados: remove white-space:nowrap das alternativas para celular rodar liso
-            btn.style.cssText = "width: 100%; padding: 16px; border: 1px solid var(--border-subtle); background: var(--v2-bg-surface); border-radius: 14px; text-align: left; font-weight: 600; font-size: 0.95rem; color: var(--text-main); display: flex; gap: 12px; align-items: center; cursor: pointer; word-break: break-word;";
+            btn.style.cssText = "width: 100%; padding: 16px; border: 1px solid var(--border-subtle); background: var(--v2-bg-surface); border-radius: 14px; text-align: left; font-weight: 600; font-size: 0.95rem; color: var(--text-main); display: flex; gap: 12px; align-items: center; cursor: pointer;";
             
             const letters = ["A", "B", "C", "D"];
-            btn.innerHTML = `<span style="background: var(--v2-bg-deep); width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-size: 0.75rem; font-weight: 800; color: var(--text-main); flex-shrink: 0;">${letters[idx]}</span> <span>${opt}</span>`;
+            btn.innerHTML = `<span style="background: var(--v2-bg-deep); width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-size: 0.75rem; font-weight: 800; color: var(--text-main);">${letters[idx]}</span> <span>${opt}</span>`;
             
             btn.onclick = () => checkAnswer(idx, currentQuestion, btn);
             optionsContainer.appendChild(btn);
@@ -659,12 +629,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const container = document.getElementById("journey-container");
-        if (!container) {
-            // Se o container não existe, pode ser que o HTML ainda não foi injetado.
-            // Vamos tentar novamente em um curto espaço de tempo.
-            setTimeout(initJourneyMap, 100);
-            return;
-        }
+        if (!container) return;
 
         container.innerHTML = "";
         
@@ -721,7 +686,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (btnCloseWorlds) {
             btnCloseWorlds.onclick = () => {
                 document.getElementById('worlds-picker-overlay').style.display = 'none';
-                unlockBodyScroll();
             };
         }
 
@@ -735,7 +699,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     quizOverlay.classList.add("hidden");
                     quizOverlay.style.setProperty("display", "none", "important");
                 }
-                unlockBodyScroll();
             };
         }
     }
@@ -746,7 +709,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!pickerOverlay || !container) return;
 
         container.innerHTML = '';
-        lockBodyScroll();
 
         Object.keys(mundosDetalhes).forEach(worldId => {
             const id = parseInt(worldId);
@@ -765,15 +727,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 background: ${isActive ? '#FFFFFF' : '#EFECE6'};
                 border: ${isActive ? '2px solid #487E56' : '1px solid transparent'};
                 opacity: ${isUnlocked ? '1' : '0.6'};
-                gap: 12px;
             `;
 
             card.innerHTML = `
-                <div style="text-align: left; display: flex; flex-direction: column; gap: 4px; flex: 1;">
+                <div style="text-align: left; display: flex; flex-direction: column; gap: 4px;">
                     <h4 style="margin: 0; font-size: 1.05rem; font-weight: 700; color: ${isActive ? '#2E2922' : '#736C62'};">${mundosDetalhes[id].title}</h4>
                     <p style="margin: 0; font-size: 0.88rem; color: ${isActive ? '#80796E' : '#968E82'};">${mundosDetalhes[id].desc}</p>
                 </div>
-                <div style="flex-shrink: 0;">
+                <div>
                     ${!isUnlocked 
                         ? '<i class="fa-solid fa-lock" style="color: #736C62; font-size: 1.1rem; opacity: 0.6;"></i>' 
                         : (isActive 
@@ -787,7 +748,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 card.onclick = () => {
                     gameState.currentWorld = id;
                     pickerOverlay.style.display = 'none';
-                    unlockBodyScroll();
                     initJourneyMap();
                     updateHeaderStats();
                 };
@@ -839,27 +799,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         updateHeaderStats();
-        const quizOverlay = document.getElementById("active-quiz-overlay");
-        if (quizOverlay) {
-            quizOverlay.appendChild(feedbackBar);
-        }
+        document.getElementById("active-quiz-overlay").appendChild(feedbackBar);
 
-        const nextBtn = document.getElementById("btn-next-flow");
-        if (nextBtn) {
-            nextBtn.onclick = () => {
+        document.getElementById("btn-next-flow").onclick = () => {
             if (gameState.lives <= 0) {
                 const quizOverlay = document.getElementById("active-quiz-overlay");
                 if (quizOverlay) {
                     quizOverlay.classList.add("hidden");
                     quizOverlay.style.setProperty("display", "none", "important");
                 }
-                unlockBodyScroll();
                 if (!activeStudyObject) initJourneyMap();
                 return;
             }
             advanceQuizFlow();
         };
-        }
     }
 
     function advanceQuizFlow() {
@@ -974,7 +927,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 quizOverlay.classList.add("hidden");
                 quizOverlay.style.setProperty("display", "none", "important");
             }
-            unlockBodyScroll();
             initJourneyMap();
         };
     }
@@ -1082,7 +1034,6 @@ document.addEventListener("DOMContentLoaded", () => {
         titleEl.textContent = estudoObj.title;
         scroller.innerHTML = `<p style="color: var(--text-muted); text-align: center; padding: 20px;">Carregando material de leitura...</p>`;
         overlay.classList.remove("hidden");
-        lockBodyScroll();
 
         const isAlreadyDone = window.gameState.completedStudies.includes(estudoObj.id);
         if (isAlreadyDone) {
@@ -1109,7 +1060,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.getElementById("btn-close-study").onclick = () => {
             overlay.classList.add("hidden");
-            unlockBodyScroll();
         };
 
         const newFooterBtn = footerBtn.cloneNode(true);
@@ -1122,7 +1072,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 markDayAsActive();
             }
             overlay.classList.add("hidden");
-            unlockBodyScroll();
             renderStudiesList();
         };
     }

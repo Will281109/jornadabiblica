@@ -220,8 +220,7 @@ body.v2-theme {
    ========================================================================== */
 .trail-scroll-view {
     width: 100%;
-    padding: 10px 0 100px 0; /* Aumentado padding inferior para não ficar atrás da navbar */
-    overflow-y: visible;
+    padding: 10px 0 30px 0;
 }
 
 .game-trail {
@@ -230,7 +229,6 @@ body.v2-theme {
     align-items: center;
     gap: 28px;
     position: relative;
-    min-height: 400px; /* Garante altura mínima para renderização */
 }
 
 .trail-node {
@@ -616,42 +614,3 @@ body.v2-theme {
 }
 .world-option-card.active-world { border-color: #487E56; background: rgba(72, 126, 86, 0.05); }
 .world-option-card.locked-world { opacity: 0.6; cursor: not-allowed; background: var(--v2-bg-deep); }
-
-/* No seu css/style.css, ajuste ou adicione essas regras para o modal de estudos */
-#study-overlay { /* Substitua pelo ID/Classe real do seu overlay se for diferente */
-    display: flex;
-    flex-direction: column;
-    height: 100vh; /* Ocupa a altura exata da tela */
-    overflow: hidden;
-}
-
-/* A área onde o texto do estudo entra (o scroller) */
-#study-scroller { 
-    flex: 1; /* Alonga e ocupa o espaço dinâmico */
-    overflow-y: auto; /* Cria a barra de rolagem apenas aqui dentro */
-    padding: 20px;
-    -webkit-overflow-scrolling: touch;
-}
-
-/* O rodapé onde fica o botão de Concluir */
-#study-footer { 
-    padding: 16px;
-    background: var(--v2-bg-surface);
-    border-top: 1px solid var(--border-subtle);
-    width: 100%;
-    box-sizing: border-box;
-}
-    /* Barra de feedback de acerto/erro */
-.quiz-feedback-bar {
-    position: absolute; /* Mudado de fixed para absolute para respeitar o container pai do quiz */
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: var(--v2-bg-surface);
-    padding: 16px 16px calc(20px + env(safe-area-inset-bottom)); 
-    box-sizing: border-box;
-    z-index: 10000;
-    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.2);
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
-}
