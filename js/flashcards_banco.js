@@ -288,6 +288,10 @@ function startFlashcardSession() {
     if (dashView) dashView.style.display = "none";
     if (studyView) studyView.style.display = "block";
     
+    // Ocultar a navbar ao iniciar sessão de flashcards
+    const navbar = document.querySelector(".app-navbar");
+    if (navbar) navbar.classList.add("navbar-hidden");
+    
     currentIndex = 0;
     isFlipped = false;
     
@@ -305,6 +309,10 @@ function startFlashcardSession() {
 }
 
 function exitFlashcardSession() {
+    // Mostrar a navbar ao sair da sessão de flashcards
+    const navbar = document.querySelector(".app-navbar");
+    if (navbar) navbar.classList.remove("navbar-hidden");
+    
     initFlashcardsModule();
 }
 
@@ -349,7 +357,7 @@ function showSessionComplete() {
                 <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
                 <h2 style="color: var(--text-main); margin-bottom: 10px;">Treino Concluído!</h2>
                 <p style="color: var(--text-muted); margin-bottom: 30px;">Você revisou todos os cartões agendados para hoje.</p>
-                <button onclick="location.reload()" style="background: #487E56; color: white; border: none; padding: 14px 30px; border-radius: 12px; font-weight: 800; cursor: pointer;">
+                <button onclick="exitFlashcardSession()" style="background: #487E56; color: white; border: none; padding: 14px 30px; border-radius: 12px; font-weight: 800; cursor: pointer;">
                     Voltar ao Início
                 </button>
             </div>

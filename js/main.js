@@ -577,6 +577,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (quizOverlay) {
             quizOverlay.classList.remove("hidden");
             quizOverlay.style.setProperty("display", "flex", "important"); 
+            
+            // Ocultar a navbar ao iniciar o quiz
+            const navbar = document.querySelector(".app-navbar");
+            if (navbar) navbar.classList.add("navbar-hidden");
+            
             renderCurrentQuestion();
         }
     }
@@ -698,6 +703,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (quizOverlay) {
                     quizOverlay.classList.add("hidden");
                     quizOverlay.style.setProperty("display", "none", "important");
+                    
+                    // Mostrar a navbar ao sair do quiz
+                    const navbar = document.querySelector(".app-navbar");
+                    if (navbar) navbar.classList.remove("navbar-hidden");
                 }
             };
         }
@@ -807,6 +816,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (quizOverlay) {
                     quizOverlay.classList.add("hidden");
                     quizOverlay.style.setProperty("display", "none", "important");
+                    
+                    // Mostrar a navbar ao sair do quiz por falta de vidas
+                    const navbar = document.querySelector(".app-navbar");
+                    if (navbar) navbar.classList.remove("navbar-hidden");
                 }
                 if (!activeStudyObject) initJourneyMap();
                 return;
@@ -926,6 +939,10 @@ document.addEventListener("DOMContentLoaded", () => {
             if (quizOverlay) {
                 quizOverlay.classList.add("hidden");
                 quizOverlay.style.setProperty("display", "none", "important");
+                
+                // Mostrar a navbar ao concluir o quiz
+                const navbar = document.querySelector(".app-navbar");
+                if (navbar) navbar.classList.remove("navbar-hidden");
             }
             initJourneyMap();
         };

@@ -510,6 +510,12 @@ body.v2-theme {
     color: #3A5F43; /* Ativo acende em Verde Oliva */
 }
 
+.app-navbar.navbar-hidden {
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
 /* Classes de Estado Gerais */
 .hidden { display: none !important; }
 
