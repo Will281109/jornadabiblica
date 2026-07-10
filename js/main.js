@@ -596,6 +596,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const quizOverlay = document.getElementById("active-quiz-overlay");
         if (quizOverlay) {
+            // Resetar scroll do container de perguntas ao abrir novo quiz
+            const quizContent = quizOverlay.querySelector('div[style*="overflow-y: auto"]');
+            if (quizContent) quizContent.scrollTop = 0;
+
             quizOverlay.classList.remove("hidden");
             quizOverlay.style.setProperty("display", "flex", "important"); 
             lockBodyScroll();
@@ -628,8 +632,11 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("quiz-progress-bar").style.background = `var(--color-streak)`;
         }
 
-        document.getElementById("quiz-question-text").textContent = currentQuestion.question;
+        const questionTextEl = document.getElementById("quiz-question-text");
+        if (questionTextEl) questionTextEl.textContent = currentQuestion.question;
+        
         const optionsContainer = document.getElementById("quiz-options-container");
+        if (!optionsContainer) return;
         optionsContainer.innerHTML = "";
 
         currentQuestion.options.forEach((opt, idx) => {
@@ -652,7 +659,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const container = document.getElementById("journey-container");
-        if (!container) return;
+        if (!container) {
+            // Se o container não existe, pode ser que o HTML ainda não foi injetado.
+            // Vamos tentar novamente em um curto espaço de tempo.
+            setTimeout(initJourneyMap, 100);
+            return;
+        }
 
         container.innerHTML = "";
         
@@ -827,9 +839,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         updateHeaderStats();
-        document.getElementById("active-quiz-overlay").appendChild(feedbackBar);
+        const quizOverlay = document.getElementById("active-quiz-overlay");
+        if (quizOverlay) {
+            quizOverlay.appendChild(feedbackBar);
+        }
 
-        document.getElementById("btn-next-flow").onclick = () => {
+        const nextBtn = document.getElementById("btn-next-flow");
+        if (nextBtn) {
+            nextBtn.onclick = () => {
             if (gameState.lives <= 0) {
                 const quizOverlay = document.getElementById("active-quiz-overlay");
                 if (quizOverlay) {
@@ -842,6 +859,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             advanceQuizFlow();
         };
+        }
     }
 
     function advanceQuizFlow() {

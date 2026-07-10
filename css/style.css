@@ -220,7 +220,8 @@ body.v2-theme {
    ========================================================================== */
 .trail-scroll-view {
     width: 100%;
-    padding: 10px 0 30px 0;
+    padding: 10px 0 100px 0; /* Aumentado padding inferior para não ficar atrás da navbar */
+    overflow-y: visible;
 }
 
 .game-trail {
@@ -229,6 +230,7 @@ body.v2-theme {
     align-items: center;
     gap: 28px;
     position: relative;
+    min-height: 400px; /* Garante altura mínima para renderização */
 }
 
 .trail-node {
@@ -639,16 +641,17 @@ body.v2-theme {
     width: 100%;
     box-sizing: border-box;
 }
-/* Barra de feedback de acerto/erro */
+    /* Barra de feedback de acerto/erro */
 .quiz-feedback-bar {
-    position: fixed;
+    position: absolute; /* Mudado de fixed para absolute para respeitar o container pai do quiz */
     bottom: 0;
     left: 0;
     width: 100%;
     background: var(--v2-bg-surface);
-    /* Adiciona um padding extra na parte inferior para compensar a barra do celular */
-    padding: 16px 16px calc(16px + env(safe-area-inset-bottom)); 
+    padding: 16px 16px calc(20px + env(safe-area-inset-bottom)); 
     box-sizing: border-box;
-    z-index: 9999; /* Garante que fica por cima de qualquer botão ou navbar */
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
 }
