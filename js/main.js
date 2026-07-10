@@ -403,7 +403,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // ATUALIZAÇÃO MOBILE: Oculta a barra de baixo quando o quiz abre
+        // OCULTA A NAVBAR AO ENTRAR NO QUIZ
         document.body.classList.add("hide-navbar");
 
         quizCurrentWorld = world;
@@ -419,7 +419,7 @@ document.addEventListener("DOMContentLoaded", () => {
         lockBodyScroll();
 
         document.getElementById("btn-quit-quiz").onclick = () => {
-            // ATUALIZAÇÃO MOBILE: Devolve a barra se fechar o quiz no meio
+            // MOSTRA A NAVBAR SE SAIR VOLUNTARIAMENTE
             document.body.classList.remove("hide-navbar");
             quizOverlay.classList.add("hidden");
             quizOverlay.style.display = "none";
@@ -513,7 +513,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("btn-next-step-quiz").onclick = () => {
             bottomFeedback.remove();
             if (gameState.lives <= 0) {
-                // ATUALIZAÇÃO MOBILE: Devolve a barra se perder todas as vidas
+                // MOSTRA A NAVBAR SE PERDER TODAS AS VIDAS
                 document.body.classList.remove("hide-navbar");
                 document.getElementById("active-quiz-overlay").classList.add("hidden");
                 document.getElementById("active-quiz-overlay").style.display = "none";
@@ -546,9 +546,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         updateHeaderStats();
 
-        // ATUALIZAÇÃO MOBILE: Devolve a barra quando o quiz termina com sucesso
-        document.body.classList.remove("hide-navbar");
-
         const successPanel = document.createElement("div");
         successPanel.className = "quiz-finished-victory-overlay animated-fade-in";
         successPanel.innerHTML = `
@@ -567,6 +564,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.getElementById("btn-finish-quiz-clear").onclick = () => {
             successPanel.remove();
+            // MOSTRA A NAVBAR QUANDO DISMISS DO SUCESSO DO QUIZ
+            document.body.classList.remove("hide-navbar");
             const quizOverlay = document.getElementById("active-quiz-overlay");
             quizOverlay.classList.add("hidden");
             quizOverlay.style.display = "none";
