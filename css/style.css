@@ -655,7 +655,3 @@ body.v2-theme {
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
 }
-/* Esconde a barra de navegação principal quando a classe estiver no body */
-body.hide-navbar .app-navbar {
-    display: none !important;
-}
