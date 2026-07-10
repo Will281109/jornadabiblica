@@ -2,90 +2,209 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Jornada Bíblica 2.0</title>
-    
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos do App -->
     <link rel="stylesheet" href="css/style.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body class="v2-theme">
-    
-    <div id="app">
-        
-        <header class="app-header">
-            <!-- Tornamos a pill de ofensiva clicável -->
-            <div class="status-pill highlight-streak" id="streak-trigger" style="cursor: pointer;" title="Ver Calendário de Ofensivas">
-                <i class="fa-solid fa-fire-flame-curved"></i>
+<body>
+
+    <!-- ========================================================================== -->
+    <!-- CABEÇALHO GLOBAL (STATS BAR) -->
+    <!-- ========================================================================== -->
+    <header class="app-header">
+        <div class="header-container">
+            <!-- Ofensiva / Streak -->
+            <div class="stat-pill highlight-streak" id="streak-trigger" title="Ver Calendário de Ofensivas">
+                <i class="fa-solid fa-fire"></i>
                 <span id="user-streak">0</span>
             </div>
-            <div class="status-pill highlight-coin" style="cursor: pointer;" title="Abrir Loja">
+            
+            <!-- Moedas / Estrelas -->
+            <div class="stat-pill highlight-coin">
                 <i class="fa-solid fa-star"></i>
-                <span id="user-coins">0</span>
+                <span id="user-coins">150</span>
             </div>
-            <div class="status-pill highlight-heart">
+            
+            <!-- Energia / Vidas -->
+            <div class="stat-pill highlight-heart">
                 <i class="fa-solid fa-heart"></i>
                 <span id="user-lives">5</span>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <main id="screen-container">
-            
-            <section id="screen-journey" class="app-screen active" data-src="paginas/jornada.html"></section>
-            <section id="screen-missions" class="app-screen" data-src="paginas/missoes.html"></section>
-            <section id="screen-studies" class="app-screen" data-src="paginas/estudos.html"></section>
-            
-            <section id="screen-telegram" class="app-screen" data-src="paginas/grupo.html"></section>
-            
-            <section id="screen-flashcards" class="app-screen" data-src="paginas/flashcards.html"></section>
-            
-            <section id="screen-profile" class="app-screen" data-src="paginas/perfil.html"></section>
-            <section id="screen-shop" class="app-screen" data-src="paginas/loja.html"></section>
-            <section id="screen-lives" class="app-screen" data-src="paginas/vidas.html"></section>
+    <!-- ========================================================================== -->
+    <!-- CONTEÚDO PRINCIPAL (SPA SCREENS) -->
+    <!-- ========================================================================== -->
+    <main class="app-main-viewport">
+        
+        <!-- TELA 1: JORNADA (MAPA) -->
+        <div id="screen-journey" class="app-screen active">
+            <div class="journey-header-zone">
+                <span id="current-world-tag" class="world-badge-tag">MUNDO 1</span>
+                <h2 id="current-world-title" class="world-main-title">Carregando Trilha...</h2>
+                <p id="current-world-progress" class="world-progress-sub">Fase 0 de 16</p>
+                
+                <div class="journey-action-row">
+                    <button id="btn-change-map" class="journey-control-btn">
+                        <i class="fa-solid fa-map"></i> Mudar Mapa
+                    </button>
+                    <button id="btn-jornada-comunidade" class="journey-control-btn Telegram">
+                        <i class="fa-brands fa-telegram"></i> Comunidade
+                    </button>
+                </div>
+            </div>
 
-        </main>
+            <!-- Container onde as bolinhas do mapa são geradas -->
+            <div class="map-scroll-viewport">
+                <div id="journey-container" class="journey-trail-vertical-axis"></div>
+            </div>
+        </div>
 
-        <nav class="app-navbar">
-            <div class="nav-button active" id="nav-journey">
-                <i class="fa-solid fa-compass"></i>
+        <!-- TELA 2: ESTUDOS -->
+        <div id="screen-studies" class="app-screen">
+            <div class="screen-static-header">
+                <h2>Estudos Bíblicos</h2>
+                <p>Alimente seu espírito com leituras diárias recompensadas</p>
+                <div class="screen-filter-tabs-row">
+                    <button id="tab-studies-available" class="study-filter-tab-pill active">Disponíveis</button>
+                    <button id="tab-studies-done" class="study-filter-tab-pill">Concluídos</button>
+                </div>
+            </div>
+            <div class="screen-scrollable-content">
+                <div id="studies-list-container" class="generic-cards-list-layout"></div>
+            </div>
+        </div>
+
+        <!-- TELA 3: FLASHCARDS -->
+        <div id="screen-flashcards" class="app-screen">
+            <div class="screen-static-header">
+                <h2>Memorização</h2>
+                <p>Grave a palavra de Deus no seu coração com cartões rápidos</p>
+            </div>
+            <div class="screen-scrollable-content">
+                <!-- Seleção de Decks -->
+                <div id="flashcards-categories-wrapper" class="flashcards-grid-layout"></div>
+                
+                <!-- Arena de Treino Ativo -->
+                <div id="flashcards-active-playground" class="flashcard-arena-box" style="display: none;">
+                    <div id="flashcard-render-zone"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TELA 4: MISSÕES -->
+        <div id="screen-missions" class="app-screen">
+            <div class="screen-static-header">
+                <h2>Missões Divinas</h2>
+                <p>Cumpra os objetivos para coletar recompensas extras</p>
+                <div class="screen-filter-tabs-row">
+                    <button id="tab-missions-active" class="mission-filter-tab-pill active">Ativas</button>
+                    <button id="tab-missions-done" class="mission-filter-tab-pill">Coletadas</button>
+                </div>
+            </div>
+            <div class="screen-scrollable-content">
+                <div id="missions-list-container" class="generic-cards-list-layout"></div>
+            </div>
+        </div>
+
+        <!-- TELA 5: ENERGIA / LOJA -->
+        <div id="screen-lives" class="app-screen">
+            <div class="screen-static-header">
+                <h2>Altar de Oração</h2>
+                <p>Gerencie sua energia sagrada e suprimentos de jornada</p>
+            </div>
+            <div class="screen-scrollable-content">
+                <div class="lives-status-hero-card">
+                    <div class="heart-giant-animated">❤️</div>
+                    <h3 id="shop-lives-count">5 / 10 Vidas</h3>
+                    <p id="shop-lives-timer">Aguardando temporizador...</p>
+                    <button id="btn-shop-refill-lives" class="refill-max-energy-btn">
+                        <i class="fa-solid fa-bolt"></i> Encher Energia (150 Estrelas)
+                    </button>
+                </div>
+
+                <h3 class="section-divider-title">Mercado da Jornada</h3>
+                <div id="shop-products-wrapper" class="generic-cards-list-layout"></div>
+            </div>
+        </div>
+
+        <!-- FALLBACK PARA COMPATIBILIDADE DA NAVEGAÇÃO -->
+        <div id="screen-shop" class="app-screen" style="display: none;"></div>
+
+    </main>
+
+    <!-- ========================================================================== -->
+    <!-- NAVBAR INFERIOR FIXA -->
+    <!-- ========================================================================== -->
+    <nav class="app-navigation-bar">
+        <div class="nav-container-inner">
+            <button class="nav-button active" id="nav-journey">
+                <i class="fa-solid fa-map-marked-alt"></i>
                 <span>Jornada</span>
-            </div>
-            <div class="nav-button" id="nav-studies">
-                <i class="fa-solid fa-bookmark"></i>
+            </button>
+            <button class="nav-button" id="nav-studies">
+                <i class="fa-solid fa-book-open"></i>
                 <span>Estudos</span>
-            </div>
-            
-            <div class="nav-button" id="nav-flashcards">
+            </button>
+            <button class="nav-button" id="nav-flashcards">
                 <i class="fa-solid fa-clone"></i>
-                <span>Flashcards</span>
-            </div>
-            
-            <div class="nav-button" id="nav-missions">
-                <i class="fa-solid fa-circle-check"></i>
+                <span>Memorizar</span>
+            </button>
+            <button class="nav-button" id="nav-missions">
+                <i class="fa-solid fa-trophy"></i>
                 <span>Missões</span>
-            </div>
-            <div class="nav-button" id="nav-profile">
-                <i class="fa-solid fa-user-astronaut"></i>
-                <span>Perfil</span>
-            </div>
-        </nav>
+            </button>
+            <button class="nav-button" id="nav-lives">
+                <i class="fa-solid fa-heart"></i>
+                <span>Altar</span>
+            </button>
+        </div>
+    </nav>
 
+    <!-- ========================================================================== -->
+    <!-- COMPONENTES SOBREPOSTOS (MODAIS & OVERLAYS) -->
+    <!-- ========================================================================== -->
+
+    <!-- 1. OVERLAY DE QUIZ ATIVO -->
+    <div id="active-quiz-overlay" class="quiz-fullscreen-modal-view hidden" style="display: none;">
+        <div class="quiz-modal-header-top">
+            <button id="btn-quit-quiz" class="quiz-quit-dismiss-btn">✕</button>
+            <div class="quiz-progress-track-bar">
+                <div id="quiz-progress-bar" class="quiz-progress-fill-indicator" style="width: 0%;"></div>
+            </div>
+            <span id="quiz-title-indicator" class="quiz-step-text-counter">Fase 1 - Pergunta 1/5</span>
+        </div>
+        <div class="quiz-modal-body-scroll">
+            <h2 id="quiz-question-text" class="quiz-main-question-statement">Carregando pergunta sagrada...</h2>
+            <div id="quiz-options-container" class="quiz-options-vertical-stack"></div>
+        </div>
     </div>
 
-    <!-- ESTRUTURA PROFISSIONAL DO MODAL DE OFENSIVA (Fica oculto por padrão via CSS ou classe .hidden) -->
-    <div id="streak-modal-overlay" class="hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
-        <div style="background: var(--v2-bg-surface, #1e1e24); width: 90%; max-width: 380px; border-radius: 20px; padding: 20px; box-sizing: border-box; border: 1px solid var(--border-subtle, #2a2a32); text-align: center; color: var(--text-main, #ffffff); font-family: 'Plus Jakarta Sans', sans-serif;">
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <h3 style="margin: 0; font-weight: 800; font-size: 1.1rem;">Histórico de Ofensiva</h3>
-                <button id="btn-close-streak-modal" style="background: none; border: none; font-size: 1.2rem; color: var(--text-muted, #8a8a8a); cursor: pointer;">✕</button>
+    <!-- 2. OVERLAY SELETOR DE MUNDOS -->
+    <div id="worlds-picker-overlay" class="custom-modal-popup-blur hidden" style="display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:2000; justify-content:center; align-items:center; padding:20px;">
+        <div class="modal-card-container-box" style="background:#F7F5F0; width:100%; max-width:400px; border-radius:24px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,0.2); display:flex; flex-direction:column; max-height:85vh;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                <h3 style="margin:0; font-size:1.2rem; font-weight:800; color:#2E2922;">Mapas Disponíveis</h3>
+                <button id="btn-close-worlds" style="background:none; border:none; font-size:1.2rem; color:#8A8378; cursor:pointer; padding:4px;">✕</button>
             </div>
+            <div id="worlds-list-container" style="display:flex; flex-direction:column; gap:12px; overflow-y:auto; padding-right:4px;"></div>
+        </div>
+    </div>
 
-            <!-- Bloco de Recordes -->
+    <!-- 3. OVERLAY CALENDÁRIO DE OFENSIVAS (STREAK) -->
+    <div id="streak-modal-overlay" class="custom-modal-popup-blur hidden" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; padding: 20px;">
+        <div class="modal-card-container-box" style="background: #FAF8F5; width: 100%; max-width: 360px; border-radius: 24px; padding: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.25); position: relative; text-align: center;">
+            <button id="btn-close-streak-modal" style="position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 1.1rem; color: #8A8378; cursor: pointer;">✕</button>
+            
+            <div style="font-size: 3rem; margin-top: 10px; animation: pulse 1.5s infinite alternate;">🔥</div>
+            <h3 style="margin: 8px 0 4px 0; font-size: 1.4rem; font-weight: 800; color: #2E2922;">Sua Ofensiva</h3>
+            <p style="margin: 0 0 16px 0; font-size: 0.85rem; color: #6E685E;">Não quebre o seu hábito diário com o Senhor!</p>
+            
+            <!-- Grid de Estatísticas Rápidas -->
             <div style="display: flex; gap: 10px; margin-bottom: 20px;">
                 <div style="flex: 1; background: rgba(223, 106, 43, 0.08); border: 1px solid rgba(223, 106, 43, 0.2); padding: 12px; border-radius: 14px;">
                     <span style="font-size: 0.75rem; color: var(--text-muted, #8a8a8a); display: block; font-weight: 600;">Atual</span>
@@ -96,32 +215,38 @@
                     <strong id="modal-max-streak" style="font-size: 1.4rem; color: #D4A327; font-weight: 800;">0</strong>
                 </div>
             </div>
-
+            
             <!-- Cabeçalho do Calendário (Mês e Ano) -->
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding: 0 5px;">
                 <button id="btn-prev-month" style="background: none; border: none; color: var(--text-main); cursor: pointer; padding: 5px;"><i class="fa-solid fa-chevron-left"></i></button>
                 <span id="calendar-month-year" style="font-weight: 700; font-size: 0.9rem;">Janeiro 2026</span>
                 <button id="btn-next-month" style="background: none; border: none; color: var(--text-main); cursor: pointer; padding: 5px;"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
-
+            
             <!-- Dias da Semana -->
-            <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; font-size: 0.7rem; font-weight: 700; color: var(--text-muted, #8a8a8a); margin-bottom: 8px;">
+            <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; font-size: 0.7rem; font-weight: 700; color: var(--text-muted, #8a8a8a); margin-bottom: 5px;">
                 <div>DOM</div><div>SEG</div><div>TER</div><div>QUA</div><div>QUI</div><div>SEX</div><div>SÁB</div>
             </div>
-
+            
             <!-- Grid de Dias do Mês -->
             <div id="calendar-days-grid" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;"></div>
-
+            
             <p style="font-size: 0.75rem; color: var(--text-muted, #8a8a8a); margin: 15px 0 0 0; line-height: 1.4;">
                 Conclua qualquer fase ou leitura de estudo para marcar o dia de hoje!
             </p>
         </div>
     </div>
 
+    <!-- ========================================================================== -->
+    <!-- SCRIPTS CORE E PREVENÇÃO DE DEPENDÊNCIAS -->
+    <!-- ========================================================================== -->
+    <!-- 1º Chamamos as bases de dados para alimentar o sistema global -->
     <script src="js/perguntas.js"></script>
-    <script src="js/missoes.js"></script> 
+    <script src="js/missoes.js"></script>
     <script src="js/estudos_banco.js"></script>
     <script src="js/flashcards_banco.js"></script>
+    
+    <!-- 2º O arquivo principal agora inicializa com todos os objetos prontos em memória -->
     <script src="js/main.js"></script>
 </body>
 </html>
