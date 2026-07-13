@@ -701,8 +701,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const btnQuitQuiz = document.getElementById("btn-quit-quiz");
         if (btnQuitQuiz) {
             btnQuitQuiz.onclick = () => {
-                const oldBar = document.querySelector(".quiz-feedback-bar");
-                if (oldBar) oldBar.remove();
+                const feedbackContainer = document.getElementById("quiz-feedback-container");
+                if (feedbackContainer) {
+                    feedbackContainer.innerHTML = "";
+                    feedbackContainer.classList.add("hidden");
+                }
                 const quizOverlay = document.getElementById("active-quiz-overlay");
                 if (quizOverlay) {
                     quizOverlay.classList.add("hidden");
@@ -1057,6 +1060,10 @@ document.addEventListener("DOMContentLoaded", () => {
         titleEl.textContent = estudoObj.title;
         scroller.innerHTML = `<p style="color: var(--text-muted); text-align: center; padding: 20px;">Carregando material de leitura...</p>`;
         overlay.classList.remove("hidden");
+        
+        // Ocultar navbar ao entrar no estudo
+        const navbar = document.querySelector(".app-navbar");
+        if (navbar) navbar.classList.add("navbar-hidden");
 
         const isAlreadyDone = window.gameState.completedStudies.includes(estudoObj.id);
         if (isAlreadyDone) {
@@ -1083,6 +1090,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.getElementById("btn-close-study").onclick = () => {
             overlay.classList.add("hidden");
+            // Restaurar navbar ao sair
+            const navbar = document.querySelector(".app-navbar");
+            if (navbar) navbar.classList.remove("navbar-hidden");
         };
 
         const newFooterBtn = footerBtn.cloneNode(true);
@@ -1095,6 +1105,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 markDayAsActive();
             }
             overlay.classList.add("hidden");
+            // Restaurar navbar ao sair
+            const navbar = document.querySelector(".app-navbar");
+            if (navbar) navbar.classList.remove("navbar-hidden");
             renderStudiesList();
         };
     }
