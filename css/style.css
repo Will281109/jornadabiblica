@@ -533,10 +533,15 @@ body.v2-theme {
 }
 
 .app-navbar.navbar-hidden {
-    transform: translateY(100%) !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    visibility: hidden !important;
+    display: none !important;
+}
+
+/* Quando a navbar some, removemos o padding inferior de todos os containers de tela */
+body:has(.navbar-hidden) .studies-screen-wrapper,
+body:has(.navbar-hidden) .flashcards-screen-wrapper,
+body:has(.navbar-hidden) .trail-scroll-view,
+body:has(.navbar-hidden) .game-trail {
+    padding-bottom: 20px !important;
 }
 
 /* Classes de Estado Gerais */
