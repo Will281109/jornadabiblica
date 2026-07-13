@@ -621,10 +621,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         currentQuestion.options.forEach((opt, idx) => {
             const btn = document.createElement("button");
-            btn.style.cssText = "width: 100%; padding: 16px; border: 1px solid var(--border-subtle); background: var(--v2-bg-surface); border-radius: 14px; text-align: left; font-weight: 600; font-size: 0.95rem; color: var(--text-main); display: flex; gap: 12px; align-items: center; cursor: pointer;";
+            btn.className = "quiz-option-button";
             
             const letters = ["A", "B", "C", "D"];
-            btn.innerHTML = `<span style="background: var(--v2-bg-deep); width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-size: 0.75rem; font-weight: 800; color: var(--text-main);">${letters[idx]}</span> <span>${opt}</span>`;
+            btn.innerHTML = `<span style="background: var(--v2-bg-deep); width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-size: 0.75rem; font-weight: 800; color: var(--text-main); flex-shrink: 0;">${letters[idx]}</span> <span>${opt}</span>`;
             
             btn.onclick = () => checkAnswer(idx, currentQuestion, btn);
             optionsContainer.appendChild(btn);

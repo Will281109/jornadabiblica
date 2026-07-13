@@ -25,7 +25,7 @@
         </div>
 </div>
 
-<div id="active-quiz-overlay" style="display: none; position: fixed; inset: 0; background: var(--v2-bg-app); padding: 20px; z-index: 9999; flex-direction: column; overflow-y: auto;">
+<div id="active-quiz-overlay" style="display: none; position: fixed; inset: 0; background: var(--v2-bg-app); padding: 20px 20px calc(20px + env(safe-area-inset-bottom, 20px)) 20px; z-index: 9999; flex-direction: column; overflow-y: auto;">
     <div class="quiz-header-progress" style="margin-bottom: 20px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
             <span id="quiz-title-indicator" style="font-weight: 800; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase;">Fase 1 - Pergunta 1/10</span>
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <div class="quiz-question-box" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px 0;">
+    <div class="quiz-question-box" style="display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px 0;">
         <h2 id="quiz-question-text" style="font-size: 1.35rem; font-weight: 700; color: var(--text-main); line-height: 1.5;">Pergunta aqui?</h2>
     </div>
 
